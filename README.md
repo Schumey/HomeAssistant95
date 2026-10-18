@@ -41,6 +41,10 @@ The theme colors climate and humidifier entities with the 16-color palette: heat
 
 With card-mod (see below) the thermostat and humidifier cards also get a gray ring and square 3D + and − buttons.
 
+## Switches
+
+Toggle switches get Win95 colors everywhere: a white track, gray thumb and navy when on. With card-mod, the switches in entities cards (rows and the header toggle) become real Win95 checkboxes: a sunken white box with a pixel check mark.
+
 ## Extras (optional)
 
 ### Pixel font & mouse pointer
@@ -52,7 +56,7 @@ The "Pixelated MS Sans Serif" font comes from [98.css](https://github.com/jdan/9
 
 ### Window look with card-mod
 
-With [card-mod](https://github.com/thomasloven/lovelace-card-mod) (HACS), cards with a title become windows with a title bar and _ □ × buttons, and cards look pressed in when clicked. Without card-mod this part is ignored.
+With [card-mod](https://github.com/thomasloven/lovelace-card-mod) (HACS), cards with a title become windows with a title bar and _ □ × buttons, cards look pressed in when clicked, and switches in entities cards become checkboxes. Without card-mod this part is ignored.
 
 Also load card-mod as a frontend module. Otherwise the styles only apply in dashboards, not to the sidebar on other pages:
 

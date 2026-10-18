@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------
 #  HA 95 – Home Assistant Theme-Paket
-#  Version: 3.1.0
+#  Version: 3.2.0
 #
 #  Enthält 6 Themes (wie die Farbschemata in "Eigenschaften von Anzeige"):
 #    HA 95            – Standard: Teal-Desktop, Navy-Titelleisten
@@ -166,7 +166,27 @@ HA 95: &ha95
   state-climate-fan_only-color: var(--ha95-fan)
   state-humidifier-on-color: var(--ha95-humid)
 
-  # ---------- Schalter / Slider ----------
+  # ---------- Schalter (ha-switch, HA 2025.10+) ----------
+  # Überall: Win95-Farben. Mit card-mod werden Schalter in Entitätskarten
+  # zusätzlich zu echten Kontrollkästchen (siehe card-mod-row-yaml).
+  ha-switch-background-color: var(--ha95-window)
+  ha-switch-background-color-hover: var(--ha95-window)
+  ha-switch-border-color: var(--ha95-shadow)
+  ha-switch-thumb-background-color: var(--ha95-face)
+  ha-switch-thumb-background-color-hover: var(--ha95-light)
+  ha-switch-thumb-border-color: var(--ha95-dark)
+  ha-switch-thumb-border-color-hover: var(--ha95-dark)
+  ha-switch-checked-background-color: var(--ha95-select)
+  ha-switch-checked-background-color-hover: var(--ha95-select)
+  ha-switch-checked-border-color: var(--ha95-dark)
+  ha-switch-checked-border-color-hover: var(--ha95-dark)
+  ha-switch-checked-thumb-background-color: var(--ha95-face)
+  ha-switch-checked-thumb-background-color-hover: var(--ha95-light)
+  ha-switch-checked-thumb-border-color: var(--ha95-dark)
+  ha-switch-checked-thumb-border-color-hover: var(--ha95-dark)
+  ha-switch-thumb-box-shadow: "none"
+
+  # ---------- Schalter / Slider (ältere Komponenten) ----------
   switch-checked-color: var(--ha95-select)
   switch-checked-button-color: var(--ha95-select)
   switch-checked-track-color: var(--ha95-shadow)
@@ -282,6 +302,38 @@ HA 95: &ha95
       ha-button:active::part(base) {
         box-shadow: var(--ha95-sunken) !important;
       }
+    "hui-entities-toggle $ ha-switch $": |
+      /* Win95-Kontrollkästchen statt Kippschalter */
+      .switch {
+        width: 13px !important;
+        height: 13px !important;
+        border: none !important;
+        border-radius: 0 !important;
+        background: var(--ha95-window) !important;
+        box-shadow: var(--ha95-sunken) !important;
+        transition: none !important;
+      }
+      .switch .thumb {
+        display: none !important;
+      }
+      .checked .switch::after {
+        content: "";
+        position: absolute;
+        left: 3px;
+        top: 3px;
+        width: 7px;
+        height: 7px;
+        background: var(--ha95-window-text);
+        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' shape-rendering='crispEdges'%3E%3Cpath d='M6 0h1v1H6zM5 1h2v1H5zM0 2h1v1H0zM4 2h3v1H4zM0 3h2v1H0zM3 3h3v1H3zM0 4h5v1H0zM1 5h3v1H1zM2 6h1v1H2z'/%3E%3C/svg%3E") no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' shape-rendering='crispEdges'%3E%3Cpath d='M6 0h1v1H6zM5 1h2v1H5zM0 2h1v1H0zM4 2h3v1H4zM0 3h2v1H0zM3 3h3v1H3zM0 4h5v1H0zM1 5h3v1H1zM2 6h1v1H2z'/%3E%3C/svg%3E") no-repeat;
+      }
+      label.disabled .switch {
+        opacity: 1 !important;
+        background: var(--ha95-face) !important;
+      }
+      label.disabled.checked .switch::after {
+        background: var(--ha95-disabled);
+      }
     "ha-state-control-humidifier-humidity $ ha-outlined-icon-button $": |
       ha-button::part(base) {
         border: none !important;
@@ -292,6 +344,41 @@ HA 95: &ha95
       }
       ha-button:active::part(base) {
         box-shadow: var(--ha95-sunken) !important;
+      }
+
+  # Zeilen in Entitätskarten: Schalter als Kontrollkästchen
+  card-mod-row-yaml: |
+    "ha-entity-toggle $ ha-switch $": |
+      /* Win95-Kontrollkästchen statt Kippschalter */
+      .switch {
+        width: 13px !important;
+        height: 13px !important;
+        border: none !important;
+        border-radius: 0 !important;
+        background: var(--ha95-window) !important;
+        box-shadow: var(--ha95-sunken) !important;
+        transition: none !important;
+      }
+      .switch .thumb {
+        display: none !important;
+      }
+      .checked .switch::after {
+        content: "";
+        position: absolute;
+        left: 3px;
+        top: 3px;
+        width: 7px;
+        height: 7px;
+        background: var(--ha95-window-text);
+        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' shape-rendering='crispEdges'%3E%3Cpath d='M6 0h1v1H6zM5 1h2v1H5zM0 2h1v1H0zM4 2h3v1H4zM0 3h2v1H0zM3 3h3v1H3zM0 4h5v1H0zM1 5h3v1H1zM2 6h1v1H2z'/%3E%3C/svg%3E") no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='7' shape-rendering='crispEdges'%3E%3Cpath d='M6 0h1v1H6zM5 1h2v1H5zM0 2h1v1H0zM4 2h3v1H4zM0 3h2v1H0zM3 3h3v1H3zM0 4h5v1H0zM1 5h3v1H1zM2 6h1v1H2z'/%3E%3C/svg%3E") no-repeat;
+      }
+      label.disabled .switch {
+        opacity: 1 !important;
+        background: var(--ha95-face) !important;
+      }
+      label.disabled.checked .switch::after {
+        background: var(--ha95-disabled);
       }
 
   # Detail-Dialoge (more-info) bekommen ebenfalls eine Titelleiste

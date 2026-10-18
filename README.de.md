@@ -41,6 +41,10 @@ Das Design färbt Klima- und Luftbefeuchter-Entitäten in der 16-Farben-Palette:
 
 Mit card-mod (siehe unten) bekommen Thermostat- und Luftbefeuchter-Karte außerdem einen grauen Ring und eckige 3D-Knöpfe für + und −.
 
+## Schalter
+
+Kippschalter bekommen überall Win95-Farben: weiße Spur, grauer Knopf, eingeschaltet navy. Mit card-mod werden die Schalter in Entitätskarten (Zeilen und Schalter in der Kopfzeile) zu echten Win95-Kontrollkästchen: ein eingelassenes weißes Kästchen mit Pixel-Häkchen.
+
 ## Extras (optional)
 
 ### Pixel-Schrift & Mauszeiger
@@ -52,7 +56,7 @@ Die Schrift „Pixelated MS Sans Serif“ stammt aus [98.css](https://github.com
 
 ### Fenster-Look mit card-mod
 
-Mit [card-mod](https://github.com/thomasloven/lovelace-card-mod) (HACS) werden Karten mit Titel zu Fenstern mit Titelleiste und _ □ ×-Knöpfen, und Karten sehen beim Klicken eingedrückt aus. Ohne card-mod wird dieser Teil ignoriert.
+Mit [card-mod](https://github.com/thomasloven/lovelace-card-mod) (HACS) werden Karten mit Titel zu Fenstern mit Titelleiste und _ □ ×-Knöpfen, Karten sehen beim Klicken eingedrückt aus, und Schalter in Entitätskarten werden zu Kontrollkästchen. Ohne card-mod wird dieser Teil ignoriert.
 
 card-mod sollte zusätzlich als Frontend-Modul geladen werden. Sonst greifen die Styles nur in Dashboards, nicht in der Seitenleiste auf anderen Seiten:
 

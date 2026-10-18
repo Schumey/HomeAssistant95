@@ -4,6 +4,12 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [3.2.0] – 2026-10-18
+
+### Added
+- Switches: Win95 colors for the current `ha-switch` (white track, gray thumb, navy when on) through the `ha-switch-*` variables.
+- card-mod: switches in entities cards (rows and the header toggle) become Win95 checkboxes with a pixel check mark.
+
 ## [3.1.0] – 2026-10-18
 
 ### Added

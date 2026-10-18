@@ -4,6 +4,12 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [3.2.0] – 2026-10-18
+
+### Hinzugefügt
+- Schalter: Win95-Farben für das aktuelle `ha-switch` (weiße Spur, grauer Knopf, eingeschaltet navy) über die `ha-switch-*`-Variablen.
+- card-mod: Schalter in Entitätskarten (Zeilen und Schalter in der Kopfzeile) werden zu Win95-Kontrollkästchen mit Pixel-Häkchen.
+
 ## [3.1.0] – 2026-10-18
 
 ### Hinzugefügt
