@@ -18,7 +18,7 @@ Ein Windows-95-Theme für [Home Assistant](https://www.home-assistant.io/): Teal
 ### Über HACS
 
 1. HACS → ⋮ → **Benutzerdefinierte Repositories** → URL dieses Repos, Typ **Theme**.
-2. „Windows 95“ installieren.
+2. „HomeAssistant95“ installieren.
 3. **Werkzeuge → YAML → Themes neu laden**.
 4. Unter **Profil → Theme** eine der Varianten auswählen.
 
