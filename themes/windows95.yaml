@@ -1,71 +1,103 @@
 # ------------------------------------------------------------------
-#  Windows 95 – Home Assistant Theme
-#  Version: 1.0.0
-#  Teal-Desktop, graue 3D-Fenster, Navy-Titelleisten, eckige Kanten.
+#  Windows 95 – Home Assistant Theme-Paket
+#  Version: 1.1.0
+#
+#  Enthält 6 Themes (wie die Farbschemata in "Eigenschaften von Anzeige"):
+#    Windows 95            – Standard: Teal-Desktop, Navy-Titelleisten
+#    Windows 98            – wie 95, aber mit Farbverlauf in den Titelleisten
+#    Windows 95 Rose       – Farbschema "Rose"   (Farben nachempfunden)
+#    Windows 95 Spruce     – Farbschema "Fichte" (Farben nachempfunden)
+#    Windows 95 Desert     – Farbschema "Wüste"  (Farben nachempfunden)
+#    Windows 95 Kontrast   – "Kontrast Schwarz", die dunkle Variante
 #
 #  Ablage:  /config/themes/windows95.yaml
-#  Benötigt in configuration.yaml:
+#  configuration.yaml:
 #    frontend:
 #      themes: !include_dir_merge_named themes
 #
-#  Optional: card-mod (HACS) für Titelleisten & "eingedrückte" Karten.
+#  Extras (optional):
+#    - /config/www/win95/win95.css als Dashboard-Ressource -> Pixel-Schrift + Mauszeiger
+#    - card-mod (HACS) -> Fenster mit _ □ × Knöpfen, Klick-Effekt, Dialog-Titelleisten
+#
+#  Alle Farben laufen über die win95-* Variablen. Für ein eigenes Schema
+#  reicht es, eine Variante zu kopieren und nur diese Variablen zu ändern.
 # ------------------------------------------------------------------
-Windows 95:
-  # ---------- Eigene Hilfsvariablen ----------
-  win95-face: "#c0c0c0"
-  win95-shadow: "#808080"
-  win95-dark: "#000000"
-  win95-light: "#dfdfdf"
-  win95-highlight: "#ffffff"
-  win95-navy: "#000080"
-  win95-teal: "#008080"
-  win95-raised: "inset -1px -1px #000000, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf"
-  win95-sunken: "inset -1px -1px #ffffff, inset 1px 1px #000000, inset -2px -2px #dfdfdf, inset 2px 2px #808080"
-  win95-font: '"Microsoft Sans Serif", "MS Sans Serif", Tahoma, Geneva, Verdana, sans-serif'
+
+Windows 95: &win95
+  # ================= Farbschema (nur diese Werte ändern sich je Variante) =================
+  win95-desktop: "#008080"        # Desktop-Hintergrund
+  win95-face: "#c0c0c0"           # 3D-Objekte (Fenster, Karten, Knöpfe)
+  win95-highlight: "#ffffff"      # 3D-Kante hell (außen)
+  win95-light: "#dfdfdf"          # 3D-Kante hell (innen)
+  win95-shadow: "#808080"         # 3D-Kante dunkel (innen)
+  win95-dark: "#000000"           # 3D-Kante dunkel (außen)
+  win95-text: "#000000"
+  win95-text-dim: "#404040"
+  win95-disabled: "#808080"
+  win95-window: "#ffffff"         # Textfelder, Listen
+  win95-window-text: "#000000"
+  win95-title: "#000080"          # aktive Titelleiste
+  win95-title-bar: "#000080"      # Hintergrund der Kartentitel (darf ein Verlauf sein)
+  win95-title-text: "#ffffff"
+  win95-select: "#000080"         # markierte Elemente
+  win95-select-text: "#ffffff"
+  win95-active: "#808000"         # Icons im Zustand "an"
+
+  # ================= Abgeleitete Werte =================
+  win95-raised: "inset -1px -1px var(--win95-dark), inset 1px 1px var(--win95-highlight), inset -2px -2px var(--win95-shadow), inset 2px 2px var(--win95-light)"
+  win95-sunken: "inset -1px -1px var(--win95-highlight), inset 1px 1px var(--win95-dark), inset -2px -2px var(--win95-light), inset 2px 2px var(--win95-shadow)"
+  win95-font: '"Pixelated MS Sans Serif", "Microsoft Sans Serif", "MS Sans Serif", Tahoma, Geneva, Verdana, sans-serif'
+  win95-mono: '"Fixedsys", "Courier New", monospace'
 
   # ---------- Schrift ----------
   primary-font-family: var(--win95-font)
   paper-font-common-base_-_font-family: var(--win95-font)
-  paper-font-common-code_-_font-family: '"Fixedsys", "Courier New", monospace'
+  paper-font-common-code_-_font-family: var(--win95-mono)
   mdc-typography-font-family: var(--win95-font)
   ha-font-family-body: var(--win95-font)
   ha-font-family-heading: var(--win95-font)
-  ha-font-family-code: '"Fixedsys", "Courier New", monospace'
+  ha-font-family-code: var(--win95-mono)
 
   # ---------- Grundfarben ----------
-  primary-color: "#000080"
-  dark-primary-color: "#000060"
-  light-primary-color: "#1084d0"
-  accent-color: "#000080"
-  primary-text-color: "#000000"
-  secondary-text-color: "#404040"
-  text-primary-color: "#ffffff"
-  disabled-text-color: "#808080"
-  divider-color: "#808080"
+  primary-color: var(--win95-select)
+  dark-primary-color: var(--win95-title)
+  light-primary-color: var(--win95-select)
+  accent-color: var(--win95-select)
+  primary-text-color: var(--win95-text)
+  secondary-text-color: var(--win95-text-dim)
+  text-primary-color: var(--win95-select-text)
+  disabled-text-color: var(--win95-disabled)
+  divider-color: var(--win95-shadow)
   error-color: "#ff0000"
   warning-color: "#808000"
   success-color: "#008000"
   info-color: "#000080"
-  mdc-theme-primary: "#000080"
-  mdc-theme-secondary: "#000080"
-  mdc-theme-on-primary: "#ffffff"
+  mdc-theme-primary: var(--win95-select)
+  mdc-theme-secondary: var(--win95-select)
+  mdc-theme-on-primary: var(--win95-select-text)
+  # HA leitet rgb-*-Werte nur aus Hex-Farben ab -> hier explizit setzen
+  rgb-primary-color: "0, 0, 128"
+  rgb-accent-color: "0, 0, 128"
+  rgb-primary-text-color: "0, 0, 0"
+  rgb-primary-background-color: "192, 192, 192"
+  rgb-card-background-color: "192, 192, 192"
 
   # ---------- Hintergründe ----------
-  lovelace-background: "#008080"          # der klassische Teal-Desktop
-  primary-background-color: "#c0c0c0"
-  secondary-background-color: "#c0c0c0"
-  card-background-color: "#c0c0c0"
-  clear-background-color: "#c0c0c0"
-  mdc-theme-surface: "#c0c0c0"
+  lovelace-background: var(--win95-desktop)
+  primary-background-color: var(--win95-face)
+  secondary-background-color: var(--win95-face)
+  card-background-color: var(--win95-face)
+  clear-background-color: var(--win95-face)
+  mdc-theme-surface: var(--win95-face)
   mdc-dialog-scrim-color: "rgba(0, 0, 0, 0.3)"
 
   # ---------- Karten (3D-Rahmen, keine Rundungen) ----------
-  ha-card-background: "#c0c0c0"
+  ha-card-background: var(--win95-face)
   ha-card-border-radius: "0px"
   ha-card-border-width: "0px"
   ha-card-border-color: "transparent"
   ha-card-box-shadow: var(--win95-raised)
-  ha-card-header-color: "#000000"
+  ha-card-header-color: var(--win95-text)
   ha-card-header-font-size: "14px"
 
   # ---------- Eckig überall ----------
@@ -81,63 +113,63 @@ Windows 95:
   ha-border-radius-square: "0px"
   ha-badge-border-radius: "0px"
   tile-card-border-radius: "0px"
-
-  # ---------- Kopfzeile = Titelleiste ----------
-  app-header-background-color: "#000080"
-  app-header-text-color: "#ffffff"
-  app-header-selection-bar-color: "#ffffff"
-  app-header-edit-background-color: "#808080"
-
-  # ---------- Seitenleiste = Startmenü ----------
-  sidebar-background-color: "#c0c0c0"
-  sidebar-menu-button-background-color: "#c0c0c0"
-  sidebar-text-color: "#000000"
-  sidebar-icon-color: "#000000"
-  sidebar-selected-background-color: "#000080"
-  sidebar-selected-text-color: "#ffffff"
-  sidebar-selected-icon-color: "#ffffff"
-
-  # ---------- Icons & Zustände ----------
-  state-icon-color: "#000080"
-  state-icon-active-color: "#808000"
-  state-on-color: "#008000"
-  state-off-color: "#808080"
-  state-active-color: "#000080"
-  state-inactive-color: "#808080"
-  paper-item-icon-color: "#000080"
-  paper-item-icon-active-color: "#808000"
-
-  # ---------- Schalter / Slider ----------
-  switch-checked-color: "#000080"
-  switch-checked-button-color: "#000080"
-  switch-checked-track-color: "#808080"
-  switch-unchecked-color: "#ffffff"
-  switch-unchecked-button-color: "#ffffff"
-  switch-unchecked-track-color: "#808080"
-  paper-slider-knob-color: "#c0c0c0"
-  paper-slider-active-color: "#000080"
-  paper-slider-container-color: "#808080"
   ha-control-border-radius: "0px"
 
-  # ---------- Eingabefelder (weiß, wie Win95-Textboxen) ----------
-  input-fill-color: "#ffffff"
-  input-ink-color: "#000000"
-  input-label-ink-color: "#000000"
-  input-idle-line-color: "#808080"
-  input-hover-line-color: "#000000"
-  input-outlined-idle-border-color: "#808080"
-  mdc-text-field-fill-color: "#ffffff"
-  mdc-text-field-ink-color: "#000000"
-  mdc-text-field-label-ink-color: "#000000"
-  mdc-select-fill-color: "#ffffff"
-  mdc-select-ink-color: "#000000"
-  code-editor-background-color: "#ffffff"
+  # ---------- Kopfzeile = Titelleiste ----------
+  app-header-background-color: var(--win95-title)
+  app-header-text-color: var(--win95-title-text)
+  app-header-selection-bar-color: var(--win95-title-text)
+  app-header-edit-background-color: var(--win95-shadow)
+
+  # ---------- Seitenleiste = Startmenü ----------
+  sidebar-background-color: var(--win95-face)
+  sidebar-menu-button-background-color: var(--win95-face)
+  sidebar-text-color: var(--win95-text)
+  sidebar-icon-color: var(--win95-text)
+  sidebar-selected-background-color: var(--win95-select)
+  sidebar-selected-text-color: var(--win95-select-text)
+  sidebar-selected-icon-color: var(--win95-select-text)
+
+  # ---------- Icons & Zustände ----------
+  state-icon-color: var(--win95-select)
+  state-icon-active-color: var(--win95-active)
+  state-on-color: "#008000"
+  state-off-color: var(--win95-disabled)
+  state-active-color: var(--win95-select)
+  state-inactive-color: var(--win95-disabled)
+  paper-item-icon-color: var(--win95-select)
+  paper-item-icon-active-color: var(--win95-active)
+
+  # ---------- Schalter / Slider ----------
+  switch-checked-color: var(--win95-select)
+  switch-checked-button-color: var(--win95-select)
+  switch-checked-track-color: var(--win95-shadow)
+  switch-unchecked-color: var(--win95-window)
+  switch-unchecked-button-color: var(--win95-window)
+  switch-unchecked-track-color: var(--win95-shadow)
+  paper-slider-knob-color: var(--win95-face)
+  paper-slider-active-color: var(--win95-select)
+  paper-slider-container-color: var(--win95-shadow)
+
+  # ---------- Eingabefelder (wie Win95-Textboxen) ----------
+  input-fill-color: var(--win95-window)
+  input-ink-color: var(--win95-window-text)
+  input-label-ink-color: var(--win95-window-text)
+  input-idle-line-color: var(--win95-shadow)
+  input-hover-line-color: var(--win95-dark)
+  input-outlined-idle-border-color: var(--win95-shadow)
+  mdc-text-field-fill-color: var(--win95-window)
+  mdc-text-field-ink-color: var(--win95-window-text)
+  mdc-text-field-label-ink-color: var(--win95-window-text)
+  mdc-select-fill-color: var(--win95-window)
+  mdc-select-ink-color: var(--win95-window-text)
+  code-editor-background-color: var(--win95-window)
 
   # ---------- Tabellen ----------
-  data-table-background-color: "#ffffff"
-  table-row-background-color: "#ffffff"
-  table-row-alternative-background-color: "#ffffff"
-  table-header-background-color: "#c0c0c0"
+  data-table-background-color: var(--win95-window)
+  table-row-background-color: var(--win95-window)
+  table-row-alternative-background-color: var(--win95-window)
+  table-header-background-color: var(--win95-face)
 
   # ---------- Diagramme (16-Farben-Palette) ----------
   history-unknown-color: "#808080"
@@ -151,13 +183,15 @@ Windows 95:
   graph-color-8: "#0000ff"
 
   # ---------- Scrollbars ----------
-  scrollbar-thumb-color: "#c0c0c0"
+  scrollbar-thumb-color: var(--win95-face)
 
-  # ------------------------------------------------------------------
-  #  card-mod (optional, HACS) – Titelleisten & Klick-Effekt
-  #  Ohne card-mod wird dieser Teil einfach ignoriert.
-  # ------------------------------------------------------------------
+  # ==================================================================
+  #  card-mod (optional, HACS). Ohne card-mod wird das ignoriert.
+  #  Hinweis: card-mod greift in Frontend-Interna ein – nach HA-Updates prüfen.
+  # ==================================================================
   card-mod-theme: Windows 95
+
+  # Jede Karte mit Titel wird zum Fenster: Titelleiste + _ □ × Knöpfe
   card-mod-card: |
     ha-card {
       border: none !important;
@@ -166,18 +200,130 @@ Windows 95:
     ha-card:active {
       box-shadow: var(--win95-sunken) !important;
     }
-    /* Kartentitel als Navy-Titelleiste */
     ha-card .card-header {
-      background: var(--win95-navy);
-      /* Win98-Look stattdessen: linear-gradient(90deg, #000080, #1084d0) */
-      color: #ffffff !important;
+      position: relative;
+      background: var(--win95-title-bar);
+      color: var(--win95-title-text) !important;
       font-weight: bold;
       font-size: 13px !important;
       line-height: 18px;
       letter-spacing: 0;
-      padding: 2px 4px !important;
+      padding: 2px 60px 2px 4px !important;
       margin: 3px 3px 8px 3px;
     }
     ha-card .card-header .name {
-      color: #ffffff !important;
+      color: var(--win95-title-text) !important;
     }
+    ha-card .card-header::after {
+      content: "";
+      position: absolute;
+      right: 2px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 14px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='14' shape-rendering='crispEdges'%3E%3Crect width='16' height='14'/%3E%3Crect width='15' height='13' fill='%23fff'/%3E%3Crect x='1' y='1' width='14' height='12' fill='%23808080'/%3E%3Crect x='1' y='1' width='13' height='11' fill='%23c0c0c0'/%3E%3Crect x='4' y='9' width='6' height='2'/%3E%3Crect x='16' width='16' height='14'/%3E%3Crect x='16' width='15' height='13' fill='%23fff'/%3E%3Crect x='17' y='1' width='14' height='12' fill='%23808080'/%3E%3Crect x='17' y='1' width='13' height='11' fill='%23c0c0c0'/%3E%3Crect x='19' y='2' width='9' height='9'/%3E%3Crect x='20' y='4' width='7' height='6' fill='%23c0c0c0'/%3E%3Crect x='34' width='16' height='14'/%3E%3Crect x='34' width='15' height='13' fill='%23fff'/%3E%3Crect x='35' y='1' width='14' height='12' fill='%23808080'/%3E%3Crect x='35' y='1' width='13' height='11' fill='%23c0c0c0'/%3E%3Cpath d='M38 3l7 7M45 3l-7 7' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E") no-repeat;
+    }
+
+  # Detail-Dialoge (more-info) bekommen ebenfalls eine Titelleiste
+  card-mod-more-info: |
+    ha-dialog-header {
+      background: var(--win95-title-bar);
+      --primary-text-color: var(--win95-title-text);
+      --secondary-text-color: var(--win95-title-text);
+      color: var(--win95-title-text);
+      font-weight: bold;
+    }
+
+  # Seitenleiste als erhabenes Startmenü
+  card-mod-sidebar: |
+    :host {
+      border-right: none !important;
+      box-shadow: var(--win95-raised);
+    }
+    .title {
+      font-weight: bold;
+    }
+
+
+# ---------------------------- Varianten ----------------------------
+
+Windows 98:
+  <<: *win95
+  card-mod-theme: Windows 98
+  win95-title-bar: "linear-gradient(90deg, #000080, #1084d0)"
+
+Windows 95 Rose:
+  <<: *win95
+  card-mod-theme: Windows 95 Rose
+  rgb-primary-color: "159, 96, 112"
+  rgb-accent-color: "159, 96, 112"
+  rgb-primary-text-color: "0, 0, 0"
+  rgb-primary-background-color: "207, 175, 183"
+  rgb-card-background-color: "207, 175, 183"
+  win95-desktop: "#804060"
+  win95-face: "#cfafb7"
+  win95-light: "#e7d7db"
+  win95-shadow: "#8a757a"
+  win95-title: "#9f6070"
+  win95-title-bar: "#9f6070"
+  win95-select: "#9f6070"
+  win95-active: "#800000"
+
+Windows 95 Spruce:
+  <<: *win95
+  card-mod-theme: Windows 95 Spruce
+  rgb-primary-color: "88, 142, 96"
+  rgb-accent-color: "88, 142, 96"
+  rgb-primary-text-color: "0, 0, 0"
+  rgb-primary-background-color: "162, 200, 169"
+  rgb-card-background-color: "162, 200, 169"
+  win95-desktop: "#305838"
+  win95-face: "#a2c8a9"
+  win95-light: "#d0e4d4"
+  win95-shadow: "#6c8571"
+  win95-title: "#588e60"
+  win95-title-bar: "#588e60"
+  win95-select: "#588e60"
+  win95-active: "#806000"
+
+Windows 95 Desert:
+  <<: *win95
+  card-mod-theme: Windows 95 Desert
+  rgb-primary-color: "0, 128, 128"
+  rgb-accent-color: "0, 128, 128"
+  rgb-primary-text-color: "0, 0, 0"
+  rgb-primary-background-color: "213, 204, 187"
+  rgb-card-background-color: "213, 204, 187"
+  win95-desktop: "#a28d68"
+  win95-face: "#d5ccbb"
+  win95-light: "#eae6dd"
+  win95-shadow: "#8e887d"
+  win95-title: "#008080"
+  win95-title-bar: "#008080"
+  win95-select: "#008080"
+  win95-active: "#804000"
+
+Windows 95 Kontrast:
+  <<: *win95
+  card-mod-theme: Windows 95 Kontrast
+  rgb-primary-color: "0, 128, 128"
+  rgb-accent-color: "0, 128, 128"
+  rgb-primary-text-color: "255, 255, 255"
+  rgb-primary-background-color: "0, 0, 0"
+  rgb-card-background-color: "0, 0, 0"
+  win95-desktop: "#000000"
+  win95-face: "#000000"
+  win95-highlight: "#ffffff"
+  win95-light: "#808080"
+  win95-shadow: "#808080"
+  win95-dark: "#ffffff"
+  win95-text: "#ffffff"
+  win95-text-dim: "#c0c0c0"
+  win95-disabled: "#808080"
+  win95-window: "#000000"
+  win95-window-text: "#ffffff"
+  win95-title: "#800080"
+  win95-title-bar: "#800080"
+  win95-select: "#008080"
+  win95-active: "#ffff00"
