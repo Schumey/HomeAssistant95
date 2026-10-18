@@ -37,8 +37,8 @@ Ein Windows-95-Theme für [Home Assistant](https://www.home-assistant.io/): Teal
 
 ### Pixel-Schrift & Mauszeiger
 
-1. `www/win95/win95.css` nach `/config/www/win95/` kopieren.
-2. **Einstellungen → Dashboards → ⋮ → Ressourcen** → `/local/win95/win95.css`, Typ **Stylesheet**.
+1. `www/ha95/ha95.css` nach `/config/www/ha95/` kopieren.
+2. **Einstellungen → Dashboards → ⋮ → Ressourcen** → `/local/ha95/ha95.css`, Typ **Stylesheet**.
 
 Die Schrift „Pixelated MS Sans Serif“ stammt aus [98.css](https://github.com/jdan/98.css) (MIT) und wird über jsDelivr geladen.
 
@@ -50,7 +50,7 @@ Mit [card-mod](https://github.com/thomasloven/lovelace-card-mod) (HACS) werden K
 
 ## Eigenes Farbschema
 
-Alle Farben laufen über die `win95-*`-Variablen am Anfang der Datei. Kopiere eine Variante, gib ihr einen neuen Namen (auch bei `card-mod-theme`) und ändere nur diese Werte sowie die `rgb-*`-Zeilen.
+Alle Farben laufen über die `ha95-*`-Variablen am Anfang der Datei. Kopiere eine Variante, gib ihr einen neuen Namen (auch bei `card-mod-theme`) und ändere nur diese Werte sowie die `rgb-*`-Zeilen.
 
 ## Lizenz
 

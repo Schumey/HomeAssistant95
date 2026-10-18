@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------
 #  HA 95 – Home Assistant Theme-Paket
-#  Version: 2.0.0
+#  Version: 3.0.0
 #
 #  Enthält 6 Themes (wie die Farbschemata in "Eigenschaften von Anzeige"):
 #    HA 95            – Standard: Teal-Desktop, Navy-Titelleisten
@@ -16,65 +16,65 @@
 #      themes: !include_dir_merge_named themes
 #
 #  Extras (optional):
-#    - /config/www/win95/win95.css als Dashboard-Ressource -> Pixel-Schrift + Mauszeiger
+#    - /config/www/ha95/ha95.css als Dashboard-Ressource -> Pixel-Schrift + Mauszeiger
 #    - card-mod (HACS) -> Fenster mit _ □ × Knöpfen, Klick-Effekt, Dialog-Titelleisten
 #
-#  Alle Farben laufen über die win95-* Variablen. Für ein eigenes Schema
+#  Alle Farben laufen über die ha95-* Variablen. Für ein eigenes Schema
 #  reicht es, eine Variante zu kopieren und nur diese Variablen zu ändern.
 # ------------------------------------------------------------------
 
-HA 95: &win95
+HA 95: &ha95
   # ================= Farbschema (nur diese Werte ändern sich je Variante) =================
-  win95-desktop: "#008080"        # Desktop-Hintergrund
-  win95-face: "#c0c0c0"           # 3D-Objekte (Fenster, Karten, Knöpfe)
-  win95-highlight: "#ffffff"      # 3D-Kante hell (außen)
-  win95-light: "#dfdfdf"          # 3D-Kante hell (innen)
-  win95-shadow: "#808080"         # 3D-Kante dunkel (innen)
-  win95-dark: "#000000"           # 3D-Kante dunkel (außen)
-  win95-text: "#000000"
-  win95-text-dim: "#404040"
-  win95-disabled: "#808080"
-  win95-window: "#ffffff"         # Textfelder, Listen
-  win95-window-text: "#000000"
-  win95-title: "#000080"          # aktive Titelleiste
-  win95-title-bar: "#000080"      # Hintergrund der Kartentitel (darf ein Verlauf sein)
-  win95-title-text: "#ffffff"
-  win95-select: "#000080"         # markierte Elemente
-  win95-select-text: "#ffffff"
-  win95-active: "#808000"         # Icons im Zustand "an"
+  ha95-desktop: "#008080"        # Desktop-Hintergrund
+  ha95-face: "#c0c0c0"           # 3D-Objekte (Fenster, Karten, Knöpfe)
+  ha95-highlight: "#ffffff"      # 3D-Kante hell (außen)
+  ha95-light: "#dfdfdf"          # 3D-Kante hell (innen)
+  ha95-shadow: "#808080"         # 3D-Kante dunkel (innen)
+  ha95-dark: "#000000"           # 3D-Kante dunkel (außen)
+  ha95-text: "#000000"
+  ha95-text-dim: "#404040"
+  ha95-disabled: "#808080"
+  ha95-window: "#ffffff"         # Textfelder, Listen
+  ha95-window-text: "#000000"
+  ha95-title: "#000080"          # aktive Titelleiste
+  ha95-title-bar: "#000080"      # Hintergrund der Kartentitel (darf ein Verlauf sein)
+  ha95-title-text: "#ffffff"
+  ha95-select: "#000080"         # markierte Elemente
+  ha95-select-text: "#ffffff"
+  ha95-active: "#808000"         # Icons im Zustand "an"
 
   # ================= Abgeleitete Werte =================
-  win95-raised: "inset -1px -1px var(--win95-dark), inset 1px 1px var(--win95-highlight), inset -2px -2px var(--win95-shadow), inset 2px 2px var(--win95-light)"
-  win95-sunken: "inset -1px -1px var(--win95-highlight), inset 1px 1px var(--win95-dark), inset -2px -2px var(--win95-light), inset 2px 2px var(--win95-shadow)"
-  win95-font: '"Pixelated MS Sans Serif", "Microsoft Sans Serif", "MS Sans Serif", Tahoma, Geneva, Verdana, sans-serif'
-  win95-mono: '"Fixedsys", "Courier New", monospace'
+  ha95-raised: "inset -1px -1px var(--ha95-dark), inset 1px 1px var(--ha95-highlight), inset -2px -2px var(--ha95-shadow), inset 2px 2px var(--ha95-light)"
+  ha95-sunken: "inset -1px -1px var(--ha95-highlight), inset 1px 1px var(--ha95-dark), inset -2px -2px var(--ha95-light), inset 2px 2px var(--ha95-shadow)"
+  ha95-font: '"Pixelated MS Sans Serif", "Microsoft Sans Serif", "MS Sans Serif", Tahoma, Geneva, Verdana, sans-serif'
+  ha95-mono: '"Fixedsys", "Courier New", monospace'
 
   # ---------- Schrift ----------
-  primary-font-family: var(--win95-font)
-  paper-font-common-base_-_font-family: var(--win95-font)
-  paper-font-common-code_-_font-family: var(--win95-mono)
-  mdc-typography-font-family: var(--win95-font)
-  ha-font-family-body: var(--win95-font)
-  ha-font-family-heading: var(--win95-font)
-  ha-font-family-code: var(--win95-mono)
+  primary-font-family: var(--ha95-font)
+  paper-font-common-base_-_font-family: var(--ha95-font)
+  paper-font-common-code_-_font-family: var(--ha95-mono)
+  mdc-typography-font-family: var(--ha95-font)
+  ha-font-family-body: var(--ha95-font)
+  ha-font-family-heading: var(--ha95-font)
+  ha-font-family-code: var(--ha95-mono)
 
   # ---------- Grundfarben ----------
-  primary-color: var(--win95-select)
-  dark-primary-color: var(--win95-title)
-  light-primary-color: var(--win95-select)
-  accent-color: var(--win95-select)
-  primary-text-color: var(--win95-text)
-  secondary-text-color: var(--win95-text-dim)
-  text-primary-color: var(--win95-select-text)
-  disabled-text-color: var(--win95-disabled)
-  divider-color: var(--win95-shadow)
+  primary-color: var(--ha95-select)
+  dark-primary-color: var(--ha95-title)
+  light-primary-color: var(--ha95-select)
+  accent-color: var(--ha95-select)
+  primary-text-color: var(--ha95-text)
+  secondary-text-color: var(--ha95-text-dim)
+  text-primary-color: var(--ha95-select-text)
+  disabled-text-color: var(--ha95-disabled)
+  divider-color: var(--ha95-shadow)
   error-color: "#ff0000"
   warning-color: "#808000"
   success-color: "#008000"
   info-color: "#000080"
-  mdc-theme-primary: var(--win95-select)
-  mdc-theme-secondary: var(--win95-select)
-  mdc-theme-on-primary: var(--win95-select-text)
+  mdc-theme-primary: var(--ha95-select)
+  mdc-theme-secondary: var(--ha95-select)
+  mdc-theme-on-primary: var(--ha95-select-text)
   # HA leitet rgb-*-Werte nur aus Hex-Farben ab -> hier explizit setzen
   rgb-primary-color: "0, 0, 128"
   rgb-accent-color: "0, 0, 128"
@@ -83,21 +83,21 @@ HA 95: &win95
   rgb-card-background-color: "192, 192, 192"
 
   # ---------- Hintergründe ----------
-  lovelace-background: var(--win95-desktop)
-  primary-background-color: var(--win95-face)
-  secondary-background-color: var(--win95-face)
-  card-background-color: var(--win95-face)
-  clear-background-color: var(--win95-face)
-  mdc-theme-surface: var(--win95-face)
+  lovelace-background: var(--ha95-desktop)
+  primary-background-color: var(--ha95-face)
+  secondary-background-color: var(--ha95-face)
+  card-background-color: var(--ha95-face)
+  clear-background-color: var(--ha95-face)
+  mdc-theme-surface: var(--ha95-face)
   mdc-dialog-scrim-color: "rgba(0, 0, 0, 0.3)"
 
   # ---------- Karten (3D-Rahmen, keine Rundungen) ----------
-  ha-card-background: var(--win95-face)
+  ha-card-background: var(--ha95-face)
   ha-card-border-radius: "0px"
   ha-card-border-width: "0px"
   ha-card-border-color: "transparent"
-  ha-card-box-shadow: var(--win95-raised)
-  ha-card-header-color: var(--win95-text)
+  ha-card-box-shadow: var(--ha95-raised)
+  ha-card-header-color: var(--ha95-text)
   ha-card-header-font-size: "14px"
 
   # ---------- Eckig überall ----------
@@ -116,60 +116,60 @@ HA 95: &win95
   ha-control-border-radius: "0px"
 
   # ---------- Kopfzeile = Titelleiste ----------
-  app-header-background-color: var(--win95-title)
-  app-header-text-color: var(--win95-title-text)
-  app-header-selection-bar-color: var(--win95-title-text)
-  app-header-edit-background-color: var(--win95-shadow)
+  app-header-background-color: var(--ha95-title)
+  app-header-text-color: var(--ha95-title-text)
+  app-header-selection-bar-color: var(--ha95-title-text)
+  app-header-edit-background-color: var(--ha95-shadow)
 
   # ---------- Seitenleiste = Startmenü ----------
-  sidebar-background-color: var(--win95-face)
-  sidebar-menu-button-background-color: var(--win95-face)
-  sidebar-text-color: var(--win95-text)
-  sidebar-icon-color: var(--win95-text)
-  sidebar-selected-background-color: var(--win95-select)
-  sidebar-selected-text-color: var(--win95-select-text)
-  sidebar-selected-icon-color: var(--win95-select-text)
+  sidebar-background-color: var(--ha95-face)
+  sidebar-menu-button-background-color: var(--ha95-face)
+  sidebar-text-color: var(--ha95-text)
+  sidebar-icon-color: var(--ha95-text)
+  sidebar-selected-background-color: var(--ha95-select)
+  sidebar-selected-text-color: var(--ha95-select-text)
+  sidebar-selected-icon-color: var(--ha95-select-text)
 
   # ---------- Icons & Zustände ----------
-  state-icon-color: var(--win95-select)
-  state-icon-active-color: var(--win95-active)
+  state-icon-color: var(--ha95-select)
+  state-icon-active-color: var(--ha95-active)
   state-on-color: "#008000"
-  state-off-color: var(--win95-disabled)
-  state-active-color: var(--win95-select)
-  state-inactive-color: var(--win95-disabled)
-  paper-item-icon-color: var(--win95-select)
-  paper-item-icon-active-color: var(--win95-active)
+  state-off-color: var(--ha95-disabled)
+  state-active-color: var(--ha95-select)
+  state-inactive-color: var(--ha95-disabled)
+  paper-item-icon-color: var(--ha95-select)
+  paper-item-icon-active-color: var(--ha95-active)
 
   # ---------- Schalter / Slider ----------
-  switch-checked-color: var(--win95-select)
-  switch-checked-button-color: var(--win95-select)
-  switch-checked-track-color: var(--win95-shadow)
-  switch-unchecked-color: var(--win95-window)
-  switch-unchecked-button-color: var(--win95-window)
-  switch-unchecked-track-color: var(--win95-shadow)
-  paper-slider-knob-color: var(--win95-face)
-  paper-slider-active-color: var(--win95-select)
-  paper-slider-container-color: var(--win95-shadow)
+  switch-checked-color: var(--ha95-select)
+  switch-checked-button-color: var(--ha95-select)
+  switch-checked-track-color: var(--ha95-shadow)
+  switch-unchecked-color: var(--ha95-window)
+  switch-unchecked-button-color: var(--ha95-window)
+  switch-unchecked-track-color: var(--ha95-shadow)
+  paper-slider-knob-color: var(--ha95-face)
+  paper-slider-active-color: var(--ha95-select)
+  paper-slider-container-color: var(--ha95-shadow)
 
-  # ---------- Eingabefelder (wie Win95-Textboxen) ----------
-  input-fill-color: var(--win95-window)
-  input-ink-color: var(--win95-window-text)
-  input-label-ink-color: var(--win95-window-text)
-  input-idle-line-color: var(--win95-shadow)
-  input-hover-line-color: var(--win95-dark)
-  input-outlined-idle-border-color: var(--win95-shadow)
-  mdc-text-field-fill-color: var(--win95-window)
-  mdc-text-field-ink-color: var(--win95-window-text)
-  mdc-text-field-label-ink-color: var(--win95-window-text)
-  mdc-select-fill-color: var(--win95-window)
-  mdc-select-ink-color: var(--win95-window-text)
-  code-editor-background-color: var(--win95-window)
+  # ---------- Eingabefelder (wie HA95-Textboxen) ----------
+  input-fill-color: var(--ha95-window)
+  input-ink-color: var(--ha95-window-text)
+  input-label-ink-color: var(--ha95-window-text)
+  input-idle-line-color: var(--ha95-shadow)
+  input-hover-line-color: var(--ha95-dark)
+  input-outlined-idle-border-color: var(--ha95-shadow)
+  mdc-text-field-fill-color: var(--ha95-window)
+  mdc-text-field-ink-color: var(--ha95-window-text)
+  mdc-text-field-label-ink-color: var(--ha95-window-text)
+  mdc-select-fill-color: var(--ha95-window)
+  mdc-select-ink-color: var(--ha95-window-text)
+  code-editor-background-color: var(--ha95-window)
 
   # ---------- Tabellen ----------
-  data-table-background-color: var(--win95-window)
-  table-row-background-color: var(--win95-window)
-  table-row-alternative-background-color: var(--win95-window)
-  table-header-background-color: var(--win95-face)
+  data-table-background-color: var(--ha95-window)
+  table-row-background-color: var(--ha95-window)
+  table-row-alternative-background-color: var(--ha95-window)
+  table-header-background-color: var(--ha95-face)
 
   # ---------- Diagramme (16-Farben-Palette) ----------
   history-unknown-color: "#808080"
@@ -183,7 +183,7 @@ HA 95: &win95
   graph-color-8: "#0000ff"
 
   # ---------- Scrollbars ----------
-  scrollbar-thumb-color: var(--win95-face)
+  scrollbar-thumb-color: var(--ha95-face)
 
   # ==================================================================
   #  card-mod (optional, HACS). Ohne card-mod wird das ignoriert.
@@ -198,12 +198,12 @@ HA 95: &win95
       transition: none !important;
     }
     ha-card:active {
-      box-shadow: var(--win95-sunken) !important;
+      box-shadow: var(--ha95-sunken) !important;
     }
     ha-card .card-header {
       position: relative;
-      background: var(--win95-title-bar);
-      color: var(--win95-title-text) !important;
+      background: var(--ha95-title-bar);
+      color: var(--ha95-title-text) !important;
       font-weight: bold;
       font-size: 13px !important;
       line-height: 18px;
@@ -212,7 +212,7 @@ HA 95: &win95
       margin: 3px 3px 8px 3px;
     }
     ha-card .card-header .name {
-      color: var(--win95-title-text) !important;
+      color: var(--ha95-title-text) !important;
     }
     ha-card .card-header::after {
       content: "";
@@ -228,10 +228,10 @@ HA 95: &win95
   # Detail-Dialoge (more-info) bekommen ebenfalls eine Titelleiste
   card-mod-more-info: |
     ha-dialog-header {
-      background: var(--win95-title-bar);
-      --primary-text-color: var(--win95-title-text);
-      --secondary-text-color: var(--win95-title-text);
-      color: var(--win95-title-text);
+      background: var(--ha95-title-bar);
+      --primary-text-color: var(--ha95-title-text);
+      --secondary-text-color: var(--ha95-title-text);
+      color: var(--ha95-title-text);
       font-weight: bold;
     }
 
@@ -239,7 +239,7 @@ HA 95: &win95
   card-mod-sidebar: |
     :host {
       border-right: none !important;
-      box-shadow: var(--win95-raised);
+      box-shadow: var(--ha95-raised);
     }
     .title {
       font-weight: bold;
@@ -249,81 +249,81 @@ HA 95: &win95
 # ---------------------------- Varianten ----------------------------
 
 HA 98:
-  <<: *win95
+  <<: *ha95
   card-mod-theme: HA 98
-  win95-title-bar: "linear-gradient(90deg, #000080, #1084d0)"
+  ha95-title-bar: "linear-gradient(90deg, #000080, #1084d0)"
 
 HA 95 Rose:
-  <<: *win95
+  <<: *ha95
   card-mod-theme: HA 95 Rose
   rgb-primary-color: "159, 96, 112"
   rgb-accent-color: "159, 96, 112"
   rgb-primary-text-color: "0, 0, 0"
   rgb-primary-background-color: "207, 175, 183"
   rgb-card-background-color: "207, 175, 183"
-  win95-desktop: "#804060"
-  win95-face: "#cfafb7"
-  win95-light: "#e7d7db"
-  win95-shadow: "#8a757a"
-  win95-title: "#9f6070"
-  win95-title-bar: "#9f6070"
-  win95-select: "#9f6070"
-  win95-active: "#800000"
+  ha95-desktop: "#804060"
+  ha95-face: "#cfafb7"
+  ha95-light: "#e7d7db"
+  ha95-shadow: "#8a757a"
+  ha95-title: "#9f6070"
+  ha95-title-bar: "#9f6070"
+  ha95-select: "#9f6070"
+  ha95-active: "#800000"
 
 HA 95 Spruce:
-  <<: *win95
+  <<: *ha95
   card-mod-theme: HA 95 Spruce
   rgb-primary-color: "88, 142, 96"
   rgb-accent-color: "88, 142, 96"
   rgb-primary-text-color: "0, 0, 0"
   rgb-primary-background-color: "162, 200, 169"
   rgb-card-background-color: "162, 200, 169"
-  win95-desktop: "#305838"
-  win95-face: "#a2c8a9"
-  win95-light: "#d0e4d4"
-  win95-shadow: "#6c8571"
-  win95-title: "#588e60"
-  win95-title-bar: "#588e60"
-  win95-select: "#588e60"
-  win95-active: "#806000"
+  ha95-desktop: "#305838"
+  ha95-face: "#a2c8a9"
+  ha95-light: "#d0e4d4"
+  ha95-shadow: "#6c8571"
+  ha95-title: "#588e60"
+  ha95-title-bar: "#588e60"
+  ha95-select: "#588e60"
+  ha95-active: "#806000"
 
 HA 95 Desert:
-  <<: *win95
+  <<: *ha95
   card-mod-theme: HA 95 Desert
   rgb-primary-color: "0, 128, 128"
   rgb-accent-color: "0, 128, 128"
   rgb-primary-text-color: "0, 0, 0"
   rgb-primary-background-color: "213, 204, 187"
   rgb-card-background-color: "213, 204, 187"
-  win95-desktop: "#a28d68"
-  win95-face: "#d5ccbb"
-  win95-light: "#eae6dd"
-  win95-shadow: "#8e887d"
-  win95-title: "#008080"
-  win95-title-bar: "#008080"
-  win95-select: "#008080"
-  win95-active: "#804000"
+  ha95-desktop: "#a28d68"
+  ha95-face: "#d5ccbb"
+  ha95-light: "#eae6dd"
+  ha95-shadow: "#8e887d"
+  ha95-title: "#008080"
+  ha95-title-bar: "#008080"
+  ha95-select: "#008080"
+  ha95-active: "#804000"
 
 HA 95 Kontrast:
-  <<: *win95
+  <<: *ha95
   card-mod-theme: HA 95 Kontrast
   rgb-primary-color: "0, 128, 128"
   rgb-accent-color: "0, 128, 128"
   rgb-primary-text-color: "255, 255, 255"
   rgb-primary-background-color: "0, 0, 0"
   rgb-card-background-color: "0, 0, 0"
-  win95-desktop: "#000000"
-  win95-face: "#000000"
-  win95-highlight: "#ffffff"
-  win95-light: "#808080"
-  win95-shadow: "#808080"
-  win95-dark: "#ffffff"
-  win95-text: "#ffffff"
-  win95-text-dim: "#c0c0c0"
-  win95-disabled: "#808080"
-  win95-window: "#000000"
-  win95-window-text: "#ffffff"
-  win95-title: "#800080"
-  win95-title-bar: "#800080"
-  win95-select: "#008080"
-  win95-active: "#ffff00"
+  ha95-desktop: "#000000"
+  ha95-face: "#000000"
+  ha95-highlight: "#ffffff"
+  ha95-light: "#808080"
+  ha95-shadow: "#808080"
+  ha95-dark: "#ffffff"
+  ha95-text: "#ffffff"
+  ha95-text-dim: "#c0c0c0"
+  ha95-disabled: "#808080"
+  ha95-window: "#000000"
+  ha95-window-text: "#ffffff"
+  ha95-title: "#800080"
+  ha95-title-bar: "#800080"
+  ha95-select: "#008080"
+  ha95-active: "#ffff00"
