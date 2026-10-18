@@ -10,6 +10,15 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 - Pixel icon set `ha95:` (`www/ha95/ha95-icons.js`): 57 icons in Win95 style on a 24×24 grid, outline in full color, fill at half opacity. Names follow MDI (`mdi:fan` → `ha95:fan`), plus a few MDI aliases such as `lightning-bolt` and `cctv`. Shows up in the icon picker. Load it via `frontend: extra_module_url`.
 - Start menu example: items use the pixel icons.
 
+## [3.4.0] – 2026-10-18
+
+### Added
+- Pixel icon set `www/ha95/ha95-icons.js`: 57 icons in Win95 pixel style on a 24×24 grid (outline in full color, fill at half opacity), colored by entity state like other icons. Names follow MDI (`mdi:fan` → `ha95:fan`), some more MDI names map to an existing icon, unknown names show `ha95:help`. Load it through `extra_module_url`; see the README section "Pixel icons".
+- The Custom Sidebar example uses the `ha95:` icons. Without the icon file, replace `ha95:` with `mdi:`.
+
+### Note
+- These files were already included in the 3.3.1 release by mistake, without a changelog entry. 3.4.0 is the proper release for them.
+
 ## [3.3.1] – 2026-10-18
 
 ### Fixed

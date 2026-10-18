@@ -10,6 +10,15 @@ Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog]
 - Pixel-Icon-Set `ha95:` (`www/ha95/ha95-icons.js`): 57 Icons in Win95-Optik im 24×24-Raster, Umriss in voller Farbe, Füllung mit halber Deckkraft. Die Namen folgen MDI (`mdi:fan` → `ha95:fan`), dazu ein paar MDI-Aliasse wie `lightning-bolt` und `cctv`. Erscheint in der Icon-Auswahl. Laden über `frontend: extra_module_url`.
 - Startmenü-Beispiel: Die Einträge nutzen die Pixel-Icons.
 
+## [3.4.0] – 2026-10-18
+
+### Hinzugefügt
+- Pixel-Icon-Set `www/ha95/ha95-icons.js`: 57 Icons in Win95-Pixeloptik im 24×24-Raster (Umriss in voller Farbe, Füllung mit halber Deckkraft), nach dem Zustand der Entität eingefärbt wie andere Icons. Die Namen folgen MDI (`mdi:fan` → `ha95:fan`), weitere MDI-Namen zeigen auf ein vorhandenes Icon, unbekannte Namen zeigen `ha95:help`. Laden per `extra_module_url`, siehe README-Abschnitt „Pixel-Icons“.
+- Das Custom-Sidebar-Beispiel nutzt die `ha95:`-Icons. Ohne die Icon-Datei `ha95:` durch `mdi:` ersetzen.
+
+### Hinweis
+- Diese Dateien waren versehentlich schon im Release 3.3.1 enthalten, ohne Changelog-Eintrag. 3.4.0 ist das richtige Release dafür.
+
 ## [3.3.1] – 2026-10-18
 
 ### Behoben
