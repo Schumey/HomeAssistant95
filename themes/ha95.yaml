@@ -1,16 +1,16 @@
 # ------------------------------------------------------------------
-#  Windows 95 – Home Assistant Theme-Paket
-#  Version: 1.1.1
+#  HA 95 – Home Assistant Theme-Paket
+#  Version: 2.0.0
 #
 #  Enthält 6 Themes (wie die Farbschemata in "Eigenschaften von Anzeige"):
-#    Windows 95            – Standard: Teal-Desktop, Navy-Titelleisten
-#    Windows 98            – wie 95, aber mit Farbverlauf in den Titelleisten
-#    Windows 95 Rose       – Farbschema "Rose"   (Farben nachempfunden)
-#    Windows 95 Spruce     – Farbschema "Fichte" (Farben nachempfunden)
-#    Windows 95 Desert     – Farbschema "Wüste"  (Farben nachempfunden)
-#    Windows 95 Kontrast   – "Kontrast Schwarz", die dunkle Variante
+#    HA 95            – Standard: Teal-Desktop, Navy-Titelleisten
+#    HA 98            – wie 95, aber mit Farbverlauf in den Titelleisten
+#    HA 95 Rose       – Farbschema "Rose"   (Farben nachempfunden)
+#    HA 95 Spruce     – Farbschema "Fichte" (Farben nachempfunden)
+#    HA 95 Desert     – Farbschema "Wüste"  (Farben nachempfunden)
+#    HA 95 Kontrast   – "Kontrast Schwarz", die dunkle Variante
 #
-#  Ablage:  /config/themes/windows95.yaml
+#  Ablage:  /config/themes/ha95.yaml
 #  configuration.yaml:
 #    frontend:
 #      themes: !include_dir_merge_named themes
@@ -23,7 +23,7 @@
 #  reicht es, eine Variante zu kopieren und nur diese Variablen zu ändern.
 # ------------------------------------------------------------------
 
-Windows 95: &win95
+HA 95: &win95
   # ================= Farbschema (nur diese Werte ändern sich je Variante) =================
   win95-desktop: "#008080"        # Desktop-Hintergrund
   win95-face: "#c0c0c0"           # 3D-Objekte (Fenster, Karten, Knöpfe)
@@ -189,7 +189,7 @@ Windows 95: &win95
   #  card-mod (optional, HACS). Ohne card-mod wird das ignoriert.
   #  Hinweis: card-mod greift in Frontend-Interna ein – nach HA-Updates prüfen.
   # ==================================================================
-  card-mod-theme: Windows 95
+  card-mod-theme: HA 95
 
   # Jede Karte mit Titel wird zum Fenster: Titelleiste + _ □ × Knöpfe
   card-mod-card: |
@@ -248,14 +248,14 @@ Windows 95: &win95
 
 # ---------------------------- Varianten ----------------------------
 
-Windows 98:
+HA 98:
   <<: *win95
-  card-mod-theme: Windows 98
+  card-mod-theme: HA 98
   win95-title-bar: "linear-gradient(90deg, #000080, #1084d0)"
 
-Windows 95 Rose:
+HA 95 Rose:
   <<: *win95
-  card-mod-theme: Windows 95 Rose
+  card-mod-theme: HA 95 Rose
   rgb-primary-color: "159, 96, 112"
   rgb-accent-color: "159, 96, 112"
   rgb-primary-text-color: "0, 0, 0"
@@ -270,9 +270,9 @@ Windows 95 Rose:
   win95-select: "#9f6070"
   win95-active: "#800000"
 
-Windows 95 Spruce:
+HA 95 Spruce:
   <<: *win95
-  card-mod-theme: Windows 95 Spruce
+  card-mod-theme: HA 95 Spruce
   rgb-primary-color: "88, 142, 96"
   rgb-accent-color: "88, 142, 96"
   rgb-primary-text-color: "0, 0, 0"
@@ -287,9 +287,9 @@ Windows 95 Spruce:
   win95-select: "#588e60"
   win95-active: "#806000"
 
-Windows 95 Desert:
+HA 95 Desert:
   <<: *win95
-  card-mod-theme: Windows 95 Desert
+  card-mod-theme: HA 95 Desert
   rgb-primary-color: "0, 128, 128"
   rgb-accent-color: "0, 128, 128"
   rgb-primary-text-color: "0, 0, 0"
@@ -304,9 +304,9 @@ Windows 95 Desert:
   win95-select: "#008080"
   win95-active: "#804000"
 
-Windows 95 Kontrast:
+HA 95 Kontrast:
   <<: *win95
-  card-mod-theme: Windows 95 Kontrast
+  card-mod-theme: HA 95 Kontrast
   rgb-primary-color: "0, 128, 128"
   rgb-accent-color: "0, 128, 128"
   rgb-primary-text-color: "255, 255, 255"

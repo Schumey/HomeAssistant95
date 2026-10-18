@@ -6,12 +6,12 @@ Ein Windows-95-Theme für [Home Assistant](https://www.home-assistant.io/): Teal
 
 | Theme | Beschreibung |
 |---|---|
-| **Windows 95** | Das Standard-Farbschema |
-| **Windows 98** | Wie 95, aber mit Farbverlauf in den Titelleisten |
-| **Windows 95 Rose** | Nachempfunden dem Farbschema „Rose“ |
-| **Windows 95 Spruce** | Nachempfunden dem Farbschema „Fichte“ |
-| **Windows 95 Desert** | Nachempfunden dem Farbschema „Wüste“ |
-| **Windows 95 Kontrast** | „Kontrast Schwarz“, die dunkle Variante |
+| **HA 95** | Das Standard-Farbschema |
+| **HA 98** | Wie 95, aber mit Farbverlauf in den Titelleisten |
+| **HA 95 Rose** | Nachempfunden dem Farbschema „Rose“ |
+| **HA 95 Spruce** | Nachempfunden dem Farbschema „Fichte“ |
+| **HA 95 Desert** | Nachempfunden dem Farbschema „Wüste“ |
+| **HA 95 Kontrast** | „Kontrast Schwarz“, die dunkle Variante |
 
 ## Installation
 
@@ -24,7 +24,7 @@ Ein Windows-95-Theme für [Home Assistant](https://www.home-assistant.io/): Teal
 
 ### Manuell
 
-1. `themes/windows95.yaml` nach `/config/themes/` kopieren.
+1. `themes/ha95.yaml` nach `/config/themes/` kopieren.
 2. In `configuration.yaml` (falls noch nicht vorhanden):
    ```yaml
    frontend:
