@@ -60,7 +60,7 @@ The "Pixelated MS Sans Serif" font comes from [98.css](https://github.com/jdan/9
 
 ### Pixel icons
 
-`www/ha95/ha95-icons.js` adds an icon set in Win95 pixel style: 57 icons on a 24×24 grid, with an outline in full color and a fill at half opacity. They are colored by entity state like every other icon. The names follow MDI, so `mdi:lightbulb-on` becomes `ha95:lightbulb-on`. Unknown names show `ha95:help`.
+`www/ha95/ha95-icons.js` adds an icon set in Win95 pixel style: 89 icons on a 24×24 grid, with an outline in full color and a fill at half opacity. They are colored by entity state like every other icon. The names follow MDI, so `mdi:lightbulb-on` becomes `ha95:lightbulb-on`. Unknown names show `ha95:help`.
 
 1. Copy `www/ha95/ha95-icons.js` to `/config/www/ha95/`.
 2. In `configuration.yaml`:
@@ -74,7 +74,19 @@ The "Pixelated MS Sans Serif" font comes from [98.css](https://github.com/jdan/9
 
 Alternatively you can add the file as a dashboard resource (type **JavaScript module**), but then the icons only show up in dashboards, not in the sidebar.
 
-Included: `account`, `air-humidifier`, `alert`, `battery`, `battery-50`, `battery-outline`, `bell`, `blinds`, `blinds-open`, `calendar`, `camera`, `chart-line`, `clock`, `cog`, `door-closed`, `door-open`, `fan`, `file-document`, `fire`, `flash`, `flower`, `folder`, `folder-open`, `help`, `home`, `information`, `lightbulb`, `lightbulb-on`, `lock`, `lock-open`, `magnify`, `map`, `monitor`, `motion-sensor`, `music`, `power`, `power-plug`, `power-plug-off`, `power-socket-de`, `radiator`, `robot-vacuum`, `snowflake`, `speaker`, `television`, `thermometer`, `thermostat`, `trash-can`, `view-dashboard`, `washing-machine`, `water`, `weather-cloudy`, `weather-night`, `weather-rainy`, `weather-sunny`, `wifi`, `window-closed`, `window-open`. Each icon is a readable text grid in the file, so you can edit or add your own.
+Included: `account`, `air-humidifier`, `alert`, `alert-circle`, `battery`, `battery-10`, `battery-20`, `battery-30`, `battery-40`, `battery-50`, `battery-60`, `battery-70`, `battery-80`, `battery-90`, `battery-alert`, `battery-charging`, `battery-outline`, `bell`, `blinds`, `blinds-open`, `calendar`, `camera`, `chart-line`, `check-circle`, `clock`, `cog`, `door-closed`, `door-open`, `eye`, `fan`, `fan-off`, `file-document`, `fire`, `flash`, `flower`, `folder`, `folder-open`, `garage`, `garage-open`, `help`, `home`, `information`, `leaf`, `lightbulb`, `lightbulb-off`, `lightbulb-on`, `lock`, `lock-open`, `magnify`, `map`, `monitor`, `motion-sensor`, `music`, `music-note`, `pause`, `play`, `power`, `power-plug`, `power-plug-off`, `power-socket-de`, `radiator`, `robot-vacuum`, `shield`, `snowflake`, `speaker`, `stop`, `television`, `thermometer`, `thermostat`, `toggle-switch-variant`, `toggle-switch-variant-off`, `trash-can`, `view-dashboard`, `volume-high`, `volume-medium`, `volume-mute`, `washing-machine`, `water`, `weather-cloudy`, `weather-fog`, `weather-lightning`, `weather-night`, `weather-partly-cloudy`, `weather-rainy`, `weather-snowy`, `weather-sunny`, `wifi`, `window-closed`, `window-open`. Many more MDI names point to one of these, e.g. `lightbulb-outline`, `home-outline`, `roller-shade-closed` or `toggle-switch`. Each icon is a readable text grid in the file, so you can edit or add your own.
+
+#### Automatic mode
+
+Instead of changing every icon by hand, the file can do it for you. Add an option to the URL in `configuration.yaml`:
+
+| URL | Effect |
+|---|---|
+| `/local/ha95/ha95-icons.js?replace` | Every `mdi:` icon that exists as `ha95:` is replaced automatically, including the default icons of your entities. |
+| `/local/ha95/ha95-icons.js?pixelate` | Every other icon (all of MDI, including buttons and menus) is snapped to the 24×24 pixel grid. |
+| `/local/ha95/ha95-icons.js?replace&pixelate` | Both: hand-drawn icons where available, pixelated MDI for the rest. |
+
+Restart Home Assistant after changing the URL. Both modes hook into the frontend's icon components, so like UIX, check them after Home Assistant updates. Icons with their own `viewBox` (from other icon sets) are left alone.
 
 ### Window look with UIX (or card-mod)
 

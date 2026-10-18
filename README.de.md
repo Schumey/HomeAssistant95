@@ -60,7 +60,7 @@ Die Schrift „Pixelated MS Sans Serif“ stammt aus [98.css](https://github.com
 
 ### Pixel-Icons
 
-`www/ha95/ha95-icons.js` bringt ein Icon-Set in Win95-Pixeloptik mit: 57 Icons im 24×24-Raster, Umriss in voller Farbe, Füllung mit halber Deckkraft. Sie werden wie alle Icons nach dem Zustand der Entität eingefärbt. Die Namen folgen MDI, aus `mdi:lightbulb-on` wird `ha95:lightbulb-on`. Unbekannte Namen zeigen `ha95:help`.
+`www/ha95/ha95-icons.js` bringt ein Icon-Set in Win95-Pixeloptik mit: 89 Icons im 24×24-Raster, Umriss in voller Farbe, Füllung mit halber Deckkraft. Sie werden wie alle Icons nach dem Zustand der Entität eingefärbt. Die Namen folgen MDI, aus `mdi:lightbulb-on` wird `ha95:lightbulb-on`. Unbekannte Namen zeigen `ha95:help`.
 
 1. `www/ha95/ha95-icons.js` nach `/config/www/ha95/` kopieren.
 2. In `configuration.yaml`:
@@ -74,7 +74,19 @@ Die Schrift „Pixelated MS Sans Serif“ stammt aus [98.css](https://github.com
 
 Alternativ geht die Datei auch als Dashboard-Ressource (Typ **JavaScript-Modul**). Dann erscheinen die Icons aber nur in Dashboards, nicht in der Seitenleiste.
 
-Enthalten: `account`, `air-humidifier`, `alert`, `battery`, `battery-50`, `battery-outline`, `bell`, `blinds`, `blinds-open`, `calendar`, `camera`, `chart-line`, `clock`, `cog`, `door-closed`, `door-open`, `fan`, `file-document`, `fire`, `flash`, `flower`, `folder`, `folder-open`, `help`, `home`, `information`, `lightbulb`, `lightbulb-on`, `lock`, `lock-open`, `magnify`, `map`, `monitor`, `motion-sensor`, `music`, `power`, `power-plug`, `power-plug-off`, `power-socket-de`, `radiator`, `robot-vacuum`, `snowflake`, `speaker`, `television`, `thermometer`, `thermostat`, `trash-can`, `view-dashboard`, `washing-machine`, `water`, `weather-cloudy`, `weather-night`, `weather-rainy`, `weather-sunny`, `wifi`, `window-closed`, `window-open`. Jedes Icon steht als lesbares Textraster in der Datei, man kann sie also anpassen oder eigene ergänzen.
+Enthalten: `account`, `air-humidifier`, `alert`, `alert-circle`, `battery`, `battery-10`, `battery-20`, `battery-30`, `battery-40`, `battery-50`, `battery-60`, `battery-70`, `battery-80`, `battery-90`, `battery-alert`, `battery-charging`, `battery-outline`, `bell`, `blinds`, `blinds-open`, `calendar`, `camera`, `chart-line`, `check-circle`, `clock`, `cog`, `door-closed`, `door-open`, `eye`, `fan`, `fan-off`, `file-document`, `fire`, `flash`, `flower`, `folder`, `folder-open`, `garage`, `garage-open`, `help`, `home`, `information`, `leaf`, `lightbulb`, `lightbulb-off`, `lightbulb-on`, `lock`, `lock-open`, `magnify`, `map`, `monitor`, `motion-sensor`, `music`, `music-note`, `pause`, `play`, `power`, `power-plug`, `power-plug-off`, `power-socket-de`, `radiator`, `robot-vacuum`, `shield`, `snowflake`, `speaker`, `stop`, `television`, `thermometer`, `thermostat`, `toggle-switch-variant`, `toggle-switch-variant-off`, `trash-can`, `view-dashboard`, `volume-high`, `volume-medium`, `volume-mute`, `washing-machine`, `water`, `weather-cloudy`, `weather-fog`, `weather-lightning`, `weather-night`, `weather-partly-cloudy`, `weather-rainy`, `weather-snowy`, `weather-sunny`, `wifi`, `window-closed`, `window-open`. Viele weitere MDI-Namen zeigen auf eins davon, z. B. `lightbulb-outline`, `home-outline`, `roller-shade-closed` oder `toggle-switch`. Jedes Icon steht als lesbares Textraster in der Datei, man kann sie also anpassen oder eigene ergänzen.
+
+#### Automatischer Modus
+
+Statt jedes Icon von Hand umzustellen, kann die Datei das selbst erledigen. Dafür hängt man in `configuration.yaml` eine Option an die URL:
+
+| URL | Wirkung |
+|---|---|
+| `/local/ha95/ha95-icons.js?replace` | Jedes `mdi:`-Icon, das es auch als `ha95:` gibt, wird automatisch ersetzt, auch die Standard-Icons der Entitäten. |
+| `/local/ha95/ha95-icons.js?pixelate` | Alle übrigen Icons (ganz MDI, auch Knöpfe und Menüs) werden auf das 24×24-Pixelraster gebracht. |
+| `/local/ha95/ha95-icons.js?replace&pixelate` | Beides: gezeichnete Icons, wo vorhanden, verpixeltes MDI für den Rest. |
+
+Nach dem Ändern der URL Home Assistant neu starten. Beide Modi greifen in die Icon-Komponenten des Frontends ein, wie bei UIX also nach Home-Assistant-Updates kurz prüfen. Icons mit eigener `viewBox` (aus anderen Icon-Sets) bleiben unverändert.
 
 ### Fenster-Look mit UIX (oder card-mod)
 

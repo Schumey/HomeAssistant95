@@ -4,6 +4,18 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [3.5.0] – 2026-10-18
+
+### Hinzugefügt
+- Pixel-Icons, automatischer Modus: `ha95-icons.js?replace` ersetzt jedes `mdi:`-Icon, das es auch als `ha95:` gibt, auch die Standard-Icons der Entitäten. `ha95-icons.js?pixelate` bringt alle übrigen Icons auf das 24×24-Pixelraster. Beides lässt sich kombinieren.
+- 32 weitere Pixel-Icons (jetzt 89), vor allem für die Standard-Icons von Home Assistant: `lightbulb-off`, `fan-off`, `toggle-switch-variant` und `-off` (als Win95-Kontrollkästchen), Batteriestufen `battery-10` bis `battery-90`, `battery-charging`, `battery-alert`, `eye`, `shield`, `leaf`, `garage`, `garage-open`, `music-note`, `play`, `pause`, `stop`, `volume-high`, `volume-medium`, `volume-mute`, `check-circle`, `alert-circle`, `weather-partly-cloudy`, `weather-snowy`, `weather-lightning`, `weather-fog`.
+- 72 MDI-Aliasse (vorher 14), z. B. `lightbulb-outline`, `home-outline`, `lock-open-variant`, `roller-shade-closed`, `window-shutter`, `blinds-horizontal`, `weather-pouring`, `white-balance-sunny`, `toggle-switch`.
+
+### Geändert
+- `ha95-icons.js` ist jetzt ein echtes JavaScript-Modul (es liest seine Optionen aus der URL). Laden über `extra_module_url` oder als Ressource vom Typ **JavaScript-Modul**, wie im README beschrieben.
+- `battery-50` ist jetzt wie die anderen Batteriestufen gezeichnet (untere Hälfte voll).
+- `power-plug-off` hat eine Lücke um den Schrägstrich, wie die anderen „aus“-Icons.
+
 ## [3.4.0] – 2026-10-18
 
 ### Hinzugefügt

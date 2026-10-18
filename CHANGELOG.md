@@ -4,6 +4,18 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [3.5.0] – 2026-10-18
+
+### Added
+- Pixel icons, automatic mode: `ha95-icons.js?replace` replaces every `mdi:` icon that has a `ha95:` counterpart, including the default entity icons. `ha95-icons.js?pixelate` snaps all other icons to the 24×24 pixel grid. Both can be combined.
+- 32 more pixel icons (89 in total), mainly for Home Assistant's default icons: `lightbulb-off`, `fan-off`, `toggle-switch-variant` and `-off` (as Win95 checkboxes), battery levels `battery-10` to `battery-90`, `battery-charging`, `battery-alert`, `eye`, `shield`, `leaf`, `garage`, `garage-open`, `music-note`, `play`, `pause`, `stop`, `volume-high`, `volume-medium`, `volume-mute`, `check-circle`, `alert-circle`, `weather-partly-cloudy`, `weather-snowy`, `weather-lightning`, `weather-fog`.
+- 72 MDI aliases (was 14), e.g. `lightbulb-outline`, `home-outline`, `lock-open-variant`, `roller-shade-closed`, `window-shutter`, `blinds-horizontal`, `weather-pouring`, `white-balance-sunny`, `toggle-switch`.
+
+### Changed
+- `ha95-icons.js` is now a real JavaScript module (it reads its options from the URL). Load it via `extra_module_url` or as a resource of type **JavaScript module**, as described in the README.
+- `battery-50` is now drawn like the other battery levels (solid lower half).
+- `power-plug-off` has a gap around the slash, like the other "off" icons.
+
 ## [3.4.0] – 2026-10-18
 
 ### Added
