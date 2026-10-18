@@ -4,6 +4,15 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [3.2.1] – 2026-10-18
+
+### Behoben
+- Seit 3.1.0 wirkte kein card-mod-Styling mehr (keine Titelleisten, keine Thermostat-Knöpfe, keine Kontrollkästchen). Ursache: card-mod 4.2.1 hängt sich ab HA 2026.8 auf, sobald ein Design `card-mod-…-yaml`-Schlüssel enthält. Der Grundlook steht wieder in `card-mod-card`. Alles, was `-yaml` braucht, steht jetzt in `uix-card-yaml` und `uix-row-yaml`, die nur [UIX](https://github.com/Lint-Free-Technology/uix) liest.
+
+### Geändert
+- UIX (UI eXtension) ist jetzt die empfohlene Styling-Erweiterung. card-mod bekommt weiterhin den Grundlook.
+- Die Spur von Thermostat- und Luftbefeuchter-Regler ist auch ohne UIX dunkler.
+
 ## [3.2.0] – 2026-10-18
 
 ### Hinzugefügt

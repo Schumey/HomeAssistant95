@@ -4,6 +4,15 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [3.2.1] – 2026-10-18
+
+### Fixed
+- card-mod styling stopped working completely since 3.1.0 (no title bars, no thermostat buttons, no checkboxes). Cause: card-mod 4.2.1 hangs on HA 2026.8+ as soon as a theme contains `card-mod-…-yaml` keys. The basic look is back in `card-mod-card`. Everything that needs `-yaml` now lives in `uix-card-yaml` and `uix-row-yaml`, which only [UIX](https://github.com/Lint-Free-Technology/uix) reads.
+
+### Changed
+- UIX (UI eXtension) is now the recommended styling add-on. card-mod still gets the basic look.
+- The thermostat and humidifier slider track is darker even without UIX.
+
 ## [3.2.0] – 2026-10-18
 
 ### Added

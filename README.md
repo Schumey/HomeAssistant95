@@ -39,11 +39,11 @@ A Windows 95 theme for [Home Assistant](https://www.home-assistant.io/): teal de
 
 The theme colors climate and humidifier entities with the 16-color palette: heat red, cool blue, auto green, humidifier teal. This covers the thermostat card ring, icons, tiles and history. The colors are `ha95-heat`, `ha95-cool`, `ha95-auto`, `ha95-heat-cool`, `ha95-dry`, `ha95-fan` and `ha95-humid` in the color scheme and can be changed per variant.
 
-With card-mod (see below) the thermostat and humidifier cards also get a gray ring and square 3D + and − buttons.
+With UIX (see below) the thermostat and humidifier cards also get a gray ring and square 3D + and − buttons.
 
 ## Switches
 
-Toggle switches get Win95 colors everywhere: a white track, gray thumb and navy when on. With card-mod, the switches in entities cards (rows and the header toggle) become real Win95 checkboxes: a sunken white box with a pixel check mark.
+Toggle switches get Win95 colors everywhere: a white track, gray thumb and navy when on. With UIX, the switches in entities cards (rows and the header toggle) become real Win95 checkboxes: a sunken white box with a pixel check mark.
 
 ## Extras (optional)
 
@@ -54,19 +54,15 @@ Toggle switches get Win95 colors everywhere: a white track, gray thumb and navy 
 
 The "Pixelated MS Sans Serif" font comes from [98.css](https://github.com/jdan/98.css) (MIT) and is loaded from jsDelivr.
 
-### Window look with card-mod
+### Window look with UIX (or card-mod)
 
-With [card-mod](https://github.com/thomasloven/lovelace-card-mod) (HACS), cards with a title become windows with a title bar and _ □ × buttons, cards look pressed in when clicked, and switches in entities cards become checkboxes. Without card-mod this part is ignored.
+With [UIX – UI eXtension](https://github.com/Lint-Free-Technology/uix) (HACS), cards with a title become windows with a title bar and _ □ × buttons, cards look pressed in when clicked, the thermostat and humidifier cards get square 3D buttons, and switches in entities cards become checkboxes. Without UIX or card-mod this part is ignored.
 
-Also load card-mod as a frontend module. Otherwise the styles only apply in dashboards, not to the sidebar on other pages:
+UIX is the maintained successor of card-mod and reads card-mod settings too. Install it from HACS, then add it under **Settings → Devices & services** (it is an integration). If you still have card-mod installed, remove it first, including any `extra_module_url` entry for it.
 
-```yaml
-frontend:
-  extra_module_url:
-    - /hacsfiles/lovelace-card-mod/card-mod.js
-```
+**Still on card-mod?** [card-mod](https://github.com/thomasloven/lovelace-card-mod) 4.2.1 is no longer maintained. Since HA 2026.8 it stops styling completely as soon as a theme contains `card-mod-…-yaml` keys. This theme therefore gives card-mod only the basic look (title bars, pressed effect). The thermostat buttons and checkboxes are in `uix-…-yaml` keys, which only UIX reads.
 
-> card-mod relies on frontend internals. Check that everything still looks right after Home Assistant updates. The title bar in more-info dialogs may no longer apply in newer HA versions (2026.10+), because HA rebuilt those dialogs.
+> UIX and card-mod rely on frontend internals. Check that everything still looks right after Home Assistant updates.
 
 ### Sidebar as Start menu
 

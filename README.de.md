@@ -39,11 +39,11 @@ Ein Windows-95-Theme für [Home Assistant](https://www.home-assistant.io/): Teal
 
 Das Design färbt Klima- und Luftbefeuchter-Entitäten in der 16-Farben-Palette: Heizen rot, Kühlen blau, Automatik grün, Luftbefeuchter teal. Das betrifft den Ring der Thermostat-Karte, Icons, Kacheln und den Verlauf. Die Farben stehen als `ha95-heat`, `ha95-cool`, `ha95-auto`, `ha95-heat-cool`, `ha95-dry`, `ha95-fan` und `ha95-humid` im Farbschema und lassen sich pro Variante ändern.
 
-Mit card-mod (siehe unten) bekommen Thermostat- und Luftbefeuchter-Karte außerdem einen grauen Ring und eckige 3D-Knöpfe für + und −.
+Mit UIX (siehe unten) bekommen Thermostat- und Luftbefeuchter-Karte außerdem einen grauen Ring und eckige 3D-Knöpfe für + und −.
 
 ## Schalter
 
-Kippschalter bekommen überall Win95-Farben: weiße Spur, grauer Knopf, eingeschaltet navy. Mit card-mod werden die Schalter in Entitätskarten (Zeilen und Schalter in der Kopfzeile) zu echten Win95-Kontrollkästchen: ein eingelassenes weißes Kästchen mit Pixel-Häkchen.
+Kippschalter bekommen überall Win95-Farben: weiße Spur, grauer Knopf, eingeschaltet navy. Mit UIX werden die Schalter in Entitätskarten (Zeilen und Schalter in der Kopfzeile) zu echten Win95-Kontrollkästchen: ein eingelassenes weißes Kästchen mit Pixel-Häkchen.
 
 ## Extras (optional)
 
@@ -54,19 +54,15 @@ Kippschalter bekommen überall Win95-Farben: weiße Spur, grauer Knopf, eingesch
 
 Die Schrift „Pixelated MS Sans Serif“ stammt aus [98.css](https://github.com/jdan/98.css) (MIT) und wird über jsDelivr geladen.
 
-### Fenster-Look mit card-mod
+### Fenster-Look mit UIX (oder card-mod)
 
-Mit [card-mod](https://github.com/thomasloven/lovelace-card-mod) (HACS) werden Karten mit Titel zu Fenstern mit Titelleiste und _ □ ×-Knöpfen, Karten sehen beim Klicken eingedrückt aus, und Schalter in Entitätskarten werden zu Kontrollkästchen. Ohne card-mod wird dieser Teil ignoriert.
+Mit [UIX – UI eXtension](https://github.com/Lint-Free-Technology/uix) (HACS) werden Karten mit Titel zu Fenstern mit Titelleiste und _ □ ×-Knöpfen. Karten sehen beim Klicken eingedrückt aus, Thermostat- und Luftbefeuchter-Karte bekommen eckige 3D-Knöpfe, und Schalter in Entitätskarten werden zu Kontrollkästchen. Ohne UIX oder card-mod wird dieser Teil ignoriert.
 
-card-mod sollte zusätzlich als Frontend-Modul geladen werden. Sonst greifen die Styles nur in Dashboards, nicht in der Seitenleiste auf anderen Seiten:
+UIX ist der gepflegte Nachfolger von card-mod und liest auch dessen Einstellungen. In HACS installieren, dann unter **Einstellungen → Geräte & Dienste** hinzufügen (es ist eine Integration). Ist noch card-mod installiert, vorher entfernen, auch einen `extra_module_url`-Eintrag dafür.
 
-```yaml
-frontend:
-  extra_module_url:
-    - /hacsfiles/lovelace-card-mod/card-mod.js
-```
+**Noch card-mod?** [card-mod](https://github.com/thomasloven/lovelace-card-mod) 4.2.1 wird nicht mehr gepflegt. Seit HA 2026.8 hört es komplett auf zu stylen, sobald ein Design `card-mod-…-yaml`-Schlüssel enthält. Dieses Design gibt card-mod deshalb nur den Grundlook (Titelleisten, Klick-Effekt). Thermostat-Knöpfe und Kontrollkästchen stehen in `uix-…-yaml`-Schlüsseln, die nur UIX liest.
 
-> card-mod greift in Interna des Frontends ein. Nach Home-Assistant-Updates kurz prüfen, ob alles noch passt. Die Titelleiste in Detail-Dialogen greift in neueren HA-Versionen (2026.10+) eventuell nicht mehr, weil HA diese Dialoge umgebaut hat.
+> UIX und card-mod greifen in Interna des Frontends ein. Nach Home-Assistant-Updates kurz prüfen, ob alles noch passt.
 
 ### Seitenleiste als Startmenü
 

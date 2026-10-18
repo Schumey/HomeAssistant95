@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------
 #  HA 95 – Home Assistant Theme-Paket
-#  Version: 3.2.0
+#  Version: 3.2.1
 #
 #  Enthält 6 Themes (wie die Farbschemata in "Eigenschaften von Anzeige"):
 #    HA 95            – Standard: Teal-Desktop, Navy-Titelleisten
@@ -17,8 +17,8 @@
 #
 #  Extras (optional):
 #    - /config/www/ha95/ha95.css als Dashboard-Ressource -> Pixel-Schrift + Mauszeiger
-#    - card-mod (HACS) -> Fenster mit _ □ × Knöpfen, Klick-Effekt, Dialog-Titelleisten,
-#                         Thermostat & Luftbefeuchter mit 3D-Knöpfen
+#    - UIX oder card-mod (HACS) -> Fenster mit _ □ × Knöpfen, Klick-Effekt;
+#      nur UIX: Thermostat-/Luftbefeuchter-Knöpfe, Kontrollkästchen
 #    - examples/custom-sidebar/ -> Seitenleiste als Startmenü (Custom Sidebar, HACS)
 #
 #  Alle Farben laufen über die ha95-* Variablen. Für ein eigenes Schema
@@ -232,16 +232,63 @@ HA 95: &ha95
   scrollbar-thumb-color: var(--ha95-face)
 
   # ==================================================================
-  #  card-mod (optional, HACS). Ohne card-mod wird das ignoriert.
-  #  Hinweis: card-mod greift in Frontend-Interna ein – nach HA-Updates prüfen.
+  #  UIX / card-mod (optional, HACS). Ohne beides wird das ignoriert.
+  #
+  #  Empfohlen ist UIX (UI eXtension), der gepflegte Nachfolger von card-mod.
+  #  card-mod 4.2.1 hängt sich seit HA 2026.8 komplett auf, sobald ein Design
+  #  "card-mod-…-yaml"-Schlüssel enthält. Darum gibt es zwei Ebenen:
+  #    card-mod-*  -> Grundlook (Fenster-Titelleisten, Klick-Effekt).
+  #                   Läuft mit card-mod und mit UIX.
+  #    uix-*-yaml  -> zusätzlich Thermostat-/Luftbefeuchter-Knöpfe und
+  #                   Kontrollkästchen. Nur UIX liest das (mit Vorrang),
+  #                   card-mod ignoriert es.
+  #  Hinweis: Beide greifen in Frontend-Interna ein – nach HA-Updates prüfen.
   # ==================================================================
   card-mod-theme: HA 95
 
-  # card-mod liest nur EINEN der Schlüssel card-mod-card / card-mod-card-yaml.
-  # Darum steht alles hier in der -yaml-Form:
-  #   "."  -> jede Karte: Fenster-Titelleiste mit _ □ × Knöpfen, Klick-Effekt
-  #   Rest -> Thermostat- und Luftbefeuchter-Karte: grauer Ring, 3D-Knöpfe
-  card-mod-card-yaml: |
+  # Grundlook für jede Karte
+  card-mod-card: |
+    ha-card {
+      border: none !important;
+      transition: none !important;
+    }
+    /* nicht bei Reglern, sonst sinkt die ganze Karte beim Ziehen ein */
+    :host(:not(.type-thermostat):not(.type-humidifier)) ha-card:active {
+      box-shadow: var(--ha95-sunken) !important;
+    }
+    ha-card .card-header {
+      position: relative;
+      background: var(--ha95-title-bar);
+      color: var(--ha95-title-text) !important;
+      font-weight: bold;
+      font-size: 13px !important;
+      line-height: 18px;
+      letter-spacing: 0;
+      padding: 2px 60px 2px 4px !important;
+      margin: 3px 3px 8px 3px;
+    }
+    ha-card .card-header .name {
+      color: var(--ha95-title-text) !important;
+    }
+    ha-card .card-header::after {
+      content: "";
+      position: absolute;
+      right: 2px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 14px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='14' shape-rendering='crispEdges'%3E%3Crect width='16' height='14'/%3E%3Crect width='15' height='13' fill='%23fff'/%3E%3Crect x='1' y='1' width='14' height='12' fill='%23808080'/%3E%3Crect x='1' y='1' width='13' height='11' fill='%23c0c0c0'/%3E%3Crect x='4' y='9' width='6' height='2'/%3E%3Crect x='16' width='16' height='14'/%3E%3Crect x='16' width='15' height='13' fill='%23fff'/%3E%3Crect x='17' y='1' width='14' height='12' fill='%23808080'/%3E%3Crect x='17' y='1' width='13' height='11' fill='%23c0c0c0'/%3E%3Crect x='19' y='2' width='9' height='9'/%3E%3Crect x='20' y='4' width='7' height='6' fill='%23c0c0c0'/%3E%3Crect x='34' width='16' height='14'/%3E%3Crect x='34' width='15' height='13' fill='%23fff'/%3E%3Crect x='35' y='1' width='14' height='12' fill='%23808080'/%3E%3Crect x='35' y='1' width='13' height='11' fill='%23c0c0c0'/%3E%3Cpath d='M38 3l7 7M45 3l-7 7' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E") no-repeat;
+    }
+    /* Regler-Spur dunkler (wirkt auch ohne UIX) */
+    :host(.type-thermostat) ha-card,
+    :host(.type-humidifier) ha-card {
+      --disabled-color: var(--ha95-shadow);
+    }
+
+  # Alles für UIX: "." wie oben, dazu Thermostat, Luftbefeuchter und
+  # der Sammelschalter in Entitätskarten
+  uix-card-yaml: |
     .: |
       ha-card {
         border: none !important;
@@ -275,7 +322,12 @@ HA 95: &ha95
         height: 14px;
         background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='14' shape-rendering='crispEdges'%3E%3Crect width='16' height='14'/%3E%3Crect width='15' height='13' fill='%23fff'/%3E%3Crect x='1' y='1' width='14' height='12' fill='%23808080'/%3E%3Crect x='1' y='1' width='13' height='11' fill='%23c0c0c0'/%3E%3Crect x='4' y='9' width='6' height='2'/%3E%3Crect x='16' width='16' height='14'/%3E%3Crect x='16' width='15' height='13' fill='%23fff'/%3E%3Crect x='17' y='1' width='14' height='12' fill='%23808080'/%3E%3Crect x='17' y='1' width='13' height='11' fill='%23c0c0c0'/%3E%3Crect x='19' y='2' width='9' height='9'/%3E%3Crect x='20' y='4' width='7' height='6' fill='%23c0c0c0'/%3E%3Crect x='34' width='16' height='14'/%3E%3Crect x='34' width='15' height='13' fill='%23fff'/%3E%3Crect x='35' y='1' width='14' height='12' fill='%23808080'/%3E%3Crect x='35' y='1' width='13' height='11' fill='%23c0c0c0'/%3E%3Cpath d='M38 3l7 7M45 3l-7 7' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E") no-repeat;
       }
-    ha-state-control-climate-temperature $: |
+      /* Regler-Spur dunkler (wirkt auch ohne UIX) */
+      :host(.type-thermostat) ha-card,
+      :host(.type-humidifier) ha-card {
+        --disabled-color: var(--ha95-shadow);
+      }
+    "ha-state-control-climate-temperature $": |
       ha-control-circular-slider {
         --control-circular-slider-background: var(--ha95-shadow);
         --control-circular-slider-background-opacity: 1;
@@ -283,7 +335,7 @@ HA 95: &ha95
       .buttons {
         gap: 8px;
       }
-    ha-state-control-humidifier-humidity $: |
+    "ha-state-control-humidifier-humidity $": |
       ha-control-circular-slider {
         --control-circular-slider-background: var(--ha95-shadow);
         --control-circular-slider-background-opacity: 1;
@@ -346,8 +398,8 @@ HA 95: &ha95
         box-shadow: var(--ha95-sunken) !important;
       }
 
-  # Zeilen in Entitätskarten: Schalter als Kontrollkästchen
-  card-mod-row-yaml: |
+  # Zeilen in Entitätskarten: Schalter als Kontrollkästchen (nur UIX)
+  uix-row-yaml: |
     "ha-entity-toggle $ ha-switch $": |
       /* Win95-Kontrollkästchen statt Kippschalter */
       .switch {
