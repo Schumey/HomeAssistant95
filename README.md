@@ -60,7 +60,7 @@ The "Pixelated MS Sans Serif" font comes from [98.css](https://github.com/jdan/9
 
 ### Pixel icons
 
-`www/ha95/ha95-icons.js` adds an icon set in Win95 pixel style: 89 icons on a 24×24 grid, with an outline in full color and a fill at half opacity. They are colored by entity state like every other icon. The names follow MDI, so `mdi:lightbulb-on` becomes `ha95:lightbulb-on`. Unknown names show `ha95:help`.
+`www/ha95/ha95-icons.js` adds an icon set in Win95 pixel style: 537 icons on a 24×24 grid, with an outline in full color and a fill at half opacity. They are colored by entity state like every other icon. The names follow MDI, so `mdi:lightbulb-on` becomes `ha95:lightbulb-on`. Unknown names show `ha95:help`.
 
 1. Copy `www/ha95/ha95-icons.js` to `/config/www/ha95/`.
 2. In `configuration.yaml`:
@@ -74,7 +74,7 @@ The "Pixelated MS Sans Serif" font comes from [98.css](https://github.com/jdan/9
 
 Alternatively you can add the file as a dashboard resource (type **JavaScript module**), but then the icons only show up in dashboards, not in the sidebar.
 
-Included: `account`, `air-humidifier`, `alert`, `alert-circle`, `battery`, `battery-10`, `battery-20`, `battery-30`, `battery-40`, `battery-50`, `battery-60`, `battery-70`, `battery-80`, `battery-90`, `battery-alert`, `battery-charging`, `battery-outline`, `bell`, `blinds`, `blinds-open`, `calendar`, `camera`, `chart-line`, `check-circle`, `clock`, `cog`, `door-closed`, `door-open`, `eye`, `fan`, `fan-off`, `file-document`, `fire`, `flash`, `flower`, `folder`, `folder-open`, `garage`, `garage-open`, `help`, `home`, `information`, `leaf`, `lightbulb`, `lightbulb-off`, `lightbulb-on`, `lock`, `lock-open`, `magnify`, `map`, `monitor`, `motion-sensor`, `music`, `music-note`, `pause`, `play`, `power`, `power-plug`, `power-plug-off`, `power-socket-de`, `radiator`, `robot-vacuum`, `shield`, `snowflake`, `speaker`, `stop`, `television`, `thermometer`, `thermostat`, `toggle-switch-variant`, `toggle-switch-variant-off`, `trash-can`, `view-dashboard`, `volume-high`, `volume-medium`, `volume-mute`, `washing-machine`, `water`, `weather-cloudy`, `weather-fog`, `weather-lightning`, `weather-night`, `weather-partly-cloudy`, `weather-rainy`, `weather-snowy`, `weather-sunny`, `wifi`, `window-closed`, `window-open`. Many more MDI names point to one of these, e.g. `lightbulb-outline`, `home-outline`, `roller-shade-closed` or `toggle-switch`. Each icon is a readable text grid in the file, so you can edit or add your own.
+Included are the 500 MDI icons Home Assistant uses most (the default icons of all core integrations and the icons of the user interface), apart from the brand logos `home-assistant` and `bluetooth`. Another 94 MDI names point to one of them, e.g. `lightbulb-outline`, `home-outline`, `roller-shade-closed` or `toggle-switch`. Type `ha95` in the icon picker to browse them all. Each icon is a readable text grid in the file, so you can edit or add your own.
 
 #### Automatic mode
 

@@ -4,6 +4,15 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [3.8.0] – 2026-10-18
+
+### Hinzugefügt
+- Pixel-Icons: 537 Icons (vorher 89). Das Set deckt jetzt die 500 MDI-Icons ab, die Home Assistant am häufigsten nutzt, gezählt danach, wie oft sie in den `icons.json` aller Core-Integrationen und im Frontend vorkommen. Dazu gehören Knöpfe und Menüs (`plus`, `pencil`, `dots-vertical`, `chevron-*`, `arrow-*`, …), Energie (`solar-power`, `transmission-tower`, `ev-station`, `meter-electric`, …), Klima (`hvac`, `air-conditioner`, `fan-speed-1` bis `-3`, `heat-wave`, …), Wasser, Netzwerk, Medien, Zeit und viele `-off`-, `-alert`-, `-check`- und `-clock`-Varianten. Im automatischen Modus (`?replace`) ersetzen sie die MDI-Icons, für den Pixel-Filter bleiben also deutlich weniger übrig.
+- 94 MDI-Aliasse (vorher 72).
+
+### Nicht enthalten
+- Markenlogos (`home-assistant`, `bluetooth`, `bluetooth-off`, `bluetooth-connect`, `zigbee`, `google-circles-communities`) sind nicht nachgezeichnet. Im automatischen Modus bringt der Pixel-Filter (`?pixelate`) sie trotzdem aufs Raster.
+
 ## [3.7.0] – 2026-10-18
 
 ### Hinzugefügt
