@@ -1,0 +1,183 @@
+# ------------------------------------------------------------------
+#  Windows 95 – Home Assistant Theme
+#  Version: 1.0.0
+#  Teal-Desktop, graue 3D-Fenster, Navy-Titelleisten, eckige Kanten.
+#
+#  Ablage:  /config/themes/windows95.yaml
+#  Benötigt in configuration.yaml:
+#    frontend:
+#      themes: !include_dir_merge_named themes
+#
+#  Optional: card-mod (HACS) für Titelleisten & "eingedrückte" Karten.
+# ------------------------------------------------------------------
+Windows 95:
+  # ---------- Eigene Hilfsvariablen ----------
+  win95-face: "#c0c0c0"
+  win95-shadow: "#808080"
+  win95-dark: "#000000"
+  win95-light: "#dfdfdf"
+  win95-highlight: "#ffffff"
+  win95-navy: "#000080"
+  win95-teal: "#008080"
+  win95-raised: "inset -1px -1px #000000, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf"
+  win95-sunken: "inset -1px -1px #ffffff, inset 1px 1px #000000, inset -2px -2px #dfdfdf, inset 2px 2px #808080"
+  win95-font: '"Microsoft Sans Serif", "MS Sans Serif", Tahoma, Geneva, Verdana, sans-serif'
+
+  # ---------- Schrift ----------
+  primary-font-family: var(--win95-font)
+  paper-font-common-base_-_font-family: var(--win95-font)
+  paper-font-common-code_-_font-family: '"Fixedsys", "Courier New", monospace'
+  mdc-typography-font-family: var(--win95-font)
+  ha-font-family-body: var(--win95-font)
+  ha-font-family-heading: var(--win95-font)
+  ha-font-family-code: '"Fixedsys", "Courier New", monospace'
+
+  # ---------- Grundfarben ----------
+  primary-color: "#000080"
+  dark-primary-color: "#000060"
+  light-primary-color: "#1084d0"
+  accent-color: "#000080"
+  primary-text-color: "#000000"
+  secondary-text-color: "#404040"
+  text-primary-color: "#ffffff"
+  disabled-text-color: "#808080"
+  divider-color: "#808080"
+  error-color: "#ff0000"
+  warning-color: "#808000"
+  success-color: "#008000"
+  info-color: "#000080"
+  mdc-theme-primary: "#000080"
+  mdc-theme-secondary: "#000080"
+  mdc-theme-on-primary: "#ffffff"
+
+  # ---------- Hintergründe ----------
+  lovelace-background: "#008080"          # der klassische Teal-Desktop
+  primary-background-color: "#c0c0c0"
+  secondary-background-color: "#c0c0c0"
+  card-background-color: "#c0c0c0"
+  clear-background-color: "#c0c0c0"
+  mdc-theme-surface: "#c0c0c0"
+  mdc-dialog-scrim-color: "rgba(0, 0, 0, 0.3)"
+
+  # ---------- Karten (3D-Rahmen, keine Rundungen) ----------
+  ha-card-background: "#c0c0c0"
+  ha-card-border-radius: "0px"
+  ha-card-border-width: "0px"
+  ha-card-border-color: "transparent"
+  ha-card-box-shadow: var(--win95-raised)
+  ha-card-header-color: "#000000"
+  ha-card-header-font-size: "14px"
+
+  # ---------- Eckig überall ----------
+  ha-dialog-border-radius: "0px"
+  mdc-shape-small: "0px"
+  mdc-shape-medium: "0px"
+  mdc-shape-large: "0px"
+  ha-border-radius-sm: "0px"
+  ha-border-radius-md: "0px"
+  ha-border-radius-lg: "0px"
+  ha-border-radius-xl: "0px"
+  ha-border-radius-pill: "0px"
+  ha-border-radius-square: "0px"
+  ha-badge-border-radius: "0px"
+  tile-card-border-radius: "0px"
+
+  # ---------- Kopfzeile = Titelleiste ----------
+  app-header-background-color: "#000080"
+  app-header-text-color: "#ffffff"
+  app-header-selection-bar-color: "#ffffff"
+  app-header-edit-background-color: "#808080"
+
+  # ---------- Seitenleiste = Startmenü ----------
+  sidebar-background-color: "#c0c0c0"
+  sidebar-menu-button-background-color: "#c0c0c0"
+  sidebar-text-color: "#000000"
+  sidebar-icon-color: "#000000"
+  sidebar-selected-background-color: "#000080"
+  sidebar-selected-text-color: "#ffffff"
+  sidebar-selected-icon-color: "#ffffff"
+
+  # ---------- Icons & Zustände ----------
+  state-icon-color: "#000080"
+  state-icon-active-color: "#808000"
+  state-on-color: "#008000"
+  state-off-color: "#808080"
+  state-active-color: "#000080"
+  state-inactive-color: "#808080"
+  paper-item-icon-color: "#000080"
+  paper-item-icon-active-color: "#808000"
+
+  # ---------- Schalter / Slider ----------
+  switch-checked-color: "#000080"
+  switch-checked-button-color: "#000080"
+  switch-checked-track-color: "#808080"
+  switch-unchecked-color: "#ffffff"
+  switch-unchecked-button-color: "#ffffff"
+  switch-unchecked-track-color: "#808080"
+  paper-slider-knob-color: "#c0c0c0"
+  paper-slider-active-color: "#000080"
+  paper-slider-container-color: "#808080"
+  ha-control-border-radius: "0px"
+
+  # ---------- Eingabefelder (weiß, wie Win95-Textboxen) ----------
+  input-fill-color: "#ffffff"
+  input-ink-color: "#000000"
+  input-label-ink-color: "#000000"
+  input-idle-line-color: "#808080"
+  input-hover-line-color: "#000000"
+  input-outlined-idle-border-color: "#808080"
+  mdc-text-field-fill-color: "#ffffff"
+  mdc-text-field-ink-color: "#000000"
+  mdc-text-field-label-ink-color: "#000000"
+  mdc-select-fill-color: "#ffffff"
+  mdc-select-ink-color: "#000000"
+  code-editor-background-color: "#ffffff"
+
+  # ---------- Tabellen ----------
+  data-table-background-color: "#ffffff"
+  table-row-background-color: "#ffffff"
+  table-row-alternative-background-color: "#ffffff"
+  table-header-background-color: "#c0c0c0"
+
+  # ---------- Diagramme (16-Farben-Palette) ----------
+  history-unknown-color: "#808080"
+  graph-color-1: "#000080"
+  graph-color-2: "#800000"
+  graph-color-3: "#008000"
+  graph-color-4: "#808000"
+  graph-color-5: "#800080"
+  graph-color-6: "#008080"
+  graph-color-7: "#ff0000"
+  graph-color-8: "#0000ff"
+
+  # ---------- Scrollbars ----------
+  scrollbar-thumb-color: "#c0c0c0"
+
+  # ------------------------------------------------------------------
+  #  card-mod (optional, HACS) – Titelleisten & Klick-Effekt
+  #  Ohne card-mod wird dieser Teil einfach ignoriert.
+  # ------------------------------------------------------------------
+  card-mod-theme: Windows 95
+  card-mod-card: |
+    ha-card {
+      border: none !important;
+      transition: none !important;
+    }
+    ha-card:active {
+      box-shadow: var(--win95-sunken) !important;
+    }
+    /* Kartentitel als Navy-Titelleiste */
+    ha-card .card-header {
+      background: var(--win95-navy);
+      /* Win98-Look stattdessen: linear-gradient(90deg, #000080, #1084d0) */
+      color: #ffffff !important;
+      font-weight: bold;
+      font-size: 13px !important;
+      line-height: 18px;
+      letter-spacing: 0;
+      padding: 2px 4px !important;
+      margin: 3px 3px 8px 3px;
+    }
+    ha-card .card-header .name {
+      color: #ffffff !important;
+    }
