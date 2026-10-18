@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------
 #  HomeAssistant95 – Start menu sidebar for Custom Sidebar
-#  Version: 3.8.0
+#  Version: 3.9.0
 #
 #  Requires: Custom Sidebar (HACS, https://github.com/elchininet/custom-sidebar)
 #  File:     /config/www/custom-sidebar-config.yaml
@@ -55,6 +55,13 @@ styles: |
   }
   .title {
     font-weight: bold;
+    font-size: 15px !important;
+    line-height: 16px !important;
+  }
+  /* clock below the title, sized for the 36 px title bar */
+  .title::after {
+    font-size: 11px !important;
+    line-height: 12px !important;
   }
   :is(ha-list-item-base, ha-list-item-button) {
     border-radius: 0 !important;

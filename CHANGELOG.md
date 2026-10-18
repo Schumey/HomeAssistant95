@@ -4,6 +4,17 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [3.9.0] – 2026-10-18
+
+### Added
+- UIX: the top bar of dashboards and settings pages as a Win95 title bar: 36 px high (`header-height`), title bar color or gradient (HA 98), bold title, small square gray 3D buttons without round hover circles. card-mod gets the basic look via `card-mod-root` and `card-mod-top-app-bar-fixed`.
+- UIX: the icons on the settings page as square 3D tiles, like in the Win95 Control Panel.
+- UIX 8.4.0+: the theme loads the pixel font itself (`uix-fonts`), so it also shows up on settings pages and other non-dashboard pages.
+- README: uninstall instructions.
+
+### Changed
+- Custom Sidebar example: "Start" title and clock sized for the lower title bar.
+
 ## [3.8.0] – 2026-10-18
 
 ### Added

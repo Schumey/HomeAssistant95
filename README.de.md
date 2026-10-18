@@ -56,7 +56,7 @@ Schieberegler (z. B. für `input_number`) werden zu Win95-Trackbars: eine eingel
 1. `www/ha95/ha95.css` nach `/config/www/ha95/` kopieren.
 2. **Einstellungen → Dashboards → ⋮ → Ressourcen** → `/local/ha95/ha95.css`, Typ **Stylesheet**.
 
-Die Schrift „Pixelated MS Sans Serif“ stammt aus [98.css](https://github.com/jdan/98.css) (MIT) und wird über jsDelivr geladen.
+Die Schrift „Pixelated MS Sans Serif“ stammt aus [98.css](https://github.com/jdan/98.css) (MIT) und wird über jsDelivr geladen. Mit UIX ab 8.4.0 lädt das Design die Schrift selbst (`uix-fonts`), sie erscheint dann auch auf den Einstellungsseiten. `ha95.css` braucht man dann nur noch für den Mauszeiger.
 
 ### Pixel-Icons
 
@@ -90,7 +90,7 @@ Nach dem Ändern der URL Home Assistant neu starten. Beide Modi greifen in die I
 
 ### Fenster-Look mit UIX (oder card-mod)
 
-Mit [UIX – UI eXtension](https://github.com/Lint-Free-Technology/uix) (HACS) werden Karten mit Titel zu Fenstern mit Titelleiste und _ □ ×-Knöpfen. Karten sehen beim Klicken eingedrückt aus, Thermostat- und Luftbefeuchter-Karte bekommen eckige 3D-Knöpfe, und Schalter in Entitätskarten werden zu Kontrollkästchen. Ohne UIX oder card-mod wird dieser Teil ignoriert.
+Mit [UIX – UI eXtension](https://github.com/Lint-Free-Technology/uix) (HACS) werden Karten mit Titel zu Fenstern mit Titelleiste und _ □ ×-Knöpfen. Karten sehen beim Klicken eingedrückt aus, Thermostat- und Luftbefeuchter-Karte bekommen eckige 3D-Knöpfe, und Schalter in Entitätskarten werden zu Kontrollkästchen. Die Kopfleiste von Dashboards und Einstellungsseiten wird zur Win95-Titelleiste (36 px, fetter Titel, kleine eckige graue Knöpfe), und die Icons auf der Einstellungsseite werden zu eckigen 3D-Kacheln wie in der Systemsteuerung. Ohne UIX oder card-mod wird dieser Teil ignoriert.
 
 UIX ist der gepflegte Nachfolger von card-mod und liest auch dessen Einstellungen. In HACS installieren, dann unter **Einstellungen → Geräte & Dienste** hinzufügen (es ist eine Integration). Ist noch card-mod installiert, vorher entfernen, auch einen `extra_module_url`-Eintrag dafür.
 
@@ -144,6 +144,19 @@ Läuft der File editor unter einem anderen Panel-Namen als `core_configurator`, 
 ## Eigenes Farbschema
 
 Alle Farben laufen über die `ha95-*`-Variablen am Anfang der Datei. Kopiere eine Variante, gib ihr einen neuen Namen (auch bei `card-mod-theme`) und ändere nur diese Werte sowie die `rgb-*`-Zeilen.
+
+## Deinstallieren
+
+1. **Design zurückstellen:** **Profil → Design** → zurück auf den Standard. Wenn Dashboards, Ansichten oder Karten `theme: HA 95` (oder eine andere HA-95-Variante) gesetzt haben, dort ebenfalls entfernen.
+2. **Design entfernen:** HACS → HomeAssistant95 → ⋮ → **Entfernen**. Bei manueller Installation `/config/themes/ha95.yaml` löschen. Danach **Werkzeuge → YAML → Designs neu laden**.
+3. **Extras entfernen** (nur, was du installiert hast):
+   - `/config/www/ha95/` (`ha95.css`, `ha95-icons.js`, `ha95-startmenu.js`) und `/config/www/ha95-startmenu.json` löschen.
+   - **Einstellungen → Dashboards → ⋮ → Ressourcen:** `/local/ha95/ha95.css` löschen.
+   - In `configuration.yaml` unter `frontend: extra_module_url:` die Zeilen `/local/ha95/ha95-icons.js` und `/local/ha95/ha95-startmenu.js` löschen (und `extra_module_url:` selbst, wenn nichts mehr übrig ist), dann Home Assistant neu starten.
+4. **Pixel-Icons ersetzen:** Alles, was noch `ha95:`-Icons nutzt (Dashboards, Entitäten, Seitenleisten-Konfiguration), zeigt danach ein leeres Icon. `ha95:` wieder durch `mdi:` ersetzen.
+5. **Custom Sidebar:** Die Beispielkonfiguration nutzt die `ha95-*`-Farben, die es ohne das Design nicht mehr gibt. Die frühere `/config/www/custom-sidebar-config.yaml` wiederherstellen oder die Farb-, `styles`- und „Werkzeuge“-Teile löschen.
+6. **UIX, card-mod und Custom Sidebar** sind eigene HACS-Installationen. Nur entfernen, wenn nichts anderes sie braucht.
+7. Den Browser mit **Strg+F5** neu laden. In der Companion-App den Frontend-Cache leeren oder die App neu starten.
 
 ## Lizenz
 

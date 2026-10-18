@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------
 #  HA 95 – Home Assistant Theme-Paket
-#  Version: 3.8.0
+#  Version: 3.9.0
 #
 #  Enthält 6 Themes (wie die Farbschemata in "Eigenschaften von Anzeige"):
 #    HA 95            – Standard: Teal-Desktop, Navy-Titelleisten
@@ -59,6 +59,21 @@ HA 95: &ha95
   ha95-mono: '"Fixedsys", "Courier New", monospace'
 
   # ---------- Schrift ----------
+  # UIX (ab 8.4.0) lädt die Pixel-Schrift überall, auch auf den Einstellungsseiten.
+  # Ohne UIX kommt sie über die Dashboard-Ressource ha95.css (nur Dashboards).
+  uix-fonts: |
+    ha95-regular:
+      family: Pixelated MS Sans Serif
+      source: url("https://cdn.jsdelivr.net/npm/98.css@0.1.21/dist/ms_sans_serif.woff2") format("woff2")
+      descriptors:
+        weight: "400"
+        display: swap
+    ha95-bold:
+      family: Pixelated MS Sans Serif
+      source: url("https://cdn.jsdelivr.net/npm/98.css@0.1.21/dist/ms_sans_serif_bold.woff2") format("woff2")
+      descriptors:
+        weight: "700"
+        display: swap
   primary-font-family: var(--ha95-font)
   paper-font-common-base_-_font-family: var(--ha95-font)
   paper-font-common-code_-_font-family: var(--ha95-mono)
@@ -131,6 +146,7 @@ HA 95: &ha95
   ha-control-border-radius: "0px"
 
   # ---------- Kopfzeile = Titelleiste ----------
+  header-height: "36px"
   app-header-background-color: var(--ha95-title)
   app-header-text-color: var(--ha95-title-text)
   app-header-selection-bar-color: var(--ha95-title-text)
@@ -765,6 +781,199 @@ HA 95: &ha95
       }
       label.disabled.checked .switch::after {
         background: var(--ha95-disabled);
+      }
+
+  # Dashboard-Kopfleiste: Grundlook für card-mod, alles für UIX
+  card-mod-root: |
+    /* Kopfleiste als Win95-Titelleiste */
+    .header {
+      background: var(--ha95-title-bar) !important;
+      box-shadow: inset 0 -2px var(--ha95-face), inset 0 -3px var(--ha95-shadow) !important;
+    }
+    .toolbar {
+      height: var(--header-height, 36px) !important;
+      padding-inline: 4px 6px !important;
+    }
+    .main-title {
+      font-weight: bold !important;
+      font-size: 15px !important;
+      letter-spacing: 0 !important;
+      margin-inline-start: 6px !important;
+    }
+    /* Knöpfe wie die kleinen Win95-Titelleistenknöpfe */
+    ha-icon-button,
+    ha-menu-button {
+      --ha-icon-button-size: 24px;
+      --mdc-icon-size: 18px;
+      color: var(--ha95-text) !important;
+    }
+    .action-items ha-icon-button,
+    ha-menu-button {
+      background: var(--ha95-face);
+      box-shadow: var(--ha95-raised);
+      margin-inline-start: 2px;
+    }
+    .action-items ha-icon-button:active,
+    ha-menu-button:active {
+      box-shadow: var(--ha95-sunken);
+    }
+  uix-root-yaml: |
+    .: |
+      /* Kopfleiste als Win95-Titelleiste */
+      .header {
+        background: var(--ha95-title-bar) !important;
+        box-shadow: inset 0 -2px var(--ha95-face), inset 0 -3px var(--ha95-shadow) !important;
+      }
+      .toolbar {
+        height: var(--header-height, 36px) !important;
+        padding-inline: 4px 6px !important;
+      }
+      .main-title {
+        font-weight: bold !important;
+        font-size: 15px !important;
+        letter-spacing: 0 !important;
+        margin-inline-start: 6px !important;
+      }
+      /* Knöpfe wie die kleinen Win95-Titelleistenknöpfe */
+      ha-icon-button,
+      ha-menu-button {
+        --ha-icon-button-size: 24px;
+        --mdc-icon-size: 18px;
+        color: var(--ha95-text) !important;
+      }
+      .action-items ha-icon-button,
+      ha-menu-button {
+        background: var(--ha95-face);
+        box-shadow: var(--ha95-raised);
+        margin-inline-start: 2px;
+      }
+      .action-items ha-icon-button:active,
+      ha-menu-button:active {
+        box-shadow: var(--ha95-sunken);
+      }
+    ".toolbar ha-icon-button $": |
+      /* kein runder Hover-Kreis, eckige Fläche */
+      ha-button::after {
+        display: none !important;
+      }
+      ha-button::part(base) {
+        border-radius: 0 !important;
+      }
+    "ha-menu-button $ ha-icon-button $": |
+      /* kein runder Hover-Kreis, eckige Fläche */
+      ha-button::after {
+        display: none !important;
+      }
+      ha-button::part(base) {
+        border-radius: 0 !important;
+      }
+
+  # Kopfleiste der Einstellungsseiten und eckige Einstellungs-Icons
+  card-mod-top-app-bar-fixed: |
+    /* Kopfleiste der Einstellungsseiten als Win95-Titelleiste */
+    header.top-app-bar {
+      background: var(--ha95-title-bar) !important;
+      color: var(--ha95-title-text) !important;
+      box-shadow: inset 0 -2px var(--ha95-face), inset 0 -3px var(--ha95-shadow) !important;
+    }
+    .row {
+      height: var(--header-height, 36px) !important;
+      padding-inline: 4px 6px !important;
+    }
+    .title {
+      font-weight: bold !important;
+      font-size: 15px !important;
+      padding-inline-start: 6px !important;
+      color: var(--ha95-title-text) !important;
+    }
+    ha-menu-button,
+    ::slotted(ha-icon-button),
+    ::slotted(ha-dropdown) {
+      --ha-icon-button-size: 24px;
+      --mdc-icon-size: 18px;
+      color: var(--ha95-text) !important;
+    }
+    ha-menu-button,
+    ::slotted(ha-icon-button),
+    ::slotted(ha-dropdown) {
+      display: inline-flex;
+      background: var(--ha95-face);
+      box-shadow: var(--ha95-raised);
+      margin-inline-start: 2px;
+    }
+  uix-top-app-bar-fixed-yaml: |
+    .: |
+      /* Kopfleiste der Einstellungsseiten als Win95-Titelleiste */
+      header.top-app-bar {
+        background: var(--ha95-title-bar) !important;
+        color: var(--ha95-title-text) !important;
+        box-shadow: inset 0 -2px var(--ha95-face), inset 0 -3px var(--ha95-shadow) !important;
+      }
+      .row {
+        height: var(--header-height, 36px) !important;
+        padding-inline: 4px 6px !important;
+      }
+      .title {
+        font-weight: bold !important;
+        font-size: 15px !important;
+        padding-inline-start: 6px !important;
+        color: var(--ha95-title-text) !important;
+      }
+      ha-menu-button,
+      ::slotted(ha-icon-button),
+      ::slotted(ha-dropdown) {
+        --ha-icon-button-size: 24px;
+        --mdc-icon-size: 18px;
+        color: var(--ha95-text) !important;
+      }
+      ha-menu-button,
+      ::slotted(ha-icon-button),
+      ::slotted(ha-dropdown) {
+        display: inline-flex;
+        background: var(--ha95-face);
+        box-shadow: var(--ha95-raised);
+        margin-inline-start: 2px;
+      }
+    "ha-icon-button[slot=actionItems] $": |
+      /* kein runder Hover-Kreis, eckige Fläche */
+      ha-button::after {
+        display: none !important;
+      }
+      ha-button::part(base) {
+        border-radius: 0 !important;
+      }
+    "ha-dropdown[slot=actionItems] ha-icon-button $": |
+      /* kein runder Hover-Kreis, eckige Fläche */
+      ha-button::after {
+        display: none !important;
+      }
+      ha-button::part(base) {
+        border-radius: 0 !important;
+      }
+    "$ ha-menu-button $ ha-icon-button $": |
+      /* kein runder Hover-Kreis, eckige Fläche */
+      ha-button::after {
+        display: none !important;
+      }
+      ha-button::part(base) {
+        border-radius: 0 !important;
+      }
+    "ha-config-section $$ ha-config-navigation-list $": |
+      /* Einstellungs-Icons als eckige 3D-Kacheln (Systemsteuerung) */
+      .icon-background {
+        border-radius: 0 !important;
+        width: 32px !important;
+        height: 32px !important;
+        margin-inline: 4px;
+        box-shadow:
+          inset -1px -1px rgba(0, 0, 0, 0.6),
+          inset 1px 1px rgba(255, 255, 255, 0.6),
+          inset -2px -2px rgba(0, 0, 0, 0.25),
+          inset 2px 2px rgba(255, 255, 255, 0.25),
+          1px 1px 0 var(--ha95-dark);
+      }
+      .icon-background ha-svg-icon {
+        --mdc-icon-size: 20px;
       }
 
   # Detail-Dialoge (more-info) bekommen ebenfalls eine Titelleiste

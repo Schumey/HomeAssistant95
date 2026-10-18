@@ -56,7 +56,7 @@ Sliders (e.g. for `input_number`) become Win95 trackbars: a sunken white groove 
 1. Copy `www/ha95/ha95.css` to `/config/www/ha95/`.
 2. **Settings → Dashboards → ⋮ → Resources** → `/local/ha95/ha95.css`, type **Stylesheet**.
 
-The "Pixelated MS Sans Serif" font comes from [98.css](https://github.com/jdan/98.css) (MIT) and is loaded from jsDelivr.
+The "Pixelated MS Sans Serif" font comes from [98.css](https://github.com/jdan/98.css) (MIT) and is loaded from jsDelivr. With UIX 8.4.0 or later the theme loads the font itself (`uix-fonts`), so it also shows up on the settings pages. `ha95.css` is then only needed for the mouse pointer.
 
 ### Pixel icons
 
@@ -90,7 +90,7 @@ Restart Home Assistant after changing the URL. Both modes hook into the frontend
 
 ### Window look with UIX (or card-mod)
 
-With [UIX – UI eXtension](https://github.com/Lint-Free-Technology/uix) (HACS), cards with a title become windows with a title bar and _ □ × buttons, cards look pressed in when clicked, the thermostat and humidifier cards get square 3D buttons, and switches in entities cards become checkboxes. Without UIX or card-mod this part is ignored.
+With [UIX – UI eXtension](https://github.com/Lint-Free-Technology/uix) (HACS), cards with a title become windows with a title bar and _ □ × buttons, cards look pressed in when clicked, the thermostat and humidifier cards get square 3D buttons, and switches in entities cards become checkboxes. The top bar of dashboards and settings pages becomes a Win95 title bar (36 px, bold title, small square gray buttons), and the icons on the settings page become square 3D tiles like in the Control Panel. Without UIX or card-mod this part is ignored.
 
 UIX is the maintained successor of card-mod and reads card-mod settings too. Install it from HACS, then add it under **Settings → Devices & services** (it is an integration). If you still have card-mod installed, remove it first, including any `extra_module_url` entry for it.
 
@@ -144,6 +144,19 @@ If the File editor runs under a different panel name than `core_configurator`, s
 ## Your own color scheme
 
 Every color goes through the `ha95-*` variables at the top of the file. Copy a variant, give it a new name (also in `card-mod-theme`) and change only those values and the `rgb-*` lines.
+
+## Uninstall
+
+1. **Switch the theme back:** **Profile → Theme** → back to the default. If dashboards, views or cards have `theme: HA 95` (or another HA 95 variant) set, remove it there too.
+2. **Remove the theme:** HACS → HomeAssistant95 → ⋮ → **Remove**. For a manual install, delete `/config/themes/ha95.yaml`. Then **Tools → YAML → reload Themes**.
+3. **Remove the extras** (only what you installed):
+   - Delete `/config/www/ha95/` (`ha95.css`, `ha95-icons.js`, `ha95-startmenu.js`) and `/config/www/ha95-startmenu.json`.
+   - **Settings → Dashboards → ⋮ → Resources:** delete `/local/ha95/ha95.css`.
+   - In `configuration.yaml`, delete the lines `/local/ha95/ha95-icons.js` and `/local/ha95/ha95-startmenu.js` under `frontend: extra_module_url:` (and `extra_module_url:` itself if nothing is left), then restart Home Assistant.
+4. **Replace pixel icons:** everything that still uses `ha95:` icons (dashboards, entities, sidebar config) shows an empty icon afterwards. Change `ha95:` back to `mdi:`.
+5. **Custom Sidebar:** the example config uses the `ha95-*` colors, which no longer exist without the theme. Restore your previous `/config/www/custom-sidebar-config.yaml` or delete the color, `styles` and "Tools" parts.
+6. **UIX, card-mod and Custom Sidebar** are separate HACS installs. Only remove them if nothing else uses them.
+7. Reload the browser with **Ctrl+F5**. In the companion app, clear the frontend cache or restart the app.
 
 ## License
 

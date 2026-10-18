@@ -4,6 +4,17 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [3.9.0] – 2026-10-18
+
+### Hinzugefügt
+- UIX: Kopfleiste von Dashboards und Einstellungsseiten als Win95-Titelleiste: 36 px hoch (`header-height`), Titelleistenfarbe bzw. Verlauf (HA 98), fetter Titel, kleine eckige graue 3D-Knöpfe ohne runden Hover-Kreis. card-mod bekommt den Grundlook über `card-mod-root` und `card-mod-top-app-bar-fixed`.
+- UIX: Icons auf der Einstellungsseite als eckige 3D-Kacheln wie in der Win95-Systemsteuerung.
+- UIX ab 8.4.0: Das Design lädt die Pixel-Schrift selbst (`uix-fonts`), sie erscheint damit auch auf Einstellungs- und anderen Nicht-Dashboard-Seiten.
+- README: Anleitung zum Deinstallieren.
+
+### Geändert
+- Custom-Sidebar-Beispiel: „Start“-Titel und Uhr passen in die niedrigere Titelleiste.
+
 ## [3.8.0] – 2026-10-18
 
 ### Hinzugefügt
