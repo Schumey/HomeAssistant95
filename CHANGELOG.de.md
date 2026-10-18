@@ -4,6 +4,12 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [3.6.0] – 2026-10-18
+
+### Geändert
+- UIX: Auswahlfelder in Entitätskarten sehen jetzt wie eine Win95-Combobox aus: Beschriftung links (bündig mit den anderen Zeilen), einzeiliges weißes, eingelassenes Feld in der rechten Hälfte und ein 3D-▼-Knopf am Rand. Behebt die bisherigen Regeln, die in HA 2026.10 nicht mehr zum Aufbau des Auswahlfelds passten.
+- UIX: Datums- und Zeitfelder in Entitätskarten: Beschriftung links, einzeilige weiße, eingelassene Felder so breit wie ihr Inhalt, Kalender-Knopf als 3D-Knopf, keine „hh“/„mm“-Beschriftungen.
+
 ## [3.5.0] – 2026-10-18
 
 ### Hinzugefügt

@@ -4,6 +4,12 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [3.6.0] – 2026-10-18
+
+### Changed
+- UIX: dropdowns in entities cards now look like a Win95 combobox: label on the left (aligned with the other rows), a single-line white sunken box in the right half and a 3D ▼ button at the edge. Fixes the previous rules, which no longer matched the dropdown markup in HA 2026.10.
+- UIX: date and time fields in entities cards: label on the left, single-line white sunken boxes sized to their content, calendar button as a 3D button, no "hh"/"mm" labels.
+
 ## [3.5.0] – 2026-10-18
 
 ### Added

@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------
 #  HA 95 – Home Assistant Theme-Paket
-#  Version: 3.5.0
+#  Version: 3.6.0
 #
 #  Enthält 6 Themes (wie die Farbschemata in "Eigenschaften von Anzeige"):
 #    HA 95            – Standard: Teal-Desktop, Navy-Titelleisten
@@ -543,6 +543,10 @@ HA 95: &ha95
         background: var(--ha95-face);
         box-shadow: var(--ha95-raised);
       }
+      /* Datumsfeld nimmt den freien Platz, damit die Beschriftung links steht */
+      ha-date-input {
+        flex: 1 1 auto !important;
+      }
     "ha-input $": |
       /* Eingabefeld: weiß und eingelassen */
       wa-input::part(base) {
@@ -555,26 +559,107 @@ HA 95: &ha95
         display: none !important;
       }
     "ha-select $ ha-picker-field $": |
-      /* Auswahlfeld: weiß, eingelassen, Pfeil als 3D-Knopf */
-      .field {
-        background: var(--ha95-window) !important;
-        border-radius: 0 !important;
-        box-shadow: var(--ha95-sunken) !important;
+      /* Auswahlfeld wie eine Win95-Combobox: Beschriftung links,
+         weißes eingelassenes Feld in der rechten Hälfte, ▼-Knopf am Rand */
+      ha-combo-box-item {
+        background: transparent !important;
+        isolation: isolate;
+        --md-list-item-one-line-container-height: 25px !important;
+        --md-list-item-two-line-container-height: 25px !important;
+        --md-list-item-top-space: 0px !important;
+        --md-list-item-bottom-space: 0px !important;
+        --md-list-item-leading-space: calc(50% + 4px) !important;
+        --md-list-item-trailing-space: 20px !important;
       }
-      .field::after {
+      ha-combo-box-item::before {
+        content: attr(data-aria-label);
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 50%;
+        box-sizing: border-box;
+        padding-inline-start: 16px;
+        display: flex;
+        align-items: center;
+        color: var(--ha95-text);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      ha-combo-box-item::after,
+      ha-combo-box-item:focus::after {
+        content: "" !important;
+        display: block !important;
+        position: absolute !important;
+        z-index: -1;
+        left: 50% !important;
+        right: 0 !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        width: auto !important;
+        height: auto !important;
+        background: var(--ha95-window) !important;
+        box-shadow: var(--ha95-sunken);
+      }
+      span[slot="overline"] {
         display: none !important;
       }
+      span[slot="headline"] {
+        color: var(--ha95-window-text);
+        line-height: 25px;
+      }
       .arrow {
-        align-self: stretch;
+        position: absolute;
+        right: 2px;
+        top: 2px;
+        bottom: 2px;
         width: 16px !important;
-        margin: 2px;
+        height: auto !important;
+        margin: 0 !important;
+        --mdc-icon-size: 16px;
         background: var(--ha95-face);
         box-shadow: var(--ha95-raised);
         color: var(--ha95-text) !important;
       }
+    "ha-date-input $": |
+      /* Kalender-Knopf als 3D-Knopf */
+      ha-input {
+        width: 100%;
+        height: auto !important;
+      }
+      ha-svg-icon[slot="end"] {
+        --mdc-icon-size: 16px;
+        width: 16px;
+        height: 21px;
+        margin-inline-start: 4px;
+        background: var(--ha95-face);
+        box-shadow: var(--ha95-raised);
+        color: var(--ha95-text);
+      }
     "ha-date-input $ ha-input $": |
-      /* Eingabefeld: weiß und eingelassen */
+      /* Datum: Beschriftung links, Feld so breit wie der Inhalt (+20 %) */
+      wa-input {
+        display: flex !important;
+        flex-direction: row;
+        align-items: center;
+        gap: 0 !important;
+      }
+      wa-input::part(label) {
+        position: static !important;
+        padding: 0 8px 0 16px !important;
+        margin: 0 !important;
+        font-size: inherit !important;
+        line-height: 25px !important;
+        color: var(--ha95-text) !important;
+        white-space: nowrap;
+        flex: 1 1 auto;
+      }
       wa-input::part(base) {
+        height: 25px !important;
+        margin: 0 !important;
+        padding: 0 2px 0 4px !important;
+        width: auto !important;
         background: var(--ha95-window) !important;
         border: none !important;
         border-radius: 0 !important;
@@ -583,23 +668,56 @@ HA 95: &ha95
       wa-input::part(base)::after {
         display: none !important;
       }
+      wa-input::part(input) {
+        padding-top: 0 !important;
+        padding-inline-end: 2.2ch !important;
+        color: var(--ha95-window-text);
+        field-sizing: content;
+        min-width: 2ch;
+      }
+      wa-input::part(hint) {
+        display: none !important;
+      }
     "ha-time-input $ ha-base-time-input $": |
-      /* Uhrzeit: ein gemeinsames weißes, eingelassenes Feld */
+      /* Uhrzeit: ein weißes eingelassenes Feld, so breit wie der Inhalt */
+      :host {
+        flex: none !important;
+      }
+      .time-input-wrap-wrap {
+        margin-inline-start: 8px;
+      }
       .time-input-wrap {
         border-radius: 0 !important;
+        overflow: visible !important;
+        padding: 0 2px !important;
         background: var(--ha95-window) !important;
         box-shadow: var(--ha95-sunken) !important;
-        padding: 2px !important;
+        height: 25px;
+        align-items: center;
       }
-      .time-separator,
-      .sign,
-      .sign-divider,
-      ha-icon-button {
+      ha-input {
+        height: 25px !important;
+        width: auto !important;
+        flex-grow: 0 !important;
+      }
+      .time-separator {
         background: transparent !important;
         border-bottom: none !important;
+        height: 25px !important;
+        width: auto !important;
+        margin: 0 !important;
+        color: var(--ha95-window-text) !important;
       }
     "ha-time-input $ ha-base-time-input $ ha-input $": |
+      /* Stunden/Minuten ohne "hh"/"mm"-Beschriftung */
+      wa-input::part(label) {
+        display: none !important;
+      }
       wa-input::part(base) {
+        height: 25px !important;
+        margin-top: 0 !important;
+        padding: 0 !important;
+        width: auto !important;
         background: transparent !important;
         border: none !important;
         border-radius: 0 !important;
@@ -607,6 +725,14 @@ HA 95: &ha95
       }
       wa-input::part(base)::after {
         display: none !important;
+      }
+      wa-input::part(input) {
+        padding-top: 0 !important;
+        padding-inline: 0.33ch !important;
+        color: var(--ha95-window-text);
+        field-sizing: content;
+        min-width: 2ch;
+        text-align: center;
       }
     "ha-entity-toggle $ ha-switch $": |
       /* Win95-Kontrollkästchen statt Kippschalter */

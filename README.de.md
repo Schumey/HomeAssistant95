@@ -47,7 +47,7 @@ Kippschalter bekommen überall Win95-Farben: weiße Spur, grauer Knopf, eingesch
 
 ## Schieberegler & Eingabefelder
 
-Schieberegler (z. B. für `input_number`) werden zu Win95-Trackbars: eine eingelassene weiße Rille und ein erhabener grauer Griff. Das klappt mit card-mod und UIX. Mit UIX werden in Entitätskarten außerdem Eingabe-, Auswahl-, Datums- und Zeitfelder zu weißen, eingelassenen Kästchen, der Pfeil im Auswahlfeld wird zum 3D-Knopf. Außerhalb von Dashboards sind die Felder zumindest weiß.
+Schieberegler (z. B. für `input_number`) werden zu Win95-Trackbars: eine eingelassene weiße Rille und ein erhabener grauer Griff. Das klappt mit card-mod und UIX. Mit UIX sehen Auswahl-, Datums- und Zeitfelder in Entitätskarten wie Win95-Dialogelemente aus: Beschriftung links, bündig mit den anderen Zeilen, daneben ein weißes, eingelassenes Feld. Auswahlfelder nehmen die rechte Hälfte der Zeile ein, mit einem 3D-▼-Knopf am Rand. Datums- und Zeitfelder sind nur so breit wie ihr Inhalt, ohne die Beschriftungen „hh“/„mm“. Außerhalb von Dashboards sind die Felder zumindest weiß.
 
 ## Extras (optional)
 

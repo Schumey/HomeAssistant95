@@ -47,7 +47,7 @@ Toggle switches get Win95 colors everywhere: a white track, gray thumb and navy 
 
 ## Sliders & input fields
 
-Sliders (e.g. for `input_number`) become Win95 trackbars: a sunken white groove and a raised gray handle. This works with card-mod and UIX. With UIX, input fields, dropdowns, date and time fields in entities cards also become white sunken boxes; the dropdown arrow becomes a 3D button. Outside dashboards, fields are at least white.
+Sliders (e.g. for `input_number`) become Win95 trackbars: a sunken white groove and a raised gray handle. This works with card-mod and UIX. With UIX, dropdowns, date and time fields in entities cards look like Win95 dialog controls: the label on the left, aligned with the other rows, and a white sunken box next to it. Dropdowns take the right half of the row with a 3D ▼ button at the edge. Date and time boxes are only as wide as their content, without the "hh"/"mm" labels. Outside dashboards, fields are at least white.
 
 ## Extras (optional)
 
