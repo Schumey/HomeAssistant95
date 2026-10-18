@@ -1,0 +1,136 @@
+{
+  "file_editor_panel": "core_configurator",
+  "file_editor_base": "/homeassistant",
+  "menus": {
+    "tools": [
+      {
+        "name": "File Editor",
+        "icon": "mdi:file-document-edit-outline",
+        "items": [
+          {
+            "name": "configuration.yaml",
+            "file": "configuration.yaml"
+          },
+          {
+            "name": "automations.yaml",
+            "file": "automations.yaml"
+          },
+          {
+            "name": "scripts.yaml",
+            "file": "scripts.yaml"
+          },
+          {
+            "name": "scenes.yaml",
+            "file": "scenes.yaml"
+          },
+          {
+            "name": "secrets.yaml",
+            "file": "secrets.yaml",
+            "icon": "mdi:key-outline"
+          },
+          {
+            "divider": true
+          },
+          {
+            "name": "Sidebar",
+            "file": "www/custom-sidebar-config.yaml",
+            "icon": "mdi:dock-left"
+          },
+          {
+            "name": "Start menu",
+            "file": "www/ha95-startmenu.json",
+            "icon": "mdi:menu"
+          },
+          {
+            "divider": true
+          },
+          {
+            "name": "Open File Editor",
+            "path": "/core_configurator",
+            "icon": "mdi:folder-open-outline"
+          }
+        ]
+      },
+      {
+        "divider": true
+      },
+      {
+        "name": "Automations",
+        "icon": "mdi:robot-outline",
+        "path": "/config/automation/dashboard"
+      },
+      {
+        "name": "Scripts",
+        "icon": "mdi:script-text-outline",
+        "path": "/config/script/dashboard"
+      },
+      {
+        "name": "Scenes",
+        "icon": "mdi:palette-outline",
+        "path": "/config/scene/dashboard"
+      },
+      {
+        "name": "Helpers",
+        "icon": "mdi:tools",
+        "path": "/config/helpers"
+      },
+      {
+        "divider": true
+      },
+      {
+        "name": "Developer tools",
+        "icon": "mdi:hammer",
+        "items": [
+          {
+            "name": "YAML",
+            "icon": "mdi:file-cog-outline",
+            "path": "/config/tools/yaml"
+          },
+          {
+            "name": "States",
+            "icon": "mdi:format-list-bulleted",
+            "path": "/config/tools/state"
+          },
+          {
+            "name": "Actions",
+            "icon": "mdi:play-box-outline",
+            "path": "/config/tools/action"
+          },
+          {
+            "name": "Template",
+            "icon": "mdi:code-braces",
+            "path": "/config/tools/template"
+          },
+          {
+            "name": "Events",
+            "icon": "mdi:lightning-bolt-outline",
+            "path": "/config/tools/event"
+          }
+        ]
+      },
+      {
+        "name": "Devices & services",
+        "icon": "mdi:devices",
+        "path": "/config/integrations/dashboard"
+      },
+      {
+        "name": "Entities",
+        "icon": "mdi:shape-outline",
+        "path": "/config/entities"
+      },
+      {
+        "name": "Logs",
+        "icon": "mdi:math-log",
+        "path": "/config/logs"
+      },
+      {
+        "divider": true
+      },
+      {
+        "name": "Restart …",
+        "icon": "mdi:restart",
+        "action": "restart"
+      }
+    ]
+  }
+}

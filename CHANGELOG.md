@@ -4,6 +4,12 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [3.7.0] – 2026-10-18
+
+### Added
+- Start menu with submenus: `www/ha95/ha95-startmenu.js` opens Win95 flyout menus to the right of sidebar items that carry `data-ha95-menu` (set via Custom Sidebar `attributes`). Menus come from `/config/www/ha95-startmenu.json` and can open pages, open files directly in the File editor, restart Home Assistant after a Win95-style confirmation, open URLs and nest further submenus. Works with the sidebar expanded and as a drawer on narrow screens.
+- Example menu `examples/startmenu/ha95-startmenu.json` ("Tools": File Editor with frequently used files, automations, scripts, scenes, helpers, developer tools, devices & services, entities, logs, restart) and a matching item in the Custom Sidebar example.
+
 ## [3.6.0] – 2026-10-18
 
 ### Changed

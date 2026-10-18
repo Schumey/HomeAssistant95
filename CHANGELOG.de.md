@@ -4,6 +4,12 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [3.7.0] – 2026-10-18
+
+### Hinzugefügt
+- Startmenü mit Untermenüs: `www/ha95/ha95-startmenu.js` öffnet Win95-Ausklappmenüs rechts neben Einträgen der Seitenleiste, die `data-ha95-menu` tragen (per Custom-Sidebar-`attributes`). Die Menüs stehen in `/config/www/ha95-startmenu.json` und können Seiten öffnen, Dateien direkt im File editor öffnen, Home Assistant nach Win95-Rückfrage neu starten, Adressen öffnen und weitere Untermenüs enthalten. Funktioniert mit ausgeklappter Seitenleiste und als Schublade auf schmalen Bildschirmen.
+- Beispielmenü `examples/startmenu/ha95-startmenu.json` („Tools“: File Editor mit häufig genutzten Dateien, Automationen, Skripte, Szenen, Helfer, Entwicklerwerkzeuge, Geräte & Dienste, Entitäten, Protokolle, Neustart) und ein passender Eintrag im Custom-Sidebar-Beispiel.
+
 ## [3.6.0] – 2026-10-18
 
 ### Geändert

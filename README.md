@@ -108,6 +108,39 @@ With [Custom Sidebar](https://github.com/elchininet/custom-sidebar) (HACS) the s
 
 All colors come from the `ha95-*` variables, so the sidebar follows the selected theme. The example uses the [pixel icons](#pixel-icons). Without them, swap `ha95:` for `mdi:`.
 
+### Start menu with submenus
+
+`www/ha95/ha95-startmenu.js` adds Win95 flyout menus to the sidebar: hover over (or tap) an item and a menu opens to the right, with further submenus. The example builds a "Tools" menu with:
+
+- **File Editor ▶** opens frequently used files (e.g. `configuration.yaml`, `automations.yaml`) directly in the [File editor](https://github.com/home-assistant/addons/tree/master/configurator) app
+- Automations, scripts, scenes, helpers, developer tools ▶, devices & services, entities, logs
+- **Restart …** with a Win95-style confirmation dialog
+
+Setup:
+
+1. Copy `www/ha95/ha95-startmenu.js` to `/config/www/ha95/` and load it in `configuration.yaml`:
+   ```yaml
+   frontend:
+     extra_module_url:
+       - /local/ha95/ha95-startmenu.js
+   ```
+2. Copy [`examples/startmenu/ha95-startmenu.json`](examples/startmenu/ha95-startmenu.json) to `/config/www/ha95-startmenu.json` and adjust it.
+3. In the Custom Sidebar config, add an item with the attribute `data-ha95-menu` (see the "Tools" item at the end of the [example](examples/custom-sidebar/custom-sidebar-config.yaml)).
+4. Restart Home Assistant and reload the page.
+
+Menu entries in the JSON file:
+
+| Entry | Does |
+|---|---|
+| `{ "name": "…", "icon": "mdi:…", "path": "/config/…" }` | opens a page |
+| `{ "name": "…", "file": "configuration.yaml" }` | opens the file in the File editor (relative to `file_editor_base`, default `/homeassistant`) |
+| `{ "name": "…", "action": "restart" }` | restarts Home Assistant after a confirmation |
+| `{ "name": "…", "url": "https://…" }` | opens an address in a new tab |
+| `{ "name": "…", "items": [ … ] }` | another submenu |
+| `{ "divider": true }` | separator line |
+
+If the File editor runs under a different panel name than `core_configurator`, set `file_editor_panel` in the JSON file.
+
 ## Your own color scheme
 
 Every color goes through the `ha95-*` variables at the top of the file. Copy a variant, give it a new name (also in `card-mod-theme`) and change only those values and the `rgb-*` lines.

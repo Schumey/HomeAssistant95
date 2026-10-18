@@ -108,6 +108,39 @@ Mit [Custom Sidebar](https://github.com/elchininet/custom-sidebar) (HACS) wird d
 
 Alle Farben kommen aus den `ha95-*`-Variablen, die Seitenleiste wechselt also mit dem gewählten Design mit. Das Beispiel nutzt die [Pixel-Icons](#pixel-icons). Ohne sie `ha95:` durch `mdi:` ersetzen.
 
+### Startmenü mit Untermenüs
+
+`www/ha95/ha95-startmenu.js` bringt Win95-Ausklappmenüs in die Seitenleiste: Maus auf einen Eintrag (oder antippen), dann klappt rechts ein Menü auf, auch mit weiteren Untermenüs. Das Beispiel baut ein Menü „Werkzeuge“ mit:
+
+- **File Editor ▶** öffnet häufig genutzte Dateien (z. B. `configuration.yaml`, `automations.yaml`) direkt in der App [File editor](https://github.com/home-assistant/addons/tree/master/configurator)
+- Automationen, Skripte, Szenen, Helfer, Entwicklerwerkzeuge ▶, Geräte & Dienste, Entitäten, Protokolle
+- **Neu starten …** mit Rückfrage im Win95-Stil
+
+Einrichtung:
+
+1. `www/ha95/ha95-startmenu.js` nach `/config/www/ha95/` kopieren und in `configuration.yaml` laden:
+   ```yaml
+   frontend:
+     extra_module_url:
+       - /local/ha95/ha95-startmenu.js
+   ```
+2. [`examples/startmenu/ha95-startmenu.json`](examples/startmenu/ha95-startmenu.json) nach `/config/www/ha95-startmenu.json` kopieren und anpassen (das Beispiel ist englisch beschriftet, die Namen sind frei wählbar).
+3. In der Custom-Sidebar-Konfiguration einen Eintrag mit dem Attribut `data-ha95-menu` anlegen (siehe den Eintrag „Tools“ am Ende des [Beispiels](examples/custom-sidebar/custom-sidebar-config.yaml)).
+4. Home Assistant neu starten und die Seite neu laden.
+
+Einträge in der JSON-Datei:
+
+| Eintrag | Bewirkt |
+|---|---|
+| `{ "name": "…", "icon": "mdi:…", "path": "/config/…" }` | öffnet eine Seite |
+| `{ "name": "…", "file": "configuration.yaml" }` | öffnet die Datei im File editor (relativ zu `file_editor_base`, Standard `/homeassistant`) |
+| `{ "name": "…", "action": "restart" }` | startet Home Assistant nach Rückfrage neu |
+| `{ "name": "…", "url": "https://…" }` | öffnet eine Adresse in einem neuen Tab |
+| `{ "name": "…", "items": [ … ] }` | weiteres Untermenü |
+| `{ "divider": true }` | Trennlinie |
+
+Läuft der File editor unter einem anderen Panel-Namen als `core_configurator`, in der JSON-Datei `file_editor_panel` setzen.
+
 ## Eigenes Farbschema
 
 Alle Farben laufen über die `ha95-*`-Variablen am Anfang der Datei. Kopiere eine Variante, gib ihr einen neuen Namen (auch bei `card-mod-theme`) und ändere nur diese Werte sowie die `rgb-*`-Zeilen.

@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------
 #  HomeAssistant95 – Start menu sidebar for Custom Sidebar
-#  Version: 3.6.0
+#  Version: 3.7.0
 #
 #  Requires: Custom Sidebar (HACS, https://github.com/elchininet/custom-sidebar)
 #  File:     /config/www/custom-sidebar-config.yaml
@@ -118,3 +118,16 @@ order:
   - item: map
     icon: ha95:map
     order: 5
+
+  # "Tools" item with a Win95 flyout menu (Start menu style).
+  # Needs www/ha95/ha95-startmenu.js and /config/www/ha95-startmenu.json,
+  # see the README section "Start menu with submenus".
+  - new_item: true
+    item: Tools
+    icon: ha95:cog
+    bottom: true
+    attributes:
+      data-ha95-menu: tools
+    on_click:
+      action: javascript
+      code: "// opened by ha95-startmenu.js"
