@@ -1,0 +1,111 @@
+# ------------------------------------------------------------------
+#  HomeAssistant95 – Start menu sidebar for Custom Sidebar
+#  Version: 3.1.0
+#
+#  Requires: Custom Sidebar (HACS, https://github.com/elchininet/custom-sidebar)
+#  File:     /config/www/custom-sidebar-config.yaml
+#
+#  Every color is a ha95-* variable, so the sidebar follows whichever
+#  HA 95 color scheme is selected on the profile page.
+#
+#  Replace the entity IDs and item names in the "order" section with your own.
+#  "item" matches the visible name of a sidebar entry (case-insensitive).
+# ------------------------------------------------------------------
+
+# Taskbar clock in the sidebar header. Needs the Time & Date integration
+# (sensor.time). Remove the subtitle line if you don't use it.
+title: Start
+subtitle: '[[[ states("sensor.time") ]]]'
+
+# ---------- Colors ----------
+title_color: var(--ha95-title-text)
+menu_background: var(--ha95-title-bar)
+sidebar_background: var(--ha95-face)
+sidebar_border_color: var(--ha95-dark)
+sidebar_button_color: var(--ha95-title-text)
+text_color: var(--ha95-text)
+icon_color: var(--ha95-text)
+info_color: var(--ha95-text-dim)
+text_color_hover: var(--ha95-select-text)
+icon_color_hover: var(--ha95-select-text)
+info_color_hover: var(--ha95-select-text)
+item_background_hover: var(--ha95-select)
+item_background_hover_opacity: 1
+selection_background: var(--ha95-select)
+selection_opacity: 1
+text_color_selected: var(--ha95-select-text)
+icon_color_selected: var(--ha95-select-text)
+info_color_selected: var(--ha95-select-text)
+notification_color: "#ff0000"
+notification_text_color: "#ffffff"
+notification_border_color: var(--ha95-dark)
+divider_color: var(--ha95-shadow)
+scrollbar_thumb_color: var(--ha95-shadow)
+
+# ---------- Start menu look ----------
+# 3D frame, square selection and the vertical banner on the left
+# (like the "Windows 95" stripe in the original Start menu).
+styles: |
+  :host {
+    box-shadow: var(--ha95-raised);
+  }
+  .title {
+    font-weight: bold;
+  }
+  :is(ha-list-item-base, ha-list-item-button) {
+    border-radius: 0 !important;
+  }
+  :host([expanded]) .sidebar-shell {
+    position: relative;
+    border-left: 24px solid var(--ha95-shadow);
+  }
+  :host([expanded]) .sidebar-shell::after {
+    content: "HomeAssistant95";
+    position: absolute;
+    left: -24px;
+    bottom: 0;
+    width: 24px;
+    padding: 8px 0;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    color: var(--ha95-face);
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-align: left;
+    pointer-events: none;
+  }
+
+# ---------- Items ----------
+order:
+  - item: overview
+    order: 1
+    divider: true
+
+  # Current and target temperature below the heating dashboard
+  - item: heating
+    order: 2
+    info: |
+      [[[
+        const t = state_attr("climate.living_room", "current_temperature");
+        const s = state_attr("climate.living_room", "temperature");
+        return t == null ? "" : t + " °C → " + s + " °C";
+      ]]]
+
+  # Current humidity below the humidifier dashboard
+  - item: plants
+    order: 3
+    info: |
+      [[[
+        const h = state_attr("humidifier.humidifier", "current_humidity");
+        return h == null ? "" : "Humidity " + h + " %";
+      ]]]
+
+  # Red "!" badge when the vacuum reports an error
+  - item: vacuum
+    order: 4
+    divider: true
+    notification: '[[[ is_state("vacuum.robot", "error") ? "!" : "" ]]]'
+
+  - item: map
+    order: 5

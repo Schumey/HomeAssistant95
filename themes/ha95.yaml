@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------
 #  HA 95 – Home Assistant Theme-Paket
-#  Version: 3.0.0
+#  Version: 3.1.0
 #
 #  Enthält 6 Themes (wie die Farbschemata in "Eigenschaften von Anzeige"):
 #    HA 95            – Standard: Teal-Desktop, Navy-Titelleisten
@@ -17,7 +17,9 @@
 #
 #  Extras (optional):
 #    - /config/www/ha95/ha95.css als Dashboard-Ressource -> Pixel-Schrift + Mauszeiger
-#    - card-mod (HACS) -> Fenster mit _ □ × Knöpfen, Klick-Effekt, Dialog-Titelleisten
+#    - card-mod (HACS) -> Fenster mit _ □ × Knöpfen, Klick-Effekt, Dialog-Titelleisten,
+#                         Thermostat & Luftbefeuchter mit 3D-Knöpfen
+#    - examples/custom-sidebar/ -> Seitenleiste als Startmenü (Custom Sidebar, HACS)
 #
 #  Alle Farben laufen über die ha95-* Variablen. Für ein eigenes Schema
 #  reicht es, eine Variante zu kopieren und nur diese Variablen zu ändern.
@@ -42,6 +44,13 @@ HA 95: &ha95
   ha95-select: "#000080"         # markierte Elemente
   ha95-select-text: "#ffffff"
   ha95-active: "#808000"         # Icons im Zustand "an"
+  ha95-heat: "#ff0000"           # Klima: Heizen
+  ha95-cool: "#0000ff"           # Klima: Kühlen
+  ha95-auto: "#008000"           # Klima: Automatik
+  ha95-heat-cool: "#808000"      # Klima: Heizen/Kühlen
+  ha95-dry: "#800080"            # Klima: Entfeuchten
+  ha95-fan: "#008080"            # Klima: Nur Lüfter
+  ha95-humid: "#008080"          # Luftbefeuchter an
 
   # ================= Abgeleitete Werte =================
   ha95-raised: "inset -1px -1px var(--ha95-dark), inset 1px 1px var(--ha95-highlight), inset -2px -2px var(--ha95-shadow), inset 2px 2px var(--ha95-light)"
@@ -102,6 +111,12 @@ HA 95: &ha95
 
   # ---------- Eckig überall ----------
   ha-dialog-border-radius: "0px"
+  ha-border-radius-2xl: "0px"
+  ha-border-radius-3xl: "0px"
+  ha-border-radius-4xl: "0px"
+  dialog-box-shadow: var(--ha95-raised)
+  dialog-backdrop-filter: "none"
+  ha-dialog-surface-backdrop-filter: "none"
   mdc-shape-small: "0px"
   mdc-shape-medium: "0px"
   mdc-shape-large: "0px"
@@ -139,6 +154,17 @@ HA 95: &ha95
   state-inactive-color: var(--ha95-disabled)
   paper-item-icon-color: var(--ha95-select)
   paper-item-icon-active-color: var(--ha95-active)
+
+  # ---------- Klima & Luftbefeuchter ----------
+  # Färbt Ring, Icons, Kacheln und Verlauf. hvac_action (z. B. "heating")
+  # nutzt automatisch die Farbe des passenden Modus.
+  state-climate-heat-color: var(--ha95-heat)
+  state-climate-cool-color: var(--ha95-cool)
+  state-climate-auto-color: var(--ha95-auto)
+  state-climate-heat-cool-color: var(--ha95-heat-cool)
+  state-climate-dry-color: var(--ha95-dry)
+  state-climate-fan_only-color: var(--ha95-fan)
+  state-humidifier-on-color: var(--ha95-humid)
 
   # ---------- Schalter / Slider ----------
   switch-checked-color: var(--ha95-select)
@@ -191,39 +217,82 @@ HA 95: &ha95
   # ==================================================================
   card-mod-theme: HA 95
 
-  # Jede Karte mit Titel wird zum Fenster: Titelleiste + _ □ × Knöpfe
-  card-mod-card: |
-    ha-card {
-      border: none !important;
-      transition: none !important;
-    }
-    ha-card:active {
-      box-shadow: var(--ha95-sunken) !important;
-    }
-    ha-card .card-header {
-      position: relative;
-      background: var(--ha95-title-bar);
-      color: var(--ha95-title-text) !important;
-      font-weight: bold;
-      font-size: 13px !important;
-      line-height: 18px;
-      letter-spacing: 0;
-      padding: 2px 60px 2px 4px !important;
-      margin: 3px 3px 8px 3px;
-    }
-    ha-card .card-header .name {
-      color: var(--ha95-title-text) !important;
-    }
-    ha-card .card-header::after {
-      content: "";
-      position: absolute;
-      right: 2px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 50px;
-      height: 14px;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='14' shape-rendering='crispEdges'%3E%3Crect width='16' height='14'/%3E%3Crect width='15' height='13' fill='%23fff'/%3E%3Crect x='1' y='1' width='14' height='12' fill='%23808080'/%3E%3Crect x='1' y='1' width='13' height='11' fill='%23c0c0c0'/%3E%3Crect x='4' y='9' width='6' height='2'/%3E%3Crect x='16' width='16' height='14'/%3E%3Crect x='16' width='15' height='13' fill='%23fff'/%3E%3Crect x='17' y='1' width='14' height='12' fill='%23808080'/%3E%3Crect x='17' y='1' width='13' height='11' fill='%23c0c0c0'/%3E%3Crect x='19' y='2' width='9' height='9'/%3E%3Crect x='20' y='4' width='7' height='6' fill='%23c0c0c0'/%3E%3Crect x='34' width='16' height='14'/%3E%3Crect x='34' width='15' height='13' fill='%23fff'/%3E%3Crect x='35' y='1' width='14' height='12' fill='%23808080'/%3E%3Crect x='35' y='1' width='13' height='11' fill='%23c0c0c0'/%3E%3Cpath d='M38 3l7 7M45 3l-7 7' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E") no-repeat;
-    }
+  # card-mod liest nur EINEN der Schlüssel card-mod-card / card-mod-card-yaml.
+  # Darum steht alles hier in der -yaml-Form:
+  #   "."  -> jede Karte: Fenster-Titelleiste mit _ □ × Knöpfen, Klick-Effekt
+  #   Rest -> Thermostat- und Luftbefeuchter-Karte: grauer Ring, 3D-Knöpfe
+  card-mod-card-yaml: |
+    .: |
+      ha-card {
+        border: none !important;
+        transition: none !important;
+      }
+      /* nicht bei Reglern, sonst sinkt die ganze Karte beim Ziehen ein */
+      :host(:not(.type-thermostat):not(.type-humidifier)) ha-card:active {
+        box-shadow: var(--ha95-sunken) !important;
+      }
+      ha-card .card-header {
+        position: relative;
+        background: var(--ha95-title-bar);
+        color: var(--ha95-title-text) !important;
+        font-weight: bold;
+        font-size: 13px !important;
+        line-height: 18px;
+        letter-spacing: 0;
+        padding: 2px 60px 2px 4px !important;
+        margin: 3px 3px 8px 3px;
+      }
+      ha-card .card-header .name {
+        color: var(--ha95-title-text) !important;
+      }
+      ha-card .card-header::after {
+        content: "";
+        position: absolute;
+        right: 2px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 14px;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='14' shape-rendering='crispEdges'%3E%3Crect width='16' height='14'/%3E%3Crect width='15' height='13' fill='%23fff'/%3E%3Crect x='1' y='1' width='14' height='12' fill='%23808080'/%3E%3Crect x='1' y='1' width='13' height='11' fill='%23c0c0c0'/%3E%3Crect x='4' y='9' width='6' height='2'/%3E%3Crect x='16' width='16' height='14'/%3E%3Crect x='16' width='15' height='13' fill='%23fff'/%3E%3Crect x='17' y='1' width='14' height='12' fill='%23808080'/%3E%3Crect x='17' y='1' width='13' height='11' fill='%23c0c0c0'/%3E%3Crect x='19' y='2' width='9' height='9'/%3E%3Crect x='20' y='4' width='7' height='6' fill='%23c0c0c0'/%3E%3Crect x='34' width='16' height='14'/%3E%3Crect x='34' width='15' height='13' fill='%23fff'/%3E%3Crect x='35' y='1' width='14' height='12' fill='%23808080'/%3E%3Crect x='35' y='1' width='13' height='11' fill='%23c0c0c0'/%3E%3Cpath d='M38 3l7 7M45 3l-7 7' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E") no-repeat;
+      }
+    ha-state-control-climate-temperature $: |
+      ha-control-circular-slider {
+        --control-circular-slider-background: var(--ha95-shadow);
+        --control-circular-slider-background-opacity: 1;
+      }
+      .buttons {
+        gap: 8px;
+      }
+    ha-state-control-humidifier-humidity $: |
+      ha-control-circular-slider {
+        --control-circular-slider-background: var(--ha95-shadow);
+        --control-circular-slider-background-opacity: 1;
+      }
+      .buttons {
+        gap: 8px;
+      }
+    "ha-state-control-climate-temperature $ ha-outlined-icon-button $": |
+      ha-button::part(base) {
+        border: none !important;
+        border-radius: 0 !important;
+        background: var(--ha95-face) !important;
+        box-shadow: var(--ha95-raised) !important;
+        color: var(--ha95-text) !important;
+      }
+      ha-button:active::part(base) {
+        box-shadow: var(--ha95-sunken) !important;
+      }
+    "ha-state-control-humidifier-humidity $ ha-outlined-icon-button $": |
+      ha-button::part(base) {
+        border: none !important;
+        border-radius: 0 !important;
+        background: var(--ha95-face) !important;
+        box-shadow: var(--ha95-raised) !important;
+        color: var(--ha95-text) !important;
+      }
+      ha-button:active::part(base) {
+        box-shadow: var(--ha95-sunken) !important;
+      }
 
   # Detail-Dialoge (more-info) bekommen ebenfalls eine Titelleiste
   card-mod-more-info: |
@@ -307,6 +376,13 @@ HA 95 Desert:
 HA 95 Kontrast:
   <<: *ha95
   card-mod-theme: HA 95 Kontrast
+  ha95-heat: "#ff0000"
+  ha95-cool: "#00ffff"
+  ha95-auto: "#00ff00"
+  ha95-heat-cool: "#ffff00"
+  ha95-dry: "#ff00ff"
+  ha95-fan: "#00ffff"
+  ha95-humid: "#00ffff"
   rgb-primary-color: "0, 128, 128"
   rgb-accent-color: "0, 128, 128"
   rgb-primary-text-color: "255, 255, 255"
