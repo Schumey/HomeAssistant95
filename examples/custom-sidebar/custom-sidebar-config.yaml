@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------
 #  HomeAssistant95 – Start menu sidebar for Custom Sidebar
-#  Version: 3.3.0
+#  Version: 3.4.0
 #
 #  Requires: Custom Sidebar (HACS, https://github.com/elchininet/custom-sidebar)
 #  File:     /config/www/custom-sidebar-config.yaml
@@ -10,6 +10,8 @@
 #
 #  Replace the entity IDs and item names in the "order" section with your own.
 #  "item" matches the visible name of a sidebar entry (case-insensitive).
+#  The ha95: icons need www/ha95/ha95-icons.js (see README, "Pixel icons").
+#  Without it, use mdi: icons instead.
 # ------------------------------------------------------------------
 
 # Taskbar clock in the sidebar header. Needs the Time & Date integration
@@ -23,6 +25,8 @@ menu_background: var(--ha95-title-bar)
 sidebar_background: var(--ha95-face)
 sidebar_border_color: var(--ha95-dark)
 sidebar_button_color: var(--ha95-title-text)
+# no round hover circle behind the menu button
+sidebar_button_background_hover_opacity: 0
 text_color: var(--ha95-text)
 icon_color: var(--ha95-text)
 info_color: var(--ha95-text-dim)
@@ -79,11 +83,13 @@ styles: |
 # ---------- Items ----------
 order:
   - item: overview
+    icon: ha95:home
     order: 1
     divider: true
 
   # Current and target temperature below the heating dashboard
   - item: heating
+    icon: ha95:thermostat
     order: 2
     info: |
       [[[
@@ -94,6 +100,7 @@ order:
 
   # Current humidity below the humidifier dashboard
   - item: plants
+    icon: ha95:flower
     order: 3
     info: |
       [[[
@@ -103,9 +110,11 @@ order:
 
   # Red "!" badge when the vacuum reports an error
   - item: vacuum
+    icon: ha95:robot-vacuum
     order: 4
     divider: true
     notification: '[[[ is_state("vacuum.robot", "error") ? "!" : "" ]]]'
 
   - item: map
+    icon: ha95:map
     order: 5

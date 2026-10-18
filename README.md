@@ -58,6 +58,24 @@ Sliders (e.g. for `input_number`) become Win95 trackbars: a sunken white groove 
 
 The "Pixelated MS Sans Serif" font comes from [98.css](https://github.com/jdan/98.css) (MIT) and is loaded from jsDelivr.
 
+### Pixel icons
+
+`www/ha95/ha95-icons.js` adds an icon set in Win95 pixel style: 57 icons on a 24×24 grid, with an outline in full color and a fill at half opacity. They are colored by entity state like every other icon. The names follow MDI, so `mdi:lightbulb-on` becomes `ha95:lightbulb-on`. Unknown names show `ha95:help`.
+
+1. Copy `www/ha95/ha95-icons.js` to `/config/www/ha95/`.
+2. In `configuration.yaml`:
+   ```yaml
+   frontend:
+     extra_module_url:
+       - /local/ha95/ha95-icons.js
+   ```
+3. Restart Home Assistant and reload the page.
+4. Use the icons anywhere you can pick an icon, for example `icon: ha95:thermostat`. The icon picker lists them when you type `ha95`.
+
+Alternatively you can add the file as a dashboard resource (type **JavaScript module**), but then the icons only show up in dashboards, not in the sidebar.
+
+Included: `account`, `air-humidifier`, `alert`, `battery`, `battery-50`, `battery-outline`, `bell`, `blinds`, `blinds-open`, `calendar`, `camera`, `chart-line`, `clock`, `cog`, `door-closed`, `door-open`, `fan`, `file-document`, `fire`, `flash`, `flower`, `folder`, `folder-open`, `help`, `home`, `information`, `lightbulb`, `lightbulb-on`, `lock`, `lock-open`, `magnify`, `map`, `monitor`, `motion-sensor`, `music`, `power`, `power-plug`, `power-plug-off`, `power-socket-de`, `radiator`, `robot-vacuum`, `snowflake`, `speaker`, `television`, `thermometer`, `thermostat`, `trash-can`, `view-dashboard`, `washing-machine`, `water`, `weather-cloudy`, `weather-night`, `weather-rainy`, `weather-sunny`, `wifi`, `window-closed`, `window-open`. Each icon is a readable text grid in the file, so you can edit or add your own.
+
 ### Window look with UIX (or card-mod)
 
 With [UIX – UI eXtension](https://github.com/Lint-Free-Technology/uix) (HACS), cards with a title become windows with a title bar and _ □ × buttons, cards look pressed in when clicked, the thermostat and humidifier cards get square 3D buttons, and switches in entities cards become checkboxes. Without UIX or card-mod this part is ignored.
@@ -76,7 +94,7 @@ With [Custom Sidebar](https://github.com/elchininet/custom-sidebar) (HACS) the s
 2. Adjust the names and entity IDs in the `order` section to your setup.
 3. Reload the page.
 
-All colors come from the `ha95-*` variables, so the sidebar follows the selected theme.
+All colors come from the `ha95-*` variables, so the sidebar follows the selected theme. The example uses the [pixel icons](#pixel-icons). Without them, swap `ha95:` for `mdi:`.
 
 ## Your own color scheme
 

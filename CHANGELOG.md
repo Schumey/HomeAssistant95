@@ -4,6 +4,18 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [3.4.0] – 2026-10-18
+
+### Added
+- Pixel icon set `ha95:` (`www/ha95/ha95-icons.js`): 57 icons in Win95 style on a 24×24 grid, outline in full color, fill at half opacity. Names follow MDI (`mdi:fan` → `ha95:fan`), plus a few MDI aliases such as `lightning-bolt` and `cctv`. Shows up in the icon picker. Load it via `frontend: extra_module_url`.
+- Start menu example: items use the pixel icons.
+
+## [3.3.1] – 2026-10-18
+
+### Fixed
+- Entities cards with a header toggle: the toggle now sits on its own line below the title bar, aligned with the row checkboxes, instead of inside the title bar.
+- Custom Sidebar example: no more round hover circle behind the menu button (`sidebar_button_background_hover_opacity: 0`).
+
 ## [3.3.0] – 2026-10-18
 
 ### Added

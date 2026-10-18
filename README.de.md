@@ -58,6 +58,24 @@ Schieberegler (z. B. für `input_number`) werden zu Win95-Trackbars: eine eingel
 
 Die Schrift „Pixelated MS Sans Serif“ stammt aus [98.css](https://github.com/jdan/98.css) (MIT) und wird über jsDelivr geladen.
 
+### Pixel-Icons
+
+`www/ha95/ha95-icons.js` bringt ein Icon-Set in Win95-Pixeloptik mit: 57 Icons im 24×24-Raster, Umriss in voller Farbe, Füllung mit halber Deckkraft. Sie werden wie alle Icons nach dem Zustand der Entität eingefärbt. Die Namen folgen MDI, aus `mdi:lightbulb-on` wird `ha95:lightbulb-on`. Unbekannte Namen zeigen `ha95:help`.
+
+1. `www/ha95/ha95-icons.js` nach `/config/www/ha95/` kopieren.
+2. In `configuration.yaml`:
+   ```yaml
+   frontend:
+     extra_module_url:
+       - /local/ha95/ha95-icons.js
+   ```
+3. Home Assistant neu starten und die Seite neu laden.
+4. Überall, wo man ein Icon wählen kann, z. B. `icon: ha95:thermostat` eintragen. Die Icon-Auswahl zeigt sie an, wenn man `ha95` tippt.
+
+Alternativ geht die Datei auch als Dashboard-Ressource (Typ **JavaScript-Modul**). Dann erscheinen die Icons aber nur in Dashboards, nicht in der Seitenleiste.
+
+Enthalten: `account`, `air-humidifier`, `alert`, `battery`, `battery-50`, `battery-outline`, `bell`, `blinds`, `blinds-open`, `calendar`, `camera`, `chart-line`, `clock`, `cog`, `door-closed`, `door-open`, `fan`, `file-document`, `fire`, `flash`, `flower`, `folder`, `folder-open`, `help`, `home`, `information`, `lightbulb`, `lightbulb-on`, `lock`, `lock-open`, `magnify`, `map`, `monitor`, `motion-sensor`, `music`, `power`, `power-plug`, `power-plug-off`, `power-socket-de`, `radiator`, `robot-vacuum`, `snowflake`, `speaker`, `television`, `thermometer`, `thermostat`, `trash-can`, `view-dashboard`, `washing-machine`, `water`, `weather-cloudy`, `weather-night`, `weather-rainy`, `weather-sunny`, `wifi`, `window-closed`, `window-open`. Jedes Icon steht als lesbares Textraster in der Datei, man kann sie also anpassen oder eigene ergänzen.
+
 ### Fenster-Look mit UIX (oder card-mod)
 
 Mit [UIX – UI eXtension](https://github.com/Lint-Free-Technology/uix) (HACS) werden Karten mit Titel zu Fenstern mit Titelleiste und _ □ ×-Knöpfen. Karten sehen beim Klicken eingedrückt aus, Thermostat- und Luftbefeuchter-Karte bekommen eckige 3D-Knöpfe, und Schalter in Entitätskarten werden zu Kontrollkästchen. Ohne UIX oder card-mod wird dieser Teil ignoriert.
@@ -76,7 +94,7 @@ Mit [Custom Sidebar](https://github.com/elchininet/custom-sidebar) (HACS) wird d
 2. Im Abschnitt `order` die Namen und Entitäts-IDs an dein System anpassen.
 3. Seite neu laden.
 
-Alle Farben kommen aus den `ha95-*`-Variablen, die Seitenleiste wechselt also mit dem gewählten Design mit.
+Alle Farben kommen aus den `ha95-*`-Variablen, die Seitenleiste wechselt also mit dem gewählten Design mit. Das Beispiel nutzt die [Pixel-Icons](#pixel-icons). Ohne sie `ha95:` durch `mdi:` ersetzen.
 
 ## Eigenes Farbschema
 

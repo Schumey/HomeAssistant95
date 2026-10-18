@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------
 #  HA 95 – Home Assistant Theme-Paket
-#  Version: 3.3.0
+#  Version: 3.4.0
 #
 #  Enthält 6 Themes (wie die Farbschemata in "Eigenschaften von Anzeige"):
 #    HA 95            – Standard: Teal-Desktop, Navy-Titelleisten
@@ -293,10 +293,26 @@ HA 95: &ha95
     :host(.type-humidifier) ha-card {
       --disabled-color: var(--ha95-shadow);
     }
-    /* Sammelschalter in der Titelleiste: Abstand zu _ □ × */
+    /* Entitätskarte mit Sammelschalter: Schalter in eigener Zeile
+       unter der Titelleiste, rechtsbündig über den Kontrollkästchen */
+    ha-card .card-header:has(hui-entities-toggle) {
+      flex-wrap: wrap;
+      background: none;
+      padding: 0 !important;
+    }
+    ha-card .card-header:has(hui-entities-toggle) .name {
+      flex: 1 1 100%;
+      box-sizing: border-box;
+      background: var(--ha95-title-bar);
+      padding: 2px 60px 2px 4px;
+    }
+    ha-card .card-header:has(hui-entities-toggle)::after {
+      top: 4px;
+      transform: none;
+    }
     ha-card .card-header hui-entities-toggle {
       flex: none;
-      margin-right: 8px;
+      margin: 6px 13px 0 auto;
     }
 
   # Alles für UIX: "." wie oben, dazu Thermostat, Luftbefeuchter und
@@ -340,10 +356,26 @@ HA 95: &ha95
       :host(.type-humidifier) ha-card {
         --disabled-color: var(--ha95-shadow);
       }
-      /* Sammelschalter in der Titelleiste: Abstand zu _ □ × */
+      /* Entitätskarte mit Sammelschalter: Schalter in eigener Zeile
+         unter der Titelleiste, rechtsbündig über den Kontrollkästchen */
+      ha-card .card-header:has(hui-entities-toggle) {
+        flex-wrap: wrap;
+        background: none;
+        padding: 0 !important;
+      }
+      ha-card .card-header:has(hui-entities-toggle) .name {
+        flex: 1 1 100%;
+        box-sizing: border-box;
+        background: var(--ha95-title-bar);
+        padding: 2px 60px 2px 4px;
+      }
+      ha-card .card-header:has(hui-entities-toggle)::after {
+        top: 4px;
+        transform: none;
+      }
       ha-card .card-header hui-entities-toggle {
         flex: none;
-        margin-right: 8px;
+        margin: 6px 13px 0 auto;
       }
     "ha-state-control-climate-temperature $": |
       ha-control-circular-slider {

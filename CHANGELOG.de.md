@@ -4,6 +4,18 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [3.4.0] – 2026-10-18
+
+### Hinzugefügt
+- Pixel-Icon-Set `ha95:` (`www/ha95/ha95-icons.js`): 57 Icons in Win95-Optik im 24×24-Raster, Umriss in voller Farbe, Füllung mit halber Deckkraft. Die Namen folgen MDI (`mdi:fan` → `ha95:fan`), dazu ein paar MDI-Aliasse wie `lightning-bolt` und `cctv`. Erscheint in der Icon-Auswahl. Laden über `frontend: extra_module_url`.
+- Startmenü-Beispiel: Die Einträge nutzen die Pixel-Icons.
+
+## [3.3.1] – 2026-10-18
+
+### Behoben
+- Entitätskarten mit Sammelschalter: Der Schalter steht jetzt in einer eigenen Zeile unter der Titelleiste, bündig mit den Kontrollkästchen der Zeilen, statt in der Titelleiste.
+- Custom-Sidebar-Beispiel: kein runder Hover-Kreis mehr hinter dem Menüknopf (`sidebar_button_background_hover_opacity: 0`).
+
 ## [3.3.0] – 2026-10-18
 
 ### Hinzugefügt
