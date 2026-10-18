@@ -39,11 +39,15 @@ A Windows 95 theme for [Home Assistant](https://www.home-assistant.io/): teal de
 
 The theme colors climate and humidifier entities with the 16-color palette: heat red, cool blue, auto green, humidifier teal. This covers the thermostat card ring, icons, tiles and history. The colors are `ha95-heat`, `ha95-cool`, `ha95-auto`, `ha95-heat-cool`, `ha95-dry`, `ha95-fan` and `ha95-humid` in the color scheme and can be changed per variant.
 
-With UIX (see below) the thermostat and humidifier cards also get a gray ring and square 3D + and − buttons.
+With UIX (see below) the thermostat and humidifier cards also get a Win95-style ring (square ends, solid colors, a square handle) and square 3D + and − buttons.
 
 ## Switches
 
 Toggle switches get Win95 colors everywhere: a white track, gray thumb and navy when on. With UIX, the switches in entities cards (rows and the header toggle) become real Win95 checkboxes: a sunken white box with a pixel check mark.
+
+## Sliders & input fields
+
+Sliders (e.g. for `input_number`) become Win95 trackbars: a sunken white groove and a raised gray handle. This works with card-mod and UIX. With UIX, input fields, dropdowns, date and time fields in entities cards also become white sunken boxes; the dropdown arrow becomes a 3D button. Outside dashboards, fields are at least white.
 
 ## Extras (optional)
 

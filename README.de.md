@@ -39,11 +39,15 @@ Ein Windows-95-Theme für [Home Assistant](https://www.home-assistant.io/): Teal
 
 Das Design färbt Klima- und Luftbefeuchter-Entitäten in der 16-Farben-Palette: Heizen rot, Kühlen blau, Automatik grün, Luftbefeuchter teal. Das betrifft den Ring der Thermostat-Karte, Icons, Kacheln und den Verlauf. Die Farben stehen als `ha95-heat`, `ha95-cool`, `ha95-auto`, `ha95-heat-cool`, `ha95-dry`, `ha95-fan` und `ha95-humid` im Farbschema und lassen sich pro Variante ändern.
 
-Mit UIX (siehe unten) bekommen Thermostat- und Luftbefeuchter-Karte außerdem einen grauen Ring und eckige 3D-Knöpfe für + und −.
+Mit UIX (siehe unten) bekommen Thermostat- und Luftbefeuchter-Karte außerdem einen Ring im Win95-Stil (eckige Enden, volle Farben, eckiger Griff) und eckige 3D-Knöpfe für + und −.
 
 ## Schalter
 
 Kippschalter bekommen überall Win95-Farben: weiße Spur, grauer Knopf, eingeschaltet navy. Mit UIX werden die Schalter in Entitätskarten (Zeilen und Schalter in der Kopfzeile) zu echten Win95-Kontrollkästchen: ein eingelassenes weißes Kästchen mit Pixel-Häkchen.
+
+## Schieberegler & Eingabefelder
+
+Schieberegler (z. B. für `input_number`) werden zu Win95-Trackbars: eine eingelassene weiße Rille und ein erhabener grauer Griff. Das klappt mit card-mod und UIX. Mit UIX werden in Entitätskarten außerdem Eingabe-, Auswahl-, Datums- und Zeitfelder zu weißen, eingelassenen Kästchen, der Pfeil im Auswahlfeld wird zum 3D-Knopf. Außerhalb von Dashboards sind die Felder zumindest weiß.
 
 ## Extras (optional)
 

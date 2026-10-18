@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------
 #  HA 95 – Home Assistant Theme-Paket
-#  Version: 3.2.1
+#  Version: 3.3.0
 #
 #  Enthält 6 Themes (wie die Farbschemata in "Eigenschaften von Anzeige"):
 #    HA 95            – Standard: Teal-Desktop, Navy-Titelleisten
@@ -186,6 +186,11 @@ HA 95: &ha95
   ha-switch-checked-thumb-border-color-hover: var(--ha95-dark)
   ha-switch-thumb-box-shadow: "none"
 
+  # ---------- Schieberegler (ha-slider) ----------
+  ha-slider-track-color: var(--ha95-window)
+  ha-slider-indicator-color: var(--ha95-select)
+  ha-slider-thumb-color: var(--ha95-face)
+
   # ---------- Schalter / Slider (ältere Komponenten) ----------
   switch-checked-color: var(--ha95-select)
   switch-checked-button-color: var(--ha95-select)
@@ -198,6 +203,9 @@ HA 95: &ha95
   paper-slider-container-color: var(--ha95-shadow)
 
   # ---------- Eingabefelder (wie HA95-Textboxen) ----------
+  ha-color-form-background: var(--ha95-window)
+  ha-color-form-background-hover: var(--ha95-window)
+  ha-color-form-background-disabled: var(--ha95-face)
   input-fill-color: var(--ha95-window)
   input-ink-color: var(--ha95-window-text)
   input-label-ink-color: var(--ha95-window-text)
@@ -285,6 +293,11 @@ HA 95: &ha95
     :host(.type-humidifier) ha-card {
       --disabled-color: var(--ha95-shadow);
     }
+    /* Sammelschalter in der Titelleiste: Abstand zu _ □ × */
+    ha-card .card-header hui-entities-toggle {
+      flex: none;
+      margin-right: 8px;
+    }
 
   # Alles für UIX: "." wie oben, dazu Thermostat, Luftbefeuchter und
   # der Sammelschalter in Entitätskarten
@@ -327,6 +340,11 @@ HA 95: &ha95
       :host(.type-humidifier) ha-card {
         --disabled-color: var(--ha95-shadow);
       }
+      /* Sammelschalter in der Titelleiste: Abstand zu _ □ × */
+      ha-card .card-header hui-entities-toggle {
+        flex: none;
+        margin-right: 8px;
+      }
     "ha-state-control-climate-temperature $": |
       ha-control-circular-slider {
         --control-circular-slider-background: var(--ha95-shadow);
@@ -335,6 +353,30 @@ HA 95: &ha95
       .buttons {
         gap: 8px;
       }
+    "ha-state-control-climate-temperature $ ha-control-circular-slider $": |
+      /* Win95-Ring: eckige Enden, volle Farbe, eckiger Griff */
+      .background,
+      .arc,
+      .current {
+        stroke-linecap: butt !important;
+      }
+      .arc-colored {
+        opacity: 1 !important;
+      }
+      .current {
+        opacity: 1 !important;
+        stroke: var(--ha95-text) !important;
+      }
+      .target-border {
+        stroke-linecap: square !important;
+        stroke: var(--ha95-dark) !important;
+        stroke-width: 22px !important;
+      }
+      .target {
+        stroke-linecap: square !important;
+        stroke: var(--ha95-face) !important;
+        stroke-width: 16px !important;
+      }
     "ha-state-control-humidifier-humidity $": |
       ha-control-circular-slider {
         --control-circular-slider-background: var(--ha95-shadow);
@@ -342,6 +384,30 @@ HA 95: &ha95
       }
       .buttons {
         gap: 8px;
+      }
+    "ha-state-control-humidifier-humidity $ ha-control-circular-slider $": |
+      /* Win95-Ring: eckige Enden, volle Farbe, eckiger Griff */
+      .background,
+      .arc,
+      .current {
+        stroke-linecap: butt !important;
+      }
+      .arc-colored {
+        opacity: 1 !important;
+      }
+      .current {
+        opacity: 1 !important;
+        stroke: var(--ha95-text) !important;
+      }
+      .target-border {
+        stroke-linecap: square !important;
+        stroke: var(--ha95-dark) !important;
+        stroke-width: 22px !important;
+      }
+      .target {
+        stroke-linecap: square !important;
+        stroke: var(--ha95-face) !important;
+        stroke-width: 16px !important;
       }
     "ha-state-control-climate-temperature $ ha-outlined-icon-button $": |
       ha-button::part(base) {
@@ -398,8 +464,118 @@ HA 95: &ha95
         box-shadow: var(--ha95-sunken) !important;
       }
 
-  # Zeilen in Entitätskarten: Schalter als Kontrollkästchen (nur UIX)
+  # Zeilen in Entitätskarten, Grundlook: Schieberegler als Trackbar
+  card-mod-row: |
+    /* Schieberegler als Win95-Trackbar */
+    ha-slider {
+      --thumb-width: 11px;
+      --thumb-height: 21px;
+    }
+    ha-slider::part(track) {
+      height: 4px;
+      border-radius: 0;
+      background: var(--ha95-window);
+      box-shadow: var(--ha95-sunken);
+    }
+    ha-slider::part(indicator) {
+      background: transparent;
+    }
+    ha-slider::part(thumb) {
+      border: none;
+      border-radius: 0;
+      background: var(--ha95-face);
+      box-shadow: var(--ha95-raised);
+    }
+
+  # Zeilen für UIX: Schieberegler, Eingabe-, Auswahl-, Datums- und
+  # Zeitfelder, Schalter als Kontrollkästchen
   uix-row-yaml: |
+    .: |
+      /* Schieberegler als Win95-Trackbar */
+      ha-slider {
+        --thumb-width: 11px;
+        --thumb-height: 21px;
+      }
+      ha-slider::part(track) {
+        height: 4px;
+        border-radius: 0;
+        background: var(--ha95-window);
+        box-shadow: var(--ha95-sunken);
+      }
+      ha-slider::part(indicator) {
+        background: transparent;
+      }
+      ha-slider::part(thumb) {
+        border: none;
+        border-radius: 0;
+        background: var(--ha95-face);
+        box-shadow: var(--ha95-raised);
+      }
+    "ha-input $": |
+      /* Eingabefeld: weiß und eingelassen */
+      wa-input::part(base) {
+        background: var(--ha95-window) !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: var(--ha95-sunken) !important;
+      }
+      wa-input::part(base)::after {
+        display: none !important;
+      }
+    "ha-select $ ha-picker-field $": |
+      /* Auswahlfeld: weiß, eingelassen, Pfeil als 3D-Knopf */
+      .field {
+        background: var(--ha95-window) !important;
+        border-radius: 0 !important;
+        box-shadow: var(--ha95-sunken) !important;
+      }
+      .field::after {
+        display: none !important;
+      }
+      .arrow {
+        align-self: stretch;
+        width: 16px !important;
+        margin: 2px;
+        background: var(--ha95-face);
+        box-shadow: var(--ha95-raised);
+        color: var(--ha95-text) !important;
+      }
+    "ha-date-input $ ha-input $": |
+      /* Eingabefeld: weiß und eingelassen */
+      wa-input::part(base) {
+        background: var(--ha95-window) !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: var(--ha95-sunken) !important;
+      }
+      wa-input::part(base)::after {
+        display: none !important;
+      }
+    "ha-time-input $ ha-base-time-input $": |
+      /* Uhrzeit: ein gemeinsames weißes, eingelassenes Feld */
+      .time-input-wrap {
+        border-radius: 0 !important;
+        background: var(--ha95-window) !important;
+        box-shadow: var(--ha95-sunken) !important;
+        padding: 2px !important;
+      }
+      .time-separator,
+      .sign,
+      .sign-divider,
+      ha-icon-button {
+        background: transparent !important;
+        border-bottom: none !important;
+      }
+    "ha-time-input $ ha-base-time-input $ ha-input $": |
+      wa-input::part(base) {
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+      }
+      wa-input::part(base)::after {
+        display: none !important;
+      }
     "ha-entity-toggle $ ha-switch $": |
       /* Win95-Kontrollkästchen statt Kippschalter */
       .switch {

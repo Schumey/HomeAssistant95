@@ -4,6 +4,17 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [3.3.0] – 2026-10-18
+
+### Added
+- Sliders in entities cards as Win95 trackbars: sunken white groove, raised gray handle (card-mod and UIX). `ha-slider-*` colors set globally.
+- UIX: input fields, dropdowns, date and time fields in entities cards as white sunken boxes, dropdown arrow as a 3D button.
+- UIX: Win95-style thermostat and humidifier ring with square ends, solid colors and a square handle.
+- Input fields are white everywhere (`ha-color-form-background`).
+
+### Fixed
+- The header toggle in an entities card title bar no longer sits right against the _ □ × buttons.
+
 ## [3.2.1] – 2026-10-18
 
 ### Fixed

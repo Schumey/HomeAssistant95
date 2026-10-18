@@ -4,6 +4,17 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [3.3.0] – 2026-10-18
+
+### Hinzugefügt
+- Schieberegler in Entitätskarten als Win95-Trackbar: eingelassene weiße Rille, erhabener grauer Griff (card-mod und UIX). `ha-slider-*`-Farben global gesetzt.
+- UIX: Eingabe-, Auswahl-, Datums- und Zeitfelder in Entitätskarten als weiße, eingelassene Kästchen, Pfeil im Auswahlfeld als 3D-Knopf.
+- UIX: Thermostat- und Luftbefeuchter-Ring im Win95-Stil mit eckigen Enden, vollen Farben und eckigem Griff.
+- Eingabefelder sind überall weiß (`ha-color-form-background`).
+
+### Behoben
+- Der Sammelschalter in der Titelleiste einer Entitätskarte klebt nicht mehr an den _ □ ×-Knöpfen.
+
 ## [3.2.1] – 2026-10-18
 
 ### Behoben
