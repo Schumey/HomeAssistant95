@@ -2559,6 +2559,13 @@ const scheduleClose = () => {
 };
 const cancelClose = () => clearTimeout(closeTimer);
 
+// Darüberfahren öffnet und schließt Menüs nur mit der Maus. Beim Tippen
+// schickt der Browser vor dem Klick ein nachgemachtes mouseover; das öffnete
+// das Menü, und der Klick gleich danach schloss es wieder.
+const mouseOnly = (fn) => (ev) => {
+  if (ev.pointerType === "mouse") fn(ev);
+};
+
 function showMenu(items, anchorRect, level, anchorEl) {
   closeFrom(level);
   const menu = document.createElement("div");
@@ -2589,17 +2596,17 @@ function showMenu(items, anchorRect, level, anchorEl) {
         showMenu(item.items, row.getBoundingClientRect(), level + 1, row);
         row.classList.add("ha95-open");
       };
-      row.addEventListener("mouseenter", open);
+      row.addEventListener("pointerenter", mouseOnly(open));
       row.addEventListener("click", open);
     } else {
-      row.addEventListener("mouseenter", () => closeFrom(level + 1));
+      row.addEventListener("pointerenter", mouseOnly(() => closeFrom(level + 1)));
       row.addEventListener("click", () => runItem(item));
     }
     menu.appendChild(row);
   }
 
-  menu.addEventListener("mouseenter", cancelClose);
-  menu.addEventListener("mouseleave", scheduleClose);
+  menu.addEventListener("pointerenter", mouseOnly(cancelClose));
+  menu.addEventListener("pointerleave", mouseOnly(scheduleClose));
   // Als Popover in die oberste Ebene, damit es auch über der
   // aufgeklappten Seitenleiste (Handy, schmale Fenster) liegt
   menu.popover = "manual";
@@ -2608,10 +2615,24 @@ function showMenu(items, anchorRect, level, anchorEl) {
 
   // Rechts neben dem Anker, nicht über den unteren Rand hinaus.
   // Das erste Menü setzt bündig an den Rand der Seitenleiste an.
-  const right = level === 0 ? sidebar()?.getBoundingClientRect().right ?? anchorRect.right : anchorRect.right - 3;
+  // Passt es rechts nicht hin (Handy), rückt es nach links ins Bild;
+  // ein Untermenü geht dann links neben das Elternmenü oder, wenn auch
+  // dort kein Platz ist, leicht eingerückt unter den Eintrag.
+  const w = menu.offsetWidth;
   const h = menu.offsetHeight;
-  const top = Math.max(0, Math.min(anchorRect.top - 3, innerHeight - h));
-  menu.style.left = `${Math.round(right)}px`;
+  let left = level === 0 ? sidebar()?.getBoundingClientRect().right ?? anchorRect.right : anchorRect.right - 3;
+  let top = anchorRect.top - 3;
+  if (left + w > innerWidth) {
+    if (level === 0) left = innerWidth - w;
+    else if (anchorRect.left + 3 - w >= 0) left = anchorRect.left + 3 - w;
+    else {
+      left = anchorRect.left + 24;
+      top = anchorRect.bottom - 3;
+    }
+  }
+  left = Math.max(0, Math.min(left, innerWidth - w));
+  top = Math.max(0, Math.min(top, innerHeight - h));
+  menu.style.left = `${Math.round(left)}px`;
   menu.style.top = `${Math.round(top)}px`;
   openMenus.push({ el: menu, anchor: anchorEl });
 }
@@ -2768,16 +2789,22 @@ function attach(sb) {
   });
   observer.observe(root, { subtree: true, childList: true, attributes: true, attributeFilter: ["data-ha95-menu", "icon", "href"] });
 
-  root.addEventListener("mouseover", (ev) => {
-    const anchor = findAnchor(ev);
-    if (anchor) {
-      cancelClose();
-      openRootMenu(anchor);
-    }
-  });
-  root.addEventListener("mouseout", (ev) => {
-    if (findAnchor(ev) && !findAnchor({ composedPath: () => [ev.relatedTarget] })) scheduleClose();
-  });
+  root.addEventListener(
+    "pointerover",
+    mouseOnly((ev) => {
+      const anchor = findAnchor(ev);
+      if (anchor) {
+        cancelClose();
+        openRootMenu(anchor);
+      }
+    })
+  );
+  root.addEventListener(
+    "pointerout",
+    mouseOnly((ev) => {
+      if (findAnchor(ev) && !findAnchor({ composedPath: () => [ev.relatedTarget] })) scheduleClose();
+    })
+  );
   // Klick/Tippen öffnet das Menü (für Touch), statt zu navigieren
   root.addEventListener(
     "click",

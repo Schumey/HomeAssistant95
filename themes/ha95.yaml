@@ -1676,6 +1676,65 @@ HA 95: &ha95
       .header-action-items ::slotted(*) {
         margin-block: 6px 6px !important;
       }
+    # Handy: Bottom-Sheet statt ha-dialog, der Kopf liegt dann direkt darin
+    "$ ha-dialog-header $": |
+      /* Win95-Fenster: Titelleiste oben, darunter die Symbolleiste */
+      .header {
+        padding: 3px 3px 0 !important;
+      }
+      .header-bar {
+        flex-wrap: wrap !important;
+        padding: 0 !important;
+        min-height: 0 !important;
+      }
+      /* Zeile 1: Titelleiste */
+      .header-content {
+        order: 1 !important;
+        flex: 1 1 0 !important;
+        box-sizing: border-box !important;
+        height: 22px !important;
+        min-height: 0 !important;
+        padding: 2px 4px !important;
+        justify-content: center !important;
+        background: var(--ha95-title-bar) !important;
+      }
+      .header-title {
+        height: 18px !important;
+        overflow: hidden !important;
+        color: var(--ha95-title-text) !important;
+        font-size: 13px !important;
+        font-weight: bold !important;
+        line-height: 18px !important;
+        text-align: var(--ha95-title-align, left);
+      }
+      .header-navigation-icon {
+        order: 2 !important;
+        align-items: center !important;
+        height: 22px !important;
+        min-width: 0 !important;
+        padding-inline-end: 2px !important;
+        background: var(--ha95-title-bar) !important;
+      }
+      /* Zeile 2: Symbolleiste mit Trennlinie. Den Abstand tragen die Knöpfe
+         selbst, damit eine leere Leiste keinen Platz braucht. */
+      .header-action-items {
+        order: 3 !important;
+        flex: 1 1 100% !important;
+        height: auto !important;
+        gap: 2px !important;
+        padding: 0 2px !important;
+        margin: 0 !important;
+        box-shadow: inset 0 -1px var(--ha95-highlight), inset 0 -2px var(--ha95-shadow) !important;
+      }
+      .header-action-items ::slotted(*) {
+        margin-block: 6px 6px !important;
+      }
+    "$ ha-bottom-sheet $": |
+      /* Handy: Der Dialog kommt als Bottom-Sheet von unten. Den Zieh-Griff
+         über die Titelleiste stellen statt darauf (sonst verdeckt er den Titel). */
+      .handle-wrapper {
+        position: static !important;
+      }
     "ha-icon-button $": |
       /* kein runder Hover-Kreis, eckige Fläche in Knopfgröße */
       ha-button::after {
@@ -2011,6 +2070,12 @@ HA 95: &ha95
       }
       .header-action-items ::slotted(*) {
         margin-block: 6px 6px !important;
+      }
+    "$ ha-bottom-sheet $": |
+      /* Handy: Der Dialog kommt als Bottom-Sheet von unten. Den Zieh-Griff
+         über die Titelleiste stellen statt darauf (sonst verdeckt er den Titel). */
+      .handle-wrapper {
+        position: static !important;
       }
     "ha-alert $": |
       /* Hinweise (ha-alert) mit eingeritztem Win95-Rahmen und den

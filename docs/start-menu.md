@@ -27,8 +27,9 @@ All colors come from the `ha95-*` variables, so the sidebar follows the selected
    ```yaml
    frontend:
      extra_module_url:
-       - /local/ha95/ha95-startmenu.js
+       - /local/ha95/ha95-startmenu.js?v=3.11.1
    ```
+   The `?v=3.11.1` makes browsers and the companion app load the new file after an update: Home Assistant lets them keep files from `/local/` for 31 days. Change the number with every update. If the app still shows the old version, clear its cache: **Settings → Companion app → Troubleshooting → Reset frontend cache** (Android) or **App Configuration → Debugging → Reset frontend cache** (iOS).
 3. Copy [`examples/startmenu/ha95-startmenu.json`](../examples/startmenu/ha95-startmenu.json) to `/config/www/ha95-startmenu.json`.
 4. Restart Home Assistant and reload the page.
 
@@ -153,8 +154,9 @@ Instead of the JSON file you can also set `window.ha95StartmenuConfig = { menus:
 
 | Problem | Fix |
 |---|---|
-| Nothing happens on hover | Is `ha95-startmenu.js` in `extra_module_url` and did you restart? The browser console shows `HA95 Startmenü: Menü "…" fehlt` when the menu ID in the sidebar does not exist in the JSON file. |
+| Nothing happens on hover or tap | Is `ha95-startmenu.js` in `extra_module_url` and did you restart? The browser console shows `HA95 Startmenü: Menü "…" fehlt` when the menu ID in the sidebar does not exist in the JSON file. |
 | Menu is empty or old | The JSON file has a syntax error, or the page has not been reloaded. |
 | File editor opens, but not the file | Check `file_editor_panel` and `file_editor_base`. |
 | No banner | The banner only shows while the sidebar is expanded. |
+| Works in the browser, but not in the companion app (no banner, no colorful icons, no ▶ arrow) | The app still uses an old copy of the module. Raise the number after `?v=` in `extra_module_url` and restart, or reset the app's frontend cache (see [setup](#2-start-menu-module)). |
 | Banner and colorful icons disappear | The browser console shows `HA95 Startmenü: Seitenleiste ändert sich mehr als …`. Something changed the sidebar many times a second for several seconds, so the module stopped redrawing it instead of freezing the interface. The menus keep working. Reload the page; if it happens again, please open an issue. |

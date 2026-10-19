@@ -33,7 +33,7 @@ Die bunten Startmenü-Icons erzeugt `local/icon-generator/color_icons.py` (Icons
 ## Release-Ablauf
 
 1. `git pull --ff-only`, `git status` prüfen.
-2. Änderungen machen, Versionszeile (`Version: x.y.z`) in allen Dateiköpfen gleich setzen: `themes/ha95.yaml`, `www/ha95/*.css`, `www/ha95/*.js`, `examples/custom-sidebar/custom-sidebar-config.yaml` (und `local/icon-generator/template.js`, `local/theme-generator/ha95.src.yaml`, danach `build.py`).
+2. Änderungen machen, Versionszeile (`Version: x.y.z`) in allen Dateiköpfen gleich setzen (und das `?v=x.y.z` in den Anleitungen `docs/start-menu*.md`, `docs/pixel-icons*.md`, `README*.md`): `themes/ha95.yaml`, `www/ha95/*.css`, `www/ha95/*.js`, `examples/custom-sidebar/custom-sidebar-config.yaml` (und `local/icon-generator/template.js`, `local/theme-generator/ha95.src.yaml`, danach `build.py`).
 3. Changelog **und** README immer in beiden Sprachen pflegen: `CHANGELOG.md` / `README.md` (Englisch, Standard, HACS zeigt README.md) und `CHANGELOG.de.md` / `README.de.md` (Deutsch).
 4. Nur mit expliziten Pfaden committen (`git add -- datei …`), **nie** `git add -A`. Es arbeiten oft mehrere Sitzungen parallel im selben Ordner.
 5. Annotiertes Tag `vX.Y.Z`, pushen, GitHub-Release mit dem Changelog-Abschnitt auf Englisch und Deutsch in den Notes.
@@ -72,6 +72,8 @@ Deutsche HA-Oberfläche: „Werkzeuge → YAML → **Designs** neu laden“ und 
 - **Ansichten-Tabs:** in `hui-root` als `ha-tab-group` > `ha-tab-group-tab` (Part `base`), erreichbar aus `uix-root-yaml` `.`.
 - **Schmale Seitenleiste:** Sie ist ein modaler Dialog, alles außerhalb davon ist dann inert. Popups wie das Startmenü hängen deshalb als `popover` im Shadow-Root von `ha-sidebar`.
 - **More-info-Dialog:** `ha-more-info-dialog $ ha-adaptive-dialog $ ha-dialog $ ha-dialog-header $`. In `uix-more-info-yaml` starten Pfade **bei `ha-adaptive-dialog` selbst**, also `"$ ha-dialog $ ha-dialog-header $"`. Die Knöpfe (`ha-icon-button[slot=headerNavigationIcon|headerActionItems]`, `ha-dropdown[slot=headerActionItems]`) und der Titel (`.title` mit `.breadcrumb` und `.main`) liegen im Shadow-Root von `ha-more-info-dialog`.
+- **Bottom-Sheet (Handy, schmale Fenster):** `ha-adaptive-dialog` nimmt dann `ha-bottom-sheet` statt `ha-dialog`. Der Kopf liegt als `ha-dialog-header` direkt im Light-DOM des Sheets (UIX-Pfad `"$ ha-dialog-header $"`), der Zieh-Griff `.handle-wrapper` in `"$ ha-bottom-sheet $"` (absolut oben, verdeckte sonst den Titel).
+- **Touch:** Beim Tippen schickt der Browser vor `click` ein nachgemachtes `mouseover`/`mouseenter`. Hover-Logik darum über `pointerover`/`pointerenter` mit `pointerType === "mouse"`.
 - **Titel von `ha-card`:** Karten wie Markdown übergeben den Titel als `header` an `ha-card`, das ihn in seinem eigenen Shadow-Root als `h1.card-header` zeichnet. Erreichbar mit dem UIX-Pfad `"ha-card $"`.
 - **Kopfleisten-Knöpfe:** In `hui-root` liegen sie in `.action-items`, einer davon steckt in einem `ha-dropdown` und war ohne feste Maße kleiner als die anderen.
 - **Seitenleiste:** `ha-sidebar $` enthält `div.menu` (Titel) und `div.panels-list` (alle Einträge, auch die unteren). `.sidebar-shell` gibt es nicht mehr. Einträge sind `ha-list-item-button` mit `ha-icon` (benutzerdefiniert, `icon`-Name) oder `ha-svg-icon` (eingebaut, nur `href`).

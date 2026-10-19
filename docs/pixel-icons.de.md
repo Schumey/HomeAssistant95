@@ -11,8 +11,9 @@
    ```yaml
    frontend:
      extra_module_url:
-       - /local/ha95/ha95-icons.js
+       - /local/ha95/ha95-icons.js?v=3.11.1
    ```
+   Das `?v=3.11.1` sorgt dafür, dass Browser und Companion-App nach einem Update die neue Datei laden: Home Assistant erlaubt ihnen, Dateien aus `/local/` 31 Tage lang zwischenzuspeichern. Die Nummer bei jedem Update ändern. Zeigt die App trotzdem noch die alte Fassung, ihren Cache leeren: **Einstellungen → Companion-App → Fehlerbehebung → Frontend-Cache zurücksetzen** (Android) bzw. **App-Konfiguration → Debugging → Frontend-Cache zurücksetzen** (iOS).
 3. Home Assistant neu starten und die Seite neu laden.
 4. Überall, wo man ein Icon wählen kann, z. B. `icon: ha95:thermostat` eintragen. Die Icon-Auswahl zeigt sie an, wenn man `ha95` tippt.
 
@@ -31,6 +32,8 @@ Statt jedes Icon von Hand umzustellen, kann die Datei das selbst erledigen. Daf�
 | `/local/ha95/ha95-icons.js?replace` | Jedes `mdi:`-Icon, das es auch als `ha95:` gibt, wird automatisch ersetzt, auch die Standard-Icons der Entitäten. |
 | `/local/ha95/ha95-icons.js?pixelate` | Alle übrigen Icons (ganz MDI, auch Knöpfe und Menüs) werden auf das 24×24-Pixelraster gebracht. |
 | `/local/ha95/ha95-icons.js?replace&pixelate` | Beides: gezeichnete Icons, wo vorhanden, verpixeltes MDI für den Rest. |
+
+Die Version mit `&` anhängen, z. B. `/local/ha95/ha95-icons.js?replace&pixelate&v=3.11.1`.
 
 Nach dem Ändern der URL Home Assistant neu starten. Beide Modi greifen in die Icon-Komponenten des Frontends ein, wie bei UIX also nach Home-Assistant-Updates kurz prüfen. Icons mit eigener `viewBox` (aus anderen Icon-Sets) bleiben unverändert.
 

@@ -27,8 +27,9 @@ Alle Farben kommen aus den `ha95-*`-Variablen, die Seitenleiste wechselt also mi
    ```yaml
    frontend:
      extra_module_url:
-       - /local/ha95/ha95-startmenu.js
+       - /local/ha95/ha95-startmenu.js?v=3.11.1
    ```
+   Das `?v=3.11.1` sorgt dafür, dass Browser und Companion-App nach einem Update die neue Datei laden: Home Assistant erlaubt ihnen, Dateien aus `/local/` 31 Tage lang zwischenzuspeichern. Die Nummer bei jedem Update ändern. Zeigt die App trotzdem noch die alte Fassung, ihren Cache leeren: **Einstellungen → Companion-App → Fehlerbehebung → Frontend-Cache zurücksetzen** (Android) bzw. **App-Konfiguration → Debugging → Frontend-Cache zurücksetzen** (iOS).
 3. [`examples/startmenu/ha95-startmenu.json`](../examples/startmenu/ha95-startmenu.json) nach `/config/www/ha95-startmenu.json` kopieren.
 4. Home Assistant neu starten und die Seite neu laden.
 
@@ -153,8 +154,9 @@ Statt der JSON-Datei geht auch `window.ha95StartmenuConfig = { menus: { … } }`
 
 | Problem | Lösung |
 |---|---|
-| Beim Darüberfahren passiert nichts | Steht `ha95-startmenu.js` in `extra_module_url`, und wurde neu gestartet? Die Browser-Konsole meldet `HA95 Startmenü: Menü "…" fehlt`, wenn es die Menü-ID aus der Seitenleiste in der JSON-Datei nicht gibt. |
+| Beim Darüberfahren oder Antippen passiert nichts | Steht `ha95-startmenu.js` in `extra_module_url`, und wurde neu gestartet? Die Browser-Konsole meldet `HA95 Startmenü: Menü "…" fehlt`, wenn es die Menü-ID aus der Seitenleiste in der JSON-Datei nicht gibt. |
 | Menü leer oder veraltet | Die JSON-Datei hat einen Syntaxfehler, oder die Seite wurde nicht neu geladen. |
 | File editor geht auf, aber nicht die Datei | `file_editor_panel` und `file_editor_base` prüfen. |
 | Kein Streifen | Der Streifen erscheint nur bei ausgeklappter Seitenleiste. |
+| Im Browser geht es, in der Companion-App nicht (kein Streifen, keine bunten Icons, kein ▶-Pfeil) | Die App nutzt noch eine alte Kopie des Moduls. Die Nummer nach `?v=` in `extra_module_url` erhöhen und neu starten oder den Frontend-Cache der App zurücksetzen (siehe [Einrichtung](#2-startmenü-modul)). |
 | Streifen und bunte Icons verschwinden | In der Browser-Konsole steht `HA95 Startmenü: Seitenleiste ändert sich mehr als …`. Etwas hat die Seitenleiste mehrere Sekunden lang viele Male pro Sekunde geändert, darum zeichnet das Modul sie nicht mehr nach, statt die Oberfläche einzufrieren. Die Menüs funktionieren weiter. Seite neu laden; passiert es wieder, bitte ein Issue anlegen. |

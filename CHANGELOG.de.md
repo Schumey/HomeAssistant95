@@ -4,6 +4,18 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [3.11.1] – unveröffentlicht
+
+Korrekturen für Handys und die Companion-App.
+
+### Behoben
+- Startmenü auf Touch-Bildschirmen: Antippen eines Eintrags mit Ausklappmenü (z. B. „Werkzeuge“) öffnete das Menü und schloss es sofort wieder, weil der Browser vor dem Tippen ein nachgemachtes Darüberfahren der Maus schickt. Darüberfahren zählt jetzt nur noch mit echter Maus, Tippen öffnet das Menü, nochmal Tippen schließt es.
+- Startmenü auf schmalen Bildschirmen: Menüs, die rechts neben der Seitenleiste keinen Platz haben, rücken nach links ins Bild. Ein Untermenü geht dann links neben sein Elternmenü oder, wenn auch dort kein Platz ist, leicht eingerückt unter seinen Eintrag.
+- Detail-Dialoge auf Handys (Bottom-Sheet): Win95-Titelleiste und Symbolleiste fehlten, der weiße Titel stand auf Grau. Der Zieh-Griff steht jetzt über der Titelleiste, statt den Titel zu verdecken. Das gilt auch für andere Dialoge, die als Bottom-Sheet aufgehen.
+
+### Geändert
+- Anleitungen: Module und `ha95.css` mit Version laden, z. B. `/local/ha95/ha95-startmenu.js?v=3.11.1`. Home Assistant erlaubt Browsern und der Companion-App, Dateien aus `/local/` 31 Tage lang zwischenzuspeichern. Nach einem Update lief in der App deshalb oft noch das alte Startmenü (kein Streifen, keine bunten Icons, kein ▶-Pfeil). Die Anleitungen erklären auch, wie man den Frontend-Cache der App zurücksetzt.
+
 ## [3.11.0] – 2026-10-19
 
 „Home Assistant für Workgroups“: benannt nach Windows für Workgroups 3.11.

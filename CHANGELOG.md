@@ -4,6 +4,18 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [3.11.1] – unreleased
+
+Fixes for phones and the companion app.
+
+### Fixed
+- Start menu on touch screens: tapping an item with a flyout menu (e.g. "Tools") opened the menu and closed it again right away, because the browser sends a fake mouse hover before the tap. Hovering now only counts for a real mouse, a tap opens the menu and a second tap closes it.
+- Start menu on narrow screens: menus that do not fit to the right of the sidebar move left into view. A submenu then opens to the left of its parent menu or, if there is no room there either, slightly indented below its item.
+- Detail dialogs on phones (bottom sheet): the Win95 title bar and toolbar were missing, the white title stood on gray. The drag handle now sits above the title bar instead of covering the title. This also applies to other dialogs that open as a bottom sheet.
+
+### Changed
+- Setup guides: load the modules and `ha95.css` with a version, e.g. `/local/ha95/ha95-startmenu.js?v=3.11.1`. Home Assistant lets browsers and the companion app keep files from `/local/` for 31 days, so after an update the app often still ran the old start menu (no banner, no colorful icons, no ▶ arrow). The guides also explain how to reset the app's frontend cache.
+
 ## [3.11.0] – 2026-10-19
 
 "Home Assistant for Workgroups": named after Windows for Workgroups 3.11.
