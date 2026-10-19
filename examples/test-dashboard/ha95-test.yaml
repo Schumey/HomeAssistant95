@@ -1,0 +1,327 @@
+# HA95 Test – Prüfseite für das HomeAssistant95-Design
+#
+# Ein Dashboard mit je einer Karte jeder Art, um nach einem HA-Update in einer
+# Minute alles durchzusehen: alle Tabs anklicken, einmal hell und einmal dunkel.
+#
+# Einrichten:
+#   1. Einstellungen → Dashboards → Dashboard hinzufügen → „Neu beginnen“.
+#   2. Dashboard öffnen → Stift → ⋮ → „Raw-Konfigurationseditor“.
+#   3. Diese Datei einfügen und die Platzhalter-Entitäten durch eigene ersetzen.
+#      Am einfachsten passende Helfer anlegen (Einstellungen → Geräte & Dienste →
+#      Helfer): input_boolean.test_switch, input_number.test_slider (Schieberegler),
+#      input_number.test_box (Eingabefeld), input_select.test_select,
+#      input_datetime.test_date (nur Datum), input_datetime.test_datetime,
+#      timer.test_timer, counter.test_counter, script.test_script.
+#
+# vacuum.unavailable_example und alarm_control_panel.test sind absichtlich nicht
+# vorhanden, damit die Warnungen „Entität nicht gefunden“ mitgeprüft werden. Wer
+# den Zustand „nicht verfügbar“ sehen will, setzt bei vacuum eine echte, gerade
+# nicht erreichbare Entität ein.
+title: HA95 Test
+views:
+  # ── 1. Anzeige: Karten, die nur etwas zeigen ─────────────────────────────
+  - title: Anzeige
+    path: anzeige
+    icon: mdi:monitor-dashboard
+    type: sections
+    max_columns: 4
+    badges:
+      - type: entity
+        entity: sensor.outdoor_temperature
+      - type: entity
+        entity: person.me
+      - type: entity
+        entity: sun.sun
+        show_name: true
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: Text und Hinweise
+            icon: mdi:text-box-outline
+          - type: markdown
+            title: Markdown mit Titel
+            content: |
+              **Fett**, *kursiv*, `Code` und ein [Link](https://github.com/Schumey/HomeAssistant95).
+
+              - Liste eins
+              - Liste zwei
+
+              | Spalte | Wert |
+              |---|---|
+              | Außen | {{ states('sensor.outdoor_temperature') }} °C |
+          - type: markdown
+            content: |
+              <ha-alert alert-type="info">Info-Hinweis</ha-alert>
+              <ha-alert alert-type="warning">Warnung</ha-alert>
+              <ha-alert alert-type="error">Fehler</ha-alert>
+              <ha-alert alert-type="success">Erfolg</ha-alert>
+      - type: grid
+        cards:
+          - type: heading
+            heading: Werte
+            icon: mdi:gauge
+          - type: gauge
+            entity: sensor.living_room_humidity
+            name: Gauge
+            needle: true
+            severity:
+              green: 40
+              yellow: 60
+              red: 70
+            grid_options:
+              columns: 6
+          - type: gauge
+            entity: sensor.processor_use
+            name: Gauge ohne Nadel
+            grid_options:
+              columns: 6
+          - type: sensor
+            entity: sensor.living_room_temperature
+            name: Sensor-Karte
+            graph: line
+          - type: glance
+            title: Glance
+            entities:
+              - sensor.outdoor_temperature
+              - sensor.living_room_humidity
+              - sensor.motion_sensor_battery
+              - vacuum.unavailable_example
+      - type: grid
+        cards:
+          - type: heading
+            heading: Verlauf
+            icon: mdi:chart-line
+          - type: history-graph
+            title: Verlaufsgraph
+            hours_to_show: 24
+            entities:
+              - sensor.outdoor_temperature
+              - sensor.living_room_temperature
+          - type: history-graph
+            title: Zeitleiste
+            hours_to_show: 24
+            entities:
+              - light.dimmable
+              - input_boolean.test_switch
+          - type: statistics-graph
+            title: Statistik
+            chart_type: bar
+            period: day
+            days_to_show: 7
+            stat_types:
+              - mean
+            entities:
+              - sensor.outdoor_temperature
+      - type: grid
+        cards:
+          - type: heading
+            heading: Kalender, Wetter, Kamera
+            icon: mdi:calendar
+          - type: weather-forecast
+            entity: weather.forecast_home
+            forecast_type: daily
+          - type: calendar
+            initial_view: listWeek
+            entities:
+              - calendar.holidays
+              - calendar.personal
+          - type: picture-entity
+            entity: camera.front_door
+            name: Bild-Karte
+
+  # ── 2. Steuerung: Schalter, Regler, Kacheln ──────────────────────────────
+  - title: Steuerung
+    path: steuerung
+    icon: mdi:tune-variant
+    type: sections
+    max_columns: 4
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: Kacheln
+            icon: mdi:view-grid-outline
+            badges:
+              - type: entity
+                entity: sensor.living_room_temperature
+          - type: tile
+            entity: light.dimmable
+            features_position: bottom
+            features:
+              - type: light-brightness
+          - type: tile
+            entity: light.living_room
+            grid_options:
+              columns: 6
+          - type: tile
+            entity: input_boolean.test_switch
+            grid_options:
+              columns: 6
+          - type: tile
+            entity: climate.thermostat
+            features_position: bottom
+            features:
+              - type: target-temperature
+          - type: tile
+            entity: input_select.test_select
+            features_position: bottom
+            features:
+              - type: select-options
+          - type: tile
+            entity: input_number.test_slider
+            features_position: bottom
+            features:
+              - type: numeric-input
+                style: slider
+          - type: tile
+            entity: vacuum.unavailable_example
+            name: Nicht verfügbar
+      - type: grid
+        cards:
+          - type: heading
+            heading: Thermostat und Luftbefeuchter
+            icon: mdi:thermostat
+          - type: thermostat
+            entity: climate.thermostat
+            features:
+              - type: climate-hvac-modes
+          - type: humidifier
+            entity: humidifier.humidifier
+      - type: grid
+        cards:
+          - type: heading
+            heading: Licht, Medien, Knöpfe
+            icon: mdi:lightbulb-outline
+          - type: light
+            entity: light.dimmable
+          - type: media-control
+            entity: media_player.living_room
+          - type: button
+            entity: light.living_room
+            name: Button-Karte
+            grid_options:
+              columns: 6
+              rows: 2
+          - type: button
+            name: Aktion
+            icon: mdi:script-text-outline
+            tap_action:
+              action: more-info
+              entity: script.test_script
+            grid_options:
+              columns: 6
+              rows: 2
+
+  # ── 3. Formulare: Zeilen in Entitäten-Karten ─────────────────────────────
+  - title: Formulare
+    path: formulare
+    icon: mdi:form-select
+    type: sections
+    max_columns: 3
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: Eingabezeilen
+            icon: mdi:form-textbox
+          - type: entities
+            title: Entitäten-Karte
+            show_header_toggle: true
+            entities:
+              - entity: light.living_room
+              - entity: light.dimmable
+              - entity: input_boolean.test_switch
+              - type: divider
+              - entity: input_number.test_slider
+                name: Schieberegler
+              - entity: input_number.test_box
+                name: Zahlenfeld
+              - entity: input_select.test_select
+                name: Auswahlfeld
+              - entity: input_datetime.test_date
+                name: Datum
+              - entity: input_datetime.test_datetime
+                name: Datum und Uhrzeit
+      - type: grid
+        cards:
+          - type: heading
+            heading: Weitere Zeilen
+            icon: mdi:format-list-bulleted
+          - type: entities
+            title: Sonderzeilen
+            entities:
+              - type: section
+                label: Abschnitt
+              - entity: script.test_script
+                name: Skript (Ausführen)
+              - entity: timer.test_timer
+                name: Timer
+              - entity: counter.test_counter
+                name: Zähler
+              - entity: update.home_assistant_core_update
+                name: Update
+              - entity: vacuum.unavailable_example
+                name: Nicht verfügbar
+              - type: weblink
+                name: Weblink
+                url: https://github.com/Schumey/HomeAssistant95
+              - type: attribute
+                entity: sun.sun
+                attribute: next_rising
+                name: Attribut
+                format: time
+          - type: todo-list
+            entity: todo.shopping_list
+      - type: grid
+        cards:
+          - type: heading
+            heading: Stapel und Bedingungen
+            icon: mdi:layers-outline
+          - type: vertical-stack
+            cards:
+              - type: markdown
+                content: Vertikaler Stapel, obere Karte
+              - type: horizontal-stack
+                cards:
+                  - type: button
+                    entity: sun.sun
+                    name: Links
+                  - type: button
+                    entity: person.me
+                    name: Rechts
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: sun.sun
+                state: above_horizon
+            card:
+              type: markdown
+              content: Bedingte Karte (nur tagsüber sichtbar)
+
+  # ── 4. Klassisch: alte Masonry-Ansicht ───────────────────────────────────
+  - title: Klassisch
+    path: klassisch
+    icon: mdi:view-dashboard-variant-outline
+    type: masonry
+    cards:
+      - type: entities
+        title: Masonry-Ansicht
+        entities:
+          - light.living_room
+          - sensor.outdoor_temperature
+          - input_number.test_slider
+      - type: area
+        area: living_room
+      - type: map
+        entities:
+          - zone.home
+        hours_to_show: 0
+      - type: logbook
+        hours_to_show: 6
+        entities:
+          - light.dimmable
+          - input_boolean.test_switch
+      - type: alarm-panel
+        entity: alarm_control_panel.test
+        name: Fehlende Entität
