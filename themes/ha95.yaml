@@ -1,14 +1,16 @@
 # ------------------------------------------------------------------
 #  HA 95 – Home Assistant Theme-Paket
-#  Version: 3.9.0
+#  Version: 3.10.0
 #
-#  Enthält 6 Themes (wie die Farbschemata in "Eigenschaften von Anzeige"):
+#  Enthält 8 Themes (wie die Farbschemata in "Eigenschaften von Anzeige"):
 #    HA 95            – Standard: Teal-Desktop, Navy-Titelleisten
 #    HA 98            – wie 95, aber mit Farbverlauf in den Titelleisten
 #    HA 95 Rose       – Farbschema "Rose"   (Farben nachempfunden)
 #    HA 95 Spruce     – Farbschema "Fichte" (Farben nachempfunden)
 #    HA 95 Desert     – Farbschema "Wüste"  (Farben nachempfunden)
-#    HA 95 Kontrast   – "Kontrast Schwarz", die dunkle Variante
+#    HA 95 Kontrast   – "Kontrast Schwarz"
+#    HA 95 Dark       – Dunkelmodus
+#    HA 95 Auto       – wechselt mit dem Hell-/Dunkelmodus (HA 95 / HA 95 Dark)
 #
 #  Ablage:  /config/themes/ha95.yaml
 #  configuration.yaml:
@@ -20,6 +22,7 @@
 #    - UIX oder card-mod (HACS) -> Fenster mit _ □ × Knöpfen, Klick-Effekt;
 #      nur UIX: Thermostat-/Luftbefeuchter-Knöpfe, Kontrollkästchen
 #    - examples/custom-sidebar/ -> Seitenleiste als Startmenü (Custom Sidebar, HACS)
+#    - /config/www/ha95/ha95-startmenu.js -> Streifen, bunte Icons, Ausklappmenüs
 #
 #  Alle Farben laufen über die ha95-* Variablen. Für ein eigenes Schema
 #  reicht es, eine Variante zu kopieren und nur diese Variablen zu ändern.
@@ -51,6 +54,7 @@ HA 95: &ha95
   ha95-dry: "#800080"            # Klima: Entfeuchten
   ha95-fan: "#008080"            # Klima: Nur Lüfter
   ha95-humid: "#008080"          # Luftbefeuchter an
+  ha95-banner: "#808080"         # Streifen im Startmenü (ha95-startmenu.js)
 
   # ================= Abgeleitete Werte =================
   ha95-raised: "inset -1px -1px var(--ha95-dark), inset 1px 1px var(--ha95-highlight), inset -2px -2px var(--ha95-shadow), inset 2px 2px var(--ha95-light)"
@@ -183,8 +187,8 @@ HA 95: &ha95
   state-humidifier-on-color: var(--ha95-humid)
 
   # ---------- Schalter (ha-switch, HA 2025.10+) ----------
-  # Überall: Win95-Farben. Mit card-mod werden Schalter in Entitätskarten
-  # zusätzlich zu echten Kontrollkästchen (siehe card-mod-row-yaml).
+  # Überall: Win95-Farben. Mit UIX werden Schalter in Entitätskarten
+  # zusätzlich zu echten Kontrollkästchen (siehe uix-row-yaml).
   ha-switch-background-color: var(--ha95-window)
   ha-switch-background-color-hover: var(--ha95-window)
   ha-switch-border-color: var(--ha95-shadow)
@@ -272,8 +276,10 @@ HA 95: &ha95
 
   # Grundlook für jede Karte
   card-mod-card: |
+    /* eckig, auch wenn das Dashboard selbst runde Ecken setzt */
     ha-card {
       border: none !important;
+      border-radius: 0 !important;
       transition: none !important;
     }
     /* nicht bei Reglern, sonst sinkt die ganze Karte beim Ziehen ein */
@@ -335,8 +341,10 @@ HA 95: &ha95
   # der Sammelschalter in Entitätskarten
   uix-card-yaml: |
     .: |
+      /* eckig, auch wenn das Dashboard selbst runde Ecken setzt */
       ha-card {
         border: none !important;
+        border-radius: 0 !important;
         transition: none !important;
       }
       /* nicht bei Reglern, sonst sinkt die ganze Karte beim Ziehen ein */
@@ -392,6 +400,29 @@ HA 95: &ha95
       ha-card .card-header hui-entities-toggle {
         flex: none;
         margin: 6px 13px 0 auto;
+      }
+    "ha-card $": |
+      /* Titel, die ha-card selbst zeichnet (z. B. Markdown-Karte) */
+      .card-header {
+        position: relative;
+        background: var(--ha95-title-bar);
+        color: var(--ha95-title-text) !important;
+        font-weight: bold !important;
+        font-size: 13px !important;
+        line-height: 18px !important;
+        letter-spacing: 0 !important;
+        padding: 2px 60px 2px 4px !important;
+        margin: 3px 3px 8px 3px !important;
+      }
+      .card-header::after {
+        content: "";
+        position: absolute;
+        right: 2px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 14px;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='14' shape-rendering='crispEdges'%3E%3Crect width='16' height='14'/%3E%3Crect width='15' height='13' fill='%23fff'/%3E%3Crect x='1' y='1' width='14' height='12' fill='%23808080'/%3E%3Crect x='1' y='1' width='13' height='11' fill='%23c0c0c0'/%3E%3Crect x='4' y='9' width='6' height='2'/%3E%3Crect x='16' width='16' height='14'/%3E%3Crect x='16' width='15' height='13' fill='%23fff'/%3E%3Crect x='17' y='1' width='14' height='12' fill='%23808080'/%3E%3Crect x='17' y='1' width='13' height='11' fill='%23c0c0c0'/%3E%3Crect x='19' y='2' width='9' height='9'/%3E%3Crect x='20' y='4' width='7' height='6' fill='%23c0c0c0'/%3E%3Crect x='34' width='16' height='14'/%3E%3Crect x='34' width='15' height='13' fill='%23fff'/%3E%3Crect x='35' y='1' width='14' height='12' fill='%23808080'/%3E%3Crect x='35' y='1' width='13' height='11' fill='%23c0c0c0'/%3E%3Cpath d='M38 3l7 7M45 3l-7 7' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E") no-repeat;
       }
     "ha-state-control-climate-temperature $": |
       ha-control-circular-slider {
@@ -800,18 +831,32 @@ HA 95: &ha95
       letter-spacing: 0 !important;
       margin-inline-start: 6px !important;
     }
-    /* Knöpfe wie die kleinen Win95-Titelleistenknöpfe */
+    /* Knöpfe wie die kleinen Win95-Titelleistenknöpfe: alle gleich
+       groß (24×22), auch der im Dropdown, mit 2 px Abstand */
+    .action-items {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+    .action-items ha-dropdown {
+      display: inline-flex;
+    }
     ha-icon-button,
     ha-menu-button {
-      --ha-icon-button-size: 24px;
-      --mdc-icon-size: 18px;
+      --ha-icon-button-size: 22px;
+      --mdc-icon-size: 16px;
       color: var(--ha95-text) !important;
     }
     .action-items ha-icon-button,
     ha-menu-button {
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      width: 24px !important;
+      height: 22px !important;
+      margin: 0 !important;
       background: var(--ha95-face);
       box-shadow: var(--ha95-raised);
-      margin-inline-start: 2px;
     }
     .action-items ha-icon-button:active,
     ha-menu-button:active {
@@ -834,29 +879,48 @@ HA 95: &ha95
         letter-spacing: 0 !important;
         margin-inline-start: 6px !important;
       }
-      /* Knöpfe wie die kleinen Win95-Titelleistenknöpfe */
+      /* Knöpfe wie die kleinen Win95-Titelleistenknöpfe: alle gleich
+         groß (24×22), auch der im Dropdown, mit 2 px Abstand */
+      .action-items {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+      }
+      .action-items ha-dropdown {
+        display: inline-flex;
+      }
       ha-icon-button,
       ha-menu-button {
-        --ha-icon-button-size: 24px;
-        --mdc-icon-size: 18px;
+        --ha-icon-button-size: 22px;
+        --mdc-icon-size: 16px;
         color: var(--ha95-text) !important;
       }
       .action-items ha-icon-button,
       ha-menu-button {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 24px !important;
+        height: 22px !important;
+        margin: 0 !important;
         background: var(--ha95-face);
         box-shadow: var(--ha95-raised);
-        margin-inline-start: 2px;
       }
       .action-items ha-icon-button:active,
       ha-menu-button:active {
         box-shadow: var(--ha95-sunken);
       }
     ".toolbar ha-icon-button $": |
-      /* kein runder Hover-Kreis, eckige Fläche */
+      /* kein runder Hover-Kreis, eckige Fläche in Knopfgröße */
       ha-button::after {
         display: none !important;
       }
+      ha-button,
       ha-button::part(base) {
+        width: 24px !important;
+        height: 22px !important;
+        min-height: 0 !important;
+        padding: 0 !important;
         border-radius: 0 !important;
       }
     "ha-menu-button $ ha-icon-button $": |
@@ -886,17 +950,22 @@ HA 95: &ha95
       padding-inline-start: 6px !important;
       color: var(--ha95-title-text) !important;
     }
+    /* Knöpfe gleich groß wie im Dashboard (24×22) */
     ha-menu-button,
     ::slotted(ha-icon-button),
     ::slotted(ha-dropdown) {
-      --ha-icon-button-size: 24px;
-      --mdc-icon-size: 18px;
+      --ha-icon-button-size: 22px;
+      --mdc-icon-size: 16px;
       color: var(--ha95-text) !important;
     }
     ha-menu-button,
     ::slotted(ha-icon-button),
     ::slotted(ha-dropdown) {
       display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px !important;
+      height: 22px !important;
       background: var(--ha95-face);
       box-shadow: var(--ha95-raised);
       margin-inline-start: 2px;
@@ -919,17 +988,22 @@ HA 95: &ha95
         padding-inline-start: 6px !important;
         color: var(--ha95-title-text) !important;
       }
+      /* Knöpfe gleich groß wie im Dashboard (24×22) */
       ha-menu-button,
       ::slotted(ha-icon-button),
       ::slotted(ha-dropdown) {
-        --ha-icon-button-size: 24px;
-        --mdc-icon-size: 18px;
+        --ha-icon-button-size: 22px;
+        --mdc-icon-size: 16px;
         color: var(--ha95-text) !important;
       }
       ha-menu-button,
       ::slotted(ha-icon-button),
       ::slotted(ha-dropdown) {
         display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px !important;
+        height: 22px !important;
         background: var(--ha95-face);
         box-shadow: var(--ha95-raised);
         margin-inline-start: 2px;
@@ -965,31 +1039,181 @@ HA 95: &ha95
         --mdc-icon-size: 20px;
       }
     "ha-config-dashboard $ ha-top-app-bar-fixed ha-icon-button[slot=actionItems] $": |
-      /* kein runder Hover-Kreis, eckige Fläche */
+      /* kein runder Hover-Kreis, eckige Fläche in Knopfgröße */
       ha-button::after {
         display: none !important;
       }
+      ha-button,
       ha-button::part(base) {
+        width: 24px !important;
+        height: 22px !important;
+        min-height: 0 !important;
+        padding: 0 !important;
         border-radius: 0 !important;
       }
     "ha-config-dashboard $ ha-top-app-bar-fixed ha-dropdown[slot=actionItems] ha-icon-button $": |
-      /* kein runder Hover-Kreis, eckige Fläche */
+      /* kein runder Hover-Kreis, eckige Fläche in Knopfgröße */
       ha-button::after {
         display: none !important;
       }
+      ha-button,
       ha-button::part(base) {
+        width: 24px !important;
+        height: 22px !important;
+        min-height: 0 !important;
+        padding: 0 !important;
         border-radius: 0 !important;
       }
 
-  # Detail-Dialoge (more-info) bekommen ebenfalls eine Titelleiste
+  # Detail-Dialoge (more-info) als Win95-Fenster: Titelleiste mit
+  # "Name - Bereich" und ×-Knopf rechts, darunter eine Symbolleiste mit den
+  # Knöpfen (Verlauf, Einstellungen, ⋮). card-mod: nur die 3D-Knöpfe.
   card-mod-more-info: |
-    ha-dialog-header {
-      background: var(--ha95-title-bar);
-      --primary-text-color: var(--ha95-title-text);
-      --secondary-text-color: var(--ha95-title-text);
-      color: var(--ha95-title-text);
-      font-weight: bold;
+    /* Knöpfe als eckige 3D-Knöpfe (24×22) */
+    ha-icon-button[slot=headerNavigationIcon],
+    ha-icon-button[slot=headerActionItems],
+    ha-dropdown[slot=headerActionItems] > ha-icon-button {
+      --ha-icon-button-size: 22px;
+      --mdc-icon-size: 16px;
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      width: 24px !important;
+      height: 22px !important;
+      color: var(--ha95-text) !important;
+      background: var(--ha95-face);
+      box-shadow: var(--ha95-raised);
     }
+    ha-icon-button[slot^=header]:active,
+    ha-dropdown[slot=headerActionItems] > ha-icon-button:active {
+      box-shadow: var(--ha95-sunken);
+    }
+    ha-dropdown[slot=headerActionItems] {
+      display: inline-flex;
+    }
+  uix-more-info-yaml: |
+    .: |
+      /* Knöpfe als eckige 3D-Knöpfe (24×22) */
+      ha-icon-button[slot=headerNavigationIcon],
+      ha-icon-button[slot=headerActionItems],
+      ha-dropdown[slot=headerActionItems] > ha-icon-button {
+        --ha-icon-button-size: 22px;
+        --mdc-icon-size: 16px;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 24px !important;
+        height: 22px !important;
+        color: var(--ha95-text) !important;
+        background: var(--ha95-face);
+        box-shadow: var(--ha95-raised);
+      }
+      ha-icon-button[slot^=header]:active,
+      ha-dropdown[slot=headerActionItems] > ha-icon-button:active {
+        box-shadow: var(--ha95-sunken);
+      }
+      ha-dropdown[slot=headerActionItems] {
+        display: inline-flex;
+      }
+      /* ×-Knopf klein wie in der Win95-Titelleiste (16×14) */
+      ha-icon-button[slot=headerNavigationIcon] {
+        --ha-icon-button-size: 14px;
+        --mdc-icon-size: 12px;
+        width: 16px !important;
+        height: 14px !important;
+      }
+      /* Titel einzeilig: "Name - Bereich" */
+      .title {
+        display: flex !important;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        align-items: baseline;
+        color: var(--ha95-title-text) !important;
+      }
+      .title .main,
+      .title .breadcrumb {
+        flex: none !important;
+        width: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 13px !important;
+        font-weight: bold !important;
+        line-height: 18px !important;
+        color: var(--ha95-title-text) !important;
+        opacity: 1 !important;
+      }
+      .title .breadcrumb::before {
+        content: " - ";
+        white-space: pre;
+      }
+    "ha-adaptive-dialog $ ha-dialog $ ha-dialog-header $": |
+      .header {
+        padding: 3px 3px 0 !important;
+      }
+      .header-bar {
+        flex-wrap: wrap !important;
+        padding: 0 !important;
+      }
+      /* Zeile 1: Titelleiste */
+      .header-content {
+        order: 1 !important;
+        flex: 1 1 0 !important;
+        box-sizing: border-box !important;
+        height: 22px !important;
+        min-height: 0 !important;
+        padding: 2px 4px !important;
+        justify-content: center !important;
+        background: var(--ha95-title-bar) !important;
+      }
+      .header-title {
+        height: 18px !important;
+        overflow: hidden !important;
+        color: var(--ha95-title-text) !important;
+      }
+      .header-navigation-icon {
+        order: 2 !important;
+        align-items: center !important;
+        height: 22px !important;
+        min-width: 0 !important;
+        padding-inline-end: 2px !important;
+        background: var(--ha95-title-bar) !important;
+      }
+      /* Zeile 2: Symbolleiste mit Trennlinie */
+      .header-action-items {
+        order: 3 !important;
+        flex: 1 1 100% !important;
+        height: auto !important;
+        gap: 2px !important;
+        padding: 4px 2px !important;
+        margin-top: 2px !important;
+        box-shadow: inset 0 -1px var(--ha95-highlight), inset 0 -2px var(--ha95-shadow) !important;
+      }
+    "ha-icon-button $": |
+      /* kein runder Hover-Kreis, eckige Fläche in Knopfgröße */
+      ha-button::after {
+        display: none !important;
+      }
+      ha-button,
+      ha-button::part(base) {
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+      }
+    "ha-dropdown ha-icon-button $": |
+      /* kein runder Hover-Kreis, eckige Fläche in Knopfgröße */
+      ha-button::after {
+        display: none !important;
+      }
+      ha-button,
+      ha-button::part(base) {
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+      }
 
   # Seitenleiste als erhabenes Startmenü
   card-mod-sidebar: |
@@ -1008,6 +1232,7 @@ HA 98:
   <<: *ha95
   card-mod-theme: HA 98
   ha95-title-bar: "linear-gradient(90deg, #000080, #1084d0)"
+  ha95-banner: "linear-gradient(0deg, #000080, #1084d0)"
 
 HA 95 Rose:
   <<: *ha95
@@ -1090,3 +1315,60 @@ HA 95 Kontrast:
   ha95-title-bar: "#800080"
   ha95-select: "#008080"
   ha95-active: "#ffff00"
+
+# Wechselt automatisch: hell wie "HA 95", dunkel wie "HA 95 Dark", je nach
+# Einstellung unter Profil → Design → Modus (oder System).
+HA 95 Auto:
+  <<: *ha95
+  card-mod-theme: HA 95 Auto
+  modes:
+    light: {}
+    dark: &ha95dark
+      ha95-desktop: "#003c3c"
+      ha95-face: "#3c3c3c"
+      ha95-highlight: "#7a7a7a"
+      ha95-light: "#5a5a5a"
+      ha95-shadow: "#1e1e1e"
+      ha95-dark: "#000000"
+      ha95-text: "#e8e8e8"
+      ha95-text-dim: "#b0b0b0"
+      ha95-disabled: "#7a7a7a"
+      ha95-window: "#1e1e1e"
+      ha95-window-text: "#e8e8e8"
+      ha95-title: "#000080"
+      ha95-title-bar: "#000080"
+      ha95-title-text: "#ffffff"
+      ha95-select: "#0a64ad"
+      ha95-select-text: "#ffffff"
+      ha95-active: "#e0c000"
+      ha95-heat: "#ff4040"
+      ha95-cool: "#4080ff"
+      ha95-auto: "#40c040"
+      ha95-heat-cool: "#e0c000"
+      ha95-dry: "#c060c0"
+      ha95-fan: "#40c0c0"
+      ha95-humid: "#40c0c0"
+      ha95-banner: "#1e1e1e"
+      ha95-banner-text: "#9a9a9a"
+      rgb-primary-color: "10, 100, 173"
+      rgb-accent-color: "10, 100, 173"
+      rgb-primary-text-color: "232, 232, 232"
+      rgb-primary-background-color: "60, 60, 60"
+      rgb-card-background-color: "60, 60, 60"
+      warning-color: "#e0c000"
+      success-color: "#40c040"
+      info-color: "#4080ff"
+      state-on-color: "#40c040"
+      graph-color-1: "#4080ff"
+      graph-color-2: "#ff6060"
+      graph-color-3: "#40c040"
+      graph-color-4: "#e0c000"
+      graph-color-5: "#c060c0"
+      graph-color-6: "#40c0c0"
+      graph-color-7: "#ff8040"
+      graph-color-8: "#a0a0ff"
+
+# Dunkles Farbschema (immer dunkel)
+HA 95 Dark:
+  <<: [*ha95dark, *ha95]
+  card-mod-theme: HA 95 Dark

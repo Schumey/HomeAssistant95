@@ -13,7 +13,11 @@ A Windows 95 theme for [Home Assistant](https://www.home-assistant.io/): teal de
 | **HA 95 Rose** | Based on the "Rose" color scheme |
 | **HA 95 Spruce** | Based on the "Spruce" color scheme |
 | **HA 95 Desert** | Based on the "Desert" color scheme |
-| **HA 95 Kontrast** | "High Contrast Black", the dark variant |
+| **HA 95 Kontrast** | "High Contrast Black" |
+| **HA 95 Dark** | Dark mode: dark gray windows, dark teal desktop |
+| **HA 95 Auto** | Switches between HA 95 and HA 95 Dark with the light/dark mode |
+
+More about dark mode and your own colors: [Color schemes](docs/color-schemes.md).
 
 ## Installation
 
@@ -35,128 +39,34 @@ A Windows 95 theme for [Home Assistant](https://www.home-assistant.io/): teal de
 3. Check the configuration, then **Tools → YAML → reload Themes**. If `frontend:` is new, restart once.
 4. Pick it under **Profile → Theme**.
 
-## Climate & humidifier
+## What the theme does on its own
 
-The theme colors climate and humidifier entities with the 16-color palette: heat red, cool blue, auto green, humidifier teal. This covers the thermostat card ring, icons, tiles and history. The colors are `ha95-heat`, `ha95-cool`, `ha95-auto`, `ha95-heat-cool`, `ha95-dry`, `ha95-fan` and `ha95-humid` in the color scheme and can be changed per variant.
-
-With UIX (see below) the thermostat and humidifier cards also get a Win95-style ring (square ends, solid colors, a square handle) and square 3D + and − buttons.
-
-## Switches
-
-Toggle switches get Win95 colors everywhere: a white track, gray thumb and navy when on. With UIX, the switches in entities cards (rows and the header toggle) become real Win95 checkboxes: a sunken white box with a pixel check mark.
-
-## Sliders & input fields
-
-Sliders (e.g. for `input_number`) become Win95 trackbars: a sunken white groove and a raised gray handle. This works with card-mod and UIX. With UIX, dropdowns, date and time fields in entities cards look like Win95 dialog controls: the label on the left, aligned with the other rows, and a white sunken box next to it. Dropdowns take the right half of the row with a 3D ▼ button at the edge. Date and time boxes are only as wide as their content, without the "hh"/"mm" labels. Outside dashboards, fields are at least white.
+- Gray 3D windows with square corners on a teal desktop, navy title bar at the top.
+- Win95 colors for switches (white track, gray thumb), sliders, input fields and tables.
+- Climate and humidifier entities in the 16-color palette: heat red, cool blue, auto green, humidifier teal.
+- Charts in the 16-color palette.
 
 ## Extras (optional)
+
+Each extra works on its own. Pick what you like:
+
+| Extra | What you get | Guide |
+|---|---|---|
+| **Window look** | Cards and dialogs as real Win95 windows with title bars, toolbars, checkboxes, trackbars and 3D buttons. Needs [UIX](https://github.com/Lint-Free-Technology/uix). | [Window look](docs/window-look.md) |
+| **Start menu** | Sidebar as a Start menu: "HomeAssistant95" banner, colorful icons, flyout menus with submenus, and how to build your own menu. | [Start menu](docs/start-menu.md) |
+| **Pixel icons** | 537 icons in Win95 pixel style (`ha95:`), optionally replacing all MDI icons automatically. | [Pixel icons](docs/pixel-icons.md) |
+| **Pixel font & pointer** | The "Pixelated MS Sans Serif" font and the classic arrow pointer. | [below](#pixel-font--mouse-pointer) |
 
 ### Pixel font & mouse pointer
 
 1. Copy `www/ha95/ha95.css` to `/config/www/ha95/`.
 2. **Settings → Dashboards → ⋮ → Resources** → `/local/ha95/ha95.css`, type **Stylesheet**.
 
-The "Pixelated MS Sans Serif" font comes from [98.css](https://github.com/jdan/98.css) (MIT) and is loaded from jsDelivr. With UIX 8.4.0 or later the theme loads the font itself (`uix-fonts`), so it also shows up on the settings pages. `ha95.css` is then only needed for the mouse pointer.
-
-### Pixel icons
-
-`www/ha95/ha95-icons.js` adds an icon set in Win95 pixel style: 537 icons on a 24×24 grid, with an outline in full color and a fill at half opacity. They are colored by entity state like every other icon. The names follow MDI, so `mdi:lightbulb-on` becomes `ha95:lightbulb-on`. Unknown names show `ha95:help`.
-
-1. Copy `www/ha95/ha95-icons.js` to `/config/www/ha95/`.
-2. In `configuration.yaml`:
-   ```yaml
-   frontend:
-     extra_module_url:
-       - /local/ha95/ha95-icons.js
-   ```
-3. Restart Home Assistant and reload the page.
-4. Use the icons anywhere you can pick an icon, for example `icon: ha95:thermostat`. The icon picker lists them when you type `ha95`.
-
-Alternatively you can add the file as a dashboard resource (type **JavaScript module**), but then the icons only show up in dashboards, not in the sidebar.
-
-Included are the 500 MDI icons Home Assistant uses most (the default icons of all core integrations and the icons of the user interface), apart from the brand logos `home-assistant` and `bluetooth`. Another 94 MDI names point to one of them, e.g. `lightbulb-outline`, `home-outline`, `roller-shade-closed` or `toggle-switch`. Type `ha95` in the icon picker to browse them all. Each icon is a readable text grid in the file, so you can edit or add your own.
-
-#### Automatic mode
-
-Instead of changing every icon by hand, the file can do it for you. Add an option to the URL in `configuration.yaml`:
-
-| URL | Effect |
-|---|---|
-| `/local/ha95/ha95-icons.js?replace` | Every `mdi:` icon that exists as `ha95:` is replaced automatically, including the default icons of your entities. |
-| `/local/ha95/ha95-icons.js?pixelate` | Every other icon (all of MDI, including buttons and menus) is snapped to the 24×24 pixel grid. |
-| `/local/ha95/ha95-icons.js?replace&pixelate` | Both: hand-drawn icons where available, pixelated MDI for the rest. |
-
-Restart Home Assistant after changing the URL. Both modes hook into the frontend's icon components, so like UIX, check them after Home Assistant updates. Icons with their own `viewBox` (from other icon sets) are left alone.
-
-### Window look with UIX (or card-mod)
-
-With [UIX – UI eXtension](https://github.com/Lint-Free-Technology/uix) (HACS), cards with a title become windows with a title bar and _ □ × buttons, cards look pressed in when clicked, the thermostat and humidifier cards get square 3D buttons, and switches in entities cards become checkboxes. The top bar of dashboards and settings pages becomes a Win95 title bar (36 px, bold title, small square gray buttons), and the icons on the settings page become square 3D tiles like in the Control Panel. Without UIX or card-mod this part is ignored.
-
-UIX is the maintained successor of card-mod and reads card-mod settings too. Install it from HACS, then add it under **Settings → Devices & services** (it is an integration). If you still have card-mod installed, remove it first, including any `extra_module_url` entry for it.
-
-**Still on card-mod?** [card-mod](https://github.com/thomasloven/lovelace-card-mod) 4.2.1 is no longer maintained. Since HA 2026.8 it stops styling completely as soon as a theme contains `card-mod-…-yaml` keys. This theme therefore gives card-mod only the basic look (title bars, pressed effect). The thermostat buttons and checkboxes are in `uix-…-yaml` keys, which only UIX reads.
-
-> UIX and card-mod rely on frontend internals. Check that everything still looks right after Home Assistant updates.
-
-### Sidebar as Start menu
-
-With [Custom Sidebar](https://github.com/elchininet/custom-sidebar) (HACS) the sidebar becomes a Start menu: a "Start" title with a clock, a 3D frame, blue selection and the vertical "HomeAssistant95" banner on the left. Items can show extra info, such as the current temperature below "Heating" or a red "!" when the vacuum reports an error.
-
-1. Copy [`examples/custom-sidebar/custom-sidebar-config.yaml`](examples/custom-sidebar/custom-sidebar-config.yaml) to `/config/www/custom-sidebar-config.yaml`.
-2. Adjust the names and entity IDs in the `order` section to your setup.
-3. Reload the page.
-
-All colors come from the `ha95-*` variables, so the sidebar follows the selected theme. The example uses the [pixel icons](#pixel-icons). Without them, swap `ha95:` for `mdi:`.
-
-### Start menu with submenus
-
-`www/ha95/ha95-startmenu.js` adds Win95 flyout menus to the sidebar: hover over (or tap) an item and a menu opens to the right, with further submenus. The example builds a "Tools" menu with:
-
-- **File Editor ▶** opens frequently used files (e.g. `configuration.yaml`, `automations.yaml`) directly in the [File editor](https://github.com/home-assistant/addons/tree/master/configurator) app
-- Automations, scripts, scenes, helpers, developer tools ▶, devices & services, entities, logs
-- **Restart …** with a Win95-style confirmation dialog
-
-Setup:
-
-1. Copy `www/ha95/ha95-startmenu.js` to `/config/www/ha95/` and load it in `configuration.yaml`:
-   ```yaml
-   frontend:
-     extra_module_url:
-       - /local/ha95/ha95-startmenu.js
-   ```
-2. Copy [`examples/startmenu/ha95-startmenu.json`](examples/startmenu/ha95-startmenu.json) to `/config/www/ha95-startmenu.json` and adjust it.
-3. In the Custom Sidebar config, add an item with the attribute `data-ha95-menu` (see the "Tools" item at the end of the [example](examples/custom-sidebar/custom-sidebar-config.yaml)).
-4. Restart Home Assistant and reload the page.
-
-Menu entries in the JSON file:
-
-| Entry | Does |
-|---|---|
-| `{ "name": "…", "icon": "mdi:…", "path": "/config/…" }` | opens a page |
-| `{ "name": "…", "file": "configuration.yaml" }` | opens the file in the File editor (relative to `file_editor_base`, default `/homeassistant`) |
-| `{ "name": "…", "action": "restart" }` | restarts Home Assistant after a confirmation |
-| `{ "name": "…", "url": "https://…" }` | opens an address in a new tab |
-| `{ "name": "…", "items": [ … ] }` | another submenu |
-| `{ "divider": true }` | separator line |
-
-If the File editor runs under a different panel name than `core_configurator`, set `file_editor_panel` in the JSON file.
-
-## Your own color scheme
-
-Every color goes through the `ha95-*` variables at the top of the file. Copy a variant, give it a new name (also in `card-mod-theme`) and change only those values and the `rgb-*` lines.
+The "Pixelated MS Sans Serif" font comes from [98.css](https://github.com/jdan/98.css) (MIT) and is loaded from jsDelivr. With UIX 8.4.0 or later the theme loads the font itself, so it also shows up on the settings pages. `ha95.css` is then only needed for the mouse pointer.
 
 ## Uninstall
 
-1. **Switch the theme back:** **Profile → Theme** → back to the default. If dashboards, views or cards have `theme: HA 95` (or another HA 95 variant) set, remove it there too.
-2. **Remove the theme:** HACS → HomeAssistant95 → ⋮ → **Remove**. For a manual install, delete `/config/themes/ha95.yaml`. Then **Tools → YAML → reload Themes**.
-3. **Remove the extras** (only what you installed):
-   - Delete `/config/www/ha95/` (`ha95.css`, `ha95-icons.js`, `ha95-startmenu.js`) and `/config/www/ha95-startmenu.json`.
-   - **Settings → Dashboards → ⋮ → Resources:** delete `/local/ha95/ha95.css`.
-   - In `configuration.yaml`, delete the lines `/local/ha95/ha95-icons.js` and `/local/ha95/ha95-startmenu.js` under `frontend: extra_module_url:` (and `extra_module_url:` itself if nothing is left), then restart Home Assistant.
-4. **Replace pixel icons:** everything that still uses `ha95:` icons (dashboards, entities, sidebar config) shows an empty icon afterwards. Change `ha95:` back to `mdi:`.
-5. **Custom Sidebar:** the example config uses the `ha95-*` colors, which no longer exist without the theme. Restore your previous `/config/www/custom-sidebar-config.yaml` or delete the color, `styles` and "Tools" parts.
-6. **UIX, card-mod and Custom Sidebar** are separate HACS installs. Only remove them if nothing else uses them.
-7. Reload the browser with **Ctrl+F5**. In the companion app, clear the frontend cache or restart the app.
+See [Uninstall](docs/uninstall.md).
 
 ## License
 

@@ -4,6 +4,20 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [3.10.0] – 2026-10-19
+
+### Added
+- New themes **HA 95 Dark** (dark mode) and **HA 95 Auto**, which switches between HA 95 and HA 95 Dark with the light/dark mode of the profile or the operating system.
+- Start menu: `ha95-startmenu.js` now draws the vertical "HomeAssistant**95**" banner (variable `ha95-banner`, a blue gradient in HA 98) and colorful Win95 icons in the sidebar and the flyout menus: about 70 icons with a black outline, colored fill and 3D shading, plus 57 MDI names that point to them. Options `banner`, `banner_text` and `color_icons` in `ha95-startmenu.json`.
+- UIX: detail dialogs (more-info) as Win95 windows: title bar "Name - Area" with a small × button on the right, a toolbar below with the buttons as square 3D buttons.
+- UIX: cards that draw their title themselves (e.g. markdown) get a title bar too.
+- Docs: a step-by-step guide for building your own Start menu ([docs/start-menu.md](docs/start-menu.md)). The README is now a short overview; details are in `docs/` (window look, Start menu, pixel icons, color schemes, uninstall), in English and German.
+
+### Changed
+- Top bar buttons all have the same size (24×22) and a 2 px gap, including the "+" button with its dropdown; the same on settings pages.
+- Cards stay square even when a dashboard sets rounded corners with card-mod.
+- Custom Sidebar example: the old CSS banner is gone (it no longer worked in HA 2026.10), the banner comes from `ha95-startmenu.js`.
+
 ## [3.9.0] – 2026-10-18
 
 ### Added

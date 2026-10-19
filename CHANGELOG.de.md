@@ -4,6 +4,20 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [3.10.0] – 2026-10-19
+
+### Hinzugefügt
+- Neue Designs **HA 95 Dark** (Dunkelmodus) und **HA 95 Auto**, das mit dem Hell-/Dunkelmodus des Profils oder des Betriebssystems zwischen HA 95 und HA 95 Dark wechselt.
+- Startmenü: `ha95-startmenu.js` zeichnet jetzt den senkrechten Streifen „HomeAssistant**95**“ (Variable `ha95-banner`, bei HA 98 ein blauer Verlauf) und bunte Win95-Icons in der Seitenleiste und den Ausklappmenüs: rund 70 Icons mit schwarzem Umriss, farbiger Füllung und 3D-Schattierung, dazu 57 MDI-Namen, die darauf zeigen. Optionen `banner`, `banner_text` und `color_icons` in `ha95-startmenu.json`.
+- UIX: Detail-Dialoge (more-info) als Win95-Fenster: Titelleiste „Name - Bereich“ mit kleinem ×-Knopf rechts, darunter eine Symbolleiste mit den Knöpfen als eckige 3D-Knöpfe.
+- UIX: Karten, die ihren Titel selbst zeichnen (z. B. Markdown), bekommen ebenfalls eine Titelleiste.
+- Doku: Schritt-für-Schritt-Anleitung für ein eigenes Startmenü ([docs/start-menu.de.md](docs/start-menu.de.md)). Die README ist jetzt eine kurze Übersicht, Details stehen in `docs/` (Fenster-Look, Startmenü, Pixel-Icons, Farbschemata, Deinstallieren), auf Englisch und Deutsch.
+
+### Geändert
+- Die Knöpfe in der Kopfleiste sind alle gleich groß (24×22) mit 2 px Abstand, auch der „+“-Knopf mit Ausklappmenü; ebenso auf den Einstellungsseiten.
+- Karten bleiben eckig, auch wenn ein Dashboard per card-mod runde Ecken setzt.
+- Custom-Sidebar-Beispiel: Der alte CSS-Streifen ist entfernt (er wirkte in HA 2026.10 nicht mehr), der Streifen kommt jetzt aus `ha95-startmenu.js`.
+
 ## [3.9.0] – 2026-10-18
 
 ### Hinzugefügt

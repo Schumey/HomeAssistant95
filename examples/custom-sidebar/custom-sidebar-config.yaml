@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------
 #  HomeAssistant95 – Start menu sidebar for Custom Sidebar
-#  Version: 3.9.0
+#  Version: 3.10.0
 #
 #  Requires: Custom Sidebar (HACS, https://github.com/elchininet/custom-sidebar)
 #  File:     /config/www/custom-sidebar-config.yaml
@@ -47,8 +47,8 @@ divider_color: var(--ha95-shadow)
 scrollbar_thumb_color: var(--ha95-shadow)
 
 # ---------- Start menu look ----------
-# 3D frame, square selection and the vertical banner on the left
-# (like the "Windows 95" stripe in the original Start menu).
+# 3D frame and square selection. The vertical "HomeAssistant95" banner
+# and the colorful icons come from www/ha95/ha95-startmenu.js.
 styles: |
   :host {
     box-shadow: var(--ha95-raised);
@@ -65,26 +65,6 @@ styles: |
   }
   :is(ha-list-item-base, ha-list-item-button) {
     border-radius: 0 !important;
-  }
-  :host([expanded]) .sidebar-shell {
-    position: relative;
-    border-left: 24px solid var(--ha95-shadow);
-  }
-  :host([expanded]) .sidebar-shell::after {
-    content: "HomeAssistant95";
-    position: absolute;
-    left: -24px;
-    bottom: 0;
-    width: 24px;
-    padding: 8px 0;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    color: var(--ha95-face);
-    font-weight: bold;
-    font-size: 18px;
-    letter-spacing: 1px;
-    text-align: left;
-    pointer-events: none;
   }
 
 # ---------- Items ----------

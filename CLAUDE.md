@@ -6,12 +6,13 @@ Ein Windows-95-Design für Home Assistant, verteilt über HACS (Typ Theme). Dies
 
 | Pfad | Inhalt |
 |---|---|
-| `themes/ha95.yaml` | Das Design: 6 Themes (HA 95, HA 98, HA 95 Rose/Spruce/Desert/Kontrast). Variante = YAML-Anker `&ha95` plus überschriebene `ha95-*`-Farben. |
+| `themes/ha95.yaml` | Das Design: 8 Themes (HA 95, HA 98, HA 95 Rose/Spruce/Desert/Kontrast/Dark/Auto). Variante = YAML-Anker `&ha95` plus überschriebene `ha95-*`-Farben. Die dunklen Farben stehen einmal als Anker `&ha95dark` unter `HA 95 Auto` → `modes: dark:`; `HA 95 Dark` nutzt `<<: [*ha95dark, *ha95]`. |
 | `www/ha95/ha95.css` | Dashboard-Ressource: Pixel-Schrift, Mauszeiger, Scrollbars. |
 | `www/ha95/ha95-icons.js` | Pixel-Icon-Set (`ha95:`), Modus `?replace` / `?pixelate`. **Wird generiert**, siehe unten. |
-| `www/ha95/ha95-startmenu.js` | Win95-Ausklappmenüs an Seitenleisten-Einträgen mit `data-ha95-menu`; Menüs aus `/config/www/ha95-startmenu.json`. |
+| `www/ha95/ha95-startmenu.js` | Startmenü: senkrechter Streifen, bunte Icons in Seitenleiste und Menüs, Win95-Ausklappmenüs an Einträgen mit `data-ha95-menu`; Menüs und Optionen aus `/config/www/ha95-startmenu.json`. Der Block zwischen `// <color-icons>` und `// </color-icons>` **wird generiert**, siehe unten. |
 | `examples/custom-sidebar/` | Beispielkonfiguration für Custom Sidebar (Seitenleiste als Startmenü). |
 | `examples/startmenu/` | Beispielmenü für `ha95-startmenu.js`. |
+| `docs/` | Ausführliche Anleitungen, je `name.md` (Englisch) und `name.de.md` (Deutsch): Fenster-Look, Startmenü (mit „Eigenes Menü bauen“), Pixel-Icons, Farbschemata, Deinstallieren. Die README ist nur die Übersicht und verlinkt dorthin. |
 | `local/` | Gitignored: persönliche Dateien des Nutzers und der Icon-Generator. Ist nicht auf GitHub und muss beim PC-Wechsel von Hand mitgenommen werden. |
 
 Alle Farben laufen über `ha95-*`-Variablen. Neue Regeln nutzen diese Variablen statt fester Farben, damit alle Varianten mitziehen. Die Kommentare in den Dateien sind deutsch.
@@ -19,6 +20,8 @@ Alle Farben laufen über `ha95-*`-Variablen. Neue Regeln nutzen diese Variablen 
 ## Icon-Generator
 
 `www/ha95/ha95-icons.js` wird aus `local/icon-generator/` erzeugt (`build.py`, `template.js`, `icons*.py`). Die Datei nie von Hand ändern, sonst überschreibt der nächste Generator-Lauf die Änderung. Ausnahme: die Versionszeile, dann aber auch in `local/icon-generator/template.js`.
+
+Die bunten Startmenü-Icons erzeugt `local/icon-generator/color_icons.py`: Es liest die Raster aus `ha95-icons.js`, färbt sie nach den Regeln in `SPEC` (Umriss schwarz, Füllfarbe, Rechtecke, Flutfüllung, automatische 3D-Schattierung) und schreibt den Block in `ha95-startmenu.js`. Vorschau als PNG (ohne PIL): `python local/icon-generator/preview_png.py [namen…]` → `local/color-icons-preview.png`, links auf Grau, rechts auf Navy (markiert). Reine Strich-Icons nicht in Navy färben, sonst verschwinden sie auf der Markierung.
 
 ## Release-Ablauf
 
@@ -54,12 +57,18 @@ Deutsche HA-Oberfläche: „Werkzeuge → YAML → **Designs** neu laden“ und 
 - **Schalter:** `ha-switch` (Web Awesome), Parts `control` und `thumb`.
 - **Schieberegler:** `ha-slider`, Parts `track`, `indicator`, `thumb`.
 - **Schmale Seitenleiste:** Sie ist ein modaler Dialog, alles außerhalb davon ist dann inert. Popups wie das Startmenü hängen deshalb als `popover` im Shadow-Root von `ha-sidebar`.
-- **More-info-Dialog:** jetzt `ha-adaptive-dialog`.
+- **More-info-Dialog:** `ha-more-info-dialog $ ha-adaptive-dialog $ ha-dialog $ ha-dialog-header $`. Die Knöpfe (`ha-icon-button[slot=headerNavigationIcon|headerActionItems]`, `ha-dropdown[slot=headerActionItems]`) und der Titel (`.title` mit `.breadcrumb` und `.main`) liegen im Shadow-Root von `ha-more-info-dialog`.
+- **Titel von `ha-card`:** Karten wie Markdown übergeben den Titel als `header` an `ha-card`, das ihn in seinem eigenen Shadow-Root als `h1.card-header` zeichnet. Erreichbar mit dem UIX-Pfad `"ha-card $"`.
+- **Kopfleisten-Knöpfe:** In `hui-root` liegen sie in `.action-items`, einer davon steckt in einem `ha-dropdown` und war ohne feste Maße kleiner als die anderen.
+- **Seitenleiste:** `ha-sidebar $` enthält `div.menu` (Titel) und `div.panels-list` (alle Einträge, auch die unteren). `.sidebar-shell` gibt es nicht mehr. Einträge sind `ha-list-item-button` mit `ha-icon` (benutzerdefiniert, `icon`-Name) oder `ha-svg-icon` (eingebaut, nur `href`).
 - **Einstellungsseiten:** Kopfleiste `ha-top-app-bar-fixed`, Icons in `ha-config-navigation-list` (`.icon-background`).
 - **File editor** (Panel `core_configurator`, Basis `/homeassistant`): Datei öffnen mit `iframe.contentWindow.loadfile(pfad, name)`, Lesen und Speichern über `api/file?filename=` bzw. POST `api/save` aus dem Ingress-iframe.
 
 ## Arbeitsweise
 
 - Regeln möglichst **live abstimmen**: im HA-Tab des eingebauten Browsers Styles per JavaScript in die Shadow-Roots einspielen, Screenshot, nachjustieren, erst dann ins Theme übernehmen. Blind gebaute Selektoren treffen das echte DOM oft nicht.
+- HA im eingebauten Browser über `http://192.168.178.27/` öffnen (Port 80). `homeassistant.local` wird dort blockiert, ebenso Zugriffe auf `localhost` (ein lokaler Testserver für geänderte Module geht also nicht) und `file://`. Geänderte JS-Module daher stückweise per JavaScript einspielen. Farbschemata testen: `ha95-*`-Variablen per `document.documentElement.style.setProperty` setzen.
+- Das HA-MCP läuft nur lesend: Dashboards und Zustände lesen ja, schreiben nein. Vorschläge für persönliche Dashboards als YAML in `local/` ablegen (z. B. `local/dashboard-batterien.yaml`).
+- Screenshots im eingebauten Browser sind verkleinert (1125 px CSS-Breite → 800 px). Für Maße `getBoundingClientRect()` statt Augenmaß nehmen.
 - Die Quellen von HA-Frontend, UIX und Custom Sidebar auf GitHub lesen, bevor man Selektoren rät.
 - Der Nutzer meldet sich im Browser selbst an. Änderungen an seiner HA-Konfiguration nur nach Rückfrage und mit Sicherungskopie.
