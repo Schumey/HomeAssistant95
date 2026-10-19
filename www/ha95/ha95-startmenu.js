@@ -1,6 +1,6 @@
 /*
  * HA 95 – Startmenü mit Untermenüs für Home Assistant
- * Version: 3.10.0
+ * Version: 3.11.0
  * Ablage:  /config/www/ha95/ha95-startmenu.js
  * Laden:   configuration.yaml
  *            frontend:
@@ -23,7 +23,9 @@
  * Einträge im Menü (JSON):
  *   { "name": "…", "icon": "mdi:…", "path": "/config/…" }   Seite öffnen
  *   { "name": "…", "file": "configuration.yaml" }           Datei im File editor öffnen
- *   { "name": "…", "action": "restart" }                    Home Assistant neu starten (mit Rückfrage)
+ *   { "name": "…", "action": "restart" }                    Home Assistant neu starten (mit Rückfrage),
+ *                                                           danach "Es ist jetzt sicher, …" bis HA wieder da ist
+ *   { "name": "…", "action": "run" }                        Schnellsuche als Dialog "Ausführen" öffnen
  *   { "name": "…", "url": "https://…" }                     Adresse in neuem Tab öffnen
  *   { "name": "…", "items": [ … ] }                         weiteres Untermenü
  *   { "divider": true }                                     Trennlinie
@@ -33,6 +35,8 @@
  *   "banner_text": "…"      eigener Text; Ziffern am Ende werden hervorgehoben
  *   "color_icons": true     bunte Win95-Icons in Seitenleiste und Menüs
  *                           (für Icons, die es bunt gibt, sonst das normale)
+ *   "busy_cursor": true     Sanduhr als Mauszeiger, solange HA arbeitet
+ *                           (Anfrage dauert länger, Seitenwechsel, Neustart)
  */
 
 const CONFIG_URL = "/local/ha95-startmenu.json";
@@ -42,12 +46,14 @@ const DEFAULTS = {
   banner: true,
   banner_text: "HomeAssistant95",
   color_icons: true,
+  busy_cursor: true,
   menus: {},
 };
 
 let config = null;
 const openMenus = []; // Stapel offener Menüs: { el, anchor }
 let closeTimer = null;
+const GUARD_LIMIT = 30; // höchstens so oft pro Sekunde die Seitenleiste schmücken
 
 // ---------- Bunte Icons (Startmenü) ----------
 
@@ -802,6 +808,32 @@ const COLOR_ICONS = {
 ........................
 ........................
 `,
+  "console": `
+........................
+........................
+........................
+..dddddddddddddddddddd..
+..dddddddddddddddddddd..
+..dddddddddddddddddddd..
+..dddddddddddddddddddd..
+..kbbbbbbbbbbbbbbbbbBk..
+..kbBBBBBBBBBBBBBBBBBk..
+..kbBwBBBBBBBBBBBBBBBk..
+..kbBwwBBBBBBBBBBBBBBk..
+..kbBBwwBBBBBBBBBBBBBk..
+..kbBBBwwwbBBBBBBBBBBk..
+..kbBBBwwwbBBBBBBBBBBk..
+..kbBBwwbbBBBBBBBBBBBk..
+..kbBwwbBBBBBBBBBBBBBk..
+..kbBwbBBBBwwwwwwbBBBk..
+..kbBbBBBBBbbbbbbBBBBk..
+..kbBBBBBBBBBBBBBBBBBk..
+..kBBBBBBBBBBBBBBBBBBk..
+..kkkkkkkkkkkkkkkkkkkk..
+........................
+........................
+........................
+`,
   "desk-lamp": `
 ........................
 ........................
@@ -850,6 +882,32 @@ const COLOR_ICONS = {
 .dddddddddddd.kcBkkcBk..
 .dddddddddddd.kbBbbBBk..
 ..............kkkkkkkk..
+........................
+........................
+........................
+`,
+  "dock-left": `
+........................
+........................
+........................
+..kkkkkkkkkkkkkkkkkkkk..
+..kbbbbbbbbbbbbbbbbbBk..
+..kBBBBBBBBBBBBBBBBBBk..
+..kkkkkkkkkkkkkkkkkkkk..
+..kwwwwskwwwwwwwwwwwwk..
+..kwsssdkwwwwwwwwwwwsk..
+..kwsssdkwwwwwwwwwwwsk..
+..kwsssdkwwwwwwwwwwwsk..
+..kwsssdkwwwwwwwwwwwsk..
+..kwsssdkwwwwwwwwwwwsk..
+..kwsssdkwwwwwwwwwwwsk..
+..kwsssdkwwwwwwwwwwwsk..
+..kwsssdkwwwwwwwwwwwsk..
+..kwsssdkwwwwwwwwwwwsk..
+..kwsssdkwwwwwwwwwwwsk..
+..kwsssdkwwwwwwwwwwwsk..
+..ksddddkwsssssssssssk..
+..kkkkkkkkkkkkkkkkkkkk..
 ........................
 ........................
 ........................
@@ -1088,6 +1146,32 @@ const COLOR_ICONS = {
 ........................
 ........................
 `,
+  "hacs": `
+........................
+........................
+........................
+........................
+........................
+..kkkkkkkkkkkkkkkkkkkk..
+..kwwwwwwtoooowwwwwwtk..
+..ktnnnnnnonnntnnnnnnk..
+..kkkkkkkkkkkkkkkkkkkk..
+...kwwwwwtooonwwwwwtk...
+...kwttttnonnnwttttnk...
+...kwttttnonnnwttttnk...
+...kwttttnonnnwttttnk...
+...kwttttnonnnwttttnk...
+...kwttttnonnnwttttnk...
+...kwttttnonnnwttttnk...
+...kwttttnonnnwttttnk...
+...kwttttnonnnwttttnk...
+...kwttttnonnnwttttnk...
+...ktnnnnnnnnntnnnnnk...
+...kkkkkkkkkkkkkkkkkk...
+........................
+........................
+........................
+`,
   "help": `
 ........................
 ........................
@@ -1189,6 +1273,32 @@ const COLOR_ICONS = {
 .....kbBbbbbbbbbBBk.....
 ......kkbBBBBBBBkk......
 ........kkkkkkkk........
+........................
+........................
+`,
+  "key": `
+........................
+........................
+........................
+........................
+........................
+.kkkkkkkkkk.............
+.kwwyyyywyk.............
+.kwYkkkkyYk.............
+.kyk....kyk.............
+.kyk....kwykkkkkkkkkkkk.
+.kyk....kwywwwwwwwwwwyk.
+.kyk....kwyYYYYyyyYyyYk.
+.kyk....kwYkkkkyyYkyyYk.
+.kyk....kyk....kyk.kyk..
+.kwykkkkwYk....kyk.kkk..
+.kyYyyyyYYk....kkk......
+.kkkkkkkkkk.............
+........................
+........................
+........................
+........................
+........................
 ........................
 ........................
 `,
@@ -1318,6 +1428,58 @@ const COLOR_ICONS = {
 ..kcCCkkkkgGGGGkwYYYkk..
 ..kkkk....kkkkgkykkk....
 ..k...........kkk.......
+........................
+........................
+........................
+`,
+  "math-log": `
+........................
+........................
+....kkkkkkkkkkkkkkkk....
+....kwwwwwwwwwwwwwwk....
+....kwwwwwwwwwwwwwsk....
+....kwwsssssssssswsk....
+....kwsBBBBBBBBBBwsk....
+....kwwwwwwwwwwwwwsk....
+....kwwsssssssswwwsk....
+....kwsBBBBBBBBwwwsk....
+....kwwwwwwwwwwwwwsk....
+....kwwsssssssssswsk....
+....kwsBBBBBBBBBBwsk....
+....kwwwwwwwwwwwwwsk....
+....kwwsssssswwwwwsk....
+....kwsBBBBBBwwwwwsk....
+....kwwwwwwwwwwwwwsk....
+....kwwssssssssswwsk....
+....kwsBBBBBBBBBwwsk....
+....kwwwwwwwwwwwwwsk....
+....kwsssssssssssssk....
+....kkkkkkkkkkkkkkkk....
+........................
+........................
+`,
+  "menu": `
+........................
+........................
+........................
+........................
+........................
+...kkkkkkkkkkkkkkkkkk...
+...kwwwwwwwwwwwwwwwsk...
+...ksdddddddddddddddk...
+...kkkkkkkkkkkkkkkkkk...
+........................
+...kkkkkkkkkkkkkkkkkk...
+...kwwwwwwwwwwwwwwwsk...
+...ksdddddddddddddddk...
+...kkkkkkkkkkkkkkkkkk...
+........................
+...kkkkkkkkkkkkkkkkkk...
+...kwwwwwwwwwwwwwwwsk...
+...ksdddddddddddddddk...
+...kkkkkkkkkkkkkkkkkk...
+........................
+........................
 ........................
 ........................
 ........................
@@ -1894,6 +2056,32 @@ ddkwsk.kwsk.kwsk.kwsk...
 ........................
 ........................
 `,
+  "view-grid": `
+........................
+........................
+........................
+...kkkkkkkk..kkkkkkkk...
+...kcccccck..kwwwwwyk...
+...kcccccCk..kwyyyyYk...
+...kcccccCk..kwyyyyYk...
+...kcccccCk..kwyyyyYk...
+...kcccccCk..kwyyyyYk...
+...kcCCCCCk..kyYYYYYk...
+...kkkkkkkk..kkkkkkkk...
+........................
+........................
+...kkkkkkkk..kkkkkkkk...
+...kwwwwwgk..kwwwwwrk...
+...kwggggGk..kwrrrrRk...
+...kwggggGk..kwrrrrRk...
+...kwggggGk..kwrrrrRk...
+...kwggggGk..kwrrrrRk...
+...kgGGGGGk..krRRRRRk...
+...kkkkkkkk..kkkkkkkk...
+........................
+........................
+........................
+`,
   "washing-machine": `
 ........................
 ........................
@@ -2053,6 +2241,7 @@ ddkwsk.kwsk.kwsk.kwsk...
 };
 const COLOR_ALIASES = {
   "account-outline": "account",
+  "application-outline": "console",
   "battery-high": "battery-80",
   "bell-outline": "bell",
   "bell-ring": "bell",
@@ -2065,6 +2254,7 @@ const COLOR_ALIASES = {
   "ceiling-light-outline": "ceiling-light",
   "chart-line-variant": "chart-line",
   "cog-outline": "cog",
+  "console-line": "console",
   "door": "door-closed",
   "file-cog": "file-document",
   "file-cog-outline": "file-document",
@@ -2083,6 +2273,8 @@ const COLOR_ALIASES = {
   "home-variant": "home",
   "home-variant-outline": "home",
   "information-outline": "information",
+  "key-outline": "key",
+  "key-variant": "key",
   "lightbulb-outline": "lightbulb",
   "lightning-bolt": "flash",
   "lightning-bolt-outline": "flash",
@@ -2091,6 +2283,8 @@ const COLOR_ALIASES = {
   "lock-open-variant-outline": "lock-open",
   "lock-outline": "lock",
   "map-outline": "map",
+  "package-variant": "hacs",
+  "package-variant-closed": "hacs",
   "palette-outline": "palette",
   "play-box-outline": "play-box",
   "robot-outline": "robot",
@@ -2100,11 +2294,16 @@ const COLOR_ALIASES = {
   "shield-outline": "shield",
   "sprout-outline": "sprout",
   "television-classic": "television",
+  "text-box-outline": "math-log",
+  "text-long": "math-log",
   "thermometer-lines": "thermostat",
   "thermostat-box": "thermostat",
   "vacuum": "robot-vacuum",
   "video": "camera",
   "view-dashboard-outline": "view-dashboard",
+  "view-grid-outline": "view-grid",
+  "view-grid-plus": "view-grid",
+  "view-grid-plus-outline": "view-grid",
   "water-outline": "water",
   "water-percent": "water",
   "white-balance-sunny": "weather-sunny",
@@ -2127,7 +2326,8 @@ const BUILTIN_ICONS = {
 };
 
 const colorName = (icon) => {
-  const name = String(icon || "").replace(/^(mdi|ha95):/, "");
+  // Präfix weg (mdi:, ha95:, hacs: …), dann zählt nur der Name
+  const name = String(icon || "").replace(/^[a-z0-9_-]+:/, "");
   const real = COLOR_ALIASES[name] || name;
   return real in COLOR_ICONS ? real : null;
 };
@@ -2240,6 +2440,8 @@ const TEXT = {
     yes: "Ja",
     no: "Nein",
     close: "Schließen",
+    safe: "Es ist jetzt sicher, Home Assistant auszuschalten.",
+    safe_note: "Home Assistant startet neu. Dieser Bildschirm verschwindet von selbst.",
   },
   en: {
     title: "Restart Home Assistant",
@@ -2248,6 +2450,8 @@ const TEXT = {
     yes: "Yes",
     no: "No",
     close: "Close",
+    safe: "It's now safe to turn off Home Assistant.",
+    safe_note: "Home Assistant is restarting. This screen will close by itself.",
   },
 };
 const t = () => TEXT[(hass()?.language || "en").slice(0, 2)] || TEXT.en;
@@ -2277,7 +2481,9 @@ function confirmRestart() {
   overlay.addEventListener("keydown", (e) => e.key === "Escape" && close());
   overlay.querySelector("[data-ok]").onclick = () => {
     close();
+    const conn = hass()?.connection;
     hass()?.callService("homeassistant", "restart");
+    if (conn) showSafeScreen(conn);
   };
   overlay.popover = "manual";
   layer().appendChild(overlay);
@@ -2285,9 +2491,52 @@ function confirmRestart() {
   overlay.querySelector("[data-cancel]").focus();
 }
 
+// Schwarzer Bildschirm mit oranger Schrift wie beim Herunterfahren von
+// Windows 95. Er bleibt, bis die Verbindung zu HA einmal weg und wieder da
+// ist (Neustart fertig). Klick oder Escape schließt ihn vorher.
+function showSafeScreen(conn) {
+  const s = t();
+  const screen = document.createElement("div");
+  screen.className = "ha95-safe";
+  screen.setAttribute("role", "status");
+  screen.innerHTML = "<p></p><small></small>";
+  screen.querySelector("p").textContent = s.safe;
+  screen.querySelector("small").textContent = s.safe_note;
+
+  let wasDown = false;
+  const onDown = () => (wasDown = true);
+  const onReady = () => wasDown && close();
+  const onKey = (e) => e.key === "Escape" && close();
+  const timer = setTimeout(() => close(), 15 * 60 * 1000);
+  function close() {
+    clearTimeout(timer);
+    conn.removeEventListener("disconnected", onDown);
+    conn.removeEventListener("ready", onReady);
+    document.removeEventListener("keydown", onKey);
+    screen.remove();
+  }
+  conn.addEventListener("disconnected", onDown);
+  conn.addEventListener("ready", onReady);
+  document.addEventListener("keydown", onKey);
+  screen.addEventListener("click", close);
+
+  screen.popover = "manual";
+  layer().appendChild(screen);
+  screen.showPopover?.();
+}
+
+// "Ausführen …": die Schnellsuche von HA mit allen Bereichen. Ist sie noch
+// nicht geladen, lädt HA sie über die Taste "e" (dann mit Entitäten).
+function openRun() {
+  const bar = haRoot()?.shadowRoot?.querySelector("ha-quick-bar");
+  if (bar?.showDialog) return bar.showDialog({});
+  document.body.dispatchEvent(new KeyboardEvent("keydown", { key: "e", code: "KeyE", bubbles: true, composed: true }));
+}
+
 function runItem(item) {
   closeAll();
   if (item.action === "restart") return confirmRestart();
+  if (item.action === "run") return openRun();
   if (item.file) return openFile(item.file);
   if (item.url) return window.open(item.url, "_blank", "noopener");
   if (item.path) return navigate(item.path);
@@ -2481,17 +2730,43 @@ function attach(sb) {
       el.appendChild(a);
     });
   addArrows();
-  // Höchstens einmal pro Frame, damit eigene Änderungen keine Kette auslösen
+  // Höchstens einmal pro Frame, damit eigene Änderungen keine Kette auslösen.
+  // Schutz: Läuft es trotzdem drei Sekunden am Stück mehr als GUARD_LIMIT-mal
+  // pro Sekunde (eine Schleife mit dem Observer), schaltet sich das Schmücken
+  // ab, statt die ganze Oberfläche einzufrieren. Die Menüs funktionieren weiter.
   let queued = false;
-  new MutationObserver(() => {
+  let runs = 0;
+  let busySeconds = 0;
+  let windowStart = performance.now();
+  const observer = new MutationObserver(() => {
     if (queued) return;
     queued = true;
     requestAnimationFrame(() => {
       queued = false;
-      addArrows();
-      decorate(root);
+      const now = performance.now();
+      if (now - windowStart > 1000) {
+        busySeconds = runs > GUARD_LIMIT && now - windowStart < 2000 ? busySeconds + 1 : 0;
+        windowStart = now;
+        runs = 0;
+      }
+      runs++;
+      if (busySeconds >= 3) {
+        observer.disconnect();
+        console.warn(
+          `HA95 Startmenü: Seitenleiste ändert sich mehr als ${GUARD_LIMIT}-mal pro Sekunde, ` +
+            "Streifen und bunte Icons werden nicht mehr nachgeführt (Schutz vor Endlosschleife)."
+        );
+        return;
+      }
+      try {
+        addArrows();
+        decorate(root);
+      } catch (err) {
+        console.warn("HA95 Startmenü: Fehler beim Schmücken der Seitenleiste", err);
+      }
     });
-  }).observe(root, { subtree: true, childList: true, attributes: true, attributeFilter: ["data-ha95-menu", "icon", "href"] });
+  });
+  observer.observe(root, { subtree: true, childList: true, attributes: true, attributeFilter: ["data-ha95-menu", "icon", "href"] });
 
   root.addEventListener("mouseover", (ev) => {
     const anchor = findAnchor(ev);
@@ -2517,6 +2792,61 @@ function attach(sb) {
     true
   );
 }
+
+// ---------- Sanduhr ----------
+
+// Zählt laufende Anfragen an HA. Dauert eine länger als BUSY_DELAY (z. B.
+// Speichern, Dienstaufruf), ohne Verbindung (Neustart) und kurz nach einem
+// Seitenwechsel zeigt der Mauszeiger die Sanduhr.
+const BUSY_DELAY = 300;
+let busyPending = 0;
+let busyOffline = false;
+let busyNavUntil = 0;
+let busyTimer = null;
+
+const updateBusy = () => {
+  const busy = busyPending > 0 || busyOffline || performance.now() < busyNavUntil;
+  document.documentElement.classList.toggle("ha95-busy", busy && config?.busy_cursor !== false);
+};
+const busySoon = () => {
+  clearTimeout(busyTimer);
+  busyTimer = setTimeout(updateBusy, BUSY_DELAY);
+};
+
+function watchBusy(conn) {
+  if (!conn || conn.__ha95busy || typeof conn.sendMessagePromise !== "function") return;
+  conn.__ha95busy = true;
+  const send = conn.sendMessagePromise.bind(conn);
+  conn.sendMessagePromise = (...args) => {
+    const done = () => {
+      busyPending = Math.max(0, busyPending - 1);
+      if (!busyPending) updateBusy();
+    };
+    busyPending++;
+    busySoon();
+    const p = send(...args);
+    p.then(done, done);
+    return p;
+  };
+  conn.addEventListener("disconnected", () => {
+    busyOffline = true;
+    updateBusy();
+  });
+  conn.addEventListener("ready", () => {
+    busyOffline = false;
+    busyPending = 0; // Antworten auf alte Anfragen kommen nach einem Neustart nicht mehr
+    updateBusy();
+  });
+}
+
+window.addEventListener("location-changed", () => {
+  busyNavUntil = performance.now() + 600;
+  updateBusy();
+  setTimeout(updateBusy, 650);
+});
+
+// Win95-Sanduhr, Hotspot in der Mitte
+const BUSY_CURSOR = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='22' shape-rendering='crispEdges'%3E%3Cpath d='M.5.5h12v3h-1v3l-3.5 3.5v2l3.5 3.5v3h1v3H.5v-3h1v-3L5 12V10L1.5 6.5v-3h-1z' fill='%23fff' stroke='%23000'/%3E%3Cpath d='M1 3h11M1 19h11' stroke='%23000'/%3E%3Cpath d='M3.5 5h6L6.5 8zM6 13h1l3 4v1H3v-1z' fill='%23000'/%3E%3C/svg%3E") 6 11, wait`;
 
 // ---------- Stil der Menüs (Farben aus dem HA-95-Design) ----------
 
@@ -2582,9 +2912,19 @@ const MENU_CSS = `
   }
   .ha95-button:active { box-shadow: var(--ha95-sunken, inset 1px 1px #000, inset -1px -1px #fff); }
   .ha95-button:focus-visible { outline: 1px dotted currentColor; outline-offset: -5px; }
+  .ha95-safe {
+    position: fixed; inset: 0; z-index: 10002;
+    width: auto; height: auto; max-width: none; max-height: none;
+    margin: 0; padding: 24px; border: none; box-sizing: border-box;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px;
+    background: #000; color: #ff8c00; text-align: center; cursor: none;
+    font-family: var(--ha95-font, Tahoma, sans-serif); -webkit-font-smoothing: none;
+  }
+  .ha95-safe p { margin: 0; font-size: clamp(20px, 4vw, 36px); line-height: 1.3; }
+  .ha95-safe small { font-size: 13px; color: #804600; }
 `;
 const css = document.createElement("style");
-css.textContent = MENU_CSS;
+css.textContent = MENU_CSS + `html.ha95-busy, html.ha95-busy body { cursor: ${BUSY_CURSOR} !important; }`;
 document.head.appendChild(css);
 
 // Schließen bei Klick daneben, Escape oder Seitenwechsel
@@ -2602,6 +2942,7 @@ window.addEventListener("location-changed", () => closeAll());
   for (;;) {
     const sb = sidebar();
     if (sb) attach(sb);
+    watchBusy(hass()?.connection);
     await sleep(1000);
   }
 })();

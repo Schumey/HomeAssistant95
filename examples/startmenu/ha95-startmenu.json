@@ -127,6 +127,11 @@
         "divider": true
       },
       {
+        "name": "Run …",
+        "icon": "mdi:console",
+        "action": "run"
+      },
+      {
         "name": "Restart …",
         "icon": "mdi:restart",
         "action": "restart"

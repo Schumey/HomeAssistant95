@@ -36,13 +36,14 @@ You now have the banner and the colorful icons. The flyout menus need one more s
 
 ### Banner and colorful icons
 
-Both are on by default. They are set at the top of `ha95-startmenu.json`:
+All of them are on by default. They are set at the top of `ha95-startmenu.json`:
 
 ```json
 {
   "banner": true,
   "banner_text": "HomeAssistant95",
   "color_icons": true,
+  "busy_cursor": true,
   "menus": { }
 }
 ```
@@ -52,14 +53,15 @@ Both are on by default. They are set at the top of `ha95-startmenu.json`:
 | `banner` | `false` hides the vertical banner. |
 | `banner_text` | Text of the banner. Digits at the end are drawn lighter, like the "95" in "Windows 95". |
 | `color_icons` | `false` keeps the normal icons. |
+| `busy_cursor` | Hourglass pointer while Home Assistant is busy: when a request (saving, an action) takes longer than 0.3 s, while the connection is gone (restart) and briefly after changing pages. `false` turns it off. |
 
 The banner color is the `ha95-banner` variable of the theme: gray in HA 95, a blue gradient in HA 98 (like the Windows 98 Start menu).
 
-The module replaces an icon with a colorful one when it has a matching drawing. That works for sidebar entries (by their `mdi:` or `ha95:` name, and for built-in pages such as Settings, Notifications, Activity, History, Energy, Map, Media, To-do lists, Calendar and Developer tools) and for the icons in the flyout menus. Everything else keeps its normal icon.
+The module replaces an icon with a colorful one when it has a matching drawing. That works for sidebar entries (by their icon name, whatever the prefix, e.g. `mdi:`, `ha95:` or `hacs:`, and for built-in pages such as Settings, Notifications, Activity, History, Energy, Map, Media, To-do lists, Calendar and Developer tools) and for the icons in the flyout menus. Everything else keeps its normal icon.
 
 Colorful icons (more MDI names point to these, e.g. `home-outline`, `cog-outline`, `hammer`, `thermometer-lines`, `lightning-bolt`):
 
-`account`, `account-group`, `battery` (all levels), `battery-arrow-down`, `battery-arrow-up`, `battery-clock`, `battery-sync`, `bed`, `bell`, `calendar`, `camera`, `car`, `ceiling-light`, `chart-box`, `chart-line`, `clipboard-list`, `code-braces`, `coffee-to-go`, `cog`, `desk-lamp`, `devices`, `door-closed`, `fan`, `file-document`, `fire`, `flash`, `flower`, `folder-open`, `format-list-bulleted`, `garage`, `help`, `history`, `home`, `information`, `lamps`, `lightbulb`, `lock`, `lock-open`, `map`, `music-note`, `palette`, `play-box`, `power`, `printer-3d-nozzle`, `radiator`, `restart`, `robot`, `robot-vacuum`, `script-text`, `shape-outline`, `shield`, `shield-home`, `snowflake`, `sofa`, `speaker`, `sprout`, `television`, `thermometer`, `thermostat`, `tools`, `view-dashboard`, `washing-machine`, `water`, `weather-partly-cloudy`, `weather-sunny`, `window-closed`, `wrench`
+`account`, `account-group`, `battery` (all levels), `battery-arrow-down`, `battery-arrow-up`, `battery-clock`, `battery-sync`, `bed`, `bell`, `calendar`, `camera`, `car`, `ceiling-light`, `chart-box`, `chart-line`, `clipboard-list`, `code-braces`, `coffee-to-go`, `cog`, `desk-lamp`, `devices`, `door-closed`, `fan`, `file-document`, `fire`, `flash`, `flower`, `folder-open`, `format-list-bulleted`, `garage`, `help`, `history`, `home`, `information`, `lamps`, `lightbulb`, `lock`, `lock-open`, `map`, `music-note`, `palette`, `play-box`, `power`, `printer-3d-nozzle`, `radiator`, `restart`, `robot`, `robot-vacuum`, `script-text`, `shape-outline`, `shield`, `shield-home`, `snowflake`, `sofa`, `speaker`, `sprout`, `television`, `thermometer`, `thermostat`, `tools`, `view-dashboard`, `washing-machine`, `water`, `weather-partly-cloudy`, `weather-sunny`, `window-closed`, `wrench`, `console`, `dock-left`, `hacs`, `key`, `math-log`, `menu`, `view-grid`
 
 ## Build your own menu
 
@@ -99,7 +101,8 @@ Each line is one entry. What it does depends on its key:
 |---|---|
 | `{ "name": "…", "icon": "mdi:…", "path": "/…" }` | Opens a page in Home Assistant. Copy the path from the address bar, without the host (e.g. `/dashboard-home/living-room`). |
 | `{ "name": "…", "file": "configuration.yaml" }` | Opens the file in the [File editor](https://github.com/home-assistant/addons/tree/master/configurator) app, relative to `file_editor_base` (default `/homeassistant`). Without `icon` it gets a document icon. |
-| `{ "name": "…", "action": "restart" }` | Restarts Home Assistant after a Win95 confirmation dialog. |
+| `{ "name": "…", "action": "restart" }` | Restarts Home Assistant after a Win95 confirmation dialog. Then the black "It's now safe to turn off Home Assistant." screen appears until Home Assistant is back (click or Escape closes it earlier). |
+| `{ "name": "…", "action": "run" }` | Opens the Home Assistant search as the Win95 "Run" dialog (with UIX, see [Window look](window-look.md)). Good with `"icon": "mdi:console"`. |
 | `{ "name": "…", "url": "https://…" }` | Opens an address in a new tab. |
 | `{ "name": "…", "items": [ … ] }` | Opens another submenu. Submenus can be nested as deep as you like. |
 | `{ "divider": true }` | Separator line. |
@@ -154,3 +157,4 @@ Instead of the JSON file you can also set `window.ha95StartmenuConfig = { menus:
 | Menu is empty or old | The JSON file has a syntax error, or the page has not been reloaded. |
 | File editor opens, but not the file | Check `file_editor_panel` and `file_editor_base`. |
 | No banner | The banner only shows while the sidebar is expanded. |
+| Banner and colorful icons disappear | The browser console shows `HA95 Startmenü: Seitenleiste ändert sich mehr als …`. Something changed the sidebar many times a second for several seconds, so the module stopped redrawing it instead of freezing the interface. The menus keep working. Reload the page; if it happens again, please open an issue. |

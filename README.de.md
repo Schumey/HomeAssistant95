@@ -16,8 +16,10 @@ Ein Windows-95-Theme für [Home Assistant](https://www.home-assistant.io/): Teal
 | **HA 95 Kontrast** | „Kontrast Schwarz“ |
 | **HA 95 Dark** | Dunkelmodus: dunkelgraue Fenster, dunkler Teal-Desktop |
 | **HA 95 Auto** | Wechselt mit dem Hell-/Dunkelmodus zwischen HA 95 und HA 95 Dark |
+| **HA 3.11** | Windows-3.1-Look: weiße Fenster, flache Rahmen, zentrierter Titel, Knöpfe ▼ ▲ |
+| **HA 3.11 Hot Dog Stand** / **Arizona** / **Ozean** / **Schwarze Lederjacke** | Die Farbschemata aus Windows 3.1, samt dem berüchtigten rot-gelben „Hot Dog Stand“ |
 
-Mehr zu Dunkelmodus und eigenen Farben: [Farbschemata](docs/color-schemes.de.md).
+Mehr zu Dunkelmodus, Windows-3.1-Look und eigenen Farben: [Farbschemata](docs/color-schemes.de.md).
 
 ## Installation
 
@@ -52,8 +54,8 @@ Jedes Extra funktioniert für sich. Einfach aussuchen:
 
 | Extra | Was man bekommt | Anleitung |
 |---|---|---|
-| **Fenster-Look** | Karten und Dialoge als echte Win95-Fenster mit Titelleisten, Symbolleisten, Kontrollkästchen, Trackbars und 3D-Knöpfen. Braucht [UIX](https://github.com/Lint-Free-Technology/uix). | [Fenster-Look](docs/window-look.de.md) |
-| **Startmenü** | Seitenleiste als Startmenü: Streifen „HomeAssistant95“, bunte Icons, Ausklappmenüs mit Untermenüs, und wie man ein eigenes Menü baut. | [Startmenü](docs/start-menu.de.md) |
+| **Fenster-Look** | Karten und Dialoge als echte Win95-Fenster mit Titelleisten, OK/Abbrechen-Schaltflächen, Kontrollkästchen, Trackbars, Fortschrittsbalken, Registerkarten und Meldungsfenstern, dazu die Suche als Dialog „Ausführen“. Braucht [UIX](https://github.com/Lint-Free-Technology/uix). | [Fenster-Look](docs/window-look.de.md) |
+| **Startmenü** | Seitenleiste als Startmenü: Streifen „HomeAssistant95“, bunte Icons, Ausklappmenüs mit Untermenüs, „Ausführen …“, der Bildschirm „Es ist jetzt sicher …“ nach dem Neustart, die Sanduhr als Mauszeiger, und wie man ein eigenes Menü baut. | [Startmenü](docs/start-menu.de.md) |
 | **Pixel-Icons** | 537 Icons in Win95-Pixeloptik (`ha95:`), auf Wunsch automatisch statt aller MDI-Icons. | [Pixel-Icons](docs/pixel-icons.de.md) |
 | **Pixel-Schrift & Mauszeiger** | Die Schrift „Pixelated MS Sans Serif“ und der klassische Pfeil. | [unten](#pixel-schrift--mauszeiger) |
 
@@ -63,6 +65,10 @@ Jedes Extra funktioniert für sich. Einfach aussuchen:
 2. **Einstellungen → Dashboards → ⋮ → Ressourcen** → `/local/ha95/ha95.css`, Typ **Stylesheet**.
 
 Die Schrift „Pixelated MS Sans Serif“ stammt aus [98.css](https://github.com/jdan/98.css) (MIT) und wird über jsDelivr geladen. Mit UIX ab 8.4.0 lädt das Design die Schrift selbst, sie erscheint dann auch auf den Einstellungsseiten. `ha95.css` braucht man dann nur noch für den Mauszeiger.
+
+## Prüfseite
+
+[examples/test-dashboard/ha95-test.yaml](examples/test-dashboard/ha95-test.yaml) ist ein Dashboard mit je einer Karte jeder Art (Entitäten, Kacheln mit Features, Thermostat, Gauge, Markdown mit Hinweisen, Verlauf, Kalender, Formulare, Stapel, Masonry-Ansicht …). Nach einem Home-Assistant-Update einmal alle Tabs im hellen und dunklen Modus durchklicken, dann sieht man auf einen Blick, ob noch alles passt.
 
 ## Deinstallieren
 

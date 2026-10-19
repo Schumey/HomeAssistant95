@@ -4,6 +4,32 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [3.11.0] – 2026-10-19
+
+„Home Assistant für Workgroups“: benannt nach Windows für Workgroups 3.11.
+
+### Hinzugefügt
+- Neues Design **HA 3.11** im Windows-3.1-Look: weißer Arbeitsbereich und weiße Fenster, flache Rahmen mit dünnen schwarzen Linien, zentrierter Titel, links in der Titelleiste das Systemmenü-Kästchen, rechts ▼ ▲. Dazu die Windows-3.1-Farbschemata **HA 3.11 Hot Dog Stand**, **HA 3.11 Arizona**, **HA 3.11 Ozean** und **HA 3.11 Schwarze Lederjacke** (Farben nachempfunden).
+- Neue Variablen für den Fensterstil, in jedem Schema nutzbar: `ha95-card` (Hintergrund der Karten), `ha95-frame`, `ha95-frame-pressed`, `ha95-frame-width`, `ha95-title-buttons`, `ha95-title-buttons-width`, `ha95-title-menu`, `ha95-title-menu-width`, `ha95-title-align`, dazu die Symbole `ha95-icon-info`, `-warning`, `-error`, `-success`, `-run`.
+- UIX: alle Dialoge als Win95-Fenster (neuer UIX-Typ `dialog`): Titelleiste, OK/Abbrechen als Win95-Schaltflächen (75×23), die Hauptschaltfläche mit schwarzem Rand, gepunkteter Fokusrahmen.
+- UIX: die Suche (Taste `e`, Strg+K, Lupe) als Win95-Dialog „Ausführen“ mit Titelleiste, Programm-Symbol, Erklärung, eingelassenem Eingabefeld, den Bereichen als Knöpfe und einer weißen Liste.
+- Startmenü: `{ "action": "run" }` öffnet „Ausführen …“. Die Beispielmenüs haben den Eintrag.
+- Startmenü: Nach „Neu starten …“ erscheint der schwarze Bildschirm „Es ist jetzt sicher, Home Assistant auszuschalten.“ und verschwindet von selbst, sobald Home Assistant wieder da ist.
+- Startmenü: Sanduhr als Mauszeiger, solange Home Assistant arbeitet (Anfrage dauert länger als 0,3 s, keine Verbindung, Seitenwechsel). Option `busy_cursor`.
+- Ansichten-Tabs als Registerkarten eines Eigenschaften-Dialogs: grau und erhaben, die aktive höher und mit der Kante darunter verschmolzen (card-mod und UIX).
+- UIX: Regler in Kachel-Features und im Detail-Dialog (Helligkeit, Position, Lautstärke, Zahlen) als Win95-Fortschrittsbalken mit Blöcken, beim Ziehen der Wert in einer gelben QuickInfo.
+- UIX: die Ringe der Thermostat-, Luftbefeuchter- und Licht-Karte aus Blöcken.
+- UIX: Meldungen unten (`ha-toast`) als graue Win95-Fenster mit Info-Symbol; Hinweise (`ha-alert`) in Karten, Dialogen und Detail-Dialogen mit eingeritztem Rahmen und den Win95-Symbolen für Info, Warnung, Fehler und Erfolg.
+- Bunte Startmenü-Icons für `console`, `dock-left`, `hacs`, `key`, `math-log`, `menu` und `view-grid` (dazu 11 weitere MDI-Namen). Icons mit beliebigem Präfix (z. B. `hacs:hacs`) werden jetzt erkannt.
+- Prüfseite [examples/test-dashboard/ha95-test.yaml](examples/test-dashboard/ha95-test.yaml) mit je einer Karte jeder Art, um nach Home-Assistant-Updates den Look zu prüfen.
+
+### Geändert
+- `themes/ha95.yaml` wird jetzt aus Bausteinen erzeugt. Regeln, die card-mod und UIX (oder Thermostat und Luftbefeuchter) gemeinsam nutzen, stehen in der Quelle nur noch einmal. Das Design sieht gleich aus.
+- Die Symbolleiste im Detail-Dialog braucht keinen Platz, wenn ein Dialog keine Knöpfe hat.
+
+### Behoben
+- Startmenü: Ändert sich die Seitenleiste mehrere Sekunden lang viele Male pro Sekunde (eine Schleife), zeichnet das Modul Streifen und Icons nicht mehr nach und schreibt eine Warnung in die Konsole, statt die ganze Oberfläche einzufrieren. Die Menüs funktionieren weiter.
+
 ## [3.10.0] – 2026-10-19
 
 ### Hinzugefügt

@@ -6,27 +6,34 @@ Ein Windows-95-Design für Home Assistant, verteilt über HACS (Typ Theme). Dies
 
 | Pfad | Inhalt |
 |---|---|
-| `themes/ha95.yaml` | Das Design: 8 Themes (HA 95, HA 98, HA 95 Rose/Spruce/Desert/Kontrast/Dark/Auto). Variante = YAML-Anker `&ha95` plus überschriebene `ha95-*`-Farben. Die dunklen Farben stehen einmal als Anker `&ha95dark` unter `HA 95 Auto` → `modes: dark:`; `HA 95 Dark` nutzt `<<: [*ha95dark, *ha95]`. |
+| `themes/ha95.yaml` | Das Design: 13 Themes (HA 95, HA 98, HA 95 Rose/Spruce/Desert/Kontrast/Dark/Auto, HA 3.11 mit Hot Dog Stand/Arizona/Ozean/Schwarze Lederjacke). **Wird generiert**, siehe Theme-Generator. Variante = YAML-Anker `&ha95` plus überschriebene `ha95-*`-Farben. Die dunklen Farben stehen einmal als Anker `&ha95dark` unter `HA 95 Auto` → `modes: dark:`; `HA 95 Dark` nutzt `<<: [*ha95dark, *ha95]`. |
 | `www/ha95/ha95.css` | Dashboard-Ressource: Pixel-Schrift, Mauszeiger, Scrollbars. |
 | `www/ha95/ha95-icons.js` | Pixel-Icon-Set (`ha95:`), Modus `?replace` / `?pixelate`. **Wird generiert**, siehe unten. |
 | `www/ha95/ha95-startmenu.js` | Startmenü: senkrechter Streifen, bunte Icons in Seitenleiste und Menüs, Win95-Ausklappmenüs an Einträgen mit `data-ha95-menu`; Menüs und Optionen aus `/config/www/ha95-startmenu.json`. Der Block zwischen `// <color-icons>` und `// </color-icons>` **wird generiert**, siehe unten. |
 | `examples/custom-sidebar/` | Beispielkonfiguration für Custom Sidebar (Seitenleiste als Startmenü). |
 | `examples/startmenu/` | Beispielmenü für `ha95-startmenu.js`. |
+| `examples/test-dashboard/` | Prüfseite „HA95 Test“ mit je einer Karte jeder Art. Die Fassung mit den echten Entitäten des Nutzers liegt in `local/dashboard-test.yaml` (in HA als Dashboard `ha95-test`). |
 | `docs/` | Ausführliche Anleitungen, je `name.md` (Englisch) und `name.de.md` (Deutsch): Fenster-Look, Startmenü (mit „Eigenes Menü bauen“), Pixel-Icons, Farbschemata, Deinstallieren. Die README ist nur die Übersicht und verlinkt dorthin. |
 | `local/` | Gitignored: persönliche Dateien des Nutzers und der Icon-Generator. Ist nicht auf GitHub und muss beim PC-Wechsel von Hand mitgenommen werden. |
 
 Alle Farben laufen über `ha95-*`-Variablen. Neue Regeln nutzen diese Variablen statt fester Farben, damit alle Varianten mitziehen. Die Kommentare in den Dateien sind deutsch.
 
+## Theme-Generator
+
+`themes/ha95.yaml` wird aus `local/theme-generator/` gebaut: `ha95.src.yaml` ist das Theme mit Zeilen `@include name`, die `build.py` durch `blocks/name.css` ersetzt (eingerückt wie die Zeile, verschachtelbar). So steht CSS, das `card-mod-*` und `uix-*-yaml` oder Thermostat und Luftbefeuchter gemeinsam nutzen, nur einmal da. Änderungen am Theme immer in der Quelle machen, dann `python local/theme-generator/build.py` (mit `--check` nur prüfen). Die Datei `themes/ha95.yaml` nie von Hand ändern.
+
+`HA 3.11` ist ein Anker `&ha311` (selbst `<<: *ha95`), seine Farbvarianten nutzen `<<: *ha311`. Fensterstil-Variablen: `ha95-card`, `ha95-frame(-pressed|-width)`, `ha95-title-buttons(-width)`, `ha95-title-menu(-width)`, `ha95-title-align`.
+
 ## Icon-Generator
 
 `www/ha95/ha95-icons.js` wird aus `local/icon-generator/` erzeugt (`build.py`, `template.js`, `icons*.py`). Die Datei nie von Hand ändern, sonst überschreibt der nächste Generator-Lauf die Änderung. Ausnahme: die Versionszeile, dann aber auch in `local/icon-generator/template.js`.
 
-Die bunten Startmenü-Icons erzeugt `local/icon-generator/color_icons.py`: Es liest die Raster aus `ha95-icons.js`, färbt sie nach den Regeln in `SPEC` (Umriss schwarz, Füllfarbe, Rechtecke, Flutfüllung, automatische 3D-Schattierung) und schreibt den Block in `ha95-startmenu.js`. Vorschau als PNG (ohne PIL): `python local/icon-generator/preview_png.py [namen…]` → `local/color-icons-preview.png`, links auf Grau, rechts auf Navy (markiert). Reine Strich-Icons nicht in Navy färben, sonst verschwinden sie auf der Markierung.
+Die bunten Startmenü-Icons erzeugt `local/icon-generator/color_icons.py` (Icons ohne Raster in `ha95-icons.js` stehen dort als Rechteck-Zeichnungen in `DRAWN`): Es liest die Raster aus `ha95-icons.js`, färbt sie nach den Regeln in `SPEC` (Umriss schwarz, Füllfarbe, Rechtecke, Flutfüllung, automatische 3D-Schattierung) und schreibt den Block in `ha95-startmenu.js`. Vorschau als PNG (ohne PIL): `python local/icon-generator/preview_png.py [namen…]` → `local/color-icons-preview.png`, links auf Grau, rechts auf Navy (markiert). Reine Strich-Icons nicht in Navy färben, sonst verschwinden sie auf der Markierung.
 
 ## Release-Ablauf
 
 1. `git pull --ff-only`, `git status` prüfen.
-2. Änderungen machen, Versionszeile (`Version: x.y.z`) in allen Dateiköpfen gleich setzen: `themes/ha95.yaml`, `www/ha95/*.css`, `www/ha95/*.js`, `examples/custom-sidebar/custom-sidebar-config.yaml` (und `local/icon-generator/template.js`).
+2. Änderungen machen, Versionszeile (`Version: x.y.z`) in allen Dateiköpfen gleich setzen: `themes/ha95.yaml`, `www/ha95/*.css`, `www/ha95/*.js`, `examples/custom-sidebar/custom-sidebar-config.yaml` (und `local/icon-generator/template.js`, `local/theme-generator/ha95.src.yaml`, danach `build.py`).
 3. Changelog **und** README immer in beiden Sprachen pflegen: `CHANGELOG.md` / `README.md` (Englisch, Standard, HACS zeigt README.md) und `CHANGELOG.de.md` / `README.de.md` (Deutsch).
 4. Nur mit expliziten Pfaden committen (`git add -- datei …`), **nie** `git add -A`. Es arbeiten oft mehrere Sitzungen parallel im selben Ordner.
 5. Annotiertes Tag `vX.Y.Z`, pushen, GitHub-Release mit dem Changelog-Abschnitt auf Englisch und Deutsch in den Notes.
@@ -58,6 +65,11 @@ Deutsche HA-Oberfläche: „Werkzeuge → YAML → **Designs** neu laden“ und 
 - **Datum/Uhrzeit:** `ha-date-input` / `ha-base-time-input` mit `ha-input` → `wa-input` (Parts `base`, `label`, `input`, `hint`).
 - **Schalter:** `ha-switch` (Web Awesome), Parts `control` und `thumb`.
 - **Schieberegler:** `ha-slider`, Parts `track`, `indicator`, `thumb`.
+- **Dialoge:** UIX-Typ `dialog` hängt an `ha-dialog`/`ha-adaptive-dialog` jedes Dialogs (Klasse `type-<dialog-tag ohne ha->`, z. B. `type-quick-bar`, `type-dialog-box`). Der `uix-node` liegt im Light-DOM des Dialogs, `.` wirkt im Shadow-Root des Dialog-Elements (Titel, `ha-dialog-footer` mit `ha-button[slot=primaryAction|secondaryAction]`). Pfade mit `&.type-quick-bar …` gelten nur für einen Dialog. `:host(:has(…))` geht in Chrome nicht.
+- **Meldungen:** UIX-Typ `toast` an `ha-toast` (in `notification-manager`), `$` ist dessen Shadow-Root (`.toast`).
+- **Schnellsuche:** `ha-quick-bar` (im Shadow-Root von `home-assistant`) → `ha-adaptive-dialog` → `ha-picker-combo-box` (Shadow: `ha-input-search`, `ha-chip-set.sections` mit `ha-filter-chip`, Liste). Öffnen per `quickBar.showDialog({})`; synthetische Tastendrücke sind unzuverlässig.
+- **Regler:** `ha-control-slider` (Kachel-Features, Detail-Dialog) und `ha-control-circular-slider` setzen ihre Variablen in `:host`, darum UIX mit `$$`, z. B. `"hui-card-features $$ ha-control-slider $"`. `$$` sammelt alle Treffer über alle Shadow-Roots.
+- **Ansichten-Tabs:** in `hui-root` als `ha-tab-group` > `ha-tab-group-tab` (Part `base`), erreichbar aus `uix-root-yaml` `.`.
 - **Schmale Seitenleiste:** Sie ist ein modaler Dialog, alles außerhalb davon ist dann inert. Popups wie das Startmenü hängen deshalb als `popover` im Shadow-Root von `ha-sidebar`.
 - **More-info-Dialog:** `ha-more-info-dialog $ ha-adaptive-dialog $ ha-dialog $ ha-dialog-header $`. In `uix-more-info-yaml` starten Pfade **bei `ha-adaptive-dialog` selbst**, also `"$ ha-dialog $ ha-dialog-header $"`. Die Knöpfe (`ha-icon-button[slot=headerNavigationIcon|headerActionItems]`, `ha-dropdown[slot=headerActionItems]`) und der Titel (`.title` mit `.breadcrumb` und `.main`) liegen im Shadow-Root von `ha-more-info-dialog`.
 - **Titel von `ha-card`:** Karten wie Markdown übergeben den Titel als `header` an `ha-card`, das ihn in seinem eigenen Shadow-Root als `h1.card-header` zeichnet. Erreichbar mit dem UIX-Pfad `"ha-card $"`.

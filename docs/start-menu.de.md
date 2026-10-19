@@ -36,13 +36,14 @@ Damit sind Streifen und bunte Icons da. Für die Ausklappmenüs fehlt noch ein S
 
 ### Streifen und bunte Icons
 
-Beides ist standardmäßig an. Eingestellt wird es oben in `ha95-startmenu.json`:
+Alles ist standardmäßig an. Eingestellt wird es oben in `ha95-startmenu.json`:
 
 ```json
 {
   "banner": true,
   "banner_text": "HomeAssistant95",
   "color_icons": true,
+  "busy_cursor": true,
   "menus": { }
 }
 ```
@@ -52,14 +53,15 @@ Beides ist standardmäßig an. Eingestellt wird es oben in `ha95-startmenu.json`
 | `banner` | `false` blendet den senkrechten Streifen aus. |
 | `banner_text` | Text im Streifen. Ziffern am Ende werden heller gezeichnet, wie die „95“ in „Windows 95“. |
 | `color_icons` | `false` lässt die normalen Icons stehen. |
+| `busy_cursor` | Sanduhr als Mauszeiger, solange Home Assistant arbeitet: wenn eine Anfrage (Speichern, eine Aktion) länger als 0,3 s dauert, solange die Verbindung weg ist (Neustart) und kurz nach einem Seitenwechsel. `false` schaltet sie ab. |
 
 Die Farbe des Streifens ist die Variable `ha95-banner` im Design: grau bei HA 95, ein blauer Verlauf bei HA 98 (wie im Startmenü von Windows 98).
 
-Das Modul ersetzt ein Icon durch ein buntes, wenn es dafür eine Zeichnung gibt. Das klappt bei Einträgen der Seitenleiste (über ihren `mdi:`- oder `ha95:`-Namen, und bei eingebauten Seiten wie Einstellungen, Benachrichtigungen, Aktivität, Verlauf, Energie, Karte, Medien, To-do-Listen, Kalender und Entwicklerwerkzeuge) und bei den Icons in den Ausklappmenüs. Alles andere behält sein normales Icon.
+Das Modul ersetzt ein Icon durch ein buntes, wenn es dafür eine Zeichnung gibt. Das klappt bei Einträgen der Seitenleiste (über den Namen des Icons, egal mit welchem Präfix, z. B. `mdi:`, `ha95:` oder `hacs:`, und bei eingebauten Seiten wie Einstellungen, Benachrichtigungen, Aktivität, Verlauf, Energie, Karte, Medien, To-do-Listen, Kalender und Entwicklerwerkzeuge) und bei den Icons in den Ausklappmenüs. Alles andere behält sein normales Icon.
 
 Bunte Icons (weitere MDI-Namen zeigen darauf, z. B. `home-outline`, `cog-outline`, `hammer`, `thermometer-lines`, `lightning-bolt`):
 
-`account`, `account-group`, `battery` (alle Stufen), `battery-arrow-down`, `battery-arrow-up`, `battery-clock`, `battery-sync`, `bed`, `bell`, `calendar`, `camera`, `car`, `ceiling-light`, `chart-box`, `chart-line`, `clipboard-list`, `code-braces`, `coffee-to-go`, `cog`, `desk-lamp`, `devices`, `door-closed`, `fan`, `file-document`, `fire`, `flash`, `flower`, `folder-open`, `format-list-bulleted`, `garage`, `help`, `history`, `home`, `information`, `lamps`, `lightbulb`, `lock`, `lock-open`, `map`, `music-note`, `palette`, `play-box`, `power`, `printer-3d-nozzle`, `radiator`, `restart`, `robot`, `robot-vacuum`, `script-text`, `shape-outline`, `shield`, `shield-home`, `snowflake`, `sofa`, `speaker`, `sprout`, `television`, `thermometer`, `thermostat`, `tools`, `view-dashboard`, `washing-machine`, `water`, `weather-partly-cloudy`, `weather-sunny`, `window-closed`, `wrench`
+`account`, `account-group`, `battery` (alle Stufen), `battery-arrow-down`, `battery-arrow-up`, `battery-clock`, `battery-sync`, `bed`, `bell`, `calendar`, `camera`, `car`, `ceiling-light`, `chart-box`, `chart-line`, `clipboard-list`, `code-braces`, `coffee-to-go`, `cog`, `desk-lamp`, `devices`, `door-closed`, `fan`, `file-document`, `fire`, `flash`, `flower`, `folder-open`, `format-list-bulleted`, `garage`, `help`, `history`, `home`, `information`, `lamps`, `lightbulb`, `lock`, `lock-open`, `map`, `music-note`, `palette`, `play-box`, `power`, `printer-3d-nozzle`, `radiator`, `restart`, `robot`, `robot-vacuum`, `script-text`, `shape-outline`, `shield`, `shield-home`, `snowflake`, `sofa`, `speaker`, `sprout`, `television`, `thermometer`, `thermostat`, `tools`, `view-dashboard`, `washing-machine`, `water`, `weather-partly-cloudy`, `weather-sunny`, `window-closed`, `wrench`, `console`, `dock-left`, `hacs`, `key`, `math-log`, `menu`, `view-grid`
 
 ## Eigenes Menü bauen
 
@@ -99,7 +101,8 @@ Jede Zeile ist ein Eintrag. Was er tut, hängt vom Schlüssel ab:
 |---|---|
 | `{ "name": "…", "icon": "mdi:…", "path": "/…" }` | Öffnet eine Seite in Home Assistant. Den Pfad aus der Adresszeile kopieren, ohne Host (z. B. `/dashboard-haus/wohnzimmer`). |
 | `{ "name": "…", "file": "configuration.yaml" }` | Öffnet die Datei in der App [File editor](https://github.com/home-assistant/addons/tree/master/configurator), relativ zu `file_editor_base` (Standard `/homeassistant`). Ohne `icon` gibt es ein Dokument-Icon. |
-| `{ "name": "…", "action": "restart" }` | Startet Home Assistant nach einer Win95-Rückfrage neu. |
+| `{ "name": "…", "action": "restart" }` | Startet Home Assistant nach einer Win95-Rückfrage neu. Danach erscheint der schwarze Bildschirm „Es ist jetzt sicher, Home Assistant auszuschalten.“, bis Home Assistant wieder da ist (Klick oder Escape schließt ihn früher). |
+| `{ "name": "…", "action": "run" }` | Öffnet die Suche von Home Assistant als Win95-Dialog „Ausführen“ (mit UIX, siehe [Fenster-Look](window-look.de.md)). Passt gut zu `"icon": "mdi:console"`. |
 | `{ "name": "…", "url": "https://…" }` | Öffnet eine Adresse in einem neuen Tab. |
 | `{ "name": "…", "items": [ … ] }` | Öffnet ein weiteres Untermenü. Untermenüs lassen sich beliebig tief verschachteln. |
 | `{ "divider": true }` | Trennlinie. |
@@ -154,3 +157,4 @@ Statt der JSON-Datei geht auch `window.ha95StartmenuConfig = { menus: { … } }`
 | Menü leer oder veraltet | Die JSON-Datei hat einen Syntaxfehler, oder die Seite wurde nicht neu geladen. |
 | File editor geht auf, aber nicht die Datei | `file_editor_panel` und `file_editor_base` prüfen. |
 | Kein Streifen | Der Streifen erscheint nur bei ausgeklappter Seitenleiste. |
+| Streifen und bunte Icons verschwinden | In der Browser-Konsole steht `HA95 Startmenü: Seitenleiste ändert sich mehr als …`. Etwas hat die Seitenleiste mehrere Sekunden lang viele Male pro Sekunde geändert, darum zeichnet das Modul sie nicht mehr nach, statt die Oberfläche einzufrieren. Die Menüs funktionieren weiter. Seite neu laden; passiert es wieder, bitte ein Issue anlegen. |

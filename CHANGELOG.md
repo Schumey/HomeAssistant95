@@ -4,6 +4,32 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [3.11.0] – 2026-10-19
+
+"Home Assistant for Workgroups": named after Windows for Workgroups 3.11.
+
+### Added
+- New theme **HA 3.11** in the Windows 3.1 look: white workspace and windows, flat frames with thin black lines, centered title, the system menu box on the left of the title bar and ▼ ▲ on the right. Plus the Windows 3.1 color schemes **HA 3.11 Hot Dog Stand**, **HA 3.11 Arizona**, **HA 3.11 Ozean** and **HA 3.11 Schwarze Lederjacke** (colors recreated).
+- New variables for the window style, usable in any scheme: `ha95-card` (card background), `ha95-frame`, `ha95-frame-pressed`, `ha95-frame-width`, `ha95-title-buttons`, `ha95-title-buttons-width`, `ha95-title-menu`, `ha95-title-menu-width`, `ha95-title-align`, and the symbols `ha95-icon-info`, `-warning`, `-error`, `-success`, `-run`.
+- UIX: all dialogs as Win95 windows (new UIX type `dialog`): title bar, OK/Cancel as Win95 buttons (75×23) with a black frame on the main button and a dotted focus frame.
+- UIX: the search (key `e`, Ctrl+K, magnifier) as the Win95 "Run" dialog with title bar, program icon, explanation, a sunken input field, the sections as buttons and a white list.
+- Start menu: `{ "action": "run" }` opens "Run …". The example menus have the entry.
+- Start menu: after "Restart …" the black "It's now safe to turn off Home Assistant." screen appears and disappears by itself once Home Assistant is back.
+- Start menu: hourglass pointer while Home Assistant is busy (a request taking longer than 0.3 s, no connection, changing pages). Option `busy_cursor`.
+- View tabs as tabs of a properties dialog: gray and raised, the active one taller and merging with the edge below (card-mod and UIX).
+- UIX: sliders in tile features and in the detail dialog (brightness, position, volume, numbers) as Win95 progress bars with blocks, the value in a yellow tooltip while dragging.
+- UIX: the rings of the thermostat, humidifier and light cards made of blocks.
+- UIX: messages at the bottom (`ha-toast`) as gray Win95 windows with the info icon; notes (`ha-alert`) in cards, dialogs and detail dialogs with an etched frame and the Win95 icons for info, warning, error and success.
+- Colorful Start menu icons for `console`, `dock-left`, `hacs`, `key`, `math-log`, `menu` and `view-grid` (11 more MDI names point to them). Icons with any prefix (e.g. `hacs:hacs`) are now recognized.
+- Test dashboard [examples/test-dashboard/ha95-test.yaml](examples/test-dashboard/ha95-test.yaml) with one card of every kind, for checking the look after Home Assistant updates.
+
+### Changed
+- `themes/ha95.yaml` is now generated from building blocks, so rules that card-mod and UIX (or the thermostat and humidifier) share only exist once in the source. The theme looks the same.
+- The more-info toolbar takes no space when a dialog has no buttons.
+
+### Fixed
+- Start menu: if the sidebar keeps changing many times a second for several seconds (a loop), the module stops redrawing banner and icons and writes a warning to the console, instead of freezing the whole interface. The menus keep working.
+
 ## [3.10.0] – 2026-10-19
 
 ### Added
