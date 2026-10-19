@@ -18,6 +18,9 @@ Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog]
 - Karten bleiben eckig, auch wenn ein Dashboard per card-mod runde Ecken setzt.
 - Custom-Sidebar-Beispiel: Der alte CSS-Streifen ist entfernt (er wirkte in HA 2026.10 nicht mehr), der Streifen kommt jetzt aus `ha95-startmenu.js`.
 
+### Behoben
+- UIX: Die Knöpfe + und − der Thermostat- und Luftbefeuchter-Karte sind wieder eckige 3D-Knöpfe (HA 2026.10 nutzt dort einen anderen Knopf).
+
 ## [3.9.0] – 2026-10-18
 
 ### Hinzugefügt

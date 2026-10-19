@@ -2384,7 +2384,8 @@ async function openRootMenu(anchor) {
 function decorate(root) {
   if (!config) return;
   // Senkrechter Streifen wie "Windows 95" im echten Startmenü
-  if (config.banner && !root.querySelector(":scope > .ha95-banner")) {
+  // (":scope" passt in einem Shadow-Root auf nichts, darum ohne)
+  if (config.banner && !root.querySelector(".ha95-banner")) {
     const banner = document.createElement("div");
     banner.className = "ha95-banner";
     const [, main, accent] = /^(.*?)(\d*)$/.exec(String(config.banner_text));
@@ -2427,6 +2428,11 @@ function decorate(root) {
 const SIDEBAR_CSS = `
   .ha95-sb-arrow { font-size: 10px; padding-inline-end: 4px; pointer-events: none; }
   :host(:not([expanded])) .ha95-sb-arrow { display: none; }
+  /* über der Markierungsfläche, die Custom Sidebar beim Darüberfahren zeichnet */
+  .ha95-cicon-wrap, .ha95-sb-arrow { position: relative; z-index: 1; }
+  [data-ha95-menu]:hover .ha95-sb-arrow, [data-ha95-menu].ha95-open .ha95-sb-arrow {
+    color: var(--ha95-select-text, #fff);
+  }
   .ha95-hidden { display: none !important; }
   .ha95-cicon-wrap { display: inline-flex; width: 24px; height: 24px; flex: none; }
   .ha95-cicon { width: 24px; height: 24px; }
@@ -2475,9 +2481,16 @@ function attach(sb) {
       el.appendChild(a);
     });
   addArrows();
+  // Höchstens einmal pro Frame, damit eigene Änderungen keine Kette auslösen
+  let queued = false;
   new MutationObserver(() => {
-    addArrows();
-    decorate(root);
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => {
+      queued = false;
+      addArrows();
+      decorate(root);
+    });
   }).observe(root, { subtree: true, childList: true, attributes: true, attributeFilter: ["data-ha95-menu", "icon", "href"] });
 
   root.addEventListener("mouseover", (ev) => {

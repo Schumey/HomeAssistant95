@@ -499,6 +499,23 @@ HA 95: &ha95
       ha-button:active::part(base) {
         box-shadow: var(--ha95-sunken) !important;
       }
+      /* HA 2026.10: Material-Knopf statt ha-button */
+      .icon-button {
+        border-radius: 0 !important;
+        background: var(--ha95-face) !important;
+        box-shadow: var(--ha95-raised) !important;
+        color: var(--ha95-text) !important;
+      }
+      .icon-button:active {
+        box-shadow: var(--ha95-sunken) !important;
+      }
+      .outline,
+      md-ripple {
+        display: none !important;
+      }
+      md-focus-ring {
+        --md-focus-ring-shape: 0px;
+      }
     "hui-entities-toggle $ ha-switch $": |
       /* Win95-Kontrollkästchen statt Kippschalter */
       .switch {
@@ -541,6 +558,23 @@ HA 95: &ha95
       }
       ha-button:active::part(base) {
         box-shadow: var(--ha95-sunken) !important;
+      }
+      /* HA 2026.10: Material-Knopf statt ha-button */
+      .icon-button {
+        border-radius: 0 !important;
+        background: var(--ha95-face) !important;
+        box-shadow: var(--ha95-raised) !important;
+        color: var(--ha95-text) !important;
+      }
+      .icon-button:active {
+        box-shadow: var(--ha95-sunken) !important;
+      }
+      .outline,
+      md-ripple {
+        display: none !important;
+      }
+      md-focus-ring {
+        --md-focus-ring-shape: 0px;
       }
 
   # Zeilen in Entitätskarten, Grundlook: Schieberegler als Trackbar
@@ -847,14 +881,17 @@ HA 95: &ha95
       --mdc-icon-size: 16px;
       color: var(--ha95-text) !important;
     }
-    .action-items ha-icon-button,
-    ha-menu-button {
+    .action-items ha-icon-button {
       display: inline-flex !important;
       align-items: center;
       justify-content: center;
       width: 24px !important;
       height: 22px !important;
       margin: 0 !important;
+    }
+    /* Menüknopf ohne feste Maße: bei angedockter Seitenleiste ist er leer */
+    .action-items ha-icon-button,
+    ha-menu-button {
       background: var(--ha95-face);
       box-shadow: var(--ha95-raised);
     }
@@ -895,14 +932,17 @@ HA 95: &ha95
         --mdc-icon-size: 16px;
         color: var(--ha95-text) !important;
       }
-      .action-items ha-icon-button,
-      ha-menu-button {
+      .action-items ha-icon-button {
         display: inline-flex !important;
         align-items: center;
         justify-content: center;
         width: 24px !important;
         height: 22px !important;
         margin: 0 !important;
+      }
+      /* Menüknopf ohne feste Maße: bei angedockter Seitenleiste ist er leer */
+      .action-items ha-icon-button,
+      ha-menu-button {
         background: var(--ha95-face);
         box-shadow: var(--ha95-raised);
       }
@@ -958,7 +998,6 @@ HA 95: &ha95
       --mdc-icon-size: 16px;
       color: var(--ha95-text) !important;
     }
-    ha-menu-button,
     ::slotted(ha-icon-button),
     ::slotted(ha-dropdown) {
       display: inline-flex;
@@ -966,6 +1005,10 @@ HA 95: &ha95
       justify-content: center;
       width: 24px !important;
       height: 22px !important;
+    }
+    ha-menu-button,
+    ::slotted(ha-icon-button),
+    ::slotted(ha-dropdown) {
       background: var(--ha95-face);
       box-shadow: var(--ha95-raised);
       margin-inline-start: 2px;
@@ -996,7 +1039,6 @@ HA 95: &ha95
         --mdc-icon-size: 16px;
         color: var(--ha95-text) !important;
       }
-      ha-menu-button,
       ::slotted(ha-icon-button),
       ::slotted(ha-dropdown) {
         display: inline-flex;
@@ -1004,6 +1046,10 @@ HA 95: &ha95
         justify-content: center;
         width: 24px !important;
         height: 22px !important;
+      }
+      ha-menu-button,
+      ::slotted(ha-icon-button),
+      ::slotted(ha-dropdown) {
         background: var(--ha95-face);
         box-shadow: var(--ha95-raised);
         margin-inline-start: 2px;
@@ -1125,9 +1171,9 @@ HA 95: &ha95
       /* Titel einzeilig: "Name - Bereich" */
       .title {
         display: flex !important;
-        flex-direction: row-reverse;
-        justify-content: flex-end;
-        align-items: baseline;
+        flex-direction: row-reverse !important;
+        justify-content: flex-end !important;
+        align-items: baseline !important;
         color: var(--ha95-title-text) !important;
       }
       .title .main,
@@ -1146,7 +1192,7 @@ HA 95: &ha95
         content: " - ";
         white-space: pre;
       }
-    "ha-adaptive-dialog $ ha-dialog $ ha-dialog-header $": |
+    "$ ha-dialog $ ha-dialog-header $": |
       .header {
         padding: 3px 3px 0 !important;
       }

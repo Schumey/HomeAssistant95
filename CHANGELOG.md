@@ -18,6 +18,9 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 - Cards stay square even when a dashboard sets rounded corners with card-mod.
 - Custom Sidebar example: the old CSS banner is gone (it no longer worked in HA 2026.10), the banner comes from `ha95-startmenu.js`.
 
+### Fixed
+- UIX: the + and − buttons of the thermostat and humidifier cards are square 3D buttons again (HA 2026.10 uses a different button there).
+
 ## [3.9.0] – 2026-10-18
 
 ### Added

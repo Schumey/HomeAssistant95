@@ -48,6 +48,8 @@ Deutsche HA-Oberfläche: „Werkzeuge → YAML → **Designs** neu laden“ und 
 - **Pixel-Schrift** über `uix-fonts` (ab UIX 8.4.0). Damit erscheint sie auch außerhalb von Dashboards.
 - **Theme-Variablen** wirken nicht, wenn eine Komponente sie in `:host` selbst setzt (z. B. `--control-circular-slider-*`, `--control-slider-*`). Dann braucht es UIX auf das Element.
 - **Als Theme-Variablen funktionieren:** `ha-switch-*`, `ha-slider-*`, `ha-color-form-background*`, `header-height`, `state-climate-*-color`, `state-humidifier-on-color`.
+- **Pfad herausfinden:** UIX bringt `uix_style_path(element)` und `uix_tree(element)` mit (in der Konsole aufrufen). Die Ausgabe nennt den UIX-Elternknoten und den genauen Pfad für das Theme. Vor dem Schreiben eines neuen Pfads immer damit prüfen.
+- **`:scope` im Shadow-Root:** `shadowRoot.querySelector(":scope > …")` findet nichts. In `ha95-startmenu.js` führte das zu einer Endlosschleife mit dem MutationObserver und fror die ganze Oberfläche ein.
 - **Gleiche Spezifität:** Ein eingefügtes `<style>` verliert gegen die `adoptedStyleSheets` der Komponente. Darum oft `!important`.
 
 ## HA-2026.10-Frontend (Stand Oktober 2026)
@@ -57,7 +59,7 @@ Deutsche HA-Oberfläche: „Werkzeuge → YAML → **Designs** neu laden“ und 
 - **Schalter:** `ha-switch` (Web Awesome), Parts `control` und `thumb`.
 - **Schieberegler:** `ha-slider`, Parts `track`, `indicator`, `thumb`.
 - **Schmale Seitenleiste:** Sie ist ein modaler Dialog, alles außerhalb davon ist dann inert. Popups wie das Startmenü hängen deshalb als `popover` im Shadow-Root von `ha-sidebar`.
-- **More-info-Dialog:** `ha-more-info-dialog $ ha-adaptive-dialog $ ha-dialog $ ha-dialog-header $`. Die Knöpfe (`ha-icon-button[slot=headerNavigationIcon|headerActionItems]`, `ha-dropdown[slot=headerActionItems]`) und der Titel (`.title` mit `.breadcrumb` und `.main`) liegen im Shadow-Root von `ha-more-info-dialog`.
+- **More-info-Dialog:** `ha-more-info-dialog $ ha-adaptive-dialog $ ha-dialog $ ha-dialog-header $`. In `uix-more-info-yaml` starten Pfade **bei `ha-adaptive-dialog` selbst**, also `"$ ha-dialog $ ha-dialog-header $"`. Die Knöpfe (`ha-icon-button[slot=headerNavigationIcon|headerActionItems]`, `ha-dropdown[slot=headerActionItems]`) und der Titel (`.title` mit `.breadcrumb` und `.main`) liegen im Shadow-Root von `ha-more-info-dialog`.
 - **Titel von `ha-card`:** Karten wie Markdown übergeben den Titel als `header` an `ha-card`, das ihn in seinem eigenen Shadow-Root als `h1.card-header` zeichnet. Erreichbar mit dem UIX-Pfad `"ha-card $"`.
 - **Kopfleisten-Knöpfe:** In `hui-root` liegen sie in `.action-items`, einer davon steckt in einem `ha-dropdown` und war ohne feste Maße kleiner als die anderen.
 - **Seitenleiste:** `ha-sidebar $` enthält `div.menu` (Titel) und `div.panels-list` (alle Einträge, auch die unteren). `.sidebar-shell` gibt es nicht mehr. Einträge sind `ha-list-item-button` mit `ha-icon` (benutzerdefiniert, `icon`-Name) oder `ha-svg-icon` (eingebaut, nur `href`).
@@ -68,6 +70,7 @@ Deutsche HA-Oberfläche: „Werkzeuge → YAML → **Designs** neu laden“ und 
 
 - Regeln möglichst **live abstimmen**: im HA-Tab des eingebauten Browsers Styles per JavaScript in die Shadow-Roots einspielen, Screenshot, nachjustieren, erst dann ins Theme übernehmen. Blind gebaute Selektoren treffen das echte DOM oft nicht.
 - HA im eingebauten Browser über `http://192.168.178.27/` öffnen (Port 80). `homeassistant.local` wird dort blockiert, ebenso Zugriffe auf `localhost` (ein lokaler Testserver für geänderte Module geht also nicht) und `file://`. Geänderte JS-Module daher stückweise per JavaScript einspielen. Farbschemata testen: `ha95-*`-Variablen per `document.documentElement.style.setProperty` setzen.
+- **Dateien in HA einspielen** (nur auf Wunsch des Nutzers): über die File-editor-API im Ingress, `GET api/file?filename=…` und `POST api/save` (Formular mit `filename`, `text`). Vorher immer eine Sicherung `*.bak-vor-x.y` daneben speichern. Große Dateien gzip+base64 übertragen, im Browser mit `DecompressionStream` entpacken und per Prüfsumme (h = h·31 + Zeichen, 32 Bit) gegen die lokale Datei prüfen. Danach `frontend.reload_themes` aufrufen und für JS-Module den Browser-Cache mit `fetch(url, {cache: "reload"})` erneuern. Hängt die HA-Oberfläche, ist der File editor direkt unter `/api/hassio_ingress/<token>/` erreichbar. Theme: `/homeassistant/themes/ha95/ha95.yaml`, Module: `/homeassistant/www/ha95/`.
 - Das HA-MCP läuft nur lesend: Dashboards und Zustände lesen ja, schreiben nein. Vorschläge für persönliche Dashboards als YAML in `local/` ablegen (z. B. `local/dashboard-batterien.yaml`).
 - Screenshots im eingebauten Browser sind verkleinert (1125 px CSS-Breite → 800 px). Für Maße `getBoundingClientRect()` statt Augenmaß nehmen.
 - Die Quellen von HA-Frontend, UIX und Custom Sidebar auf GitHub lesen, bevor man Selektoren rät.
