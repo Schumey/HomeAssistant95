@@ -26,6 +26,7 @@
  *   { "name": "…", "action": "restart" }                    Home Assistant neu starten (mit Rückfrage),
  *                                                           danach "Es ist jetzt sicher, …" bis HA wieder da ist
  *   { "name": "…", "action": "run" }                        Schnellsuche als Dialog "Ausführen" öffnen
+ *   { "name": "…", "action": "clock" }                      "Eigenschaften von Datum/Uhrzeit" öffnen
  *   { "name": "…", "url": "https://…" }                     Adresse in neuem Tab öffnen
  *   { "name": "…", "items": [ … ] }                         weiteres Untermenü
  *   { "divider": true }                                     Trennlinie
@@ -37,6 +38,10 @@
  *                           (für Icons, die es bunt gibt, sonst das normale)
  *   "busy_cursor": true     Sanduhr als Mauszeiger, solange HA arbeitet
  *                           (Anfrage dauert länger, Seitenwechsel, Neustart)
+ *   "clock": true           Doppelklick (Touch: Tippen) auf den Titel mit der
+ *                           Uhr öffnet "Eigenschaften von Datum/Uhrzeit"
+ *                           (lädt ha95-clock.js aus demselben Ordner)
+ *   "clock_calendars": []   Kalender-Entitäten, deren Termine der Dialog zeigt
  */
 
 const CONFIG_URL = "/local/ha95-startmenu.json";
@@ -47,6 +52,8 @@ const DEFAULTS = {
   banner_text: "HomeAssistant95",
   color_icons: true,
   busy_cursor: true,
+  clock: true,
+  clock_calendars: [],
   menus: {},
 };
 
@@ -2533,10 +2540,25 @@ function openRun() {
   document.body.dispatchEvent(new KeyboardEvent("keydown", { key: "e", code: "KeyE", bubbles: true, composed: true }));
 }
 
+// "Eigenschaften von Datum/Uhrzeit" aus ha95-clock.js (gleicher Ordner,
+// gleiche ?v=-Version wie dieses Modul)
+async function openClock() {
+  closeAll();
+  const url = new URL("ha95-clock.js", import.meta.url);
+  url.search = new URL(import.meta.url).search;
+  try {
+    const mod = await import(url.href);
+    mod.showDateTime({ calendars: config?.clock_calendars });
+  } catch (err) {
+    console.warn("HA95 Startmenü: ha95-clock.js nicht ladbar", url.href, err);
+  }
+}
+
 function runItem(item) {
   closeAll();
   if (item.action === "restart") return confirmRestart();
   if (item.action === "run") return openRun();
+  if (item.action === "clock") return openClock();
   if (item.file) return openFile(item.file);
   if (item.url) return window.open(item.url, "_blank", "noopener");
   if (item.path) return navigate(item.path);
@@ -2805,6 +2827,13 @@ function attach(sb) {
       if (findAnchor(ev) && !findAnchor({ composedPath: () => [ev.relatedTarget] })) scheduleClose();
     })
   );
+  // Doppelklick auf den Titel mit der Uhr wie auf die Uhr der Taskleiste,
+  // auf Touch-Bildschirmen reicht einmal Tippen
+  const onTitle = (ev) => ev.composedPath().some((el) => el.classList?.contains("title"));
+  root.addEventListener("dblclick", (ev) => config?.clock && onTitle(ev) && openClock());
+  root.addEventListener("pointerup", (ev) => {
+    if (ev.pointerType === "touch" && config?.clock && onTitle(ev)) openClock();
+  });
   // Klick/Tippen öffnet das Menü (für Touch), statt zu navigieren
   root.addEventListener(
     "click",

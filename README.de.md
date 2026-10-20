@@ -56,6 +56,7 @@ Jedes Extra funktioniert für sich. Einfach aussuchen:
 |---|---|---|
 | **Fenster-Look** | Karten und Dialoge als echte Win95-Fenster mit Titelleisten, OK/Abbrechen-Schaltflächen, Kontrollkästchen, Trackbars, Fortschrittsbalken, Registerkarten und Meldungsfenstern, dazu die Suche als Dialog „Ausführen“. Braucht [UIX](https://github.com/Lint-Free-Technology/uix). | [Fenster-Look](docs/window-look.de.md) |
 | **Startmenü** | Seitenleiste als Startmenü: Streifen „HomeAssistant95“, bunte Icons, Ausklappmenüs mit Untermenüs, „Ausführen …“, der Bildschirm „Es ist jetzt sicher …“ nach dem Neustart, die Sanduhr als Mauszeiger, und wie man ein eigenes Menü baut. | [Startmenü](docs/start-menu.de.md) |
+| **Datum/Uhrzeit** | Das Fenster „Eigenschaften von Datum/Uhrzeit“ mit Monatskalender, Analoguhr und deinen Kalenderterminen: als Dashboard-Karte und per Doppelklick auf die Uhr im Startmenü. | [Datum/Uhrzeit](docs/date-time.de.md) |
 | **Pixel-Icons** | 537 Icons in Win95-Pixeloptik (`ha95:`), auf Wunsch automatisch statt aller MDI-Icons. | [Pixel-Icons](docs/pixel-icons.de.md) |
 | **Pixel-Schrift & Mauszeiger** | Die Schrift „Pixelated MS Sans Serif“ und der klassische Pfeil. | [unten](#pixel-schrift--mauszeiger) |
 

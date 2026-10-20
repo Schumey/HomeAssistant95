@@ -6,7 +6,11 @@ Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog]
 
 ## [3.11.1] – unveröffentlicht
 
-Korrekturen für Handys und die Companion-App.
+Korrekturen für Handys und die Companion-App, dazu die Uhr von Windows 95.
+
+### Hinzugefügt
+- „Eigenschaften von Datum/Uhrzeit“ (`www/ha95/ha95-clock.js`): das Fenster aus Windows 95 mit Monatskalender, Analoguhr mit türkisen Zeigern und Sekundenzeiger, Digitalanzeige und der Registerkarte „Zeitzone“. Tage mit Terminen aus Home-Assistant-Kalendern sind fett, ein Klick auf einen Tag listet die Termine. Als Dashboard-Karte `custom:ha95-clock-card` (Optionen `title`, `calendars`) und im Startmenü: Doppelklick auf die Uhr im Titel der Seitenleiste öffnet es (Tippen auf Touch-Bildschirmen), Optionen `clock` und `clock_calendars`, Menüeintrag `{ "action": "clock" }`. Siehe [Datum/Uhrzeit](docs/date-time.de.md).
+- Prüfseite: Karte „Datum/Uhrzeit“.
 
 ### Behoben
 - Startmenü auf Touch-Bildschirmen: Antippen eines Eintrags mit Ausklappmenü (z. B. „Werkzeuge“) öffnete das Menü und schloss es sofort wieder, weil der Browser vor dem Tippen ein nachgemachtes Darüberfahren der Maus schickt. Darüberfahren zählt jetzt nur noch mit echter Maus, Tippen öffnet das Menü, nochmal Tippen schließt es.

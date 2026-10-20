@@ -55,6 +55,8 @@ All of them are on by default. They are set at the top of `ha95-startmenu.json`:
 | `banner_text` | Text of the banner. Digits at the end are drawn lighter, like the "95" in "Windows 95". |
 | `color_icons` | `false` keeps the normal icons. |
 | `busy_cursor` | Hourglass pointer while Home Assistant is busy: when a request (saving, an action) takes longer than 0.3 s, while the connection is gone (restart) and briefly after changing pages. `false` turns it off. |
+| `clock` | Double-clicking the title with the clock (tapping on touch screens) opens "Date/Time Properties" with calendar and analog clock. Needs `ha95-clock.js` next to the module, see [Date/Time](date-time.md#start-menu-clock). `false` turns it off. |
+| `clock_calendars` | Calendar entities whose events that window shows, e.g. `["calendar.family"]`. |
 
 The banner color is the `ha95-banner` variable of the theme: gray in HA 95, a blue gradient in HA 98 (like the Windows 98 Start menu).
 
@@ -104,6 +106,7 @@ Each line is one entry. What it does depends on its key:
 | `{ "name": "…", "file": "configuration.yaml" }` | Opens the file in the [File editor](https://github.com/home-assistant/addons/tree/master/configurator) app, relative to `file_editor_base` (default `/homeassistant`). Without `icon` it gets a document icon. |
 | `{ "name": "…", "action": "restart" }` | Restarts Home Assistant after a Win95 confirmation dialog. Then the black "It's now safe to turn off Home Assistant." screen appears until Home Assistant is back (click or Escape closes it earlier). |
 | `{ "name": "…", "action": "run" }` | Opens the Home Assistant search as the Win95 "Run" dialog (with UIX, see [Window look](window-look.md)). Good with `"icon": "mdi:console"`. |
+| `{ "name": "…", "action": "clock" }` | Opens "Date/Time Properties" (see [Date/Time](date-time.md)). Good with `"icon": "mdi:clock"`. |
 | `{ "name": "…", "url": "https://…" }` | Opens an address in a new tab. |
 | `{ "name": "…", "items": [ … ] }` | Opens another submenu. Submenus can be nested as deep as you like. |
 | `{ "divider": true }` | Separator line. |

@@ -6,7 +6,11 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [3.11.1] – unreleased
 
-Fixes for phones and the companion app.
+Fixes for phones and the companion app, and the Windows 95 clock.
+
+### Added
+- "Date/Time Properties" (`www/ha95/ha95-clock.js`): the Windows 95 window with month calendar, analog clock with teal hands and second hand, digital time and a "Time Zone" tab. Days with events from Home Assistant calendars are bold, clicking a day lists its events. As a dashboard card `custom:ha95-clock-card` (options `title`, `calendars`) and in the Start menu: double-clicking the clock in the sidebar title opens it (tap on touch screens), options `clock` and `clock_calendars`, menu entry `{ "action": "clock" }`. See [Date/Time](docs/date-time.md).
+- Test dashboard: "Date/Time" card.
 
 ### Fixed
 - Start menu on touch screens: tapping an item with a flyout menu (e.g. "Tools") opened the menu and closed it again right away, because the browser sends a fake mouse hover before the tap. Hovering now only counts for a real mouse, a tap opens the menu and a second tap closes it.

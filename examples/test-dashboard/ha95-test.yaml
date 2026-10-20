@@ -12,6 +12,8 @@
 #      input_number.test_box (Eingabefeld), input_select.test_select,
 #      input_datetime.test_date (nur Datum), input_datetime.test_datetime,
 #      timer.test_timer, counter.test_counter, script.test_script.
+#   4. Für die Karte „Datum/Uhrzeit“ www/ha95/ha95-clock.js als Ressource
+#      laden (siehe docs/date-time.de.md), sonst zeigt sie einen Fehler.
 #
 # vacuum.unavailable_example und alarm_control_panel.test sind absichtlich nicht
 # vorhanden, damit die Warnungen „Entität nicht gefunden“ mitgeprüft werden. Wer
@@ -124,6 +126,11 @@ views:
           - type: calendar
             initial_view: listWeek
             entities:
+              - calendar.holidays
+              - calendar.personal
+          - type: custom:ha95-clock-card
+            title: Datum/Uhrzeit
+            calendars:
               - calendar.holidays
               - calendar.personal
           - type: picture-entity

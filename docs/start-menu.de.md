@@ -55,6 +55,8 @@ Alles ist standardmäßig an. Eingestellt wird es oben in `ha95-startmenu.json`:
 | `banner_text` | Text im Streifen. Ziffern am Ende werden heller gezeichnet, wie die „95“ in „Windows 95“. |
 | `color_icons` | `false` lässt die normalen Icons stehen. |
 | `busy_cursor` | Sanduhr als Mauszeiger, solange Home Assistant arbeitet: wenn eine Anfrage (Speichern, eine Aktion) länger als 0,3 s dauert, solange die Verbindung weg ist (Neustart) und kurz nach einem Seitenwechsel. `false` schaltet sie ab. |
+| `clock` | Doppelklick auf den Titel mit der Uhr (Tippen auf Touch-Bildschirmen) öffnet „Eigenschaften von Datum/Uhrzeit“ mit Kalender und Analoguhr. Braucht `ha95-clock.js` neben dem Modul, siehe [Datum/Uhrzeit](date-time.de.md#uhr-im-startmenü). `false` schaltet es ab. |
+| `clock_calendars` | Kalender-Entitäten, deren Termine das Fenster zeigt, z. B. `["calendar.familie"]`. |
 
 Die Farbe des Streifens ist die Variable `ha95-banner` im Design: grau bei HA 95, ein blauer Verlauf bei HA 98 (wie im Startmenü von Windows 98).
 
@@ -104,6 +106,7 @@ Jede Zeile ist ein Eintrag. Was er tut, hängt vom Schlüssel ab:
 | `{ "name": "…", "file": "configuration.yaml" }` | Öffnet die Datei in der App [File editor](https://github.com/home-assistant/addons/tree/master/configurator), relativ zu `file_editor_base` (Standard `/homeassistant`). Ohne `icon` gibt es ein Dokument-Icon. |
 | `{ "name": "…", "action": "restart" }` | Startet Home Assistant nach einer Win95-Rückfrage neu. Danach erscheint der schwarze Bildschirm „Es ist jetzt sicher, Home Assistant auszuschalten.“, bis Home Assistant wieder da ist (Klick oder Escape schließt ihn früher). |
 | `{ "name": "…", "action": "run" }` | Öffnet die Suche von Home Assistant als Win95-Dialog „Ausführen“ (mit UIX, siehe [Fenster-Look](window-look.de.md)). Passt gut zu `"icon": "mdi:console"`. |
+| `{ "name": "…", "action": "clock" }` | Öffnet „Eigenschaften von Datum/Uhrzeit“ (siehe [Datum/Uhrzeit](date-time.de.md)). Passt gut zu `"icon": "mdi:clock"`. |
 | `{ "name": "…", "url": "https://…" }` | Öffnet eine Adresse in einem neuen Tab. |
 | `{ "name": "…", "items": [ … ] }` | Öffnet ein weiteres Untermenü. Untermenüs lassen sich beliebig tief verschachteln. |
 | `{ "divider": true }` | Trennlinie. |
