@@ -14,7 +14,7 @@ Ein Windows-95-Design für Home Assistant, verteilt über HACS (Typ Theme). Dies
 | `examples/startmenu/` | Beispielmenü für `ha95-startmenu.js`. |
 | `examples/test-dashboard/` | Prüfseite „HA95 Test“ mit je einer Karte jeder Art. Die Fassung mit den echten Entitäten des Nutzers liegt in `local/dashboard-test.yaml` (in HA als Dashboard `ha95-test`). |
 | `docs/` | Ausführliche Anleitungen, je `name.md` (Englisch) und `name.de.md` (Deutsch): Fenster-Look, Startmenü (mit „Eigenes Menü bauen“), Pixel-Icons, Farbschemata, Deinstallieren. Die README ist nur die Übersicht und verlinkt dorthin. |
-| `local/` | Gitignored: persönliche Dateien des Nutzers und der Icon-Generator. Ist nicht auf GitHub und muss beim PC-Wechsel von Hand mitgenommen werden. |
+| `local/` | Gitignored: persönliche Dateien des Nutzers, Theme- und Icon-Generator. Eigenes privates Repo `Schumey/HomeAssistant95-local`; auf einem neuen PC mit `git clone https://github.com/Schumey/HomeAssistant95-local.git local` holen, Änderungen dort committen und pushen. |
 
 Alle Farben laufen über `ha95-*`-Variablen. Neue Regeln nutzen diese Variablen statt fester Farben, damit alle Varianten mitziehen. Die Kommentare in den Dateien sind deutsch.
 
@@ -83,7 +83,7 @@ Deutsche HA-Oberfläche: „Werkzeuge → YAML → **Designs** neu laden“ und 
 ## Arbeitsweise
 
 - Regeln möglichst **live abstimmen**: im HA-Tab des eingebauten Browsers Styles per JavaScript in die Shadow-Roots einspielen, Screenshot, nachjustieren, erst dann ins Theme übernehmen. Blind gebaute Selektoren treffen das echte DOM oft nicht.
-- HA im eingebauten Browser über `http://192.168.178.27/` öffnen (Port 80). `homeassistant.local` wird dort blockiert, ebenso Zugriffe auf `localhost` (ein lokaler Testserver für geänderte Module geht also nicht) und `file://`. Geänderte JS-Module daher stückweise per JavaScript einspielen. Farbschemata testen: `ha95-*`-Variablen per `document.documentElement.style.setProperty` setzen.
+- HA im eingebauten Browser über Tailscale öffnen: `https://homeassistant.tail5ce62d.ts.net/` (die LAN-Adresse `http://192.168.178.27/` geht nur im Heimnetz). `homeassistant.local` wird dort blockiert, ebenso Zugriffe auf `localhost` (ein lokaler Testserver für geänderte Module geht also nicht) und `file://`. Geänderte JS-Module daher stückweise per JavaScript einspielen. Farbschemata testen: `ha95-*`-Variablen per `document.documentElement.style.setProperty` setzen.
 - **Dateien in HA einspielen** (nur auf Wunsch des Nutzers): über die File-editor-API im Ingress, `GET api/file?filename=…` und `POST api/save` (Formular mit `filename`, `text`). Vorher immer eine Sicherung `*.bak-vor-x.y` daneben speichern. Große Dateien gzip+base64 übertragen, im Browser mit `DecompressionStream` entpacken und per Prüfsumme (h = h·31 + Zeichen, 32 Bit) gegen die lokale Datei prüfen. Danach `frontend.reload_themes` aufrufen und für JS-Module den Browser-Cache mit `fetch(url, {cache: "reload"})` erneuern. Hängt die HA-Oberfläche, ist der File editor direkt unter `/api/hassio_ingress/<token>/` erreichbar. Theme: `/homeassistant/themes/ha95/ha95.yaml`, Module: `/homeassistant/www/ha95/`.
 - Das HA-MCP läuft nur lesend: Dashboards und Zustände lesen ja, schreiben nein. Vorschläge für persönliche Dashboards als YAML in `local/` ablegen (z. B. `local/dashboard-batterien.yaml`).
 - Screenshots im eingebauten Browser sind verkleinert (1125 px CSS-Breite → 800 px). Für Maße `getBoundingClientRect()` statt Augenmaß nehmen.

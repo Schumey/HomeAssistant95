@@ -54,7 +54,7 @@ Each extra works on its own. Pick what you like:
 
 | Extra | What you get | Guide |
 |---|---|---|
-| **Window look** | Cards and dialogs as real Win95 windows with title bars, OK/Cancel buttons, checkboxes, trackbars, progress bars, tabs and message boxes, and the search as the "Run" dialog. Needs [UIX](https://github.com/Lint-Free-Technology/uix). | [Window look](docs/window-look.md) |
+| **Window look** | Cards and dialogs as real Win95 windows with title bars, OK/Cancel buttons, checkboxes, trackbars, progress bars, tabs, message boxes and ApexCharts charts, and the search as the "Run" dialog. Needs [UIX](https://github.com/Lint-Free-Technology/uix). | [Window look](docs/window-look.md) |
 | **Start menu** | Sidebar as a Start menu: "HomeAssistant95" banner, colorful icons, flyout menus with submenus, "Run …", the "It's now safe to turn off" screen after a restart, the hourglass pointer, and how to build your own menu. | [Start menu](docs/start-menu.md) |
 | **Date/Time** | The "Date/Time Properties" window with month calendar, analog clock and your calendar events: as a dashboard card and on double-click on the Start menu clock. | [Date/Time](docs/date-time.md) |
 | **Pixel icons** | 537 icons in Win95 pixel style (`ha95:`), optionally replacing all MDI icons automatically. | [Pixel icons](docs/pixel-icons.md) |
@@ -63,7 +63,7 @@ Each extra works on its own. Pick what you like:
 ### Pixel font & mouse pointer
 
 1. Copy `www/ha95/ha95.css` to `/config/www/ha95/`.
-2. **Settings → Dashboards → ⋮ → Resources** → `/local/ha95/ha95.css?v=3.12.0`, type **Stylesheet**. Change the number after `?v=` with every update, otherwise browsers and the companion app keep the old file for up to 31 days.
+2. **Settings → Dashboards → ⋮ → Resources** → `/local/ha95/ha95.css?v=3.13.0`, type **Stylesheet**. Change the number after `?v=` with every update, otherwise browsers and the companion app keep the old file for up to 31 days.
 
 The "Pixelated MS Sans Serif" font comes from [98.css](https://github.com/jdan/98.css) (MIT) and is loaded from jsDelivr. With UIX 8.4.0 or later the theme loads the font itself, so it also shows up on the settings pages. `ha95.css` is then only needed for the mouse pointer.
 

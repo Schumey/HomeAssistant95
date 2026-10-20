@@ -54,7 +54,7 @@ Jedes Extra funktioniert für sich. Einfach aussuchen:
 
 | Extra | Was man bekommt | Anleitung |
 |---|---|---|
-| **Fenster-Look** | Karten und Dialoge als echte Win95-Fenster mit Titelleisten, OK/Abbrechen-Schaltflächen, Kontrollkästchen, Trackbars, Fortschrittsbalken, Registerkarten und Meldungsfenstern, dazu die Suche als Dialog „Ausführen“. Braucht [UIX](https://github.com/Lint-Free-Technology/uix). | [Fenster-Look](docs/window-look.de.md) |
+| **Fenster-Look** | Karten und Dialoge als echte Win95-Fenster mit Titelleisten, OK/Abbrechen-Schaltflächen, Kontrollkästchen, Trackbars, Fortschrittsbalken, Registerkarten, Meldungsfenstern und ApexCharts-Diagrammen, dazu die Suche als Dialog „Ausführen“. Braucht [UIX](https://github.com/Lint-Free-Technology/uix). | [Fenster-Look](docs/window-look.de.md) |
 | **Startmenü** | Seitenleiste als Startmenü: Streifen „HomeAssistant95“, bunte Icons, Ausklappmenüs mit Untermenüs, „Ausführen …“, der Bildschirm „Es ist jetzt sicher …“ nach dem Neustart, die Sanduhr als Mauszeiger, und wie man ein eigenes Menü baut. | [Startmenü](docs/start-menu.de.md) |
 | **Datum/Uhrzeit** | Das Fenster „Eigenschaften von Datum/Uhrzeit“ mit Monatskalender, Analoguhr und deinen Kalenderterminen: als Dashboard-Karte und per Doppelklick auf die Uhr im Startmenü. | [Datum/Uhrzeit](docs/date-time.de.md) |
 | **Pixel-Icons** | 537 Icons in Win95-Pixeloptik (`ha95:`), auf Wunsch automatisch statt aller MDI-Icons. | [Pixel-Icons](docs/pixel-icons.de.md) |
@@ -63,7 +63,7 @@ Jedes Extra funktioniert für sich. Einfach aussuchen:
 ### Pixel-Schrift & Mauszeiger
 
 1. `www/ha95/ha95.css` nach `/config/www/ha95/` kopieren.
-2. **Einstellungen → Dashboards → ⋮ → Ressourcen** → `/local/ha95/ha95.css?v=3.12.0`, Typ **Stylesheet**. Die Nummer nach `?v=` bei jedem Update ändern, sonst behalten Browser und Companion-App bis zu 31 Tage die alte Datei.
+2. **Einstellungen → Dashboards → ⋮ → Ressourcen** → `/local/ha95/ha95.css?v=3.13.0`, Typ **Stylesheet**. Die Nummer nach `?v=` bei jedem Update ändern, sonst behalten Browser und Companion-App bis zu 31 Tage die alte Datei.
 
 Die Schrift „Pixelated MS Sans Serif“ stammt aus [98.css](https://github.com/jdan/98.css) (MIT) und wird über jsDelivr geladen. Mit UIX ab 8.4.0 lädt das Design die Schrift selbst, sie erscheint dann auch auf den Einstellungsseiten. `ha95.css` braucht man dann nur noch für den Mauszeiger.
 

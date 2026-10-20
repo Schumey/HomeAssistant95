@@ -26,6 +26,7 @@ The theme alone sets colors, fonts and square corners. For real Win95 windows it
 | Sliders in tiles and dialogs | Brightness, position, volume and number sliders (in tile features and in the detail dialog) are Win95 progress bars: a sunken white field with blocks in the selection color. While dragging, the value shows in a yellow tooltip. |
 | Switches in entities cards | Win95 checkboxes: a sunken white box with a pixel check mark. The header toggle sits in its own row below the title bar. |
 | Sliders in entities cards | Win95 trackbars: a sunken white groove and a raised gray handle. |
+| ApexCharts cards | [apexcharts-card](https://github.com/RomRider/apexcharts-card) gets the same title bar as other cards, the chart sits in a sunken white field, axes and legend use the pixel font, grid lines are solid gray and the tooltip is a yellow Win95 tooltip with a black frame. Also works with card-mod. |
 | Dropdowns, date and time fields | Win95 dialog controls: the label on the left, a white sunken box next to it. Dropdowns get a 3D ▼ button. |
 | Pixel font | With UIX 8.4.0 or later the theme loads the font itself (`uix-fonts`), so it also shows up on the settings pages. |
 

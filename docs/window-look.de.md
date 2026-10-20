@@ -26,6 +26,7 @@ Das Design allein setzt Farben, Schrift und eckige Kanten. Für echte Win95-Fens
 | Regler in Kacheln und Dialogen | Helligkeit, Position, Lautstärke und Zahlenregler (in Kachel-Features und im Detail-Dialog) sind Win95-Fortschrittsbalken: ein eingelassenes weißes Feld mit Blöcken in der Markierungsfarbe. Beim Ziehen steht der Wert in einer gelben QuickInfo. |
 | Schalter in Entitätskarten | Win95-Kontrollkästchen: ein eingelassenes weißes Kästchen mit Pixel-Häkchen. Der Sammelschalter steht in einer eigenen Zeile unter der Titelleiste. |
 | Schieberegler in Entitätskarten | Win95-Trackbars: eingelassene weiße Rille, erhabener grauer Griff. |
+| ApexCharts-Karten | [apexcharts-card](https://github.com/RomRider/apexcharts-card) bekommt dieselbe Titelleiste wie andere Karten, das Diagramm steht in einem eingelassenen weißen Feld, Achsen und Legende nutzen die Pixel-Schrift, die Gitterlinien sind durchgezogen grau und die QuickInfo ist gelb mit schwarzem Rand wie in Win95. Klappt auch mit card-mod. |
 | Auswahl-, Datums- und Zeitfelder | Win95-Dialogelemente: Beschriftung links, daneben ein weißes, eingelassenes Feld. Auswahlfelder bekommen einen 3D-▼-Knopf. |
 | Pixel-Schrift | Mit UIX ab 8.4.0 lädt das Design die Schrift selbst (`uix-fonts`), sie erscheint dann auch auf den Einstellungsseiten. |
 

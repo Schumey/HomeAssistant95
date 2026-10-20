@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------
 #  HA 95 – Home Assistant Theme-Paket
-#  Version: 3.12.0
+#  Version: 3.13.0
 #
 #  Enthält 13 Themes (wie die Farbschemata in "Eigenschaften von Anzeige"):
 #    HA 95            – Standard: Teal-Desktop, Navy-Titelleisten
@@ -41,6 +41,7 @@
 HA 95: &ha95
   # ================= Farbschema (nur diese Werte ändern sich je Variante) =================
   ha95-desktop: "#008080"        # Desktop-Hintergrund
+  ha95-desktop-text: "#ffffff"   # Schrift direkt auf dem Desktop (Überschriften-Karten)
   ha95-face: "#c0c0c0"           # 3D-Objekte (Fenster, Karten, Knöpfe)
   ha95-highlight: "#ffffff"      # 3D-Kante hell (außen)
   ha95-light: "#dfdfdf"          # 3D-Kante hell (innen)
@@ -142,6 +143,9 @@ HA 95: &ha95
 
   # ---------- Hintergründe ----------
   lovelace-background: var(--ha95-desktop)
+  # Überschriften-Karten stehen ohne Fenster direkt auf dem Desktop
+  ha-heading-card-title-color: var(--ha95-desktop-text)
+  ha-heading-card-subtitle-color: var(--ha95-desktop-text)
   primary-background-color: var(--ha95-face)
   secondary-background-color: var(--ha95-face)
   card-background-color: var(--ha95-card)
@@ -381,6 +385,122 @@ HA 95: &ha95
       flex: none;
       margin: 6px 13px 0 auto;
     }
+    /* ApexCharts-Karte (custom:apexcharts-card): Titel als Titelleiste,
+       Diagramm in einem eingelassenen weißen Feld, Pixel-Schrift,
+       Tooltips als gelbe Win95-QuickInfo */
+    ha-card #header {
+      padding: 0 0 4px !important;
+    }
+    ha-card #header__title {
+      position: relative;
+      background: var(--ha95-title-bar);
+      color: var(--ha95-title-text) !important;
+      font-family: var(--ha95-font);
+      font-weight: bold;
+      font-size: 13px !important;
+      line-height: 18px;
+      text-align: var(--ha95-title-align, left);
+      padding: 2px calc(var(--ha95-title-buttons-width, 50px) + 10px) 2px calc(var(--ha95-title-menu-width, 0px) + 4px) !important;
+      margin: var(--ha95-frame-width, 3px) var(--ha95-frame-width, 3px) 4px;
+    }
+    ha-card #header__title::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: var(--ha95-title-menu-width, 0px);
+      height: 14px;
+      background: var(--ha95-title-menu, none) no-repeat;
+    }
+    ha-card #header__title::after {
+      content: "";
+      position: absolute;
+      right: 2px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: var(--ha95-title-buttons-width, 50px);
+      height: 14px;
+      background: var(--ha95-title-buttons) no-repeat;
+    }
+    ha-card #header__states {
+      margin: 0 8px !important;
+    }
+    ha-card #state__value > #state {
+      font-weight: bold;
+    }
+    ha-card #state__name,
+    ha-card #last_updated {
+      font-weight: normal;
+      color: var(--ha95-text-dim);
+    }
+    /* Diagrammfläche eingelassen und weiß wie ein Listenfeld; der Abstand
+       unten sitzt in .wrapper, sonst ragt das Feld in Abschnitten aus der Karte */
+    ha-card .wrapper {
+      box-sizing: border-box;
+      padding-bottom: 8px;
+    }
+    ha-card #graph-wrapper {
+      box-sizing: border-box;
+      margin: 0 8px;
+      padding: 2px;
+      background: var(--ha95-window);
+      box-shadow: var(--ha95-sunken);
+    }
+    ha-card .apexcharts-canvas text,
+    ha-card .apexcharts-legend-text,
+    ha-card .apexcharts-tooltip,
+    ha-card .apexcharts-xaxistooltip,
+    ha-card .apexcharts-yaxistooltip {
+      font-family: var(--ha95-font) !important;
+    }
+    ha-card .apexcharts-xaxis-label,
+    ha-card .apexcharts-yaxis-label,
+    ha-card .apexcharts-yaxis-title-text {
+      fill: var(--ha95-window-text);
+    }
+    ha-card .apexcharts-legend-text {
+      color: var(--ha95-window-text) !important;
+    }
+    /* Gitter durchgezogen in Fenstergrau statt gestrichelt */
+    ha-card .apexcharts-gridline,
+    ha-card .apexcharts-xaxis-tick,
+    ha-card .apexcharts-yaxis-tick {
+      stroke: var(--ha95-face);
+      stroke-dasharray: none;
+    }
+    ha-card .apexcharts-xaxis line,
+    ha-card .apexcharts-yaxis line,
+    ha-card .apexcharts-xcrosshairs,
+    ha-card .apexcharts-ycrosshairs {
+      stroke: var(--ha95-shadow);
+    }
+    /* QuickInfo: hellgelb, schwarzer Rand, eckig, kein Schatten */
+    ha-card .apexcharts-tooltip,
+    ha-card .apexcharts-xaxistooltip,
+    ha-card .apexcharts-yaxistooltip {
+      border-radius: 0 !important;
+      border: 1px solid var(--ha95-dark) !important;
+      box-shadow: none !important;
+      background: var(--ha95-tooltip, #ffffe1) !important;
+      color: var(--ha95-tooltip-text, #000) !important;
+      font-size: 11px;
+    }
+    ha-card .apexcharts-tooltip-title {
+      background: var(--ha95-tooltip, #ffffe1) !important;
+      border-bottom: 1px solid var(--ha95-shadow) !important;
+      font-weight: bold;
+    }
+    ha-card .apexcharts-xaxistooltip::before,
+    ha-card .apexcharts-xaxistooltip::after,
+    ha-card .apexcharts-yaxistooltip::before,
+    ha-card .apexcharts-yaxistooltip::after {
+      display: none;
+    }
+    ha-card .apexcharts-tooltip-marker,
+    ha-card .apexcharts-tooltip-marker[shape]::before {
+      border-radius: 0 !important;
+    }
 
   # Alles für UIX: "." wie oben, dazu Thermostat, Luftbefeuchter und
   # der Sammelschalter in Entitätskarten
@@ -460,6 +580,122 @@ HA 95: &ha95
       ha-card .card-header hui-entities-toggle {
         flex: none;
         margin: 6px 13px 0 auto;
+      }
+      /* ApexCharts-Karte (custom:apexcharts-card): Titel als Titelleiste,
+         Diagramm in einem eingelassenen weißen Feld, Pixel-Schrift,
+         Tooltips als gelbe Win95-QuickInfo */
+      ha-card #header {
+        padding: 0 0 4px !important;
+      }
+      ha-card #header__title {
+        position: relative;
+        background: var(--ha95-title-bar);
+        color: var(--ha95-title-text) !important;
+        font-family: var(--ha95-font);
+        font-weight: bold;
+        font-size: 13px !important;
+        line-height: 18px;
+        text-align: var(--ha95-title-align, left);
+        padding: 2px calc(var(--ha95-title-buttons-width, 50px) + 10px) 2px calc(var(--ha95-title-menu-width, 0px) + 4px) !important;
+        margin: var(--ha95-frame-width, 3px) var(--ha95-frame-width, 3px) 4px;
+      }
+      ha-card #header__title::before {
+        content: "";
+        position: absolute;
+        left: 2px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: var(--ha95-title-menu-width, 0px);
+        height: 14px;
+        background: var(--ha95-title-menu, none) no-repeat;
+      }
+      ha-card #header__title::after {
+        content: "";
+        position: absolute;
+        right: 2px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: var(--ha95-title-buttons-width, 50px);
+        height: 14px;
+        background: var(--ha95-title-buttons) no-repeat;
+      }
+      ha-card #header__states {
+        margin: 0 8px !important;
+      }
+      ha-card #state__value > #state {
+        font-weight: bold;
+      }
+      ha-card #state__name,
+      ha-card #last_updated {
+        font-weight: normal;
+        color: var(--ha95-text-dim);
+      }
+      /* Diagrammfläche eingelassen und weiß wie ein Listenfeld; der Abstand
+         unten sitzt in .wrapper, sonst ragt das Feld in Abschnitten aus der Karte */
+      ha-card .wrapper {
+        box-sizing: border-box;
+        padding-bottom: 8px;
+      }
+      ha-card #graph-wrapper {
+        box-sizing: border-box;
+        margin: 0 8px;
+        padding: 2px;
+        background: var(--ha95-window);
+        box-shadow: var(--ha95-sunken);
+      }
+      ha-card .apexcharts-canvas text,
+      ha-card .apexcharts-legend-text,
+      ha-card .apexcharts-tooltip,
+      ha-card .apexcharts-xaxistooltip,
+      ha-card .apexcharts-yaxistooltip {
+        font-family: var(--ha95-font) !important;
+      }
+      ha-card .apexcharts-xaxis-label,
+      ha-card .apexcharts-yaxis-label,
+      ha-card .apexcharts-yaxis-title-text {
+        fill: var(--ha95-window-text);
+      }
+      ha-card .apexcharts-legend-text {
+        color: var(--ha95-window-text) !important;
+      }
+      /* Gitter durchgezogen in Fenstergrau statt gestrichelt */
+      ha-card .apexcharts-gridline,
+      ha-card .apexcharts-xaxis-tick,
+      ha-card .apexcharts-yaxis-tick {
+        stroke: var(--ha95-face);
+        stroke-dasharray: none;
+      }
+      ha-card .apexcharts-xaxis line,
+      ha-card .apexcharts-yaxis line,
+      ha-card .apexcharts-xcrosshairs,
+      ha-card .apexcharts-ycrosshairs {
+        stroke: var(--ha95-shadow);
+      }
+      /* QuickInfo: hellgelb, schwarzer Rand, eckig, kein Schatten */
+      ha-card .apexcharts-tooltip,
+      ha-card .apexcharts-xaxistooltip,
+      ha-card .apexcharts-yaxistooltip {
+        border-radius: 0 !important;
+        border: 1px solid var(--ha95-dark) !important;
+        box-shadow: none !important;
+        background: var(--ha95-tooltip, #ffffe1) !important;
+        color: var(--ha95-tooltip-text, #000) !important;
+        font-size: 11px;
+      }
+      ha-card .apexcharts-tooltip-title {
+        background: var(--ha95-tooltip, #ffffe1) !important;
+        border-bottom: 1px solid var(--ha95-shadow) !important;
+        font-weight: bold;
+      }
+      ha-card .apexcharts-xaxistooltip::before,
+      ha-card .apexcharts-xaxistooltip::after,
+      ha-card .apexcharts-yaxistooltip::before,
+      ha-card .apexcharts-yaxistooltip::after {
+        display: none;
+      }
+      ha-card .apexcharts-tooltip-marker,
+      ha-card .apexcharts-tooltip-marker[shape]::before {
+        border-radius: 0 !important;
       }
     "ha-card $": |
       /* Titel, die ha-card selbst zeichnet (z. B. Markdown-Karte) */
@@ -2258,6 +2494,7 @@ HA 3.11: &ha311
   <<: *ha95
   card-mod-theme: HA 3.11
   ha95-desktop: "#ffffff"
+  ha95-desktop-text: "#000000"
   ha95-card: "#ffffff"
   ha95-frame: "inset 0 0 0 1px var(--ha95-dark), inset 0 0 0 3px var(--ha95-face), inset 0 0 0 4px var(--ha95-dark)"
   ha95-frame-pressed: var(--ha95-frame)
@@ -2275,6 +2512,7 @@ HA 3.11 Hot Dog Stand:
   <<: *ha311
   card-mod-theme: HA 3.11 Hot Dog Stand
   ha95-desktop: "#ff0000"
+  ha95-desktop-text: "#ffffff"
   ha95-card: "#ffff00"
   ha95-face: "#ffff00"
   ha95-light: "#ffff80"
@@ -2295,6 +2533,7 @@ HA 3.11 Arizona:
   <<: *ha311
   card-mod-theme: HA 3.11 Arizona
   ha95-desktop: "#a08060"
+  ha95-desktop-text: "#ffffff"
   ha95-card: "#fff8e8"
   ha95-face: "#d8c8a8"
   ha95-light: "#ece4d4"
@@ -2314,6 +2553,7 @@ HA 3.11 Ozean:
   <<: *ha311
   card-mod-theme: HA 3.11 Ozean
   ha95-desktop: "#004080"
+  ha95-desktop-text: "#ffffff"
   ha95-card: "#e8f8ff"
   ha95-face: "#a8c8d8"
   ha95-light: "#d0e4ec"
@@ -2333,6 +2573,7 @@ HA 3.11 Schwarze Lederjacke:
   <<: *ha311
   card-mod-theme: HA 3.11 Schwarze Lederjacke
   ha95-desktop: "#000000"
+  ha95-desktop-text: "#ffffff"
   ha95-card: "#c0c0c0"
   ha95-title: "#404040"
   ha95-title-bar: "#404040"

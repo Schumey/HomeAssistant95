@@ -4,6 +4,17 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [3.13.0] – 2026-10-20
+
+Charts and headings.
+
+### Added
+- ApexCharts cards ([apexcharts-card](https://github.com/RomRider/apexcharts-card)): title as a Win95 title bar with _ □ ×, the chart in a sunken white field, pixel font for axes, legend and tooltips, solid gray grid lines, and a yellow Win95 tooltip with a black frame. Works with card-mod and UIX. See [Window look](docs/window-look.md).
+- New variable `ha95-desktop-text` for text that sits directly on the desktop (white, black in HA 3.11).
+
+### Fixed
+- Heading cards stand on the desktop without a window, their title and subtitle were dark on teal. They now use `ha95-desktop-text`.
+
 ## [3.12.0] – 2026-10-20
 
 Fixes for phones and the companion app, and the Windows 95 clock.

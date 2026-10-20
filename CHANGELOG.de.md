@@ -4,6 +4,17 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [3.13.0] – 2026-10-20
+
+Diagramme und Überschriften.
+
+### Hinzugefügt
+- ApexCharts-Karten ([apexcharts-card](https://github.com/RomRider/apexcharts-card)): Titel als Win95-Titelleiste mit _ □ ×, das Diagramm in einem eingelassenen weißen Feld, Pixel-Schrift für Achsen, Legende und QuickInfo, durchgezogene graue Gitterlinien und eine gelbe Win95-QuickInfo mit schwarzem Rand. Klappt mit card-mod und UIX. Siehe [Fenster-Look](docs/window-look.de.md).
+- Neue Variable `ha95-desktop-text` für Schrift direkt auf dem Desktop (weiß, in HA 3.11 schwarz).
+
+### Behoben
+- Überschriften-Karten stehen ohne Fenster auf dem Desktop, ihr Titel und Untertitel waren dunkel auf Teal. Sie nutzen jetzt `ha95-desktop-text`.
+
 ## [3.12.0] – 2026-10-20
 
 Korrekturen für Handys und die Companion-App, dazu die Uhr von Windows 95.
