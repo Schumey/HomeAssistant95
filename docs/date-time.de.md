@@ -16,7 +16,7 @@ Es gibt zwei Wege, beide aus `www/ha95/ha95-clock.js`:
 ## Dashboard-Karte
 
 1. `www/ha95/ha95-clock.js` nach `/config/www/ha95/` kopieren.
-2. **Einstellungen → Dashboards → ⋮ → Ressourcen** → `/local/ha95/ha95-clock.js?v=3.11.1`, Typ **JavaScript-Modul**. Die Zahl nach `?v=` bei jedem Update ändern.
+2. **Einstellungen → Dashboards → ⋮ → Ressourcen** → `/local/ha95/ha95-clock.js?v=3.12.0`, Typ **JavaScript-Modul**. Die Zahl nach `?v=` bei jedem Update ändern.
 3. Karte anlegen:
    ```yaml
    type: custom:ha95-clock-card

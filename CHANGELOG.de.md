@@ -4,7 +4,7 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
-## [3.11.1] – unveröffentlicht
+## [3.12.0] – 2026-10-20
 
 Korrekturen für Handys und die Companion-App, dazu die Uhr von Windows 95.
 
@@ -18,7 +18,7 @@ Korrekturen für Handys und die Companion-App, dazu die Uhr von Windows 95.
 - Detail-Dialoge auf Handys (Bottom-Sheet): Win95-Titelleiste und Symbolleiste fehlten, der weiße Titel stand auf Grau. Der Zieh-Griff steht jetzt über der Titelleiste, statt den Titel zu verdecken. Das gilt auch für andere Dialoge, die als Bottom-Sheet aufgehen.
 
 ### Geändert
-- Anleitungen: Module und `ha95.css` mit Version laden, z. B. `/local/ha95/ha95-startmenu.js?v=3.11.1`. Home Assistant erlaubt Browsern und der Companion-App, Dateien aus `/local/` 31 Tage lang zwischenzuspeichern. Nach einem Update lief in der App deshalb oft noch das alte Startmenü (kein Streifen, keine bunten Icons, kein ▶-Pfeil). Die Anleitungen erklären auch, wie man den Frontend-Cache der App zurücksetzt.
+- Anleitungen: Module und `ha95.css` mit Version laden, z. B. `/local/ha95/ha95-startmenu.js?v=3.12.0`. Home Assistant erlaubt Browsern und der Companion-App, Dateien aus `/local/` 31 Tage lang zwischenzuspeichern. Nach einem Update lief in der App deshalb oft noch das alte Startmenü (kein Streifen, keine bunten Icons, kein ▶-Pfeil). Die Anleitungen erklären auch, wie man den Frontend-Cache der App zurücksetzt.
 
 ## [3.11.0] – 2026-10-19
 

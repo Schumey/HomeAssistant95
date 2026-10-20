@@ -16,7 +16,7 @@ There are two ways to use it, both from `www/ha95/ha95-clock.js`:
 ## Dashboard card
 
 1. Copy `www/ha95/ha95-clock.js` to `/config/www/ha95/`.
-2. **Settings → Dashboards → ⋮ → Resources** → `/local/ha95/ha95-clock.js?v=3.11.1`, type **JavaScript module**. Change the number after `?v=` with every update.
+2. **Settings → Dashboards → ⋮ → Resources** → `/local/ha95/ha95-clock.js?v=3.12.0`, type **JavaScript module**. Change the number after `?v=` with every update.
 3. Add a card:
    ```yaml
    type: custom:ha95-clock-card

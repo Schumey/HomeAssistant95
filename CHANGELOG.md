@@ -4,7 +4,7 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
-## [3.11.1] – unreleased
+## [3.12.0] – 2026-10-20
 
 Fixes for phones and the companion app, and the Windows 95 clock.
 
@@ -18,7 +18,7 @@ Fixes for phones and the companion app, and the Windows 95 clock.
 - Detail dialogs on phones (bottom sheet): the Win95 title bar and toolbar were missing, the white title stood on gray. The drag handle now sits above the title bar instead of covering the title. This also applies to other dialogs that open as a bottom sheet.
 
 ### Changed
-- Setup guides: load the modules and `ha95.css` with a version, e.g. `/local/ha95/ha95-startmenu.js?v=3.11.1`. Home Assistant lets browsers and the companion app keep files from `/local/` for 31 days, so after an update the app often still ran the old start menu (no banner, no colorful icons, no ▶ arrow). The guides also explain how to reset the app's frontend cache.
+- Setup guides: load the modules and `ha95.css` with a version, e.g. `/local/ha95/ha95-startmenu.js?v=3.12.0`. Home Assistant lets browsers and the companion app keep files from `/local/` for 31 days, so after an update the app often still ran the old start menu (no banner, no colorful icons, no ▶ arrow). The guides also explain how to reset the app's frontend cache.
 
 ## [3.11.0] – 2026-10-19
 
