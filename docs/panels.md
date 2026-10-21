@@ -19,9 +19,9 @@ Optional. Without it the theme still works, but a few places stay unfinished. Th
    ```yaml
    frontend:
      extra_module_url:
-       - /local/ha95/ha95-panels.js?v=3.14.1
+       - /local/ha95/ha95-panels.js?v=3.14.2
    ```
-   or add it as a resource under **Settings → Dashboards → ⋮ → Resources** (`/local/ha95/ha95-panels.js?v=3.14.1`, type **JavaScript module**). Change the number after `?v=` with every update, otherwise browsers and the companion app keep the old file for up to 31 days.
+   or add it as a resource under **Settings → Dashboards → ⋮ → Resources** (`/local/ha95/ha95-panels.js?v=3.14.2`, type **JavaScript module**). Change the number after `?v=` with every update, otherwise browsers and the companion app keep the old file for up to 31 days.
 
 ## How it works
 

@@ -4,6 +4,19 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [3.14.2] – 2026-10-21
+
+### Fixed
+- **Detail dialog (more-info):** the back arrow on sub pages (e.g. a group member) is a small 16 × 16 button in the title bar instead of a 48 px button with a light frame sticking out of the bar.
+- **Dialogs with their own header buttons** (e.g. "Edit card"): the close button is a small square in the title bar, the help button in the toolbar a 24 × 22 button.
+- **Edit mode of a dashboard:** "Done" is as high as the icon buttons next to it (22 px).
+- **Pick fields with a label** (profile "Theme", "Secondary info attribute" in the card editor): a white sunken field 40 px high with a small 3D arrow button and a small × without a frame of its own, instead of a 56 px field with a tall gray strip and a large clear button.
+- **Tile switch** (on/off feature of a tile, e.g. lights): raised Win95 frame, sunken when on; the thumb shows the light color when on.
+- **Automation editor:** "Traces" and the menu are as high as the other header buttons, the expand buttons of the rows are small 3D buttons (16 × 16) next to the icon instead of 28 px boxes covering it, disabled buttons (Undo/Redo) show an engraved gray icon instead of vanishing.
+
+### Added
+- README: section "Updating" (reload themes, raise `?v=`, reload the browser, reset the app cache).
+
 ## [3.14.1] – 2026-10-21
 
 ### Fixed

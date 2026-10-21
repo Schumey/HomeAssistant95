@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------
 #  HA 95 – Home Assistant Theme-Paket
-#  Version: 3.14.1
+#  Version: 3.14.2
 #
 #  Enthält 13 Themes (wie die Farbschemata in "Eigenschaften von Anzeige"):
 #    HA 95            – Standard: Teal-Desktop, Navy-Titelleisten
@@ -1074,6 +1074,43 @@ HA 95: &ha95
         font-size: 12px !important;
         padding: 1px 4px !important;
       }
+    "hui-card-features $$ ha-control-switch $": |
+      /* Ein/Aus-Schalter als Kachel-Feature (ha-control-switch, z. B. Licht):
+         erhabener Win95-Rahmen, im Zustand "an" eingedrückt. Der Griff zeigt dann
+         die Farbe der Entität (Lichtfarbe), aus ist er grau und erhaben. */
+      :host {
+        --control-switch-border-radius: 0px;
+        --control-switch-padding: 3px;
+        --control-switch-background-opacity: 1;
+        --control-switch-hover-background-opacity: 1;
+      }
+      .switch {
+        border-radius: 0 !important;
+        background: var(--ha95-face);
+        box-shadow: var(--ha95-raised);
+      }
+      .switch[checked] {
+        box-shadow: var(--ha95-sunken);
+      }
+      .switch .background {
+        background: transparent !important;
+        opacity: 1 !important;
+      }
+      .switch .button {
+        border-radius: 0 !important;
+        background: var(--ha95-face) !important;
+        box-shadow: var(--ha95-raised);
+        color: var(--ha95-text) !important;
+      }
+      .switch[checked] .button {
+        background: var(--control-switch-on-color) !important;
+        box-shadow: var(--ha95-sunken);
+        color: #000 !important;
+      }
+      .switch:focus-visible {
+        outline: 1px dotted var(--ha95-text);
+        outline-offset: -5px;
+      }
     "ha-control-circular-slider $": |
       /* Win95-Ring: eckige Enden, volle Farbe, eckiger Griff */
       .background,
@@ -1519,6 +1556,19 @@ HA 95: &ha95
       height: 22px !important;
       margin: 0 !important;
     }
+    /* "Fertig" im Bearbeitungsmodus: gleich hoch wie die Symbolknöpfe daneben */
+    .action-items ha-button.exit-edit-mode {
+      --ha-button-height: 22px;
+      height: 22px;
+      margin: 0;
+    }
+    .action-items ha-button.exit-edit-mode::part(base) {
+      height: 22px !important;
+      min-height: 0 !important;
+      padding: 0 12px !important;
+      font-size: 13px !important;
+      font-weight: normal !important;
+    }
     /* Menüknopf ohne feste Maße: bei angedockter Seitenleiste ist er leer */
     .action-items ha-icon-button,
     ha-menu-button {
@@ -1616,6 +1666,19 @@ HA 95: &ha95
         width: 24px !important;
         height: 22px !important;
         margin: 0 !important;
+      }
+      /* "Fertig" im Bearbeitungsmodus: gleich hoch wie die Symbolknöpfe daneben */
+      .action-items ha-button.exit-edit-mode {
+        --ha-button-height: 22px;
+        height: 22px;
+        margin: 0;
+      }
+      .action-items ha-button.exit-edit-mode::part(base) {
+        height: 22px !important;
+        min-height: 0 !important;
+        padding: 0 12px !important;
+        font-size: 13px !important;
+        font-weight: normal !important;
       }
       /* Menüknopf ohne feste Maße: bei angedockter Seitenleiste ist er leer */
       .action-items ha-icon-button,
@@ -2055,6 +2118,68 @@ HA 95: &ha95
       :host {
         --ha-icon-button-size: 28px;
       }
+    "ha-automation-editor $": |
+      /* Kopfleiste des Automations-Editors: "Traces" und Menü gleich hoch
+         wie die Symbolknöpfe (24×22) */
+      ha-button[slot=toolbar-icon] {
+        --ha-button-height: 22px;
+        margin-inline-start: 2px;
+      }
+      ha-button[slot=toolbar-icon]::part(base) {
+        height: 22px !important;
+        min-height: 0 !important;
+        padding: 0 8px !important;
+        font-size: 13px !important;
+        font-weight: normal !important;
+      }
+      ha-dropdown[slot=toolbar-icon] {
+        display: inline-flex;
+        margin-inline-start: 2px;
+      }
+      ha-dropdown[slot=toolbar-icon] ha-icon-button {
+        --ha-icon-button-size: 22px;
+        --mdc-icon-size: 16px;
+        --ha-button-box-shadow: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px !important;
+        height: 22px !important;
+        background: var(--ha95-face);
+        box-shadow: var(--ha95-raised);
+        color: var(--ha95-text) !important;
+      }
+    "ha-automation-editor $ ha-dropdown[slot=toolbar-icon] ha-icon-button $": |
+      /* kein runder Hover-Kreis, eckige Fläche in Knopfgröße */
+      ha-button::after {
+        display: none !important;
+      }
+      ha-button,
+      ha-button::part(base) {
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+      }
+    "ha-automation-editor $$ ha-automation-row $": |
+      /* Auslöser, Bedingungen, Aktionen: der Aufklapp-Knopf als kleiner
+         3D-Knopf (16×16) neben dem Symbol statt eines 28-px-Kastens, der es
+         überdeckt */
+      .expand-button {
+        --ha-icon-button-size: 16px;
+        --mdc-icon-size: 12px;
+        --ha-button-box-shadow: none;
+        width: 16px !important;
+        height: 16px !important;
+        margin: 16px 6px 0 0 !important;
+        flex: none;
+        align-self: flex-start;
+        display: block;
+        background: var(--ha95-face);
+        box-shadow: var(--ha95-raised);
+        color: var(--ha95-text) !important;
+      }
     "ha-config-dashboard $$ ha-config-navigation-list $": |
       /* Einstellungs-Icons als eckige 3D-Kacheln (Systemsteuerung) */
       .icon-background {
@@ -2158,6 +2283,21 @@ HA 95: &ha95
         width: 16px !important;
         height: 16px !important;
       }
+      /* Zurück-Pfeil auf Unterseiten (Gruppenmitglied): ein eigenes Element
+         "ha-icon-button-prev" um den Knopf, sonst 48 px groß */
+      ha-icon-button-prev[slot=headerNavigationIcon] {
+        --ha-icon-button-size: 16px;
+        --mdc-icon-size: 10px;
+        --ha-button-box-shadow: none;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 16px !important;
+        height: 16px !important;
+        color: var(--ha95-text) !important;
+        background: var(--ha95-face);
+        box-shadow: var(--ha95-raised);
+      }
       /* Titel einzeilig: "Name - Bereich" */
       .title {
         display: flex !important;
@@ -2181,6 +2321,47 @@ HA 95: &ha95
       .title .breadcrumb::before {
         content: " - ";
         white-space: pre;
+      }
+    "ha-icon-button-prev $": |
+      /* die Zeilenhöhe der Umgebung schob den Knopf nach unten */
+      :host,
+      ha-icon-button {
+        display: block !important;
+      }
+    "ha-icon-button-prev $ ha-icon-button $": |
+      :host {
+        width: 100% !important;
+        height: 100% !important;
+      }
+      ha-button {
+        display: block !important;
+      }
+      ha-button::after {
+        display: none !important;
+      }
+      ha-button,
+      ha-button::part(base) {
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+      }
+      ha-button::part(base) {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        vertical-align: top !important;
+        line-height: 0 !important;
+        color: var(--ha95-text) !important;
+      }
+      ha-svg-icon {
+        display: block !important;
+        width: 10px;
+        height: 10px;
+        --mdc-icon-size: 10px;
+        color: var(--ha95-text);
       }
     "ha-more-info-info $$ ha-alert $": |
       /* Hinweise (ha-alert) mit eingeritztem Win95-Rahmen und den
@@ -2733,6 +2914,40 @@ HA 95: &ha95
         color: var(--ha95-text) !important;
         background: var(--ha95-face);
         box-shadow: var(--ha95-raised);
+      }
+      /* Dialoge, die ihre Kopf-Knöpfe selbst mitbringen (z. B. "Karte
+         bearbeiten"): sie liegen im Light-DOM von ha-dialog und sind nur über
+         ::slotted erreichbar. Schließen-Knopf klein in der Titelleiste, die
+         Knöpfe der Symbolleiste (Hilfe) wie im Info-Dialog 24×22. */
+      slot[name=headerNavigationIcon]::slotted(ha-icon-button) {
+        --ha-icon-button-size: 16px;
+        --mdc-icon-size: 10px;
+        --ha-button-box-shadow: none;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 16px !important;
+        height: 16px !important;
+        color: var(--ha95-text) !important;
+        background: var(--ha95-face);
+        box-shadow: var(--ha95-raised);
+      }
+      slot[name=headerActionItems]::slotted(ha-icon-button) {
+        --ha-icon-button-size: 22px;
+        --mdc-icon-size: 16px;
+        --ha-button-box-shadow: none;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 24px !important;
+        height: 22px !important;
+        color: var(--ha95-text) !important;
+        background: var(--ha95-face);
+        box-shadow: var(--ha95-raised);
+      }
+      slot[name=headerNavigationIcon]::slotted(ha-icon-button:active),
+      slot[name=headerActionItems]::slotted(ha-icon-button:active) {
+        box-shadow: var(--ha95-sunken);
       }
       /* Benachrichtigungen (Seitenschublade): Titelleiste wie bei den
          Fenstern (Verlauf, Pixel-Schrift), der Zurück-Knopf wird zum X */

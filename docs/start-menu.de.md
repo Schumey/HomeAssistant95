@@ -27,9 +27,9 @@ Alle Farben kommen aus den `ha95-*`-Variablen, die Seitenleiste wechselt also mi
    ```yaml
    frontend:
      extra_module_url:
-       - /local/ha95/ha95-startmenu.js?v=3.14.1
+       - /local/ha95/ha95-startmenu.js?v=3.14.2
    ```
-   Das `?v=3.14.1` sorgt dafür, dass Browser und Companion-App nach einem Update die neue Datei laden: Home Assistant erlaubt ihnen, Dateien aus `/local/` 31 Tage lang zwischenzuspeichern. Die Nummer bei jedem Update ändern. Zeigt die App trotzdem noch die alte Fassung, ihren Cache leeren: **Einstellungen → Companion-App → Fehlerbehebung → Frontend-Cache zurücksetzen** (Android) bzw. **App-Konfiguration → Debugging → Frontend-Cache zurücksetzen** (iOS).
+   Das `?v=3.14.2` sorgt dafür, dass Browser und Companion-App nach einem Update die neue Datei laden: Home Assistant erlaubt ihnen, Dateien aus `/local/` 31 Tage lang zwischenzuspeichern. Die Nummer bei jedem Update ändern. Zeigt die App trotzdem noch die alte Fassung, ihren Cache leeren: **Einstellungen → Companion-App → Fehlerbehebung → Frontend-Cache zurücksetzen** (Android) bzw. **App-Konfiguration → Debugging → Frontend-Cache zurücksetzen** (iOS).
 3. [`examples/startmenu/ha95-startmenu.json`](../examples/startmenu/ha95-startmenu.json) nach `/config/www/ha95-startmenu.json` kopieren.
 4. Home Assistant neu starten und die Seite neu laden.
 

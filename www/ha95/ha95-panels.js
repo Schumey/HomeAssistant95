@@ -1,9 +1,9 @@
 /*
  * HA 95 – Feinschliff für Stellen, die das Theme nicht erreicht
- * Version: 3.14.1
+ * Version: 3.14.2
  * Ablage:  /config/www/ha95/ha95-panels.js
  *
- * Als Dashboard-Ressource (/local/ha95/ha95-panels.js?v=3.14.1, Typ Modul).
+ * Als Dashboard-Ressource (/local/ha95/ha95-panels.js?v=3.14.2, Typ Modul).
  * Optional: Ohne das Modul bleibt das Design an wenigen Stellen unfertig
  * (Logbuch: Hinweisfeld, Kontrollkästchen, runde Symbole, Pfeilknöpfe beim
  * Zeitraum; überall: Scrollleisten im Windows-Look). Alles andere im Design
@@ -443,6 +443,32 @@ const BAUTEIL_CSS = {
       box-shadow: var(--ha95-raised);
       color: var(--ha95-text) !important;
     }
+    /* mit Beschriftung im Feld (zwei Zeilen): nicht 56 px hoch, der Pfeil
+       bleibt ein kleiner Knopf statt eines hohen Streifens */
+    :host-context(ha-generic-picker) ha-combo-box-item {
+      --md-list-item-two-line-container-height: 40px;
+      --md-list-item-trailing-space: 44px;
+    }
+    :host-context(ha-generic-picker) .arrow {
+      top: 50% !important;
+      bottom: auto !important;
+      height: 22px !important;
+      transform: translateY(-50%);
+    }
+    /* Löschen-Knopf (×): klein und ohne eigenen Rahmen, links vom Pfeil */
+    :host-context(ha-generic-picker) ha-icon-button.clear {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: block;
+      width: 16px;
+      height: 16px;
+      --ha-icon-button-size: 16px;
+      --mdc-icon-size: 12px;
+      --ha-button-box-shadow: none;
+      color: var(--ha95-window-text);
+    }
   `,
   // Auswahlfenster der Felder: Rahmen wie ein Win95-Menü
   "ha-generic-picker": `
@@ -564,6 +590,12 @@ const BAUTEIL_CSS = {
       align-items: center;
       justify-content: center;
       vertical-align: top !important;
+    }
+    /* ausgegraute Knöpfe (z. B. Rückgängig/Wiederholen): graues Symbol mit
+       weißem Schatten wie eingeprägte Schrift, sonst unsichtbar auf Grau */
+    :host([disabled]) ha-svg-icon {
+      color: var(--ha95-shadow) !important;
+      filter: drop-shadow(1px 1px 0 var(--ha95-highlight));
     }
     /* Hilfe-Knopf rechts in der Reiterzeile der Einstellungsseiten */
     :host([slot="toolbar-icon"]) {

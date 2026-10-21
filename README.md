@@ -41,6 +41,12 @@ More about dark mode, the Windows 3.1 look and your own colors: [Color schemes](
 3. Check the configuration, then **Tools → YAML → reload Themes**. If `frontend:` is new, restart once.
 4. Pick it under **Profile → Theme**.
 
+### Updating
+
+1. Update the theme (HACS: **Update**, manual: copy `themes/ha95.yaml` again), then **Tools → YAML → reload Themes**.
+2. If you use the extras: copy the files from `www/ha95/` to `/config/www/ha95/` again **and raise the number after `?v=`** in every resource and `extra_module_url` entry. Home Assistant lets browsers and the companion app keep files from `/local/` for 31 days; without a new number they keep showing the old version.
+3. Reload the browser with **Ctrl+F5**. If the companion app still looks old, reset its frontend cache (Android: **Settings → Companion app → Troubleshooting**, iOS: **App Configuration → Debugging**).
+
 ## What the theme does on its own
 
 - Gray 3D windows with square corners on a teal desktop, navy title bar at the top.
@@ -64,7 +70,7 @@ Each extra works on its own. Pick what you like:
 ### Pixel font & mouse pointer
 
 1. Copy `www/ha95/ha95.css` to `/config/www/ha95/`.
-2. **Settings → Dashboards → ⋮ → Resources** → `/local/ha95/ha95.css?v=3.14.1`, type **Stylesheet**. Change the number after `?v=` with every update, otherwise browsers and the companion app keep the old file for up to 31 days.
+2. **Settings → Dashboards → ⋮ → Resources** → `/local/ha95/ha95.css?v=3.14.2`, type **Stylesheet**. Change the number after `?v=` with every update, otherwise browsers and the companion app keep the old file for up to 31 days.
 
 The "Pixelated MS Sans Serif" font comes from [98.css](https://github.com/jdan/98.css) (MIT) and is loaded from jsDelivr. With UIX 8.4.0 or later the theme loads the font itself, so it also shows up on the settings pages. `ha95.css` is then only needed for the mouse pointer.
 

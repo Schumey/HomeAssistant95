@@ -4,6 +4,19 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [3.14.2] – 2026-10-21
+
+### Behoben
+- **Detail-Dialog (more-info):** Der Zurück-Pfeil auf Unterseiten (z. B. ein Gruppenmitglied) ist ein kleiner 16 × 16-Knopf in der Titelleiste statt eines 48-px-Knopfes mit hellem Rahmen, der aus der Leiste ragt.
+- **Dialoge mit eigenen Kopf-Knöpfen** (z. B. „Karte bearbeiten“): Der Schließen-Knopf ist ein kleines Quadrat in der Titelleiste, der Hilfe-Knopf in der Symbolleiste ein 24 × 22-Knopf.
+- **Bearbeitungsmodus eines Dashboards:** „Fertig“ ist so hoch wie die Symbolknöpfe daneben (22 px).
+- **Auswahlfelder mit Beschriftung** (Profil „Design“, „Zweitinfo-Attribut“ im Karteneditor): weißes, eingelassenes Feld mit 40 px Höhe, kleinem 3D-Pfeilknopf und einem kleinen × ohne eigenen Rahmen, statt eines 56 px hohen Feldes mit hohem grauem Streifen und großem Löschen-Knopf.
+- **Schalter in Kacheln** (Ein/Aus-Feature einer Kachel, z. B. Licht): erhabener Win95-Rahmen, im Zustand „an“ eingedrückt; der Griff zeigt dann die Lichtfarbe.
+- **Automations-Editor:** „Traces“ und das Menü sind so hoch wie die übrigen Kopfknöpfe, die Aufklapp-Knöpfe der Zeilen sind kleine 3D-Knöpfe (16 × 16) neben dem Symbol statt 28-px-Kästen, die es überdecken, ausgegraute Knöpfe (Rückgängig/Wiederholen) zeigen ein eingeprägtes graues Symbol statt zu verschwinden.
+
+### Hinzugefügt
+- README: Abschnitt „Aktualisieren“ (Designs neu laden, `?v=` erhöhen, Browser neu laden, App-Cache zurücksetzen).
+
 ## [3.14.1] – 2026-10-21
 
 ### Behoben

@@ -41,6 +41,12 @@ Mehr zu Dunkelmodus, Windows-3.1-Look und eigenen Farben: [Farbschemata](docs/co
 3. Konfiguration prüfen, dann **Werkzeuge → YAML → Designs neu laden**. Wenn `frontend:` neu ist, einmal neu starten.
 4. Unter **Profil → Design** auswählen.
 
+### Aktualisieren
+
+1. Design aktualisieren (HACS: **Aktualisieren**, manuell: `themes/ha95.yaml` erneut kopieren), dann **Werkzeuge → YAML → Designs neu laden**.
+2. Wer die Extras nutzt: die Dateien aus `www/ha95/` erneut nach `/config/www/ha95/` kopieren **und die Zahl nach `?v=`** in jeder Ressource und jedem `extra_module_url`-Eintrag erhöhen. Home Assistant erlaubt Browsern und der Companion-App, Dateien aus `/local/` 31 Tage zwischenzuspeichern; ohne neue Zahl zeigen sie weiter die alte Fassung.
+3. Den Browser mit **Strg+F5** neu laden. Sieht die Companion-App noch alt aus, ihren Frontend-Cache zurücksetzen (Android: **Einstellungen → Companion-App → Fehlerbehebung**, iOS: **App-Konfiguration → Debugging**).
+
 ## Was das Design allein macht
 
 - Graue 3D-Fenster mit eckigen Kanten auf Teal-Desktop, oben eine Navy-Titelleiste.
@@ -64,7 +70,7 @@ Jedes Extra funktioniert für sich. Einfach aussuchen:
 ### Pixel-Schrift & Mauszeiger
 
 1. `www/ha95/ha95.css` nach `/config/www/ha95/` kopieren.
-2. **Einstellungen → Dashboards → ⋮ → Ressourcen** → `/local/ha95/ha95.css?v=3.14.1`, Typ **Stylesheet**. Die Nummer nach `?v=` bei jedem Update ändern, sonst behalten Browser und Companion-App bis zu 31 Tage die alte Datei.
+2. **Einstellungen → Dashboards → ⋮ → Ressourcen** → `/local/ha95/ha95.css?v=3.14.2`, Typ **Stylesheet**. Die Nummer nach `?v=` bei jedem Update ändern, sonst behalten Browser und Companion-App bis zu 31 Tage die alte Datei.
 
 Die Schrift „Pixelated MS Sans Serif“ stammt aus [98.css](https://github.com/jdan/98.css) (MIT) und wird über jsDelivr geladen. Mit UIX ab 8.4.0 lädt das Design die Schrift selbst, sie erscheint dann auch auf den Einstellungsseiten. `ha95.css` braucht man dann nur noch für den Mauszeiger.
 
