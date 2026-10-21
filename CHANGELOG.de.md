@@ -4,6 +4,12 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [3.14.1] – 2026-10-21
+
+### Behoben
+- Der Schließen-Knopf (×) jedes Dialogs ist jetzt ein quadratischer 16 × 16-Knopf, auch in Dialogen ohne eigene Theme-Regel (z. B. Ressourcen). Die Regel steht in `ha95-panels.js`, am Knopf selbst.
+- Der Zähler in der Seitenleiste (Benachrichtigungen) sitzt mittig in seinem Kasten.
+
 ## [3.14.0] – 2026-10-21
 
 Einstellungsseiten, Dialoge, Scrollleisten und viel Feinschliff.

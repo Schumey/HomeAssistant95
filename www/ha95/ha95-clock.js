@@ -1,9 +1,9 @@
 /*
  * HA 95 – "Eigenschaften von Datum/Uhrzeit" für Home Assistant
- * Version: 3.14.0
+ * Version: 3.14.1
  * Ablage:  /config/www/ha95/ha95-clock.js
  *
- * Als Dashboard-Karte (Ressource /local/ha95/ha95-clock.js?v=3.14.0, Typ Modul):
+ * Als Dashboard-Karte (Ressource /local/ha95/ha95-clock.js?v=3.14.1, Typ Modul):
  *   type: custom:ha95-clock-card
  *   title: Datum/Uhrzeit            # optional, Titelleiste der Karte
  *   calendars:                      # optional, Tage mit Terminen fett

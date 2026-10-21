@@ -1,9 +1,9 @@
 /*
  * HA 95 – Feinschliff für Stellen, die das Theme nicht erreicht
- * Version: 3.14.0
+ * Version: 3.14.1
  * Ablage:  /config/www/ha95/ha95-panels.js
  *
- * Als Dashboard-Ressource (/local/ha95/ha95-panels.js?v=3.14.0, Typ Modul).
+ * Als Dashboard-Ressource (/local/ha95/ha95-panels.js?v=3.14.1, Typ Modul).
  * Optional: Ohne das Modul bleibt das Design an wenigen Stellen unfertig
  * (Logbuch: Hinweisfeld, Kontrollkästchen, runde Symbole, Pfeilknöpfe beim
  * Zeitraum; überall: Scrollleisten im Windows-Look). Alles andere im Design
@@ -581,6 +581,30 @@ const BAUTEIL_CSS = {
     }
     :host([slot="toolbar-icon"]) ha-button {
       display: block;
+    }
+    /* Schließen-Knopf jedes Dialogs (ha-dialog, ha-adaptive-dialog,
+       ha-dialog-header): 16 x 16 wie überall, auch in Dialogen, für die es
+       keine eigene Theme-Regel gibt */
+    :host([data-dialog="close"]) {
+      --ha-icon-button-size: 16px;
+      --mdc-icon-size: 10px;
+      --ha-button-box-shadow: none;
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      width: 16px !important;
+      height: 16px !important;
+      color: var(--ha95-text) !important;
+      background: var(--ha95-face);
+      box-shadow: var(--ha95-raised);
+    }
+    :host([data-dialog="close"]) ha-button,
+    :host([data-dialog="close"]) ha-button::part(base) {
+      width: 100% !important;
+      height: 100% !important;
+      min-height: 0 !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
     }
   `,
   // Hauptknopf (z. B. "Automation erstellen"): 3D-Rahmen statt weichem Schatten

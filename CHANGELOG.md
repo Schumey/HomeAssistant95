@@ -4,6 +4,12 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [3.14.1] – 2026-10-21
+
+### Fixed
+- The close button (×) of every dialog is now a square 16 × 16 button, also in dialogs without a theme rule of their own (e.g. resources). The rule lives in `ha95-panels.js`, on the button itself.
+- The counter in the sidebar (notifications) is centred in its box.
+
 ## [3.14.0] – 2026-10-21
 
 Settings pages, dialogs, scroll bars and a lot of fine-tuning.
