@@ -1,6 +1,6 @@
 /*
  * HA 95 – Pixel-Icons für Home Assistant
- * Version: 3.14.2
+ * Version: 3.14.3
  * Ablage:  /config/www/ha95/ha95-icons.js
  * Laden:   configuration.yaml
  *            frontend:

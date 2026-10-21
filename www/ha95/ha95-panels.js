@@ -1,9 +1,9 @@
 /*
  * HA 95 – Feinschliff für Stellen, die das Theme nicht erreicht
- * Version: 3.14.2
+ * Version: 3.14.3
  * Ablage:  /config/www/ha95/ha95-panels.js
  *
- * Als Dashboard-Ressource (/local/ha95/ha95-panels.js?v=3.14.2, Typ Modul).
+ * Als Dashboard-Ressource (/local/ha95/ha95-panels.js?v=3.14.3, Typ Modul).
  * Optional: Ohne das Modul bleibt das Design an wenigen Stellen unfertig
  * (Logbuch: Hinweisfeld, Kontrollkästchen, runde Symbole, Pfeilknöpfe beim
  * Zeitraum; überall: Scrollleisten im Windows-Look). Alles andere im Design

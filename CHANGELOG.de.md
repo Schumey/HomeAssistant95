@@ -4,6 +4,12 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [3.14.3] – 2026-10-21
+
+### Behoben
+- **Automations-Editor:** Ziehgriff und ⋮-Menü jeder Zeile sitzen senkrecht mittig statt oben; mehr Abstand zwischen Aufklapp-Knopf und Zeilen-Symbol.
+- **Automations-Editor:** Entitäts-Chips in den Zeilen (z. B. „Tür“) sind ein eingedrücktes Win95-Feld mit eckigen Ecken.
+
 ## [3.14.2] – 2026-10-21
 
 ### Behoben

@@ -4,6 +4,12 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [3.14.3] – 2026-10-21
+
+### Fixed
+- **Automation editor:** the drag handle and the ⋮ menu of every row are vertically centred instead of sitting at the top; more space between the expand button and the row icon.
+- **Automation editor:** entity chips in the rows (e.g. "Door") are a sunken Win95 field with square corners.
+
 ## [3.14.2] – 2026-10-21
 
 ### Fixed
