@@ -27,9 +27,9 @@ All colors come from the `ha95-*` variables, so the sidebar follows the selected
    ```yaml
    frontend:
      extra_module_url:
-       - /local/ha95/ha95-startmenu.js?v=3.14.3
+       - /local/ha95/ha95-startmenu.js?v=3.14.4
    ```
-   The `?v=3.14.3` makes browsers and the companion app load the new file after an update: Home Assistant lets them keep files from `/local/` for 31 days. Change the number with every update. If the app still shows the old version, clear its cache: **Settings → Companion app → Troubleshooting → Reset frontend cache** (Android) or **App Configuration → Debugging → Reset frontend cache** (iOS).
+   The `?v=3.14.4` makes browsers and the companion app load the new file after an update: Home Assistant lets them keep files from `/local/` for 31 days. Change the number with every update. If the app still shows the old version, clear its cache: **Settings → Companion app → Troubleshooting → Reset frontend cache** (Android) or **App Configuration → Debugging → Reset frontend cache** (iOS).
 3. Copy [`examples/startmenu/ha95-startmenu.json`](../examples/startmenu/ha95-startmenu.json) to `/config/www/ha95-startmenu.json`.
 4. Restart Home Assistant and reload the page.
 

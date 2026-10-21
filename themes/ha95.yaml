@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------
 #  HA 95 – Home Assistant Theme-Paket
-#  Version: 3.14.3
+#  Version: 3.14.4
 #
 #  Enthält 13 Themes (wie die Farbschemata in "Eigenschaften von Anzeige"):
 #    HA 95            – Standard: Teal-Desktop, Navy-Titelleisten
@@ -2183,6 +2183,7 @@ HA 95: &ha95
       /* Ziehgriff und ⋮-Menü senkrecht mittig statt oben */
       .icons {
         align-self: center !important;
+        margin-inline-end: 6px !important;
       }
     "ha-automation-editor $$ ha-automation-row-targets $": |
       /* Entitäts-Chips als eingedrücktes Feld */

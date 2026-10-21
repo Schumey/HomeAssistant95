@@ -4,6 +4,12 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [3.14.4] – 2026-10-21
+
+### Fixed
+- **Dialogs with their own header buttons** (e.g. "Edit card"): the close button is a 16 × 16 square and the help button 24 × 22, now set by the panels module so it works in every dialog.
+- **Automation editor:** space between the ⋮ menu and the frame of the row.
+
 ## [3.14.3] – 2026-10-21
 
 ### Fixed

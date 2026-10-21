@@ -11,9 +11,9 @@
    ```yaml
    frontend:
      extra_module_url:
-       - /local/ha95/ha95-icons.js?v=3.14.3
+       - /local/ha95/ha95-icons.js?v=3.14.4
    ```
-   The `?v=3.14.3` makes browsers and the companion app load the new file after an update: Home Assistant lets them keep files from `/local/` for 31 days. Change the number with every update. If the app still shows the old version, clear its cache: **Settings → Companion app → Troubleshooting → Reset frontend cache** (Android) or **App Configuration → Debugging → Reset frontend cache** (iOS).
+   The `?v=3.14.4` makes browsers and the companion app load the new file after an update: Home Assistant lets them keep files from `/local/` for 31 days. Change the number with every update. If the app still shows the old version, clear its cache: **Settings → Companion app → Troubleshooting → Reset frontend cache** (Android) or **App Configuration → Debugging → Reset frontend cache** (iOS).
 3. Restart Home Assistant and reload the page.
 4. Use the icons anywhere you can pick an icon, for example `icon: ha95:thermostat`. The icon picker lists them when you type `ha95`.
 
@@ -33,7 +33,7 @@ Instead of changing every icon by hand, the file can do it for you. Add an optio
 | `/local/ha95/ha95-icons.js?pixelate` | Every other icon (all of MDI, including buttons and menus) is snapped to the 24×24 pixel grid. |
 | `/local/ha95/ha95-icons.js?replace&pixelate` | Both: hand-drawn icons where available, pixelated MDI for the rest. |
 
-Add the version with `&`, e.g. `/local/ha95/ha95-icons.js?replace&pixelate&v=3.14.3`.
+Add the version with `&`, e.g. `/local/ha95/ha95-icons.js?replace&pixelate&v=3.14.4`.
 
 Restart Home Assistant after changing the URL. Both modes hook into the frontend's icon components, so like UIX, check them after Home Assistant updates. Icons with their own `viewBox` (from other icon sets) are left alone.
 

@@ -1,9 +1,9 @@
 /*
  * HA 95 – Feinschliff für Stellen, die das Theme nicht erreicht
- * Version: 3.14.3
+ * Version: 3.14.4
  * Ablage:  /config/www/ha95/ha95-panels.js
  *
- * Als Dashboard-Ressource (/local/ha95/ha95-panels.js?v=3.14.3, Typ Modul).
+ * Als Dashboard-Ressource (/local/ha95/ha95-panels.js?v=3.14.4, Typ Modul).
  * Optional: Ohne das Modul bleibt das Design an wenigen Stellen unfertig
  * (Logbuch: Hinweisfeld, Kontrollkästchen, runde Symbole, Pfeilknöpfe beim
  * Zeitraum; überall: Scrollleisten im Windows-Look). Alles andere im Design
@@ -597,8 +597,10 @@ const BAUTEIL_CSS = {
       color: var(--ha95-shadow) !important;
       filter: drop-shadow(1px 1px 0 var(--ha95-highlight));
     }
-    /* Hilfe-Knopf rechts in der Reiterzeile der Einstellungsseiten */
-    :host([slot="toolbar-icon"]) {
+    /* Hilfe-Knopf rechts in der Reiterzeile der Einstellungsseiten und in
+       der Symbolleiste von Dialogen (z. B. "Karte bearbeiten") */
+    :host([slot="toolbar-icon"]),
+    :host([slot="headerActionItems"]) {
       --ha-icon-button-size: 22px;
       --mdc-icon-size: 16px;
       --ha-button-box-shadow: none;
@@ -611,13 +613,15 @@ const BAUTEIL_CSS = {
       background: var(--ha95-face);
       box-shadow: var(--ha95-raised);
     }
-    :host([slot="toolbar-icon"]) ha-button {
+    :host([slot="toolbar-icon"]) ha-button,
+    :host([slot="headerActionItems"]) ha-button {
       display: block;
     }
     /* Schließen-Knopf jedes Dialogs (ha-dialog, ha-adaptive-dialog,
        ha-dialog-header): 16 x 16 wie überall, auch in Dialogen, für die es
        keine eigene Theme-Regel gibt */
-    :host([data-dialog="close"]) {
+    :host([data-dialog="close"]),
+    :host([slot="headerNavigationIcon"]) {
       --ha-icon-button-size: 16px;
       --mdc-icon-size: 10px;
       --ha-button-box-shadow: none;
@@ -631,7 +635,9 @@ const BAUTEIL_CSS = {
       box-shadow: var(--ha95-raised);
     }
     :host([data-dialog="close"]) ha-button,
-    :host([data-dialog="close"]) ha-button::part(base) {
+    :host([slot="headerNavigationIcon"]) ha-button,
+    :host([data-dialog="close"]) ha-button::part(base),
+    :host([slot="headerNavigationIcon"]) ha-button::part(base) {
       width: 100% !important;
       height: 100% !important;
       min-height: 0 !important;

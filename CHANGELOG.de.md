@@ -4,6 +4,12 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [3.14.4] – 2026-10-21
+
+### Behoben
+- **Dialoge mit eigenen Kopf-Knöpfen** (z. B. „Karte bearbeiten“): Der Schließen-Knopf ist ein 16 × 16-Quadrat, der Hilfe-Knopf 24 × 22. Das setzt jetzt das Feinschliff-Modul, damit es in jedem Dialog wirkt.
+- **Automations-Editor:** Abstand zwischen ⋮-Menü und Rahmen der Zeile.
+
 ## [3.14.3] – 2026-10-21
 
 ### Behoben

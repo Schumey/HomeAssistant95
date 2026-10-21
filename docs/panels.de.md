@@ -19,9 +19,9 @@ Optional. Ohne das Modul funktioniert das Design weiter, an einigen Stellen blei
    ```yaml
    frontend:
      extra_module_url:
-       - /local/ha95/ha95-panels.js?v=3.14.3
+       - /local/ha95/ha95-panels.js?v=3.14.4
    ```
-   oder als Ressource unter **Einstellungen → Dashboards → ⋮ → Ressourcen** eintragen (`/local/ha95/ha95-panels.js?v=3.14.3`, Typ **JavaScript-Modul**). Die Nummer nach `?v=` bei jedem Update ändern, sonst behalten Browser und Companion-App die alte Datei bis zu 31 Tage.
+   oder als Ressource unter **Einstellungen → Dashboards → ⋮ → Ressourcen** eintragen (`/local/ha95/ha95-panels.js?v=3.14.4`, Typ **JavaScript-Modul**). Die Nummer nach `?v=` bei jedem Update ändern, sonst behalten Browser und Companion-App die alte Datei bis zu 31 Tage.
 
 ## So funktioniert es
 
