@@ -4,6 +4,11 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.1.1] – 2026-10-21
+
+### Hinzugefügt
+- **Icon** für die Integration (`custom_components/ha95/brand/`), sichtbar unter Einstellungen → Geräte & Dienste und in HACS.
+
 ## [4.1.0] – 2026-10-21
 
 ### Hinzugefügt
