@@ -4,6 +4,11 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.0.1] – 2026-10-21
+
+### Fixed
+- **Start menu:** if `/local/ha95-startmenu.json` could not be loaded once (for example a 404 during a restart), the menus stayed empty until the page was reloaded ("Menu … is missing"). A failed load is no longer remembered, and the next click tries again.
+
 ## [4.0.0] – 2026-10-21
 
 ### Changed (breaking)

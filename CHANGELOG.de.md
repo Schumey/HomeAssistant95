@@ -4,6 +4,11 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.0.1] – 2026-10-21
+
+### Behoben
+- **Startmenü:** Konnte `/local/ha95-startmenu.json` einmal nicht geladen werden (zum Beispiel 404 während eines Neustarts), blieben die Menüs bis zum Neuladen der Seite leer („Menü … fehlt“). Ein fehlgeschlagenes Laden wird nicht mehr gemerkt, der nächste Klick versucht es erneut.
+
 ## [4.0.0] – 2026-10-21
 
 ### Geändert (inkompatibel)

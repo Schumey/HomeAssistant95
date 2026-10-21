@@ -1,6 +1,6 @@
 /*
  * HA 95 – Startmenü mit Untermenüs für Home Assistant
- * Version: 4.0.0
+ * Version: 4.0.1
  * Laden:   Integration HA 95, Option "Startmenü"
  * Menüs:   /config/www/ha95-startmenu.json (Beispiel im Repo unter
  *          examples/startmenu/ha95-startmenu.json)
@@ -2407,10 +2407,13 @@ async function loadConfig() {
   if (window.ha95StartmenuConfig) return (config = { ...DEFAULTS, ...window.ha95StartmenuConfig });
   try {
     const res = await fetch(CONFIG_URL, { cache: "no-store" });
-    config = { ...DEFAULTS, ...(res.ok ? await res.json() : {}) };
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    config = { ...DEFAULTS, ...(await res.json()) };
   } catch (err) {
+    // Nicht merken: Ein Fehlschlag (404 beim Neustart, kurze Netzstörung)
+    // soll beim nächsten Öffnen erneut versucht werden, nicht bis zum Neuladen bleiben.
     console.warn("HA95 Startmenü: Konfiguration nicht lesbar", err);
-    config = { ...DEFAULTS };
+    return { ...DEFAULTS };
   }
   return config;
 }
