@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------
 #  HomeAssistant95 – Start menu sidebar for Custom Sidebar
-#  Version: 3.14.4
+#  Version: 4.0.0
 #
 #  Requires: Custom Sidebar (HACS, https://github.com/elchininet/custom-sidebar)
 #  File:     /config/www/custom-sidebar-config.yaml
@@ -10,7 +10,7 @@
 #
 #  Replace the entity IDs and item names in the "order" section with your own.
 #  "item" matches the visible name of a sidebar entry (case-insensitive).
-#  The ha95: icons need www/ha95/ha95-icons.js (see README, "Pixel icons").
+#  The ha95: icons need the "Pixel icons" option of the HA 95 integration.
 #  Without it, use mdi: icons instead.
 # ------------------------------------------------------------------
 
@@ -48,7 +48,7 @@ scrollbar_thumb_color: var(--ha95-shadow)
 
 # ---------- Start menu look ----------
 # 3D frame and square selection. The vertical "HomeAssistant95" banner
-# and the colorful icons come from www/ha95/ha95-startmenu.js.
+# and the colorful icons come from the start menu module of the HA 95 integration.
 styles: |
   :host {
     box-shadow: var(--ha95-raised);
@@ -107,7 +107,7 @@ order:
     order: 5
 
   # "Tools" item with a Win95 flyout menu (Start menu style).
-  # Needs www/ha95/ha95-startmenu.js and /config/www/ha95-startmenu.json,
+  # Needs the start menu module of the HA 95 integration and /config/www/ha95-startmenu.json,
   # see the README section "Start menu with submenus".
   - new_item: true
     item: Tools

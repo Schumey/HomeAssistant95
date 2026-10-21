@@ -1,0 +1,48 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "HA 95",
+        "description": "Welche Designs installiert werden und welche Module laufen. Nach dem Speichern die Seite neu laden (Strg+F5).",
+        "data": {
+          "themes": "Designs",
+          "css": "Pixel-Schrift, Mauszeiger, Scrollleisten (ha95.css)",
+          "startmenu": "Startmenü (ha95-startmenu.js)",
+          "icons": "Pixel-Icons (ha95-icons.js)",
+          "panels": "Feinschliff für Einstellungsseiten und Dialoge (ha95-panels.js)",
+          "clock": "Uhr-Karte (ha95-clock.js)"
+        }
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "HA 95 ist schon eingerichtet."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "HA 95",
+        "description": "Welche Designs installiert werden und welche Module laufen. Nach dem Speichern die Seite neu laden (Strg+F5).",
+        "data": {
+          "themes": "Designs",
+          "css": "Pixel-Schrift, Mauszeiger, Scrollleisten (ha95.css)",
+          "startmenu": "Startmenü (ha95-startmenu.js)",
+          "icons": "Pixel-Icons (ha95-icons.js)",
+          "panels": "Feinschliff für Einstellungsseiten und Dialoge (ha95-panels.js)",
+          "clock": "Uhr-Karte (ha95-clock.js)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "icons": {
+      "options": {
+        "off": "Aus",
+        "add": "Nur zusätzlich (ha95:-Icons)",
+        "replace": "Ersetzen (mdi:-Icons)",
+        "pixelate": "Pixeln (alle anderen Icons)",
+        "both": "Ersetzen und pixeln"
+      }
+    }
+  }
+}

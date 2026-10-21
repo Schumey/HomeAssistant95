@@ -14,17 +14,10 @@ Optional. Without it the theme still works, but a few places stay unfinished. Th
 
 ## Installation
 
-1. Copy `www/ha95/ha95-panels.js` to `/config/www/ha95/`.
-2. Either add the line to `configuration.yaml` under `frontend: extra_module_url:` and restart Home Assistant:
-   ```yaml
-   frontend:
-     extra_module_url:
-       - /local/ha95/ha95-panels.js?v=3.14.4
-   ```
-   or add it as a resource under **Settings → Dashboards → ⋮ → Resources** (`/local/ha95/ha95-panels.js?v=3.14.4`, type **JavaScript module**). Change the number after `?v=` with every update, otherwise browsers and the companion app keep the old file for up to 31 days.
+On by default. Switch it under **Settings → Devices & services → HA 95 → Configure** (**Finishing touches**). Reload the page afterwards (**Ctrl+F5**).
 
 ## How it works
 
 The module attaches a stylesheet to every shadow root of Home Assistant, including the ones created later, and adds rules for individual components when they are created. It uses no `MutationObserver`; the logbook rules run in a slow 0.8 s cycle that only runs while the logbook is open. It changes only the look, never the function. If a Home Assistant update changes the inside of a component, the affected rule simply stops having an effect.
 
-Uninstalling: remove the line or the resource and delete `ha95-panels.js`.
+Switching it off: untick **Finishing touches** in the integration.

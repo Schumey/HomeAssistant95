@@ -14,14 +14,7 @@ Optional. Ohne das Modul funktioniert das Design weiter, an einigen Stellen blei
 
 ## Installation
 
-1. `www/ha95/ha95-panels.js` nach `/config/www/ha95/` kopieren.
-2. Entweder die Zeile in der `configuration.yaml` unter `frontend: extra_module_url:` eintragen und Home Assistant neu starten:
-   ```yaml
-   frontend:
-     extra_module_url:
-       - /local/ha95/ha95-panels.js?v=3.14.4
-   ```
-   oder als Ressource unter **Einstellungen → Dashboards → ⋮ → Ressourcen** eintragen (`/local/ha95/ha95-panels.js?v=3.14.4`, Typ **JavaScript-Modul**). Die Nummer nach `?v=` bei jedem Update ändern, sonst behalten Browser und Companion-App die alte Datei bis zu 31 Tage.
+Ist standardmäßig an. Ein- und ausschalten unter **Einstellungen → Geräte & Dienste → HA 95 → Konfigurieren** (**Feinschliff**). Danach die Seite neu laden (**Strg+F5**).
 
 ## So funktioniert es
 

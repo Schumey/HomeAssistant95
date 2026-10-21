@@ -32,9 +32,9 @@ Climate and humidifier entities use the 16-color palette: heat red, cool blue, a
 
 ## Your own color scheme
 
-Every color goes through the `ha95-*` variables at the top of `themes/ha95.yaml`. To make your own scheme:
+Every color goes through the `ha95-*` variables at the top of each theme file in `/config/themes/ha95/` (copy a theme to `/config/themes/` under a new name, so the integration does not overwrite it). To make your own scheme:
 
-1. Copy a variant at the end of the file (e.g. `HA 95 Rose`).
+1. Copy the file of a variant (e.g. `/config/themes/ha95/ha-95-rose.yaml`) to `/config/themes/my-scheme.yaml`.
 2. Give it a new name, also in `card-mod-theme`.
 3. Change only the `ha95-*` values and the `rgb-*` lines (the same colors as comma-separated numbers).
 
@@ -64,4 +64,4 @@ Window style (used by HA 3.11):
 | `ha95-title-align` | `left` or `center` |
 | `ha95-icon-info` … `ha95-icon-success`, `ha95-icon-run` | Symbols in messages, notes and the "Run" dialog |
 
-Your copy is overwritten when HACS updates the theme. Keep your own scheme in a separate file in `/config/themes/` instead, with the variant name and all keys of `HA 95` (YAML anchors only work within one file).
+The integration overwrites the files in `/config/themes/ha95/` on every start. Keep your own scheme in a separate file directly in `/config/themes/` instead: copy a theme file from there, give the theme a new name and change only the `ha95-*` values.

@@ -1,0 +1,48 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "HA 95",
+        "description": "Which themes get installed and which modules run. Reload the page (Ctrl+F5) after saving.",
+        "data": {
+          "themes": "Themes",
+          "css": "Pixel font, mouse cursor, scrollbars (ha95.css)",
+          "startmenu": "Start menu (ha95-startmenu.js)",
+          "icons": "Pixel icons (ha95-icons.js)",
+          "panels": "Finishing touches for settings pages and dialogs (ha95-panels.js)",
+          "clock": "Clock card (ha95-clock.js)"
+        }
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "HA 95 is already set up."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "HA 95",
+        "description": "Which themes get installed and which modules run. Reload the page (Ctrl+F5) after saving.",
+        "data": {
+          "themes": "Themes",
+          "css": "Pixel font, mouse cursor, scrollbars (ha95.css)",
+          "startmenu": "Start menu (ha95-startmenu.js)",
+          "icons": "Pixel icons (ha95-icons.js)",
+          "panels": "Finishing touches for settings pages and dialogs (ha95-panels.js)",
+          "clock": "Clock card (ha95-clock.js)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "icons": {
+      "options": {
+        "off": "Off",
+        "add": "Add only (ha95: icons)",
+        "replace": "Replace (mdi: icons)",
+        "pixelate": "Pixelate (all other icons)",
+        "both": "Replace and pixelate"
+      }
+    }
+  }
+}

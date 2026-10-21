@@ -1,9 +1,7 @@
 /*
  * HA 95 – Feinschliff für Stellen, die das Theme nicht erreicht
- * Version: 3.14.4
- * Ablage:  /config/www/ha95/ha95-panels.js
- *
- * Als Dashboard-Ressource (/local/ha95/ha95-panels.js?v=3.14.4, Typ Modul).
+ * Version: 4.0.0
+ * Wird von der Integration HA 95 geladen (Option "Feinschliff").
  * Optional: Ohne das Modul bleibt das Design an wenigen Stellen unfertig
  * (Logbuch: Hinweisfeld, Kontrollkästchen, runde Symbole, Pfeilknöpfe beim
  * Zeitraum; überall: Scrollleisten im Windows-Look). Alles andere im Design
@@ -590,6 +588,11 @@ const BAUTEIL_CSS = {
       align-items: center;
       justify-content: center;
       vertical-align: top !important;
+    }
+    /* Licht-Karte: das Symbol in der Mitte des runden Reglers ohne Rahmen */
+    :host(.light-button) ha-button::part(base) {
+      box-shadow: none !important;
+      background: transparent !important;
     }
     /* ausgegraute Knöpfe (z. B. Rückgängig/Wiederholen): graues Symbol mit
        weißem Schatten wie eingeprägte Schrift, sonst unsichtbar auf Grau */

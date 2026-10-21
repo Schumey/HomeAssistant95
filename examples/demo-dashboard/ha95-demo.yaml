@@ -1,0 +1,155 @@
+# HA 95 – Demo-Dashboard mit erfundenen Namen (für das Demo-GIF im README)
+#
+# Die Entitäten (light.…, climate.… usw.) sind Platzhalter: Ersetze sie durch
+# eigene Entitäten. Die Namen im Dashboard stehen in `name:` und sind frei erfunden.
+#
+# Einspielen: Einstellungen → Dashboards → Dashboard hinzufügen (Titel „HA95 Demo“),
+# im neuen Dashboard ⋮ → Bearbeiten → ⋮ → Raw-Konfigurationseditor, Inhalt ersetzen.
+title: HA95 Demo
+views:
+  - title: Burg Eulenstein
+    path: burg
+    icon: mdi:castle
+    type: sections
+    max_columns: 3
+    badges:
+      - type: entity
+        entity: sensor.temp_aussen_temperature
+        name: Wetterhahn
+      - type: entity
+        entity: sensor.temp_wohnzimmer_humidity
+        name: Nebelmesser
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: Gemächer
+            icon: mdi:door-open
+          - type: tile
+            entity: light.dimmer_schrage
+            name: Drachenlampe
+            features_position: bottom
+            features:
+              - type: light-brightness
+          - type: tile
+            entity: light.leuchten_wohnzimmer
+            name: Zauberstube
+            grid_options:
+              columns: 6
+          - type: tile
+            entity: input_boolean.bad_licht_manuell
+            name: Kristallkugel
+            grid_options:
+              columns: 6
+          - type: tile
+            entity: input_number.tessera_rotation_intervall
+            name: Wolkenwanderung
+            features_position: bottom
+            features:
+              - type: numeric-input
+                style: slider
+      - type: grid
+        cards:
+          - type: heading
+            heading: Kaminfeuer
+            icon: mdi:fireplace
+          - type: thermostat
+            entity: climate.thermostat_hc1
+            name: Kaminfeuer
+            features:
+              - type: climate-hvac-modes
+          - type: light
+            entity: light.dimmer_schrage
+            name: Drachenlampe
+      - type: grid
+        cards:
+          - type: heading
+            heading: Bekanntmachungen
+            icon: mdi:script-text-outline
+          - type: markdown
+            title: Aushang am Burgtor
+            content: |
+              **Willkommen auf Burg Eulenstein!**
+
+              - Der Drache ist heute *zahm*.
+              - Die Zugbrücke bleibt bis `18:00` unten.
+              - Kristallkugel bitte nicht schütteln.
+          - type: entities
+            title: Zutritt
+            show_header_toggle: false
+            entities:
+              - entity: light.leuchten_wohnzimmer
+                name: Zauberstube
+              - entity: input_boolean.bad_licht_manuell
+                name: Kristallkugel
+              - entity: input_number.tessera_rotation_intervall
+                name: Wolkenwanderung
+          - type: gauge
+            entity: sensor.temp_wohnzimmer_humidity
+            name: Nebelmesser
+            needle: true
+  - title: Bibliothek
+    path: bibliothek
+    icon: mdi:book-open-variant
+    type: sections
+    max_columns: 3
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: Zauberbuch
+            icon: mdi:book-open-page-variant
+          - type: entities
+            title: Einstellungen
+            show_header_toggle: true
+            entities:
+              - entity: light.leuchten_wohnzimmer
+                name: Zauberstube
+              - entity: input_boolean.bad_licht_manuell
+                name: Kristallkugel
+              - type: divider
+              - entity: input_number.tessera_rotation_intervall
+                name: Wolkenwanderung
+              - entity: input_number.komforttemperatur_heizung
+                name: Kaminwärme
+              - entity: select.zigbee2mqtt_bridge_log_level
+                name: Zauberspruch
+              - entity: input_datetime.fitnessstudio_letzter_besuch
+                name: Letzter Drachenflug
+              - entity: input_datetime.lichtwecker_cooldown
+                name: Eulenpost
+      - type: grid
+        cards:
+          - type: heading
+            heading: Warnungen
+            icon: mdi:alert-outline
+          - type: markdown
+            content: |
+              <ha-alert alert-type="info">Der Drache hat Hunger</ha-alert>
+              <ha-alert alert-type="warning">Zugbrücke klemmt</ha-alert>
+              <ha-alert alert-type="error">Kristallkugel zerbrochen</ha-alert>
+              <ha-alert alert-type="success">Burggraben gefüllt</ha-alert>
+          - type: custom:ha95-clock-card
+            title: Datum/Uhrzeit
+      - type: grid
+        cards:
+          - type: heading
+            heading: Chronik
+            icon: mdi:chart-line
+          - type: history-graph
+            title: Wetterhahn
+            hours_to_show: 24
+            entities:
+              - entity: sensor.temp_aussen_temperature
+                name: Wetterhahn
+              - entity: sensor.temp_wohnzimmer_temperature
+                name: Kaminstube
+          - type: glance
+            title: Späher
+            entities:
+              - entity: sensor.temp_aussen_temperature
+                name: Wetterhahn
+              - entity: sensor.temp_wohnzimmer_humidity
+                name: Nebelmesser
+              - entity: input_boolean.bad_licht_manuell
+                name: Kristallkugel

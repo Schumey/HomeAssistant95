@@ -7,7 +7,7 @@ The sidebar can look and work like the Windows 95 Start menu. There are two part
 | Part | What it does | Needs |
 |---|---|---|
 | [Sidebar look](#1-sidebar-look-custom-sidebar) | "Start" title with a clock, 3D frame, blue selection, extra info below items | [Custom Sidebar](https://github.com/elchininet/custom-sidebar) (HACS) |
-| [Start menu module](#2-start-menu-module) | Vertical "HomeAssistant**95**" banner, colorful Win95 icons, flyout menus with submenus | `www/ha95/ha95-startmenu.js` |
+| [Start menu module](#2-start-menu-module) | Vertical "HomeAssistant**95**" banner, colorful Win95 icons, flyout menus with submenus | `ha95-startmenu.js` |
 
 Flyout menus hang off a sidebar entry, so for those you need both parts.
 
@@ -22,16 +22,9 @@ All colors come from the `ha95-*` variables, so the sidebar follows the selected
 
 ## 2. Start menu module
 
-1. Copy `www/ha95/ha95-startmenu.js` to `/config/www/ha95/`.
-2. Load it in `configuration.yaml`:
-   ```yaml
-   frontend:
-     extra_module_url:
-       - /local/ha95/ha95-startmenu.js?v=3.14.4
-   ```
-   The `?v=3.14.4` makes browsers and the companion app load the new file after an update: Home Assistant lets them keep files from `/local/` for 31 days. Change the number with every update. If the app still shows the old version, clear its cache: **Settings → Companion app → Troubleshooting → Reset frontend cache** (Android) or **App Configuration → Debugging → Reset frontend cache** (iOS).
-3. Copy [`examples/startmenu/ha95-startmenu.json`](../examples/startmenu/ha95-startmenu.json) to `/config/www/ha95-startmenu.json`.
-4. Restart Home Assistant and reload the page.
+1. Switch on **Start menu** in the integration (**Settings → Devices & services → HA 95 → Configure**, on by default).
+2. Copy [`examples/startmenu/ha95-startmenu.json`](../examples/startmenu/ha95-startmenu.json) to `/config/www/ha95-startmenu.json`.
+3. Reload the page (**Ctrl+F5**).
 
 You now have the banner and the colorful icons. The flyout menus need one more step, see [Build your own menu](#build-your-own-menu).
 
@@ -161,5 +154,5 @@ Instead of the JSON file you can also set `window.ha95StartmenuConfig = { menus:
 | Menu is empty or old | The JSON file has a syntax error, or the page has not been reloaded. |
 | File editor opens, but not the file | Check `file_editor_panel` and `file_editor_base`. |
 | No banner | The banner only shows while the sidebar is expanded. |
-| Works in the browser, but not in the companion app (no banner, no colorful icons, no ▶ arrow) | The app still uses an old copy of the module. Raise the number after `?v=` in `extra_module_url` and restart, or reset the app's frontend cache (see [setup](#2-start-menu-module)). |
+| Works in the browser, but not in the companion app (no banner, no colorful icons, no ▶ arrow) | The app still uses an old copy of the module. Restart Home Assistant (the integration then loads the module under a new version number) or reset the app's frontend cache (see [setup](#2-start-menu-module)). |
 | Banner and colorful icons disappear | The browser console shows `HA95 Startmenü: Seitenleiste ändert sich mehr als …`. Something changed the sidebar many times a second for several seconds, so the module stopped redrawing it instead of freezing the interface. The menus keep working. Reload the page; if it happens again, please open an issue. |

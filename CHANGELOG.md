@@ -4,6 +4,20 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.0.0] – 2026-10-21
+
+### Changed (breaking)
+- **HA 95 is now an integration instead of a theme.** Install it from HACS as type *Integration* and add it under **Settings → Devices & services**. It copies the themes you pick to `/config/themes/ha95/` and loads the extras (pixel font and cursor, start menu, pixel icons, fine-tuning module, clock card) by itself: no files to copy, no dashboard resources, no `extra_module_url` lines, and the scripts get a new version number with every update.
+- **Choose themes and extras** in the setup and later under **HA 95 → Configure**: any of the 13 themes, each extra on or off, and the pixel icons as *Off / Add only / Replace / Pixelate / Replace and pixelate*.
+- The repo contains one file per theme in `custom_components/ha95/themes/` instead of `themes/ha95.yaml`; the modules moved from `www/ha95/` to `custom_components/ha95/www/`. Theme names are unchanged.
+- **Upgrading from 3.x:** remove the old HACS entry, add the repo again as type *Integration*, delete `/config/www/ha95/`, the `/local/ha95/…` dashboard resources and `extra_module_url` lines. See the README, "Upgrading from 3.x".
+
+### Added
+- Demo GIF in the README (themes, start menu, window look, forms, alerts, clock card, charts) and a demo dashboard with made-up names in `examples/demo-dashboard/`.
+
+### Fixed
+- **Light card:** the icon in the middle of the round dimmer no longer has a frame.
+
 ## [3.14.4] – 2026-10-21
 
 ### Fixed

@@ -1,21 +1,16 @@
 /*
  * HA 95 – Pixel-Icons für Home Assistant
- * Version: 3.14.4
- * Ablage:  /config/www/ha95/ha95-icons.js
- * Laden:   configuration.yaml
- *            frontend:
- *              extra_module_url:
- *                - /local/ha95/ha95-icons.js
- *          (oder als Dashboard-Ressource, Typ "JavaScript-Modul" –
- *           dann aber nur in Dashboards, nicht in der Seitenleiste)
+ * Version: 4.0.0
+ * Laden:   Integration HA 95, Option "Pixel-Icons" (Einstellungen →
+ *          Geräte & Dienste → HA 95 → Konfigurieren)
  * Nutzen:  icon: ha95:lightbulb-on
  *
- * Automatik (optional, als Zusatz an der URL):
- *   /local/ha95/ha95-icons.js?replace
+ * Automatik (optional, Zusatz an der URL; die Integration setzt ihn je nach Auswahl):
+ *   ha95-icons.js?replace
  *       mdi:-Icons, die es auch als ha95: gibt, werden automatisch ersetzt
- *   /local/ha95/ha95-icons.js?pixelate
+ *   ha95-icons.js?pixelate
  *       alle übrigen Icons werden auf das 24×24-Pixelraster gebracht
- *   /local/ha95/ha95-icons.js?replace&pixelate
+ *   ha95-icons.js?replace&pixelate
  *       beides
  *
  * Jedes Icon ist ein 24×24-Raster:

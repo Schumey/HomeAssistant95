@@ -1,13 +1,12 @@
 /*
  * HA 95 – Extras für Home Assistant
- * Version: 3.14.4
- * Ablage:    /config/www/ha95/ha95.css
- * Ressource: Einstellungen → Dashboards → ⋮ → Ressourcen
- *            URL: /local/ha95/ha95.css   Typ: Stylesheet
+ * Version: 4.0.0
+ * Laden:     Integration HA 95, Option "Pixel-Schrift, Mauszeiger, Scrollleisten"
+ *            (über ha95-css.js)
  *
  * Pixel-Schrift "Pixelated MS Sans Serif" aus dem Projekt 98.css (MIT-Lizenz).
- * Offline? Die beiden .woff2-Dateien nach /config/www/ha95/ laden und die
- * URLs unten auf /local/ha95/... umstellen.
+ * Offline? Die beiden .woff2-Dateien neben diese Datei legen und die
+ * URLs unten darauf umstellen.
  */
 
 @font-face {

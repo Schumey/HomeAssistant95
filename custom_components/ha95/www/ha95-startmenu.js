@@ -1,11 +1,7 @@
 /*
  * HA 95 – Startmenü mit Untermenüs für Home Assistant
- * Version: 3.14.4
- * Ablage:  /config/www/ha95/ha95-startmenu.js
- * Laden:   configuration.yaml
- *            frontend:
- *              extra_module_url:
- *                - /local/ha95/ha95-startmenu.js
+ * Version: 4.0.0
+ * Laden:   Integration HA 95, Option "Startmenü"
  * Menüs:   /config/www/ha95-startmenu.json (Beispiel im Repo unter
  *          examples/startmenu/ha95-startmenu.json)
  *

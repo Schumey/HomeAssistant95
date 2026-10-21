@@ -6,7 +6,7 @@ The Windows 95 "Date/Time Properties" window: a month calendar, the analog clock
 
 It is display only. Home Assistant cannot set the system clock, so OK and Cancel just close the window. Month and year can be browsed (arrow keys move through the days). The time follows the time zone setting of your profile (server or browser).
 
-There are two ways to use it, both from `www/ha95/ha95-clock.js`:
+There are two ways to use it, both from `ha95-clock.js`:
 
 | Where | How |
 |---|---|
@@ -15,9 +15,8 @@ There are two ways to use it, both from `www/ha95/ha95-clock.js`:
 
 ## Dashboard card
 
-1. Copy `www/ha95/ha95-clock.js` to `/config/www/ha95/`.
-2. **Settings → Dashboards → ⋮ → Resources** → `/local/ha95/ha95-clock.js?v=3.14.4`, type **JavaScript module**. Change the number after `?v=` with every update.
-3. Add a card:
+1. Switch on **Clock card** in the integration (**Settings → Devices & services → HA 95 → Configure**, on by default). No dashboard resource is needed.
+2. Add a card:
    ```yaml
    type: custom:ha95-clock-card
    title: Date/Time
@@ -37,7 +36,7 @@ Below about 400 px width the calendar and the clock are stacked.
 
 Needs the [start menu module](start-menu.md#2-start-menu-module) and the "Start" title with a clock from the [Custom Sidebar example](start-menu.md#1-sidebar-look-custom-sidebar).
 
-1. Copy `www/ha95/ha95-clock.js` to `/config/www/ha95/`, next to `ha95-startmenu.js`. The start menu loads it by itself the first time you double-click; no resource entry is needed.
+1. Nothing to set up: the start menu loads the clock by itself the first time you double-click.
 2. Double-click the title with the clock (on touch screens a single tap is enough).
 
 Options in `/config/www/ha95-startmenu.json`:

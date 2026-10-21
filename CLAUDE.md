@@ -1,15 +1,16 @@
 # HomeAssistant95 – Notizen für Claude
 
-Ein Windows-95-Design für Home Assistant, verteilt über HACS (Typ Theme). Diese Datei beschreibt, wie das Repo aufgebaut ist, wie Releases laufen und welche Fallstricke es beim Stylen von Home Assistant gibt.
+Ein Windows-95-Design für Home Assistant, verteilt über HACS als Integration (Typ Integration, seit 4.0.0; vorher Typ Theme). Diese Datei beschreibt, wie das Repo aufgebaut ist, wie Releases laufen und welche Fallstricke es beim Stylen von Home Assistant gibt.
 
 ## Aufbau
 
 | Pfad | Inhalt |
 |---|---|
-| `themes/ha95.yaml` | Das Design: 13 Themes (HA 95, HA 98, HA 95 Rose/Spruce/Desert/Kontrast/Dark/Auto, HA 3.11 mit Hot Dog Stand/Arizona/Ozean/Schwarze Lederjacke). **Wird generiert**, siehe Theme-Generator. Variante = YAML-Anker `&ha95` plus überschriebene `ha95-*`-Farben. Die dunklen Farben stehen einmal als Anker `&ha95dark` unter `HA 95 Auto` → `modes: dark:`; `HA 95 Dark` nutzt `<<: [*ha95dark, *ha95]`. |
-| `www/ha95/ha95.css` | Dashboard-Ressource: Pixel-Schrift, Mauszeiger, Scrollbars. |
-| `www/ha95/ha95-icons.js` | Pixel-Icon-Set (`ha95:`), Modus `?replace` / `?pixelate`. **Wird generiert**, siehe unten. |
-| `www/ha95/ha95-startmenu.js` | Startmenü: senkrechter Streifen, bunte Icons in Seitenleiste und Menüs, Win95-Ausklappmenüs an Einträgen mit `data-ha95-menu`; Menüs und Optionen aus `/config/www/ha95-startmenu.json`. Der Block zwischen `// <color-icons>` und `// </color-icons>` **wird generiert**, siehe unten. |
+| `custom_components/ha95/` | Die Integration: `__init__.py` (kopiert die gewählten Themes nach `/config/themes/ha95/`, stellt `www/` unter `/ha95/` bereit, trägt die Module per `add_extra_js_url` ein, mit `?v=<manifest-Version>` gegen Cache), `config_flow.py` (Einrichtung und Optionen: Themes, Module, Pixel-Icons-Modus), `const.py`, `manifest.json` (Version dort mitziehen), `strings.json` und `translations/{en,de}.json`. |
+| `custom_components/ha95/themes/*.yaml` | Das Design: je Theme eine Datei, 13 Themes (HA 95, HA 98, HA 95 Rose/Spruce/Desert/Kontrast/Dark/Auto, HA 3.11 mit Hot Dog Stand/Arizona/Ozean/Schwarze Lederjacke). **Wird generiert**, siehe Theme-Generator (Anker und Merge sind je Datei aufgelöst; der Name steht in der Kopfzeile `# HA 95 – Theme "…"`, die die Integration ausliest). In der Quelle ist Variante = YAML-Anker `&ha95` plus überschriebene `ha95-*`-Farben. Die dunklen Farben stehen einmal als Anker `&ha95dark` unter `HA 95 Auto` → `modes: dark:`; `HA 95 Dark` nutzt `<<: [*ha95dark, *ha95]`. |
+| `custom_components/ha95/www/ha95.css` | Pixel-Schrift, Mauszeiger, Scrollbars; geladen über `ha95-css.js` (legt ein `<link>` an). |
+| `custom_components/ha95/www/ha95-icons.js` | Pixel-Icon-Set (`ha95:`), Modus `?replace` / `?pixelate` (setzt die Integration je nach Auswahl). **Wird generiert**, siehe unten. |
+| `custom_components/ha95/www/ha95-startmenu.js` | Startmenü: senkrechter Streifen, bunte Icons in Seitenleiste und Menüs, Win95-Ausklappmenüs an Einträgen mit `data-ha95-menu`; Menüs und Optionen aus `/config/www/ha95-startmenu.json`. Der Block zwischen `// <color-icons>` und `// </color-icons>` **wird generiert**, siehe unten. |
 | `examples/custom-sidebar/` | Beispielkonfiguration für Custom Sidebar (Seitenleiste als Startmenü). |
 | `examples/startmenu/` | Beispielmenü für `ha95-startmenu.js`. |
 | `examples/test-dashboard/` | Prüfseite „HA95 Test“ mit je einer Karte jeder Art. Die Fassung mit den echten Entitäten des Nutzers liegt in `local/dashboard-test.yaml` (in HA als Dashboard `ha95-test`). |
@@ -20,20 +21,20 @@ Alle Farben laufen über `ha95-*`-Variablen. Neue Regeln nutzen diese Variablen 
 
 ## Theme-Generator
 
-`themes/ha95.yaml` wird aus `local/theme-generator/` gebaut: `ha95.src.yaml` ist das Theme mit Zeilen `@include name`, die `build.py` durch `blocks/name.css` ersetzt (eingerückt wie die Zeile, verschachtelbar). So steht CSS, das `card-mod-*` und `uix-*-yaml` oder Thermostat und Luftbefeuchter gemeinsam nutzen, nur einmal da. Änderungen am Theme immer in der Quelle machen, dann `python local/theme-generator/build.py` (mit `--check` nur prüfen). Die Datei `themes/ha95.yaml` nie von Hand ändern.
+Die Dateien in `custom_components/ha95/themes/` werden aus `local/theme-generator/` gebaut (je Theme eine Datei, per PyYAML aufgelöst und verlustfrei geprüft): `ha95.src.yaml` ist das Theme mit Zeilen `@include name`, die `build.py` durch `blocks/name.css` ersetzt (eingerückt wie die Zeile, verschachtelbar). So steht CSS, das `card-mod-*` und `uix-*-yaml` oder Thermostat und Luftbefeuchter gemeinsam nutzen, nur einmal da. Änderungen am Theme immer in der Quelle machen, dann `python local/theme-generator/build.py` (mit `--check` nur prüfen). Die Theme-Dateien nie von Hand ändern.
 
 `HA 3.11` ist ein Anker `&ha311` (selbst `<<: *ha95`), seine Farbvarianten nutzen `<<: *ha311`. Fensterstil-Variablen: `ha95-card`, `ha95-frame(-pressed|-width)`, `ha95-title-buttons(-width)`, `ha95-title-menu(-width)`, `ha95-title-align`.
 
 ## Icon-Generator
 
-`www/ha95/ha95-icons.js` wird aus `local/icon-generator/` erzeugt (`build.py`, `template.js`, `icons*.py`). Die Datei nie von Hand ändern, sonst überschreibt der nächste Generator-Lauf die Änderung. Ausnahme: die Versionszeile, dann aber auch in `local/icon-generator/template.js`.
+`custom_components/ha95/www/ha95-icons.js` wird aus `local/icon-generator/` erzeugt (`build.py`, `template.js`, `icons*.py`). Die Datei nie von Hand ändern, sonst überschreibt der nächste Generator-Lauf die Änderung. Ausnahme: die Versionszeile, dann aber auch in `local/icon-generator/template.js`.
 
 Die bunten Startmenü-Icons erzeugt `local/icon-generator/color_icons.py` (Icons ohne Raster in `ha95-icons.js` stehen dort als Rechteck-Zeichnungen in `DRAWN`): Es liest die Raster aus `ha95-icons.js`, färbt sie nach den Regeln in `SPEC` (Umriss schwarz, Füllfarbe, Rechtecke, Flutfüllung, automatische 3D-Schattierung) und schreibt den Block in `ha95-startmenu.js`. Vorschau als PNG (ohne PIL): `python local/icon-generator/preview_png.py [namen…]` → `local/color-icons-preview.png`, links auf Grau, rechts auf Navy (markiert). Reine Strich-Icons nicht in Navy färben, sonst verschwinden sie auf der Markierung.
 
 ## Release-Ablauf
 
 1. `git pull --ff-only`, `git status` prüfen.
-2. Änderungen machen, Versionszeile (`Version: x.y.z`) in allen Dateiköpfen gleich setzen (und das `?v=x.y.z` in den Anleitungen `docs/start-menu*.md`, `docs/pixel-icons*.md`, `README*.md`): `themes/ha95.yaml`, `www/ha95/*.css`, `www/ha95/*.js`, `examples/custom-sidebar/custom-sidebar-config.yaml` (und `local/icon-generator/template.js`, `local/theme-generator/ha95.src.yaml`, danach `build.py`).
+2. Änderungen machen, Versionszeile (`Version: x.y.z`) in allen Dateiköpfen gleich setzen und `version` in `custom_components/ha95/manifest.json` (die Anleitungen haben kein `?v=` mehr, die Integration hängt die Manifest-Version selbst an): `custom_components/ha95/www/*.css`, `custom_components/ha95/www/*.js`, `examples/custom-sidebar/custom-sidebar-config.yaml` (und `local/icon-generator/template.js`, `local/theme-generator/ha95.src.yaml`, danach `build.py`).
 3. Changelog **und** README immer in beiden Sprachen pflegen: `CHANGELOG.md` / `README.md` (Englisch, Standard, HACS zeigt README.md) und `CHANGELOG.de.md` / `README.de.md` (Deutsch).
 4. Nur mit expliziten Pfaden committen (`git add -- datei …`), **nie** `git add -A`. Es arbeiten oft mehrere Sitzungen parallel im selben Ordner.
 5. Annotiertes Tag `vX.Y.Z`, pushen, GitHub-Release mit dem Changelog-Abschnitt auf Englisch und Deutsch in den Notes.
@@ -84,7 +85,7 @@ Deutsche HA-Oberfläche: „Werkzeuge → YAML → **Designs** neu laden“ und 
 
 - Regeln möglichst **live abstimmen**: im HA-Tab des eingebauten Browsers Styles per JavaScript in die Shadow-Roots einspielen, Screenshot, nachjustieren, erst dann ins Theme übernehmen. Blind gebaute Selektoren treffen das echte DOM oft nicht.
 - HA im eingebauten Browser über Tailscale öffnen: `https://homeassistant.tail5ce62d.ts.net/` (die LAN-Adresse `http://192.168.178.27/` geht nur im Heimnetz). `homeassistant.local` wird dort blockiert, ebenso Zugriffe auf `localhost` (ein lokaler Testserver für geänderte Module geht also nicht) und `file://`. Geänderte JS-Module daher stückweise per JavaScript einspielen. Farbschemata testen: `ha95-*`-Variablen per `document.documentElement.style.setProperty` setzen.
-- **Dateien in HA einspielen** (nur auf Wunsch des Nutzers): über die File-editor-API im Ingress, `GET api/file?filename=…` und `POST api/save` (Formular mit `filename`, `text`). Vorher immer eine Sicherung `*.bak-vor-x.y` daneben speichern. Große Dateien gzip+base64 übertragen, im Browser mit `DecompressionStream` entpacken und per Prüfsumme (h = h·31 + Zeichen, 32 Bit) gegen die lokale Datei prüfen. Danach `frontend.reload_themes` aufrufen und für JS-Module den Browser-Cache mit `fetch(url, {cache: "reload"})` erneuern. Hängt die HA-Oberfläche, ist der File editor direkt unter `/api/hassio_ingress/<token>/` erreichbar. Theme: `/homeassistant/themes/ha95/ha95.yaml`, Module: `/homeassistant/www/ha95/`.
+- **Dateien in HA einspielen** (nur auf Wunsch des Nutzers): über die File-editor-API im Ingress, `GET api/file?filename=…` und `POST api/save` (Formular mit `filename`, `text`). Vorher immer eine Sicherung `*.bak-vor-x.y` daneben speichern. Große Dateien gzip+base64 übertragen, im Browser mit `DecompressionStream` entpacken und per Prüfsumme (h = h·31 + Zeichen, 32 Bit) gegen die lokale Datei prüfen. Danach `frontend.reload_themes` aufrufen und für JS-Module den Browser-Cache mit `fetch(url, {cache: "reload"})` erneuern. Hängt die HA-Oberfläche, ist der File editor direkt unter `/api/hassio_ingress/<token>/` erreichbar. Seit 4.0.0 liegt alles in `/homeassistant/custom_components/ha95/` (Theme-Dateien dort in `themes/`, Module in `www/`); Python-Änderungen brauchen einen HA-Neustart, Theme-Dateien muss die Integration erst nach `/config/themes/ha95/` kopieren (Integration neu laden).
 - Das HA-MCP läuft nur lesend: Dashboards und Zustände lesen ja, schreiben nein. Vorschläge für persönliche Dashboards als YAML in `local/` ablegen (z. B. `local/dashboard-batterien.yaml`).
 - Screenshots im eingebauten Browser sind verkleinert (1125 px CSS-Breite → 800 px). Für Maße `getBoundingClientRect()` statt Augenmaß nehmen.
 - Die Quellen von HA-Frontend, UIX und Custom Sidebar auf GitHub lesen, bevor man Selektoren rät.

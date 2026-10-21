@@ -7,7 +7,7 @@ Die Seitenleiste kann aussehen und funktionieren wie das Startmenü von Windows 
 | Teil | Was er macht | Braucht |
 |---|---|---|
 | [Seitenleisten-Look](#1-seitenleisten-look-custom-sidebar) | „Start“-Titel mit Uhr, 3D-Rahmen, blaue Markierung, Zusatzinfos unter Einträgen | [Custom Sidebar](https://github.com/elchininet/custom-sidebar) (HACS) |
-| [Startmenü-Modul](#2-startmenü-modul) | Senkrechter Streifen „HomeAssistant**95**“, bunte Win95-Icons, Ausklappmenüs mit Untermenüs | `www/ha95/ha95-startmenu.js` |
+| [Startmenü-Modul](#2-startmenü-modul) | Senkrechter Streifen „HomeAssistant**95**“, bunte Win95-Icons, Ausklappmenüs mit Untermenüs | `ha95-startmenu.js` |
 
 Ausklappmenüs hängen an einem Eintrag der Seitenleiste. Dafür braucht man also beide Teile.
 
@@ -22,16 +22,9 @@ Alle Farben kommen aus den `ha95-*`-Variablen, die Seitenleiste wechselt also mi
 
 ## 2. Startmenü-Modul
 
-1. `www/ha95/ha95-startmenu.js` nach `/config/www/ha95/` kopieren.
-2. In `configuration.yaml` laden:
-   ```yaml
-   frontend:
-     extra_module_url:
-       - /local/ha95/ha95-startmenu.js?v=3.14.4
-   ```
-   Das `?v=3.14.4` sorgt dafür, dass Browser und Companion-App nach einem Update die neue Datei laden: Home Assistant erlaubt ihnen, Dateien aus `/local/` 31 Tage lang zwischenzuspeichern. Die Nummer bei jedem Update ändern. Zeigt die App trotzdem noch die alte Fassung, ihren Cache leeren: **Einstellungen → Companion-App → Fehlerbehebung → Frontend-Cache zurücksetzen** (Android) bzw. **App-Konfiguration → Debugging → Frontend-Cache zurücksetzen** (iOS).
-3. [`examples/startmenu/ha95-startmenu.json`](../examples/startmenu/ha95-startmenu.json) nach `/config/www/ha95-startmenu.json` kopieren.
-4. Home Assistant neu starten und die Seite neu laden.
+1. In der Integration **Startmenü** einschalten (**Einstellungen → Geräte & Dienste → HA 95 → Konfigurieren**, standardmäßig an).
+2. [`examples/startmenu/ha95-startmenu.json`](../examples/startmenu/ha95-startmenu.json) nach `/config/www/ha95-startmenu.json` kopieren.
+3. Die Seite neu laden (**Strg+F5**).
 
 Damit sind Streifen und bunte Icons da. Für die Ausklappmenüs fehlt noch ein Schritt, siehe [Eigenes Menü bauen](#eigenes-menü-bauen).
 
@@ -161,5 +154,5 @@ Statt der JSON-Datei geht auch `window.ha95StartmenuConfig = { menus: { … } }`
 | Menü leer oder veraltet | Die JSON-Datei hat einen Syntaxfehler, oder die Seite wurde nicht neu geladen. |
 | File editor geht auf, aber nicht die Datei | `file_editor_panel` und `file_editor_base` prüfen. |
 | Kein Streifen | Der Streifen erscheint nur bei ausgeklappter Seitenleiste. |
-| Im Browser geht es, in der Companion-App nicht (kein Streifen, keine bunten Icons, kein ▶-Pfeil) | Die App nutzt noch eine alte Kopie des Moduls. Die Nummer nach `?v=` in `extra_module_url` erhöhen und neu starten oder den Frontend-Cache der App zurücksetzen (siehe [Einrichtung](#2-startmenü-modul)). |
+| Im Browser geht es, in der Companion-App nicht (kein Streifen, keine bunten Icons, kein ▶-Pfeil) | Die App nutzt noch eine alte Kopie des Moduls. Home Assistant neu starten (die Integration lädt das Modul dann unter einer neuen Versionsnummer) oder den Frontend-Cache der App zurücksetzen (siehe [Einrichtung](#2-startmenü-modul)). |
 | Streifen und bunte Icons verschwinden | In der Browser-Konsole steht `HA95 Startmenü: Seitenleiste ändert sich mehr als …`. Etwas hat die Seitenleiste mehrere Sekunden lang viele Male pro Sekunde geändert, darum zeichnet das Modul sie nicht mehr nach, statt die Oberfläche einzufrieren. Die Menüs funktionieren weiter. Seite neu laden; passiert es wieder, bitte ein Issue anlegen. |

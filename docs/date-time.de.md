@@ -6,7 +6,7 @@ Das Fenster „Eigenschaften von Datum/Uhrzeit“ aus Windows 95: Monatskalender
 
 Es ist nur eine Anzeige. Home Assistant kann die Systemzeit nicht stellen, OK und Abbrechen schließen nur das Fenster. Monat und Jahr lassen sich durchblättern (Pfeiltasten wandern durch die Tage). Die Uhrzeit folgt der Zeitzonen-Einstellung im Profil (Server oder Browser).
 
-Es gibt zwei Wege, beide aus `www/ha95/ha95-clock.js`:
+Es gibt zwei Wege, beide aus `ha95-clock.js`:
 
 | Wo | Wie |
 |---|---|
@@ -15,9 +15,8 @@ Es gibt zwei Wege, beide aus `www/ha95/ha95-clock.js`:
 
 ## Dashboard-Karte
 
-1. `www/ha95/ha95-clock.js` nach `/config/www/ha95/` kopieren.
-2. **Einstellungen → Dashboards → ⋮ → Ressourcen** → `/local/ha95/ha95-clock.js?v=3.14.4`, Typ **JavaScript-Modul**. Die Zahl nach `?v=` bei jedem Update ändern.
-3. Karte anlegen:
+1. In der Integration **Uhr-Karte** einschalten (**Einstellungen → Geräte & Dienste → HA 95 → Konfigurieren**, standardmäßig an). Eine Dashboard-Ressource ist nicht nötig.
+2. Karte anlegen:
    ```yaml
    type: custom:ha95-clock-card
    title: Datum/Uhrzeit
@@ -37,7 +36,7 @@ Unter etwa 400 px Breite stehen Kalender und Uhr untereinander.
 
 Braucht das [Startmenü-Modul](start-menu.de.md#2-startmenü-modul) und den „Start“-Titel mit Uhr aus dem [Custom-Sidebar-Beispiel](start-menu.de.md#1-seitenleisten-look-custom-sidebar).
 
-1. `www/ha95/ha95-clock.js` nach `/config/www/ha95/` kopieren, neben `ha95-startmenu.js`. Das Startmenü lädt es beim ersten Doppelklick selbst nach, ein Eintrag unter Ressourcen ist nicht nötig.
+1. Nichts einzurichten: Das Startmenü lädt die Uhr beim ersten Doppelklick selbst nach.
 2. Doppelt auf den Titel mit der Uhr klicken (auf Touch-Bildschirmen reicht einmal Tippen).
 
 Optionen in `/config/www/ha95-startmenu.json`:

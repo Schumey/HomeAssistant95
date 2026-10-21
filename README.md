@@ -4,6 +4,8 @@
 
 A Windows 95 theme for [Home Assistant](https://www.home-assistant.io/): teal desktop, gray 3D windows, navy title bars, square corners and a pixel font.
 
+![HA 95 in six of its themes](https://raw.githubusercontent.com/Schumey/HomeAssistant95/main/docs/img/demo.gif)
+
 ## Included themes
 
 | Theme | Description |
@@ -23,29 +25,35 @@ More about dark mode, the Windows 3.1 look and your own colors: [Color schemes](
 
 ## Installation
 
-### With HACS
+HA 95 is an integration: it installs the themes you pick and loads the extras for you. Nothing to copy by hand, nothing to add to `configuration.yaml` except the line for themes (if you don't have it yet).
 
-1. HACS → ⋮ → **Custom repositories** → URL of this repo, type **Theme**.
-2. Install "HomeAssistant95".
-3. **Tools → YAML → reload Themes**.
-4. Pick one of the variants under **Profile → Theme**.
-
-### Manual
-
-1. Copy `themes/ha95.yaml` to `/config/themes/`.
-2. Add this to `configuration.yaml` if it isn't there yet:
+1. HACS → ⋮ → **Custom repositories** → URL of this repo, type **Integration**.
+2. Install "HomeAssistant95" and restart Home Assistant.
+3. Add this to `configuration.yaml` if it isn't there yet, then restart once more:
    ```yaml
    frontend:
      themes: !include_dir_merge_named themes
    ```
-3. Check the configuration, then **Tools → YAML → reload Themes**. If `frontend:` is new, restart once.
-4. Pick it under **Profile → Theme**.
+4. **Settings → Devices & services → Add integration → HA 95**. Pick the themes you want and the extras to switch on.
+5. Reload the browser with **Ctrl+F5**, then pick a variant under **Profile → Theme**.
+
+### Change themes and extras later
+
+**Settings → Devices & services → HA 95 → Configure.** Themes you untick are removed from `/config/themes/ha95/`; the themes are reloaded right away. Reload the browser afterwards (**Ctrl+F5**).
 
 ### Updating
 
-1. Update the theme (HACS: **Update**, manual: copy `themes/ha95.yaml` again), then **Tools → YAML → reload Themes**.
-2. If you use the extras: copy the files from `www/ha95/` to `/config/www/ha95/` again **and raise the number after `?v=`** in every resource and `extra_module_url` entry. Home Assistant lets browsers and the companion app keep files from `/local/` for 31 days; without a new number they keep showing the old version.
-3. Reload the browser with **Ctrl+F5**. If the companion app still looks old, reset its frontend cache (Android: **Settings → Companion app → Troubleshooting**, iOS: **App Configuration → Debugging**).
+HACS → **Update**, restart Home Assistant, reload the browser with **Ctrl+F5**. The integration copies the new theme files and gives its scripts a new version number, so browsers and the companion app load them fresh. If the companion app still looks old, reset its frontend cache (Android: **Settings → Companion app → Troubleshooting**, iOS: **App Configuration → Debugging**).
+
+### Upgrading from 3.x
+
+Version 4.0 replaces the theme with an integration. Do this once:
+
+1. HACS → HomeAssistant95 → ⋮ → **Remove**, then add the repo again as type **Integration** (see above).
+2. Delete the files and entries you set up by hand, otherwise everything loads twice: the folder `/config/www/ha95/`, the dashboard resources `/local/ha95/…` and the `/local/ha95/…` lines under `frontend: extra_module_url:` in `configuration.yaml`. Keep `/config/www/ha95-startmenu.json` (your menu).
+3. Set up the integration as above and reload the browser with **Ctrl+F5**.
+
+Theme names stay the same, so profiles and dashboards that use `HA 95` keep working.
 
 ## What the theme does on its own
 
@@ -69,8 +77,7 @@ Each extra works on its own. Pick what you like:
 
 ### Pixel font & mouse pointer
 
-1. Copy `www/ha95/ha95.css` to `/config/www/ha95/`.
-2. **Settings → Dashboards → ⋮ → Resources** → `/local/ha95/ha95.css?v=3.14.4`, type **Stylesheet**. Change the number after `?v=` with every update, otherwise browsers and the companion app keep the old file for up to 31 days.
+Switch on **Pixel font, mouse cursor, scrollbars** in the integration (on by default).
 
 The "Pixelated MS Sans Serif" font comes from [98.css](https://github.com/jdan/98.css) (MIT) and is loaded from jsDelivr. With UIX 8.4.0 or later the theme loads the font itself, so it also shows up on the settings pages. `ha95.css` is then only needed for the mouse pointer.
 

@@ -32,9 +32,9 @@ Klima- und Luftbefeuchter-Entitäten nutzen die 16-Farben-Palette: Heizen rot, K
 
 ## Eigenes Farbschema
 
-Alle Farben laufen über die `ha95-*`-Variablen am Anfang von `themes/ha95.yaml`. So entsteht ein eigenes Schema:
+Alle Farben laufen über die `ha95-*`-Variablen am Anfang jeder Theme-Datei in `/config/themes/ha95/` (ein Design unter neuem Namen nach `/config/themes/` kopieren, damit die Integration es nicht überschreibt). So entsteht ein eigenes Schema:
 
-1. Eine Variante am Ende der Datei kopieren (z. B. `HA 95 Rose`).
+1. Die Datei einer Variante (z. B. `/config/themes/ha95/ha-95-rose.yaml`) nach `/config/themes/mein-schema.yaml` kopieren.
 2. Einen neuen Namen geben, auch bei `card-mod-theme`.
 3. Nur die `ha95-*`-Werte und die `rgb-*`-Zeilen ändern (dieselben Farben als Zahlen mit Komma).
 
@@ -64,4 +64,4 @@ Fensterstil (nutzt HA 3.11):
 | `ha95-title-align` | `left` oder `center` |
 | `ha95-icon-info` … `ha95-icon-success`, `ha95-icon-run` | Symbole in Meldungen, Hinweisen und im Dialog „Ausführen“ |
 
-Eine Kopie in `ha95.yaml` überschreibt HACS beim nächsten Update. Das eigene Schema besser in einer eigenen Datei in `/config/themes/` ablegen, mit dem Namen der Variante und allen Schlüsseln von `HA 95` (YAML-Anker gelten nur innerhalb einer Datei).
+Die Integration überschreibt die Dateien in `/config/themes/ha95/` bei jedem Start. Das eigene Schema besser in einer eigenen Datei direkt in `/config/themes/` ablegen: eine Theme-Datei von dort kopieren, dem Design einen neuen Namen geben und nur die `ha95-*`-Werte ändern.

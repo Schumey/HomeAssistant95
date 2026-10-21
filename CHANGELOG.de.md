@@ -4,6 +4,20 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.0.0] – 2026-10-21
+
+### Geändert (inkompatibel)
+- **HA 95 ist jetzt eine Integration statt eines Designs.** Über HACS als Typ *Integration* installieren und unter **Einstellungen → Geräte & Dienste** hinzufügen. Sie kopiert die gewählten Designs nach `/config/themes/ha95/` und lädt die Extras (Pixel-Schrift und Mauszeiger, Startmenü, Pixel-Icons, Feinschliff-Modul, Uhr-Karte) selbst: keine Dateien kopieren, keine Dashboard-Ressourcen, keine `extra_module_url`-Zeilen, und die Skripte bekommen bei jedem Update eine neue Versionsnummer.
+- **Designs und Extras wählen** bei der Einrichtung und später unter **HA 95 → Konfigurieren**: beliebige der 13 Designs, jedes Extra an oder aus, die Pixel-Icons als *Aus / Nur zusätzlich / Ersetzen / Pixeln / Ersetzen und pixeln*.
+- Das Repo enthält je Design eine Datei in `custom_components/ha95/themes/` statt `themes/ha95.yaml`, die Module liegen in `custom_components/ha95/www/` statt `www/ha95/`. Die Namen der Designs sind gleich geblieben.
+- **Umstieg von 3.x:** den alten HACS-Eintrag entfernen, das Repo als Typ *Integration* neu hinzufügen, `/config/www/ha95/`, die Dashboard-Ressourcen `/local/ha95/…` und die `extra_module_url`-Zeilen löschen. Siehe README, „Umstieg von 3.x“.
+
+### Hinzugefügt
+- Demo-GIF in der README (Designs, Startmenü, Fensterlook, Formulare, Hinweise, Uhr-Karte, Diagramme) und ein Demo-Dashboard mit erfundenen Namen in `examples/demo-dashboard/`.
+
+### Behoben
+- **Licht-Karte:** Das Symbol in der Mitte des runden Dimmers hat keinen Rahmen mehr.
+
 ## [3.14.4] – 2026-10-21
 
 ### Behoben

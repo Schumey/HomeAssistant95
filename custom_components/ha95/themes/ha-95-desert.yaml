@@ -1,103 +1,53 @@
-# ------------------------------------------------------------------
-#  HA 95 – Home Assistant Theme-Paket
-#  Version: 3.14.4
-#
-#  Enthält 13 Themes (wie die Farbschemata in "Eigenschaften von Anzeige"):
-#    HA 95            – Standard: Teal-Desktop, Navy-Titelleisten
-#    HA 98            – wie 95, aber mit Farbverlauf in den Titelleisten
-#    HA 95 Rose       – Farbschema "Rose"   (Farben nachempfunden)
-#    HA 95 Spruce     – Farbschema "Fichte" (Farben nachempfunden)
-#    HA 95 Desert     – Farbschema "Wüste"  (Farben nachempfunden)
-#    HA 95 Kontrast   – "Kontrast Schwarz"
-#    HA 95 Dark       – Dunkelmodus
-#    HA 95 Auto       – wechselt mit dem Hell-/Dunkelmodus (HA 95 / HA 95 Dark)
-#    HA 3.11          – Windows-3.1-Look: flache Fenster, zentrierter Titel, ▼ ▲
-#    HA 3.11 Hot Dog Stand / Arizona / Ozean / Schwarze Lederjacke
-#                     – die Farbschemata aus Windows 3.1 (Farben nachempfunden)
-#
-#  Ablage:  /config/themes/ha95.yaml
-#  configuration.yaml:
-#    frontend:
-#      themes: !include_dir_merge_named themes
-#
-#  Extras (optional):
-#    - /config/www/ha95/ha95.css als Dashboard-Ressource -> Pixel-Schrift + Mauszeiger
-#    - UIX oder card-mod (HACS) -> Fenster mit _ □ × Knöpfen, Klick-Effekt,
-#      Ansichten-Tabs als Registerkarten;
-#      nur UIX: Dialoge als Win95-Fenster mit OK/Abbrechen, Meldungen und
-#      Hinweise mit Win95-Symbolen, Regler als Fortschrittsbalken,
-#      Schnellsuche als "Ausführen", Thermostat-Knöpfe, Kontrollkästchen
-#    - examples/custom-sidebar/ -> Seitenleiste als Startmenü (Custom Sidebar, HACS)
-#    - /config/www/ha95/ha95-startmenu.js -> Streifen, bunte Icons, Ausklappmenüs,
-#      "Ausführen …", "Es ist jetzt sicher …", Sanduhr
-#
-#  Diese Datei wird erzeugt: local/theme-generator/build.py aus
-#  ha95.src.yaml und den CSS-Bausteinen in blocks/.
-#
-#  Alle Farben laufen über die ha95-* Variablen. Für ein eigenes Schema
-#  reicht es, eine Variante zu kopieren und nur diese Variablen zu ändern.
-# ------------------------------------------------------------------
+# HA 95 – Theme "HA 95 Desert"
+# Version: 4.0.0
+# Erzeugt von local/theme-generator/build.py, nicht von Hand ändern.
 
-HA 95: &ha95
-  # ================= Farbschema (nur diese Werte ändern sich je Variante) =================
-  ha95-desktop: "#008080"        # Desktop-Hintergrund
-  ha95-desktop-text: "#ffffff"   # Schrift direkt auf dem Desktop (Überschriften-Karten)
-  ha95-face: "#c0c0c0"           # 3D-Objekte (Fenster, Karten, Knöpfe)
-  ha95-highlight: "#ffffff"      # 3D-Kante hell (außen)
-  ha95-light: "#dfdfdf"          # 3D-Kante hell (innen)
-  ha95-shadow: "#808080"         # 3D-Kante dunkel (innen)
-  ha95-dark: "#000000"           # 3D-Kante dunkel (außen)
-  ha95-text: "#000000"
-  ha95-text-dim: "#404040"
-  ha95-disabled: "#808080"
-  ha95-window: "#ffffff"         # Textfelder, Listen
-  ha95-window-text: "#000000"
-  ha95-title: "#000080"          # aktive Titelleiste
-  ha95-title-bar: "#000080"      # Hintergrund der Kartentitel (darf ein Verlauf sein)
-  ha95-title-text: "#ffffff"
-  ha95-select: "#000080"         # markierte Elemente
-  ha95-select-text: "#ffffff"
-  ha95-active: "#808000"         # Icons im Zustand "an"
-  ha95-heat: "#ff0000"           # Klima: Heizen
-  ha95-cool: "#0000ff"           # Klima: Kühlen
-  ha95-auto: "#008000"           # Klima: Automatik
-  ha95-heat-cool: "#808000"      # Klima: Heizen/Kühlen
-  ha95-dry: "#800080"            # Klima: Entfeuchten
-  ha95-fan: "#008080"            # Klima: Nur Lüfter
-  ha95-humid: "#008080"          # Luftbefeuchter an
-  ha95-banner: "#808080"         # Streifen im Startmenü (ha95-startmenu.js)
-  ha95-card: var(--ha95-face)    # Hintergrund der Karten (Fensterinhalt)
-
-  # ================= Fensterrahmen =================
-  # Rahmen von Karten und Dialogen, eingedrückt beim Klick, Rahmenbreite
+HA 95 Desert:
+  ha95-desktop: '#a28d68'
+  ha95-desktop-text: '#ffffff'
+  ha95-face: '#d5ccbb'
+  ha95-highlight: '#ffffff'
+  ha95-light: '#eae6dd'
+  ha95-shadow: '#8e887d'
+  ha95-dark: '#000000'
+  ha95-text: '#000000'
+  ha95-text-dim: '#404040'
+  ha95-disabled: '#808080'
+  ha95-window: '#ffffff'
+  ha95-window-text: '#000000'
+  ha95-title: '#008080'
+  ha95-title-bar: '#008080'
+  ha95-title-text: '#ffffff'
+  ha95-select: '#008080'
+  ha95-select-text: '#ffffff'
+  ha95-active: '#804000'
+  ha95-heat: '#ff0000'
+  ha95-cool: '#0000ff'
+  ha95-auto: '#008000'
+  ha95-heat-cool: '#808000'
+  ha95-dry: '#800080'
+  ha95-fan: '#008080'
+  ha95-humid: '#008080'
+  ha95-banner: '#808080'
+  ha95-card: var(--ha95-face)
   ha95-frame: var(--ha95-raised)
   ha95-frame-pressed: var(--ha95-sunken)
-  ha95-frame-width: "3px"
-  # Titelleiste: Knöpfe rechts, optional ein Kästchen links (Systemmenü),
-  # Ausrichtung des Titels. Die Breiten müssen zu den Grafiken passen.
-  ha95-title-buttons: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2750%27 height=%2716%27 shape-rendering=%27crispEdges%27%3E%3Crect x=%270%27 width=%2716%27 height=%2716%27/%3E%3Crect x=%270%27 width=%2715%27 height=%2715%27 fill=%27%23fff%27/%3E%3Crect x=%271%27 y=%271%27 width=%2714%27 height=%2714%27 fill=%27%23808080%27/%3E%3Crect x=%271%27 y=%271%27 width=%2713%27 height=%2713%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%274%27 y=%2711%27 width=%276%27 height=%272%27/%3E%3Crect x=%2716%27 width=%2716%27 height=%2716%27/%3E%3Crect x=%2716%27 width=%2715%27 height=%2715%27 fill=%27%23fff%27/%3E%3Crect x=%2717%27 y=%271%27 width=%2714%27 height=%2714%27 fill=%27%23808080%27/%3E%3Crect x=%2717%27 y=%271%27 width=%2713%27 height=%2713%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%2719%27 y=%273%27 width=%279%27 height=%279%27/%3E%3Crect x=%2720%27 y=%275%27 width=%277%27 height=%276%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%2734%27 width=%2716%27 height=%2716%27/%3E%3Crect x=%2734%27 width=%2715%27 height=%2715%27 fill=%27%23fff%27/%3E%3Crect x=%2735%27 y=%271%27 width=%2714%27 height=%2714%27 fill=%27%23808080%27/%3E%3Crect x=%2735%27 y=%271%27 width=%2713%27 height=%2713%27 fill=%27%23c0c0c0%27/%3E%3Cpath d=%27M38 4l7 7M45 4l-7 7%27 stroke=%27%23000%27 stroke-width=%272%27/%3E%3C/svg%3E")'
-  ha95-title-buttons-width: "50px"
-  ha95-title-menu: "none"
-  ha95-title-menu-width: "0px"
-  ha95-title-align: "left"
-
-  # ================= Abgeleitete Werte =================
-  ha95-raised: "inset -1px -1px var(--ha95-dark), inset 1px 1px var(--ha95-highlight), inset -2px -2px var(--ha95-shadow), inset 2px 2px var(--ha95-light)"
-  ha95-sunken: "inset -1px -1px var(--ha95-highlight), inset 1px 1px var(--ha95-dark), inset -2px -2px var(--ha95-light), inset 2px 2px var(--ha95-shadow)"
+  ha95-frame-width: 3px
+  ha95-title-buttons: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2750%27 height=%2716%27 shape-rendering=%27crispEdges%27%3E%3Crect x=%270%27 width=%2716%27 height=%2716%27/%3E%3Crect x=%270%27 width=%2715%27 height=%2715%27 fill=%27%23fff%27/%3E%3Crect x=%271%27 y=%271%27 width=%2714%27 height=%2714%27 fill=%27%23808080%27/%3E%3Crect x=%271%27 y=%271%27 width=%2713%27 height=%2713%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%274%27 y=%2711%27 width=%276%27 height=%272%27/%3E%3Crect x=%2716%27 width=%2716%27 height=%2716%27/%3E%3Crect x=%2716%27 width=%2715%27 height=%2715%27 fill=%27%23fff%27/%3E%3Crect x=%2717%27 y=%271%27 width=%2714%27 height=%2714%27 fill=%27%23808080%27/%3E%3Crect x=%2717%27 y=%271%27 width=%2713%27 height=%2713%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%2719%27 y=%273%27 width=%279%27 height=%279%27/%3E%3Crect x=%2720%27 y=%275%27 width=%277%27 height=%276%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%2734%27 width=%2716%27 height=%2716%27/%3E%3Crect x=%2734%27 width=%2715%27 height=%2715%27 fill=%27%23fff%27/%3E%3Crect x=%2735%27 y=%271%27 width=%2714%27 height=%2714%27 fill=%27%23808080%27/%3E%3Crect x=%2735%27 y=%271%27 width=%2713%27 height=%2713%27 fill=%27%23c0c0c0%27/%3E%3Cpath d=%27M38 4l7 7M45 4l-7 7%27 stroke=%27%23000%27 stroke-width=%272%27/%3E%3C/svg%3E")
+  ha95-title-buttons-width: 50px
+  ha95-title-menu: none
+  ha95-title-menu-width: 0px
+  ha95-title-align: left
+  ha95-raised: inset -1px -1px var(--ha95-dark), inset 1px 1px var(--ha95-highlight), inset -2px -2px var(--ha95-shadow), inset 2px 2px var(--ha95-light)
+  ha95-sunken: inset -1px -1px var(--ha95-highlight), inset 1px 1px var(--ha95-dark), inset -2px -2px var(--ha95-light), inset 2px 2px var(--ha95-shadow)
   ha95-font: '"Pixelated MS Sans Serif", "Microsoft Sans Serif", "MS Sans Serif", Tahoma, Geneva, Verdana, sans-serif'
   ha95-mono: '"Fixedsys", "Courier New", monospace'
-  # Symbole für Hinweise und Meldungen (32×32, wie in Win95-Meldungsfenstern)
-  ha95-icon-info: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2732%27 height=%2732%27 shape-rendering=%27crispEdges%27%3E%3Cpath d=%27M4.5 2.5h23v19h-14l-6 6v-6h-3z%27 fill=%27%23fff%27 stroke=%27%23000%27/%3E%3Cpath d=%27M28 3v19M14 22h14M9 22v6%27 stroke=%27%23808080%27/%3E%3Crect x=%2715%27 y=%275%27 width=%273%27 height=%273%27 fill=%27%2300f%27/%3E%3Crect x=%2713%27 y=%2710%27 width=%275%27 height=%272%27 fill=%27%2300f%27/%3E%3Crect x=%2715%27 y=%2712%27 width=%273%27 height=%276%27 fill=%27%2300f%27/%3E%3Crect x=%2713%27 y=%2718%27 width=%277%27 height=%272%27 fill=%27%2300f%27/%3E%3C/svg%3E")'
-  ha95-icon-warning: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2732%27 height=%2732%27 shape-rendering=%27crispEdges%27%3E%3Cpath d=%27M16 2.5l13.5 26h-27z%27 fill=%27%23ff0%27 stroke=%27%23000%27/%3E%3Cpath d=%27M3 30h28M30 29l-1-2%27 stroke=%27%23808080%27/%3E%3Crect x=%2715%27 y=%2710%27 width=%273%27 height=%2711%27/%3E%3Crect x=%2715%27 y=%2723%27 width=%273%27 height=%273%27/%3E%3C/svg%3E")'
-  ha95-icon-error: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2732%27 height=%2732%27%3E%3Ccircle cx=%2717%27 cy=%2717%27 r=%2713%27 fill=%27%23808080%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2713%27 fill=%27%23f00%27 stroke=%27%23800000%27/%3E%3Cpath d=%27M10.5 10.5l11 11M21.5 10.5l-11 11%27 stroke=%27%23fff%27 stroke-width=%273.5%27/%3E%3C/svg%3E")'
-  ha95-icon-success: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2732%27 height=%2732%27%3E%3Ccircle cx=%2717%27 cy=%2717%27 r=%2713%27 fill=%27%23808080%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2713%27 fill=%27%23008000%27 stroke=%27%23004000%27/%3E%3Cpath d=%27M9.5 16.5l4.5 4.5 9-9%27 stroke=%27%23fff%27 stroke-width=%273.5%27 fill=%27none%27/%3E%3C/svg%3E")'
-  ha95-icon-run: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2732%27 height=%2732%27 shape-rendering=%27crispEdges%27%3E%3Crect x=%272%27 y=%274%27 width=%2728%27 height=%2722%27/%3E%3Crect x=%273%27 y=%275%27 width=%2726%27 height=%274%27 fill=%27%23000080%27/%3E%3Crect x=%273%27 y=%279%27 width=%2726%27 height=%2716%27 fill=%27%23fff%27/%3E%3Crect x=%2724%27 y=%276%27 width=%274%27 height=%272%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%276%27 y=%2712%27 width=%279%27 height=%272%27 fill=%27%23808080%27/%3E%3Crect x=%276%27 y=%2716%27 width=%2714%27 height=%272%27 fill=%27%23808080%27/%3E%3Crect x=%276%27 y=%2720%27 width=%2711%27 height=%272%27 fill=%27%23808080%27/%3E%3Crect x=%274%27 y=%2726%27 width=%2727%27 height=%271%27 fill=%27%23808080%27/%3E%3Crect x=%2730%27 y=%276%27 width=%271%27 height=%2721%27 fill=%27%23808080%27/%3E%3C/svg%3E")'
-  # Home-Assistant-Logo als Pixel-Symbol (ersetzt das Markenbild bei Update-Zeilen)
-  ha95-icon-ha: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2732%27 height=%2732%27 shape-rendering=%27crispEdges%27%3E%3Crect x=%2714%27 y=%272%27 width=%274%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%2712%27 y=%274%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%2714%27 y=%274%27 width=%274%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2718%27 y=%274%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%2710%27 y=%276%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%2712%27 y=%276%27 width=%278%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2720%27 y=%276%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%278%27 y=%278%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%2710%27 y=%278%27 width=%274%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2714%27 y=%278%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2718%27 y=%278%27 width=%274%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2722%27 y=%278%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%276%27 y=%2710%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%278%27 y=%2710%27 width=%276%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2714%27 y=%2710%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2718%27 y=%2710%27 width=%276%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2724%27 y=%2710%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%274%27 y=%2712%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%276%27 y=%2712%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2710%27 y=%2712%27 width=%2712%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2722%27 y=%2712%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2726%27 y=%2712%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%272%27 y=%2714%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%274%27 y=%2714%27 width=%272%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%276%27 y=%2714%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2710%27 y=%2714%27 width=%274%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2714%27 y=%2714%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2718%27 y=%2714%27 width=%274%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2722%27 y=%2714%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2726%27 y=%2714%27 width=%272%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2728%27 y=%2714%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%270%27 y=%2716%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%272%27 y=%2716%27 width=%2712%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2714%27 y=%2716%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2718%27 y=%2716%27 width=%2712%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2730%27 y=%2716%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%270%27 y=%2718%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%272%27 y=%2718%27 width=%278%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2710%27 y=%2718%27 width=%272%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2712%27 y=%2718%27 width=%272%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2714%27 y=%2718%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2718%27 y=%2718%27 width=%272%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2720%27 y=%2718%27 width=%272%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2722%27 y=%2718%27 width=%278%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2730%27 y=%2718%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%270%27 y=%2720%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%272%27 y=%2720%27 width=%2710%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2712%27 y=%2720%27 width=%278%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2720%27 y=%2720%27 width=%2710%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2730%27 y=%2720%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%270%27 y=%2722%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%272%27 y=%2722%27 width=%2712%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2714%27 y=%2722%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2718%27 y=%2722%27 width=%2712%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2730%27 y=%2722%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%270%27 y=%2724%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%272%27 y=%2724%27 width=%2712%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2714%27 y=%2724%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2718%27 y=%2724%27 width=%2712%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2730%27 y=%2724%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%270%27 y=%2726%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%272%27 y=%2726%27 width=%2728%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2730%27 y=%2726%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%270%27 y=%2728%27 width=%2732%27 height=%272%27 fill=%27%23000000%27/%3E%3C/svg%3E")'
-
-  # ---------- Schrift ----------
-  # UIX (ab 8.4.0) lädt die Pixel-Schrift überall, auch auf den Einstellungsseiten.
-  # Ohne UIX kommt sie über die Dashboard-Ressource ha95.css (nur Dashboards).
+  ha95-icon-info: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2732%27 height=%2732%27 shape-rendering=%27crispEdges%27%3E%3Cpath d=%27M4.5 2.5h23v19h-14l-6 6v-6h-3z%27 fill=%27%23fff%27 stroke=%27%23000%27/%3E%3Cpath d=%27M28 3v19M14 22h14M9 22v6%27 stroke=%27%23808080%27/%3E%3Crect x=%2715%27 y=%275%27 width=%273%27 height=%273%27 fill=%27%2300f%27/%3E%3Crect x=%2713%27 y=%2710%27 width=%275%27 height=%272%27 fill=%27%2300f%27/%3E%3Crect x=%2715%27 y=%2712%27 width=%273%27 height=%276%27 fill=%27%2300f%27/%3E%3Crect x=%2713%27 y=%2718%27 width=%277%27 height=%272%27 fill=%27%2300f%27/%3E%3C/svg%3E")
+  ha95-icon-warning: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2732%27 height=%2732%27 shape-rendering=%27crispEdges%27%3E%3Cpath d=%27M16 2.5l13.5 26h-27z%27 fill=%27%23ff0%27 stroke=%27%23000%27/%3E%3Cpath d=%27M3 30h28M30 29l-1-2%27 stroke=%27%23808080%27/%3E%3Crect x=%2715%27 y=%2710%27 width=%273%27 height=%2711%27/%3E%3Crect x=%2715%27 y=%2723%27 width=%273%27 height=%273%27/%3E%3C/svg%3E")
+  ha95-icon-error: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2732%27 height=%2732%27%3E%3Ccircle cx=%2717%27 cy=%2717%27 r=%2713%27 fill=%27%23808080%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2713%27 fill=%27%23f00%27 stroke=%27%23800000%27/%3E%3Cpath d=%27M10.5 10.5l11 11M21.5 10.5l-11 11%27 stroke=%27%23fff%27 stroke-width=%273.5%27/%3E%3C/svg%3E")
+  ha95-icon-success: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2732%27 height=%2732%27%3E%3Ccircle cx=%2717%27 cy=%2717%27 r=%2713%27 fill=%27%23808080%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2713%27 fill=%27%23008000%27 stroke=%27%23004000%27/%3E%3Cpath d=%27M9.5 16.5l4.5 4.5 9-9%27 stroke=%27%23fff%27 stroke-width=%273.5%27 fill=%27none%27/%3E%3C/svg%3E")
+  ha95-icon-run: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2732%27 height=%2732%27 shape-rendering=%27crispEdges%27%3E%3Crect x=%272%27 y=%274%27 width=%2728%27 height=%2722%27/%3E%3Crect x=%273%27 y=%275%27 width=%2726%27 height=%274%27 fill=%27%23000080%27/%3E%3Crect x=%273%27 y=%279%27 width=%2726%27 height=%2716%27 fill=%27%23fff%27/%3E%3Crect x=%2724%27 y=%276%27 width=%274%27 height=%272%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%276%27 y=%2712%27 width=%279%27 height=%272%27 fill=%27%23808080%27/%3E%3Crect x=%276%27 y=%2716%27 width=%2714%27 height=%272%27 fill=%27%23808080%27/%3E%3Crect x=%276%27 y=%2720%27 width=%2711%27 height=%272%27 fill=%27%23808080%27/%3E%3Crect x=%274%27 y=%2726%27 width=%2727%27 height=%271%27 fill=%27%23808080%27/%3E%3Crect x=%2730%27 y=%276%27 width=%271%27 height=%2721%27 fill=%27%23808080%27/%3E%3C/svg%3E")
+  ha95-icon-ha: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2732%27 height=%2732%27 shape-rendering=%27crispEdges%27%3E%3Crect x=%2714%27 y=%272%27 width=%274%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%2712%27 y=%274%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%2714%27 y=%274%27 width=%274%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2718%27 y=%274%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%2710%27 y=%276%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%2712%27 y=%276%27 width=%278%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2720%27 y=%276%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%278%27 y=%278%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%2710%27 y=%278%27 width=%274%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2714%27 y=%278%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2718%27 y=%278%27 width=%274%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2722%27 y=%278%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%276%27 y=%2710%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%278%27 y=%2710%27 width=%276%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2714%27 y=%2710%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2718%27 y=%2710%27 width=%276%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2724%27 y=%2710%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%274%27 y=%2712%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%276%27 y=%2712%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2710%27 y=%2712%27 width=%2712%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2722%27 y=%2712%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2726%27 y=%2712%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%272%27 y=%2714%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%274%27 y=%2714%27 width=%272%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%276%27 y=%2714%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2710%27 y=%2714%27 width=%274%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2714%27 y=%2714%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2718%27 y=%2714%27 width=%274%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2722%27 y=%2714%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2726%27 y=%2714%27 width=%272%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2728%27 y=%2714%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%270%27 y=%2716%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%272%27 y=%2716%27 width=%2712%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2714%27 y=%2716%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2718%27 y=%2716%27 width=%2712%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2730%27 y=%2716%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%270%27 y=%2718%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%272%27 y=%2718%27 width=%278%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2710%27 y=%2718%27 width=%272%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2712%27 y=%2718%27 width=%272%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2714%27 y=%2718%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2718%27 y=%2718%27 width=%272%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2720%27 y=%2718%27 width=%272%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2722%27 y=%2718%27 width=%278%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2730%27 y=%2718%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%270%27 y=%2720%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%272%27 y=%2720%27 width=%2710%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2712%27 y=%2720%27 width=%278%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2720%27 y=%2720%27 width=%2710%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2730%27 y=%2720%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%270%27 y=%2722%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%272%27 y=%2722%27 width=%2712%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2714%27 y=%2722%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2718%27 y=%2722%27 width=%2712%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2730%27 y=%2722%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%270%27 y=%2724%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%272%27 y=%2724%27 width=%2712%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2714%27 y=%2724%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2718%27 y=%2724%27 width=%2712%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2730%27 y=%2724%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%270%27 y=%2726%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%272%27 y=%2726%27 width=%2728%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2730%27 y=%2726%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%270%27 y=%2728%27 width=%2732%27 height=%272%27 fill=%27%23000000%27/%3E%3C/svg%3E")
   uix-fonts: |
     ha95-regular:
       family: Pixelated MS Sans Serif
@@ -118,8 +68,6 @@ HA 95: &ha95
   ha-font-family-body: var(--ha95-font)
   ha-font-family-heading: var(--ha95-font)
   ha-font-family-code: var(--ha95-mono)
-
-  # ---------- Grundfarben ----------
   primary-color: var(--ha95-select)
   dark-primary-color: var(--ha95-title)
   light-primary-color: var(--ha95-select)
@@ -129,25 +77,21 @@ HA 95: &ha95
   text-primary-color: var(--ha95-select-text)
   disabled-text-color: var(--ha95-disabled)
   divider-color: var(--ha95-shadow)
-  error-color: "#ff0000"
-  warning-color: "#808000"
-  success-color: "#008000"
-  info-color: "#000080"
+  error-color: '#ff0000'
+  warning-color: '#808000'
+  success-color: '#008000'
+  info-color: '#000080'
   mdc-theme-primary: var(--ha95-select)
   mdc-theme-secondary: var(--ha95-select)
   mdc-theme-on-primary: var(--ha95-select-text)
-  # HA leitet rgb-*-Werte nur aus Hex-Farben ab -> hier explizit setzen
-  rgb-primary-color: "0, 0, 128"
-  rgb-accent-color: "0, 0, 128"
-  rgb-primary-text-color: "0, 0, 0"
-  rgb-primary-background-color: "192, 192, 192"
-  rgb-card-background-color: "192, 192, 192"
-
-  # ---------- Schaltflächen (ha-button, Web Awesome) ----------
-  # Alle gefüllten und flachen Knöpfe als graue 3D-Schaltflächen
-  ha-button-border-radius: "0px"
-  ha-button-height: "28px"
-  ha-assist-chip-container-shape: "0px"
+  rgb-primary-color: 0, 128, 128
+  rgb-accent-color: 0, 128, 128
+  rgb-primary-text-color: 0, 0, 0
+  rgb-primary-background-color: 213, 204, 187
+  rgb-card-background-color: 213, 204, 187
+  ha-button-border-radius: 0px
+  ha-button-height: 28px
+  ha-assist-chip-container-shape: 0px
   ha-button-box-shadow: var(--ha95-raised)
   wa-color-brand-fill-loud: var(--ha95-face)
   wa-color-brand-on-loud: var(--ha95-text)
@@ -155,10 +99,7 @@ HA 95: &ha95
   wa-color-brand-on-normal: var(--ha95-text)
   wa-color-brand-fill-quiet: var(--ha95-face)
   wa-color-brand-on-quiet: var(--ha95-text)
-
-  # ---------- Hintergründe ----------
   lovelace-background: var(--ha95-desktop)
-  # Überschriften-Karten stehen ohne Fenster direkt auf dem Desktop
   ha-heading-card-title-color: var(--ha95-desktop-text)
   ha-heading-card-subtitle-color: var(--ha95-desktop-text)
   primary-background-color: var(--ha95-face)
@@ -166,46 +107,38 @@ HA 95: &ha95
   card-background-color: var(--ha95-card)
   clear-background-color: var(--ha95-face)
   mdc-theme-surface: var(--ha95-face)
-  mdc-dialog-scrim-color: "rgba(0, 0, 0, 0.3)"
-
-  # ---------- Karten (3D-Rahmen, keine Rundungen) ----------
+  mdc-dialog-scrim-color: rgba(0, 0, 0, 0.3)
   ha-card-background: var(--ha95-card)
-  ha-card-border-radius: "0px"
-  ha-card-border-width: "0px"
-  ha-card-border-color: "transparent"
+  ha-card-border-radius: 0px
+  ha-card-border-width: 0px
+  ha-card-border-color: transparent
   ha-card-box-shadow: var(--ha95-frame)
   ha-card-header-color: var(--ha95-text)
-  ha-card-header-font-size: "14px"
-
-  # ---------- Eckig überall ----------
-  ha-dialog-border-radius: "0px"
-  ha-border-radius-2xl: "0px"
-  ha-border-radius-3xl: "0px"
-  ha-border-radius-4xl: "0px"
+  ha-card-header-font-size: 14px
+  ha-dialog-border-radius: 0px
+  ha-border-radius-2xl: 0px
+  ha-border-radius-3xl: 0px
+  ha-border-radius-4xl: 0px
   dialog-box-shadow: var(--ha95-frame)
-  dialog-backdrop-filter: "none"
-  ha-dialog-surface-backdrop-filter: "none"
-  mdc-shape-small: "0px"
-  mdc-shape-medium: "0px"
-  mdc-shape-large: "0px"
-  ha-border-radius-sm: "0px"
-  ha-border-radius-md: "0px"
-  ha-border-radius-lg: "0px"
-  ha-border-radius-xl: "0px"
-  ha-border-radius-pill: "0px"
-  ha-border-radius-square: "0px"
-  ha-badge-border-radius: "0px"
-  tile-card-border-radius: "0px"
-  ha-control-border-radius: "0px"
-
-  # ---------- Kopfzeile = Titelleiste ----------
-  header-height: "36px"
+  dialog-backdrop-filter: none
+  ha-dialog-surface-backdrop-filter: none
+  mdc-shape-small: 0px
+  mdc-shape-medium: 0px
+  mdc-shape-large: 0px
+  ha-border-radius-sm: 0px
+  ha-border-radius-md: 0px
+  ha-border-radius-lg: 0px
+  ha-border-radius-xl: 0px
+  ha-border-radius-pill: 0px
+  ha-border-radius-square: 0px
+  ha-badge-border-radius: 0px
+  tile-card-border-radius: 0px
+  ha-control-border-radius: 0px
+  header-height: 36px
   app-header-background-color: var(--ha95-title)
   app-header-text-color: var(--ha95-title-text)
   app-header-selection-bar-color: var(--ha95-title-text)
   app-header-edit-background-color: var(--ha95-shadow)
-
-  # ---------- Seitenleiste = Startmenü ----------
   sidebar-background-color: var(--ha95-face)
   sidebar-menu-button-background-color: var(--ha95-face)
   sidebar-text-color: var(--ha95-text)
@@ -213,20 +146,14 @@ HA 95: &ha95
   sidebar-selected-background-color: var(--ha95-select)
   sidebar-selected-text-color: var(--ha95-select-text)
   sidebar-selected-icon-color: var(--ha95-select-text)
-
-  # ---------- Icons & Zustände ----------
   state-icon-color: var(--ha95-select)
   state-icon-active-color: var(--ha95-active)
-  state-on-color: "#008000"
+  state-on-color: '#008000'
   state-off-color: var(--ha95-disabled)
   state-active-color: var(--ha95-select)
   state-inactive-color: var(--ha95-disabled)
   paper-item-icon-color: var(--ha95-select)
   paper-item-icon-active-color: var(--ha95-active)
-
-  # ---------- Klima & Luftbefeuchter ----------
-  # Färbt Ring, Icons, Kacheln und Verlauf. hvac_action (z. B. "heating")
-  # nutzt automatisch die Farbe des passenden Modus.
   state-climate-heat-color: var(--ha95-heat)
   state-climate-cool-color: var(--ha95-cool)
   state-climate-auto-color: var(--ha95-auto)
@@ -234,10 +161,6 @@ HA 95: &ha95
   state-climate-dry-color: var(--ha95-dry)
   state-climate-fan_only-color: var(--ha95-fan)
   state-humidifier-on-color: var(--ha95-humid)
-
-  # ---------- Schalter (ha-switch, HA 2025.10+) ----------
-  # Überall: Win95-Farben. Mit UIX werden Schalter in Entitätskarten
-  # zusätzlich zu echten Kontrollkästchen (siehe uix-row-yaml).
   ha-switch-background-color: var(--ha95-window)
   ha-switch-background-color-hover: var(--ha95-window)
   ha-switch-border-color: var(--ha95-shadow)
@@ -253,14 +176,10 @@ HA 95: &ha95
   ha-switch-checked-thumb-background-color-hover: var(--ha95-light)
   ha-switch-checked-thumb-border-color: var(--ha95-dark)
   ha-switch-checked-thumb-border-color-hover: var(--ha95-dark)
-  ha-switch-thumb-box-shadow: "none"
-
-  # ---------- Schieberegler (ha-slider) ----------
+  ha-switch-thumb-box-shadow: none
   ha-slider-track-color: var(--ha95-window)
   ha-slider-indicator-color: var(--ha95-select)
   ha-slider-thumb-color: var(--ha95-face)
-
-  # ---------- Schalter / Slider (ältere Komponenten) ----------
   switch-checked-color: var(--ha95-select)
   switch-checked-button-color: var(--ha95-select)
   switch-checked-track-color: var(--ha95-shadow)
@@ -270,8 +189,6 @@ HA 95: &ha95
   paper-slider-knob-color: var(--ha95-face)
   paper-slider-active-color: var(--ha95-select)
   paper-slider-container-color: var(--ha95-shadow)
-
-  # ---------- Eingabefelder (wie HA95-Textboxen) ----------
   ha-color-form-background: var(--ha95-window)
   ha-color-form-background-hover: var(--ha95-window)
   ha-color-form-background-disabled: var(--ha95-face)
@@ -287,43 +204,21 @@ HA 95: &ha95
   mdc-select-fill-color: var(--ha95-window)
   mdc-select-ink-color: var(--ha95-window-text)
   code-editor-background-color: var(--ha95-window)
-
-  # ---------- Tabellen ----------
   data-table-background-color: var(--ha95-window)
   table-row-background-color: var(--ha95-window)
   table-row-alternative-background-color: var(--ha95-window)
   table-header-background-color: var(--ha95-face)
-
-  # ---------- Diagramme (16-Farben-Palette) ----------
-  history-unknown-color: "#808080"
-  graph-color-1: "#000080"
-  graph-color-2: "#800000"
-  graph-color-3: "#008000"
-  graph-color-4: "#808000"
-  graph-color-5: "#800080"
-  graph-color-6: "#008080"
-  graph-color-7: "#ff0000"
-  graph-color-8: "#0000ff"
-
-  # ---------- Scrollbars ----------
+  history-unknown-color: '#808080'
+  graph-color-1: '#000080'
+  graph-color-2: '#800000'
+  graph-color-3: '#008000'
+  graph-color-4: '#808000'
+  graph-color-5: '#800080'
+  graph-color-6: '#008080'
+  graph-color-7: '#ff0000'
+  graph-color-8: '#0000ff'
   scrollbar-thumb-color: var(--ha95-face)
-
-  # ==================================================================
-  #  UIX / card-mod (optional, HACS). Ohne beides wird das ignoriert.
-  #
-  #  Empfohlen ist UIX (UI eXtension), der gepflegte Nachfolger von card-mod.
-  #  card-mod 4.2.1 hängt sich seit HA 2026.8 komplett auf, sobald ein Design
-  #  "card-mod-…-yaml"-Schlüssel enthält. Darum gibt es zwei Ebenen:
-  #    card-mod-*  -> Grundlook (Fenster-Titelleisten, Klick-Effekt).
-  #                   Läuft mit card-mod und mit UIX.
-  #    uix-*-yaml  -> zusätzlich Thermostat-/Luftbefeuchter-Knöpfe und
-  #                   Kontrollkästchen. Nur UIX liest das (mit Vorrang),
-  #                   card-mod ignoriert es.
-  #  Hinweis: Beide greifen in Frontend-Interna ein – nach HA-Updates prüfen.
-  # ==================================================================
-  card-mod-theme: HA 95
-
-  # Grundlook für jede Karte
+  card-mod-theme: HA 95 Desert
   card-mod-card: |
     /* eckig, auch wenn das Dashboard selbst runde Ecken setzt */
     ha-card {
@@ -597,9 +492,6 @@ HA 95: &ha95
       font-family: var(--ha95-font) !important;
       opacity: 0.7 !important;
     }
-
-  # Alles für UIX: "." wie oben, dazu Thermostat, Luftbefeuchter und
-  # der Sammelschalter in Entitätskarten
   uix-card-yaml: |
     .: |
       /* eckig, auch wenn das Dashboard selbst runde Ecken setzt */
@@ -1233,8 +1125,6 @@ HA 95: &ha95
       md-focus-ring {
         --md-focus-ring-shape: 0px;
       }
-
-  # Zeilen in Entitätskarten, Grundlook: Schieberegler als Trackbar
   card-mod-row: |
     /* Schieberegler als Win95-Trackbar */
     ha-slider {
@@ -1256,9 +1146,6 @@ HA 95: &ha95
       background: var(--ha95-face);
       box-shadow: var(--ha95-raised);
     }
-
-  # Zeilen für UIX: Schieberegler, Eingabe-, Auswahl-, Datums- und
-  # Zeitfelder, Schalter als Kontrollkästchen
   uix-row-yaml: |
     .: |
       /* Schieberegler als Win95-Trackbar */
@@ -1512,8 +1399,6 @@ HA 95: &ha95
       label.disabled.checked .switch::after {
         background: var(--ha95-disabled);
       }
-
-  # Dashboard-Kopfleiste: Grundlook für card-mod, alles für UIX
   card-mod-root: |
     /* Kopfleiste als Win95-Titelleiste */
     .header {
@@ -1756,9 +1641,6 @@ HA 95: &ha95
       ha-button::part(base) {
         border-radius: 0 !important;
       }
-
-  # Schublade der Benachrichtigungen als Fenster mit erhabenem Rahmen (nur UIX).
-  # Die Titelleiste liegt dann wie bei den anderen Fenstern innerhalb des Rahmens.
   uix-drawer-yaml: |
     .: |
       :host(.type-notification-drawer) wa-drawer::part(dialog) {
@@ -1770,8 +1652,6 @@ HA 95: &ha95
         box-sizing: border-box;
         padding: var(--ha95-frame-width, 3px) calc(var(--ha95-frame-width, 3px) + 1px) var(--ha95-frame-width, 3px) var(--ha95-frame-width, 3px) !important;
       }
-
-  # Knöpfe in Überschriften-Karten (Bereiche in der Beleuchtung) (nur UIX)
   uix-heading-badge-yaml: |
     .: |
       /* Knopf in einer Überschriften-Karte (z. B. "Ein"/"Aus" je Bereich) als
@@ -1787,8 +1667,6 @@ HA 95: &ha95
       ha-control-button:active {
         box-shadow: var(--ha95-sunken);
       }
-
-  # Assist-Chips (Logbuch: Quellen, Zeitraum) als Schaltflächen (nur UIX)
   uix-assist-chip-yaml: |
     .: |
       /* Assist-Chip (z. B. "Quellen", Zeitraum im Logbuch) als Win95-Schaltfläche,
@@ -1821,8 +1699,6 @@ HA 95: &ha95
       .container::after {
         border-radius: 0 !important;
       }
-
-  # Abschnitte der Abschnitts-Ansicht als Fenster (nur UIX)
   uix-grid-section-yaml: |
     .: |
       /* Abschnitt einer Abschnitts-Ansicht als Win95-Fenster: die Überschrift
@@ -1880,8 +1756,6 @@ HA 95: &ha95
       .card:has(> hui-card > hui-heading-card) ~ .card:has(> hui-card > hui-heading-card) hui-card {
         padding-right: 0;
       }
-
-  # Kopfleiste der Einstellungsseiten und eckige Einstellungs-Icons
   card-mod-top-app-bar-fixed: |
     /* Kopfleiste der Einstellungsseiten als Win95-Titelleiste */
     header.top-app-bar {
@@ -2107,10 +1981,6 @@ HA 95: &ha95
       ha-button::part(base) {
         border-radius: 0 !important;
       }
-
-  # Einstellungsseite: UIX sucht bei der Kopfleiste nur in deren Inneren.
-  # Knöpfe und Icon-Listen liegen außerhalb, darum hängen diese Regeln an
-  # der ganzen Einstellungsseite (ha-panel-config).
   uix-config-yaml: |
     .: |
       /* Symbolknöpfe (Tabellenzeilen, Einklappen, ⋮-Menü) kleiner als die
@@ -2239,10 +2109,6 @@ HA 95: &ha95
         padding: 0 !important;
         border-radius: 0 !important;
       }
-
-  # Detail-Dialoge (more-info) als Win95-Fenster: Titelleiste mit
-  # "Name - Bereich" und ×-Knopf rechts, darunter eine Symbolleiste mit den
-  # Knöpfen (Verlauf, Einstellungen, ⋮). card-mod: nur die 3D-Knöpfe.
   card-mod-more-info: |
     /* Knöpfe als eckige 3D-Knöpfe (24×22) */
     ha-icon-button[slot=headerNavigationIcon],
@@ -2898,10 +2764,6 @@ HA 95: &ha95
         padding: 0 !important;
         border-radius: 0 !important;
       }
-
-  # Alle anderen Dialoge (Rückfragen, Editoren, Einstellungen) als
-  # Win95-Fenster mit OK/Abbrechen-Schaltflächen. Nur UIX (Typ "dialog",
-  # hängt an ha-dialog bzw. ha-adaptive-dialog jedes Dialogs).
   uix-dialog-yaml: |
     .: |
       /* Symbole in Dialog-Listen (z. B. Neustart): eckige statt runde Scheiben,
@@ -3505,8 +3367,6 @@ HA 95: &ha95
       .main-content {
         margin-inline: 12px 8px !important;
       }
-
-  # Meldungen unten (ha-toast) als Win95-Fenster mit Info-Symbol. Nur UIX.
   uix-toast-yaml: |
     .: |
       /* Knopf in der Meldung als Win95-Schaltfläche */
@@ -3544,8 +3404,6 @@ HA 95: &ha95
       .actions {
         color: var(--ha95-text) !important;
       }
-
-  # Seitenleiste als erhabenes Startmenü
   card-mod-sidebar: |
     :host {
       border-right: none !important;
@@ -3578,248 +3436,3 @@ HA 95: &ha95
       --md-list-item-label-text-font: var(--ha95-font);
       --md-list-item-trailing-supporting-text-font: var(--ha95-font);
     }
-
-
-# ---------------------------- Varianten ----------------------------
-
-HA 98:
-  <<: *ha95
-  card-mod-theme: HA 98
-  ha95-title-bar: "linear-gradient(90deg, #000080, #1084d0)"
-  ha95-banner: "linear-gradient(0deg, #000080, #1084d0)"
-
-HA 95 Rose:
-  <<: *ha95
-  card-mod-theme: HA 95 Rose
-  rgb-primary-color: "159, 96, 112"
-  rgb-accent-color: "159, 96, 112"
-  rgb-primary-text-color: "0, 0, 0"
-  rgb-primary-background-color: "207, 175, 183"
-  rgb-card-background-color: "207, 175, 183"
-  ha95-desktop: "#804060"
-  ha95-face: "#cfafb7"
-  ha95-light: "#e7d7db"
-  ha95-shadow: "#8a757a"
-  ha95-title: "#9f6070"
-  ha95-title-bar: "#9f6070"
-  ha95-select: "#9f6070"
-  ha95-active: "#800000"
-
-HA 95 Spruce:
-  <<: *ha95
-  card-mod-theme: HA 95 Spruce
-  rgb-primary-color: "88, 142, 96"
-  rgb-accent-color: "88, 142, 96"
-  rgb-primary-text-color: "0, 0, 0"
-  rgb-primary-background-color: "162, 200, 169"
-  rgb-card-background-color: "162, 200, 169"
-  ha95-desktop: "#305838"
-  ha95-face: "#a2c8a9"
-  ha95-light: "#d0e4d4"
-  ha95-shadow: "#6c8571"
-  ha95-title: "#588e60"
-  ha95-title-bar: "#588e60"
-  ha95-select: "#588e60"
-  ha95-active: "#806000"
-
-HA 95 Desert:
-  <<: *ha95
-  card-mod-theme: HA 95 Desert
-  rgb-primary-color: "0, 128, 128"
-  rgb-accent-color: "0, 128, 128"
-  rgb-primary-text-color: "0, 0, 0"
-  rgb-primary-background-color: "213, 204, 187"
-  rgb-card-background-color: "213, 204, 187"
-  ha95-desktop: "#a28d68"
-  ha95-face: "#d5ccbb"
-  ha95-light: "#eae6dd"
-  ha95-shadow: "#8e887d"
-  ha95-title: "#008080"
-  ha95-title-bar: "#008080"
-  ha95-select: "#008080"
-  ha95-active: "#804000"
-
-HA 95 Kontrast:
-  <<: *ha95
-  card-mod-theme: HA 95 Kontrast
-  ha95-heat: "#ff0000"
-  ha95-cool: "#00ffff"
-  ha95-auto: "#00ff00"
-  ha95-heat-cool: "#ffff00"
-  ha95-dry: "#ff00ff"
-  ha95-fan: "#00ffff"
-  ha95-humid: "#00ffff"
-  rgb-primary-color: "0, 128, 128"
-  rgb-accent-color: "0, 128, 128"
-  rgb-primary-text-color: "255, 255, 255"
-  rgb-primary-background-color: "0, 0, 0"
-  rgb-card-background-color: "0, 0, 0"
-  ha95-desktop: "#000000"
-  ha95-face: "#000000"
-  ha95-highlight: "#ffffff"
-  ha95-light: "#808080"
-  ha95-shadow: "#808080"
-  ha95-dark: "#ffffff"
-  ha95-text: "#ffffff"
-  ha95-text-dim: "#c0c0c0"
-  ha95-disabled: "#808080"
-  ha95-window: "#000000"
-  ha95-window-text: "#ffffff"
-  ha95-title: "#800080"
-  ha95-title-bar: "#800080"
-  ha95-select: "#008080"
-  ha95-active: "#ffff00"
-
-# ------------------- HA 3.11 (Windows für Workgroups) -------------------
-# Flache Fenster mit dünnem schwarzem Rahmen, weißer Fensterinhalt,
-# zentrierter Titel, links das Systemmenü-Kästchen, rechts ▼ ▲.
-HA 3.11: &ha311
-  <<: *ha95
-  card-mod-theme: HA 3.11
-  ha95-desktop: "#ffffff"
-  ha95-desktop-text: "#000000"
-  ha95-card: "#ffffff"
-  ha95-frame: "inset 0 0 0 1px var(--ha95-dark), inset 0 0 0 3px var(--ha95-face), inset 0 0 0 4px var(--ha95-dark)"
-  ha95-frame-pressed: var(--ha95-frame)
-  ha95-frame-width: "4px"
-  ha95-title-buttons: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2732%27 height=%2716%27 shape-rendering=%27crispEdges%27%3E%3Crect x=%270%27 width=%2716%27 height=%2716%27/%3E%3Crect x=%270%27 width=%2715%27 height=%2715%27 fill=%27%23fff%27/%3E%3Crect x=%271%27 y=%271%27 width=%2714%27 height=%2714%27 fill=%27%23808080%27/%3E%3Crect x=%271%27 y=%271%27 width=%2713%27 height=%2713%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%274%27 y=%275%27 width=%277%27 height=%271%27/%3E%3Crect x=%275%27 y=%276%27 width=%275%27 height=%271%27/%3E%3Crect x=%276%27 y=%277%27 width=%273%27 height=%271%27/%3E%3Crect x=%277%27 y=%278%27 width=%271%27 height=%271%27/%3E%3Crect x=%2716%27 width=%2716%27 height=%2716%27/%3E%3Crect x=%2716%27 width=%2715%27 height=%2715%27 fill=%27%23fff%27/%3E%3Crect x=%2717%27 y=%271%27 width=%2714%27 height=%2714%27 fill=%27%23808080%27/%3E%3Crect x=%2717%27 y=%271%27 width=%2713%27 height=%2713%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%2720%27 y=%278%27 width=%277%27 height=%271%27/%3E%3Crect x=%2721%27 y=%277%27 width=%275%27 height=%271%27/%3E%3Crect x=%2722%27 y=%276%27 width=%273%27 height=%271%27/%3E%3Crect x=%2723%27 y=%275%27 width=%271%27 height=%271%27/%3E%3C/svg%3E")'
-  ha95-title-menu: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2716%27 height=%2716%27 shape-rendering=%27crispEdges%27%3E%3Crect width=%2716%27 height=%2716%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%2715%27 width=%271%27 height=%2716%27/%3E%3Crect x=%273%27 y=%276%27 width=%2710%27 height=%274%27/%3E%3Crect x=%273%27 y=%276%27 width=%279%27 height=%273%27 fill=%27%23fff%27/%3E%3C/svg%3E")'
-  ha95-title-buttons-width: "32px"
-  ha95-title-menu-width: "16px"
-  ha95-title-align: "center"
-  ha95-banner: "#000080"
-  rgb-card-background-color: "255, 255, 255"
-
-# Rot und Gelb, berühmt-berüchtigt
-HA 3.11 Hot Dog Stand:
-  <<: *ha311
-  card-mod-theme: HA 3.11 Hot Dog Stand
-  ha95-desktop: "#ff0000"
-  ha95-desktop-text: "#ffffff"
-  ha95-card: "#ffff00"
-  ha95-face: "#ffff00"
-  ha95-light: "#ffff80"
-  ha95-shadow: "#808000"
-  ha95-title: "#ff0000"
-  ha95-title-bar: "#ff0000"
-  ha95-select: "#ff0000"
-  ha95-active: "#ff0000"
-  ha95-banner: "#ff0000"
-  ha95-banner-text: "#ffff00"
-  rgb-primary-color: "255, 0, 0"
-  rgb-accent-color: "255, 0, 0"
-  rgb-primary-background-color: "255, 255, 0"
-  rgb-card-background-color: "255, 255, 0"
-
-# Türkis und Sand
-HA 3.11 Arizona:
-  <<: *ha311
-  card-mod-theme: HA 3.11 Arizona
-  ha95-desktop: "#a08060"
-  ha95-desktop-text: "#ffffff"
-  ha95-card: "#fff8e8"
-  ha95-face: "#d8c8a8"
-  ha95-light: "#ece4d4"
-  ha95-shadow: "#8c7c60"
-  ha95-title: "#008080"
-  ha95-title-bar: "#008080"
-  ha95-select: "#008080"
-  ha95-active: "#804000"
-  ha95-banner: "#008080"
-  rgb-primary-color: "0, 128, 128"
-  rgb-accent-color: "0, 128, 128"
-  rgb-primary-background-color: "216, 200, 168"
-  rgb-card-background-color: "255, 248, 232"
-
-# Blau in Blau
-HA 3.11 Ozean:
-  <<: *ha311
-  card-mod-theme: HA 3.11 Ozean
-  ha95-desktop: "#004080"
-  ha95-desktop-text: "#ffffff"
-  ha95-card: "#e8f8ff"
-  ha95-face: "#a8c8d8"
-  ha95-light: "#d0e4ec"
-  ha95-shadow: "#587888"
-  ha95-title: "#008080"
-  ha95-title-bar: "#008080"
-  ha95-select: "#000080"
-  ha95-active: "#0000ff"
-  ha95-banner: "#004080"
-  rgb-primary-color: "0, 0, 128"
-  rgb-accent-color: "0, 0, 128"
-  rgb-primary-background-color: "168, 200, 216"
-  rgb-card-background-color: "232, 248, 255"
-
-# Schwarz und Grau
-HA 3.11 Schwarze Lederjacke:
-  <<: *ha311
-  card-mod-theme: HA 3.11 Schwarze Lederjacke
-  ha95-desktop: "#000000"
-  ha95-desktop-text: "#ffffff"
-  ha95-card: "#c0c0c0"
-  ha95-title: "#404040"
-  ha95-title-bar: "#404040"
-  ha95-select: "#000000"
-  ha95-active: "#800000"
-  ha95-banner: "#404040"
-  rgb-primary-color: "0, 0, 0"
-  rgb-accent-color: "0, 0, 0"
-  rgb-card-background-color: "192, 192, 192"
-
-# Wechselt automatisch: hell wie "HA 95", dunkel wie "HA 95 Dark", je nach
-# Einstellung unter Profil → Design → Modus (oder System).
-HA 95 Auto:
-  <<: *ha95
-  card-mod-theme: HA 95 Auto
-  modes:
-    light: {}
-    dark: &ha95dark
-      ha95-desktop: "#003c3c"
-      ha95-face: "#3c3c3c"
-      ha95-highlight: "#7a7a7a"
-      ha95-light: "#5a5a5a"
-      ha95-shadow: "#1e1e1e"
-      ha95-dark: "#000000"
-      ha95-text: "#e8e8e8"
-      ha95-text-dim: "#b0b0b0"
-      ha95-disabled: "#7a7a7a"
-      ha95-window: "#1e1e1e"
-      ha95-window-text: "#e8e8e8"
-      ha95-title: "#000080"
-      ha95-title-bar: "#000080"
-      ha95-title-text: "#ffffff"
-      ha95-select: "#0a64ad"
-      ha95-select-text: "#ffffff"
-      ha95-active: "#e0c000"
-      ha95-heat: "#ff4040"
-      ha95-cool: "#4080ff"
-      ha95-auto: "#40c040"
-      ha95-heat-cool: "#e0c000"
-      ha95-dry: "#c060c0"
-      ha95-fan: "#40c0c0"
-      ha95-humid: "#40c0c0"
-      ha95-banner: "#1e1e1e"
-      ha95-banner-text: "#9a9a9a"
-      rgb-primary-color: "10, 100, 173"
-      rgb-accent-color: "10, 100, 173"
-      rgb-primary-text-color: "232, 232, 232"
-      rgb-primary-background-color: "60, 60, 60"
-      rgb-card-background-color: "60, 60, 60"
-      warning-color: "#e0c000"
-      success-color: "#40c040"
-      info-color: "#4080ff"
-      state-on-color: "#40c040"
-      graph-color-1: "#4080ff"
-      graph-color-2: "#ff6060"
-      graph-color-3: "#40c040"
-      graph-color-4: "#e0c000"
-      graph-color-5: "#c060c0"
-      graph-color-6: "#40c0c0"
-      graph-color-7: "#ff8040"
-      graph-color-8: "#a0a0ff"
-
-# Dunkles Farbschema (immer dunkel)
-HA 95 Dark:
-  <<: [*ha95dark, *ha95]
-  card-mod-theme: HA 95 Dark

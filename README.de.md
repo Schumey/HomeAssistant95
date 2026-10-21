@@ -4,6 +4,8 @@
 
 Ein Windows-95-Theme für [Home Assistant](https://www.home-assistant.io/): Teal-Desktop, graue 3D-Fenster, Navy-Titelleisten, eckige Kanten und Pixel-Schrift.
 
+![HA 95 in sechs seiner Designs](https://raw.githubusercontent.com/Schumey/HomeAssistant95/main/docs/img/demo.gif)
+
 ## Enthaltene Designs
 
 | Design | Beschreibung |
@@ -23,29 +25,35 @@ Mehr zu Dunkelmodus, Windows-3.1-Look und eigenen Farben: [Farbschemata](docs/co
 
 ## Installation
 
-### Über HACS
+HA 95 ist eine Integration: Sie installiert die Designs, die du auswählst, und lädt die Extras selbst. Nichts von Hand kopieren, in der `configuration.yaml` nur die Zeile für Designs (falls noch nicht vorhanden).
 
-1. HACS → ⋮ → **Benutzerdefinierte Repositories** → URL dieses Repos, Typ **Theme**.
-2. „HomeAssistant95“ installieren.
-3. **Werkzeuge → YAML → Designs neu laden**.
-4. Unter **Profil → Design** eine der Varianten auswählen.
-
-### Manuell
-
-1. `themes/ha95.yaml` nach `/config/themes/` kopieren.
-2. In `configuration.yaml` (falls noch nicht vorhanden):
+1. HACS → ⋮ → **Benutzerdefinierte Repositories** → URL dieses Repos, Typ **Integration**.
+2. „HomeAssistant95“ installieren und Home Assistant neu starten.
+3. In `configuration.yaml` eintragen (falls noch nicht vorhanden), danach noch einmal neu starten:
    ```yaml
    frontend:
      themes: !include_dir_merge_named themes
    ```
-3. Konfiguration prüfen, dann **Werkzeuge → YAML → Designs neu laden**. Wenn `frontend:` neu ist, einmal neu starten.
-4. Unter **Profil → Design** auswählen.
+4. **Einstellungen → Geräte & Dienste → Integration hinzufügen → HA 95**. Die gewünschten Designs und die Extras auswählen.
+5. Den Browser mit **Strg+F5** neu laden, dann unter **Profil → Design** eine Variante auswählen.
+
+### Designs und Extras später ändern
+
+**Einstellungen → Geräte & Dienste → HA 95 → Konfigurieren.** Abgewählte Designs werden aus `/config/themes/ha95/` entfernt, die Designs werden sofort neu geladen. Danach den Browser neu laden (**Strg+F5**).
 
 ### Aktualisieren
 
-1. Design aktualisieren (HACS: **Aktualisieren**, manuell: `themes/ha95.yaml` erneut kopieren), dann **Werkzeuge → YAML → Designs neu laden**.
-2. Wer die Extras nutzt: die Dateien aus `www/ha95/` erneut nach `/config/www/ha95/` kopieren **und die Zahl nach `?v=`** in jeder Ressource und jedem `extra_module_url`-Eintrag erhöhen. Home Assistant erlaubt Browsern und der Companion-App, Dateien aus `/local/` 31 Tage zwischenzuspeichern; ohne neue Zahl zeigen sie weiter die alte Fassung.
-3. Den Browser mit **Strg+F5** neu laden. Sieht die Companion-App noch alt aus, ihren Frontend-Cache zurücksetzen (Android: **Einstellungen → Companion-App → Fehlerbehebung**, iOS: **App-Konfiguration → Debugging**).
+HACS → **Aktualisieren**, Home Assistant neu starten, Browser mit **Strg+F5** neu laden. Die Integration kopiert die neuen Theme-Dateien und gibt ihren Skripten eine neue Versionsnummer, damit Browser und Companion-App sie frisch laden. Sieht die Companion-App noch alt aus, ihren Frontend-Cache zurücksetzen (Android: **Einstellungen → Companion-App → Fehlerbehebung**, iOS: **App-Konfiguration → Debugging**).
+
+### Umstieg von 3.x
+
+Version 4.0 ersetzt das Design durch eine Integration. Einmalig nötig:
+
+1. HACS → HomeAssistant95 → ⋮ → **Entfernen**, dann das Repo noch einmal als Typ **Integration** hinzufügen (siehe oben).
+2. Alles löschen, was du von Hand eingerichtet hattest, sonst lädt alles doppelt: den Ordner `/config/www/ha95/`, die Dashboard-Ressourcen `/local/ha95/…` und die Zeilen `/local/ha95/…` unter `frontend: extra_module_url:` in der `configuration.yaml`. `/config/www/ha95-startmenu.json` (dein Menü) behalten.
+3. Die Integration wie oben einrichten und den Browser mit **Strg+F5** neu laden.
+
+Die Namen der Designs bleiben gleich, Profile und Dashboards mit `HA 95` laufen also weiter.
 
 ## Was das Design allein macht
 
@@ -69,8 +77,7 @@ Jedes Extra funktioniert für sich. Einfach aussuchen:
 
 ### Pixel-Schrift & Mauszeiger
 
-1. `www/ha95/ha95.css` nach `/config/www/ha95/` kopieren.
-2. **Einstellungen → Dashboards → ⋮ → Ressourcen** → `/local/ha95/ha95.css?v=3.14.4`, Typ **Stylesheet**. Die Nummer nach `?v=` bei jedem Update ändern, sonst behalten Browser und Companion-App bis zu 31 Tage die alte Datei.
+In der Integration **Pixel-Schrift, Mauszeiger, Scrollleisten** einschalten (standardmäßig an).
 
 Die Schrift „Pixelated MS Sans Serif“ stammt aus [98.css](https://github.com/jdan/98.css) (MIT) und wird über jsDelivr geladen. Mit UIX ab 8.4.0 lädt das Design die Schrift selbst, sie erscheint dann auch auf den Einstellungsseiten. `ha95.css` braucht man dann nur noch für den Mauszeiger.
 
