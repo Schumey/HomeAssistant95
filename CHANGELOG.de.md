@@ -4,6 +4,32 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [3.14.0] – 2026-10-21
+
+Einstellungsseiten, Dialoge, Scrollleisten und viel Feinschliff.
+
+### Hinzugefügt
+- **Feinschliff-Modul** `www/ha95/ha95-panels.js` (optional, siehe [Feinschliff](docs/panels.de.md)) für das, was das Design allein nicht erreicht: Windows-Scrollleisten überall (Pfeilknöpfe, gerasterter Schacht, erhabener Schieber) und Regeln für einzelne Bauteile (Suchfeld, Kontrollkästchen, Symbolknöpfe, Registerkarten, Auswahllisten, Logbuch).
+- **Abschnitte als Fenster:** Ein Abschnitt einer Abschnitts-Ansicht mit Überschrift ist ein Win95-Fenster, die Überschrift ist seine Titelleiste mit _ □ ×. Abschnitte ohne Überschrift bekommen keinen Rahmen, Karten mit eigenem Titel (Verlauf, Listen) bleiben eigene Fenster. Weitere Überschriften im selben Abschnitt (Bereiche auf der Beleuchtungsseite) werden Gruppenbeschriftungen mit geätzter Linie, der Ein/Aus-Knopf in einer Überschrift ist ein Win95-Knopf.
+- **Einstellungsseiten:** Titelleiste über der Reiterzeile mit dem Namen der Seitenkachel („Geräte & Dienste“, „Automationen & Szenen“ …), Reiter als echte Registerkarten (die aktive ist höher), Suchfeld, Kontrollkästchen statt Schalter, kleine eckige Symbolknöpfe. Werkzeuge: Titelleiste mit den Reitern darunter, Zurück-Pfeil und Menü in der Reiterzeile, Trennlinien zwischen den Entitäten auf der Seite „Zustände“, die Auswahlliste bei „Aktionen“ als Win95-Auswahlfeld mit Rahmen um die Liste.
+- **Dialoge:** Dimmer-Regler als waagerechter Balken, Ein/Aus-Schalter als waagerechter Wippschalter, Zahlen-Regler (Helfer) als Trackbar, Timer- und Zähler-Knöpfe als Win95-Knöpfe, Pixel-Schrift für Zustand und Zeit, das Dauer-Feld als weißes eingelassenes Feld, der Neustart-Dialog mit eckigen Symbolen und Pixel-Schrift, „Ausführen“ mit Schließen-Knopf.
+- **Benachrichtigungen:** Die Schublade ist ein Fenster mit erhabenem Rahmen, Titelleiste mit Verlauf und quadratischem ×-Knopf.
+- **Logbuch und Verlauf:** Hinweisfeld mit Rahmen, Kontrollkästchen, eckige Symbole in der Zeitleiste, eckige Pfeilknöpfe und eingelassenes Feld beim Zeitraum, „Quellen“ als Knopf.
+- **Knöpfe überall:** `ha-button` als graue 3D-Schaltfläche (neue Variablen `ha-button-*`, `wa-color-brand-*`, `ha-assist-chip-container-shape`), der Verlaufs-Link der Diagrammkarten als kleiner Diagramm-Knopf.
+- **Timeflow-Karte** (`custom:timeflow-card`) im Kachel-Look.
+- Pixel-Logo von Home Assistant für die Update-Zeile (`ha95-icon-ha`).
+- Startmenü: Pixel-Schrift in den Einträgen und ihren Untertexten.
+- Kacheln: keine getönte Fläche hinter dem Symbol, wenn die Entität aus ist.
+
+### Geändert
+- Alle ×-Knöpfe sind jetzt quadratisch (16 × 16 px): Titelleisten der Karten, Dialoge, das „Ausführen“-Fenster und die Benachrichtigungen. Das Titelknopf-Bild (`ha95-title-buttons`) ist 16 px hoch.
+- Überschriften-Karten: Inhalt senkrecht mittig in der Titelleiste.
+
+### Behoben
+- Symbolknöpfe saßen zu tief in ihrem Rahmen (Zurück-Pfeil, Hilfe-Knopf, ⋮-Menü): Die Zeilenhöhe machte den Knopf höher als den Rahmen.
+- Chips (Filter, Quellen, Zeitraum) hatten eine abgerundete graue Fläche hinter dem eckigen Knopf.
+- Datum/Uhrzeit: Die helle Kante lief als weiße Linie direkt unter den Gruppenüberschriften, und der Aufwärts-Knopf von Jahr und Uhrzeit sah dauerhaft gedrückt aus (der gedrehte Knopf kehrte seine 3D-Kanten um).
+
 ## [3.13.0] – 2026-10-20
 
 Diagramme und Überschriften.

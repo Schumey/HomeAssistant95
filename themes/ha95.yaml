@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------
 #  HA 95 – Home Assistant Theme-Paket
-#  Version: 3.13.0
+#  Version: 3.14.0
 #
 #  Enthält 13 Themes (wie die Farbschemata in "Eigenschaften von Anzeige"):
 #    HA 95            – Standard: Teal-Desktop, Navy-Titelleisten
@@ -75,7 +75,7 @@ HA 95: &ha95
   ha95-frame-width: "3px"
   # Titelleiste: Knöpfe rechts, optional ein Kästchen links (Systemmenü),
   # Ausrichtung des Titels. Die Breiten müssen zu den Grafiken passen.
-  ha95-title-buttons: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2750%27 height=%2714%27 shape-rendering=%27crispEdges%27%3E%3Crect x=%270%27 width=%2716%27 height=%2714%27/%3E%3Crect x=%270%27 width=%2715%27 height=%2713%27 fill=%27%23fff%27/%3E%3Crect x=%271%27 y=%271%27 width=%2714%27 height=%2712%27 fill=%27%23808080%27/%3E%3Crect x=%271%27 y=%271%27 width=%2713%27 height=%2711%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%274%27 y=%279%27 width=%276%27 height=%272%27/%3E%3Crect x=%2716%27 width=%2716%27 height=%2714%27/%3E%3Crect x=%2716%27 width=%2715%27 height=%2713%27 fill=%27%23fff%27/%3E%3Crect x=%2717%27 y=%271%27 width=%2714%27 height=%2712%27 fill=%27%23808080%27/%3E%3Crect x=%2717%27 y=%271%27 width=%2713%27 height=%2711%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%2719%27 y=%272%27 width=%279%27 height=%279%27/%3E%3Crect x=%2720%27 y=%274%27 width=%277%27 height=%276%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%2734%27 width=%2716%27 height=%2714%27/%3E%3Crect x=%2734%27 width=%2715%27 height=%2713%27 fill=%27%23fff%27/%3E%3Crect x=%2735%27 y=%271%27 width=%2714%27 height=%2712%27 fill=%27%23808080%27/%3E%3Crect x=%2735%27 y=%271%27 width=%2713%27 height=%2711%27 fill=%27%23c0c0c0%27/%3E%3Cpath d=%27M38 3l7 7M45 3l-7 7%27 stroke=%27%23000%27 stroke-width=%272%27/%3E%3C/svg%3E")'
+  ha95-title-buttons: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2750%27 height=%2716%27 shape-rendering=%27crispEdges%27%3E%3Crect x=%270%27 width=%2716%27 height=%2716%27/%3E%3Crect x=%270%27 width=%2715%27 height=%2715%27 fill=%27%23fff%27/%3E%3Crect x=%271%27 y=%271%27 width=%2714%27 height=%2714%27 fill=%27%23808080%27/%3E%3Crect x=%271%27 y=%271%27 width=%2713%27 height=%2713%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%274%27 y=%2711%27 width=%276%27 height=%272%27/%3E%3Crect x=%2716%27 width=%2716%27 height=%2716%27/%3E%3Crect x=%2716%27 width=%2715%27 height=%2715%27 fill=%27%23fff%27/%3E%3Crect x=%2717%27 y=%271%27 width=%2714%27 height=%2714%27 fill=%27%23808080%27/%3E%3Crect x=%2717%27 y=%271%27 width=%2713%27 height=%2713%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%2719%27 y=%273%27 width=%279%27 height=%279%27/%3E%3Crect x=%2720%27 y=%275%27 width=%277%27 height=%276%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%2734%27 width=%2716%27 height=%2716%27/%3E%3Crect x=%2734%27 width=%2715%27 height=%2715%27 fill=%27%23fff%27/%3E%3Crect x=%2735%27 y=%271%27 width=%2714%27 height=%2714%27 fill=%27%23808080%27/%3E%3Crect x=%2735%27 y=%271%27 width=%2713%27 height=%2713%27 fill=%27%23c0c0c0%27/%3E%3Cpath d=%27M38 4l7 7M45 4l-7 7%27 stroke=%27%23000%27 stroke-width=%272%27/%3E%3C/svg%3E")'
   ha95-title-buttons-width: "50px"
   ha95-title-menu: "none"
   ha95-title-menu-width: "0px"
@@ -92,6 +92,8 @@ HA 95: &ha95
   ha95-icon-error: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2732%27 height=%2732%27%3E%3Ccircle cx=%2717%27 cy=%2717%27 r=%2713%27 fill=%27%23808080%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2713%27 fill=%27%23f00%27 stroke=%27%23800000%27/%3E%3Cpath d=%27M10.5 10.5l11 11M21.5 10.5l-11 11%27 stroke=%27%23fff%27 stroke-width=%273.5%27/%3E%3C/svg%3E")'
   ha95-icon-success: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2732%27 height=%2732%27%3E%3Ccircle cx=%2717%27 cy=%2717%27 r=%2713%27 fill=%27%23808080%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2713%27 fill=%27%23008000%27 stroke=%27%23004000%27/%3E%3Cpath d=%27M9.5 16.5l4.5 4.5 9-9%27 stroke=%27%23fff%27 stroke-width=%273.5%27 fill=%27none%27/%3E%3C/svg%3E")'
   ha95-icon-run: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2732%27 height=%2732%27 shape-rendering=%27crispEdges%27%3E%3Crect x=%272%27 y=%274%27 width=%2728%27 height=%2722%27/%3E%3Crect x=%273%27 y=%275%27 width=%2726%27 height=%274%27 fill=%27%23000080%27/%3E%3Crect x=%273%27 y=%279%27 width=%2726%27 height=%2716%27 fill=%27%23fff%27/%3E%3Crect x=%2724%27 y=%276%27 width=%274%27 height=%272%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%276%27 y=%2712%27 width=%279%27 height=%272%27 fill=%27%23808080%27/%3E%3Crect x=%276%27 y=%2716%27 width=%2714%27 height=%272%27 fill=%27%23808080%27/%3E%3Crect x=%276%27 y=%2720%27 width=%2711%27 height=%272%27 fill=%27%23808080%27/%3E%3Crect x=%274%27 y=%2726%27 width=%2727%27 height=%271%27 fill=%27%23808080%27/%3E%3Crect x=%2730%27 y=%276%27 width=%271%27 height=%2721%27 fill=%27%23808080%27/%3E%3C/svg%3E")'
+  # Home-Assistant-Logo als Pixel-Symbol (ersetzt das Markenbild bei Update-Zeilen)
+  ha95-icon-ha: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2732%27 height=%2732%27 shape-rendering=%27crispEdges%27%3E%3Crect x=%2714%27 y=%272%27 width=%274%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%2712%27 y=%274%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%2714%27 y=%274%27 width=%274%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2718%27 y=%274%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%2710%27 y=%276%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%2712%27 y=%276%27 width=%278%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2720%27 y=%276%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%278%27 y=%278%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%2710%27 y=%278%27 width=%274%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2714%27 y=%278%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2718%27 y=%278%27 width=%274%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2722%27 y=%278%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%276%27 y=%2710%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%278%27 y=%2710%27 width=%276%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2714%27 y=%2710%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2718%27 y=%2710%27 width=%276%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2724%27 y=%2710%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%274%27 y=%2712%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%276%27 y=%2712%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2710%27 y=%2712%27 width=%2712%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2722%27 y=%2712%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2726%27 y=%2712%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%272%27 y=%2714%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%274%27 y=%2714%27 width=%272%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%276%27 y=%2714%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2710%27 y=%2714%27 width=%274%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2714%27 y=%2714%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2718%27 y=%2714%27 width=%274%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2722%27 y=%2714%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2726%27 y=%2714%27 width=%272%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2728%27 y=%2714%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%270%27 y=%2716%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%272%27 y=%2716%27 width=%2712%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2714%27 y=%2716%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2718%27 y=%2716%27 width=%2712%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2730%27 y=%2716%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%270%27 y=%2718%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%272%27 y=%2718%27 width=%278%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2710%27 y=%2718%27 width=%272%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2712%27 y=%2718%27 width=%272%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2714%27 y=%2718%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2718%27 y=%2718%27 width=%272%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2720%27 y=%2718%27 width=%272%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2722%27 y=%2718%27 width=%278%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2730%27 y=%2718%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%270%27 y=%2720%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%272%27 y=%2720%27 width=%2710%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2712%27 y=%2720%27 width=%278%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2720%27 y=%2720%27 width=%2710%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2730%27 y=%2720%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%270%27 y=%2722%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%272%27 y=%2722%27 width=%2712%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2714%27 y=%2722%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2718%27 y=%2722%27 width=%2712%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2730%27 y=%2722%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%270%27 y=%2724%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%272%27 y=%2724%27 width=%2712%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2714%27 y=%2724%27 width=%274%27 height=%272%27 fill=%27%23ffffff%27/%3E%3Crect x=%2718%27 y=%2724%27 width=%2712%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2730%27 y=%2724%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%270%27 y=%2726%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%272%27 y=%2726%27 width=%2728%27 height=%272%27 fill=%27%2300a2e8%27/%3E%3Crect x=%2730%27 y=%2726%27 width=%272%27 height=%272%27 fill=%27%23000000%27/%3E%3Crect x=%270%27 y=%2728%27 width=%2732%27 height=%272%27 fill=%27%23000000%27/%3E%3C/svg%3E")'
 
   # ---------- Schrift ----------
   # UIX (ab 8.4.0) lädt die Pixel-Schrift überall, auch auf den Einstellungsseiten.
@@ -140,6 +142,19 @@ HA 95: &ha95
   rgb-primary-text-color: "0, 0, 0"
   rgb-primary-background-color: "192, 192, 192"
   rgb-card-background-color: "192, 192, 192"
+
+  # ---------- Schaltflächen (ha-button, Web Awesome) ----------
+  # Alle gefüllten und flachen Knöpfe als graue 3D-Schaltflächen
+  ha-button-border-radius: "0px"
+  ha-button-height: "28px"
+  ha-assist-chip-container-shape: "0px"
+  ha-button-box-shadow: var(--ha95-raised)
+  wa-color-brand-fill-loud: var(--ha95-face)
+  wa-color-brand-on-loud: var(--ha95-text)
+  wa-color-brand-fill-normal: var(--ha95-face)
+  wa-color-brand-on-normal: var(--ha95-text)
+  wa-color-brand-fill-quiet: var(--ha95-face)
+  wa-color-brand-on-quiet: var(--ha95-text)
 
   # ---------- Hintergründe ----------
   lovelace-background: var(--ha95-desktop)
@@ -320,6 +335,16 @@ HA 95: &ha95
     :host(:not(.type-thermostat):not(.type-humidifier)) ha-card:active {
       box-shadow: var(--ha95-frame-pressed) !important;
     }
+    /* Überschriften-Karten (in Abschnitts-Fenstern die Titelleiste): Inhalt
+       senkrecht mittig, HA schiebt ihn sonst nach unten */
+    :host(.type-heading) ha-card {
+      justify-content: center;
+    }
+    /* Kachel-Symbole: ausgeschaltet ohne getönte Fläche dahinter */
+    ha-card:not(.active) ha-tile-icon {
+      --tile-icon-opacity: 0;
+      --tile-icon-hover-opacity: 0;
+    }
     ha-card .card-header {
       position: relative;
       background: var(--ha95-title-bar);
@@ -329,8 +354,39 @@ HA 95: &ha95
       line-height: 18px;
       letter-spacing: 0;
       text-align: var(--ha95-title-align, left);
+      /* mittig, auch wenn ein Link-Knopf (Verlaufskarten) die Zeile höher macht */
+      align-items: center;
       padding: 2px calc(var(--ha95-title-buttons-width, 50px) + 10px) 2px calc(var(--ha95-title-menu-width, 0px) + 4px) !important;
       margin: var(--ha95-frame-width, 3px) var(--ha95-frame-width, 3px) 8px;
+    }
+    /* Verlaufs-Link (Verlaufs- und Statistikkarten): kleiner 3D-Knopf mit
+       Diagramm-Symbol statt des großen Pfeils, damit die Titelleiste nicht höher wird */
+    ha-card .card-header > a {
+      display: block !important;
+      position: relative;
+      flex: none;
+      width: 16px;
+      height: 16px;
+      background: var(--ha95-face);
+      box-shadow: var(--ha95-raised);
+      color: var(--ha95-text);
+    }
+    ha-card .card-header > a:active {
+      box-shadow: var(--ha95-sunken);
+    }
+    ha-card .card-header > a ha-icon-next {
+      display: none;
+    }
+    ha-card .card-header > a::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 10px;
+      height: 8px;
+      background: var(--ha95-text);
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h1v8H0zM0 7h10v1H0z'/%3E%3Cpath d='M2 5h1v1H2zM3 4h1v1H3zM4 3h1v1H4zM5 4h1v1H5zM6 3h1v1H6zM7 2h1v1H7zM8 1h1v1H8z'/%3E%3C/svg%3E") center / 10px 8px no-repeat;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h1v8H0zM0 7h10v1H0z'/%3E%3Cpath d='M2 5h1v1H2zM3 4h1v1H3zM4 3h1v1H4zM5 4h1v1H5zM6 3h1v1H6zM7 2h1v1H7zM8 1h1v1H8z'/%3E%3C/svg%3E") center / 10px 8px no-repeat;
     }
     ha-card .card-header .name {
       flex: 1 1 auto;
@@ -345,7 +401,7 @@ HA 95: &ha95
       top: 50%;
       transform: translateY(-50%);
       width: var(--ha95-title-menu-width, 0px);
-      height: 14px;
+      height: 16px;
       background: var(--ha95-title-menu, none) no-repeat;
     }
     ha-card .card-header::after {
@@ -355,7 +411,7 @@ HA 95: &ha95
       top: 50%;
       transform: translateY(-50%);
       width: var(--ha95-title-buttons-width, 50px);
-      height: 14px;
+      height: 16px;
       background: var(--ha95-title-buttons) no-repeat;
     }
     /* Regler-Spur dunkler (wirkt auch ohne UIX) */
@@ -410,7 +466,7 @@ HA 95: &ha95
       top: 50%;
       transform: translateY(-50%);
       width: var(--ha95-title-menu-width, 0px);
-      height: 14px;
+      height: 16px;
       background: var(--ha95-title-menu, none) no-repeat;
     }
     ha-card #header__title::after {
@@ -420,7 +476,7 @@ HA 95: &ha95
       top: 50%;
       transform: translateY(-50%);
       width: var(--ha95-title-buttons-width, 50px);
-      height: 14px;
+      height: 16px;
       background: var(--ha95-title-buttons) no-repeat;
     }
     ha-card #header__states {
@@ -501,6 +557,46 @@ HA 95: &ha95
     ha-card .apexcharts-tooltip-marker[shape]::before {
       border-radius: 0 !important;
     }
+    /* Timeflow-Karte (custom:timeflow-card) im Kachel-Look */
+    :host(.type-custom-timeflow-card) {
+      font-family: var(--ha95-font) !important;
+      color: var(--ha95-text) !important;
+    }
+    :host(.type-custom-timeflow-card) ha-card,
+    :host(.type-custom-timeflow-card) ha-card[actionhandler]:hover,
+    :host(.type-custom-timeflow-card) ha-card[actionhandler]:active {
+      background: var(--ha95-face) !important;
+      box-shadow: var(--ha95-frame) !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    :host(.type-custom-timeflow-card) ha-card[actionhandler]:active {
+      box-shadow: var(--ha95-frame-pressed) !important;
+    }
+    :host(.type-custom-timeflow-card) .card-content,
+    :host(.type-custom-timeflow-card) .card-content-compact {
+      padding: 8px 10px !important;
+      background: none !important;
+    }
+    :host(.type-custom-timeflow-card) .compact-icon,
+    :host(.type-custom-timeflow-card) .header-icon {
+      background: var(--ha95-face) !important;
+      border-radius: 0 !important;
+    }
+    :host(.type-custom-timeflow-card) .compact-title,
+    :host(.type-custom-timeflow-card) .title {
+      font-family: var(--ha95-font) !important;
+      font-weight: normal !important;
+      font-size: inherit !important;
+      letter-spacing: 0 !important;
+      opacity: 1 !important;
+      color: var(--ha95-text) !important;
+    }
+    :host(.type-custom-timeflow-card) .compact-subtitle,
+    :host(.type-custom-timeflow-card) .subtitle {
+      font-family: var(--ha95-font) !important;
+      opacity: 0.7 !important;
+    }
 
   # Alles für UIX: "." wie oben, dazu Thermostat, Luftbefeuchter und
   # der Sammelschalter in Entitätskarten
@@ -516,6 +612,16 @@ HA 95: &ha95
       :host(:not(.type-thermostat):not(.type-humidifier)) ha-card:active {
         box-shadow: var(--ha95-frame-pressed) !important;
       }
+      /* Überschriften-Karten (in Abschnitts-Fenstern die Titelleiste): Inhalt
+         senkrecht mittig, HA schiebt ihn sonst nach unten */
+      :host(.type-heading) ha-card {
+        justify-content: center;
+      }
+      /* Kachel-Symbole: ausgeschaltet ohne getönte Fläche dahinter */
+      ha-card:not(.active) ha-tile-icon {
+        --tile-icon-opacity: 0;
+        --tile-icon-hover-opacity: 0;
+      }
       ha-card .card-header {
         position: relative;
         background: var(--ha95-title-bar);
@@ -525,8 +631,39 @@ HA 95: &ha95
         line-height: 18px;
         letter-spacing: 0;
         text-align: var(--ha95-title-align, left);
+        /* mittig, auch wenn ein Link-Knopf (Verlaufskarten) die Zeile höher macht */
+        align-items: center;
         padding: 2px calc(var(--ha95-title-buttons-width, 50px) + 10px) 2px calc(var(--ha95-title-menu-width, 0px) + 4px) !important;
         margin: var(--ha95-frame-width, 3px) var(--ha95-frame-width, 3px) 8px;
+      }
+      /* Verlaufs-Link (Verlaufs- und Statistikkarten): kleiner 3D-Knopf mit
+         Diagramm-Symbol statt des großen Pfeils, damit die Titelleiste nicht höher wird */
+      ha-card .card-header > a {
+        display: block !important;
+        position: relative;
+        flex: none;
+        width: 16px;
+        height: 16px;
+        background: var(--ha95-face);
+        box-shadow: var(--ha95-raised);
+        color: var(--ha95-text);
+      }
+      ha-card .card-header > a:active {
+        box-shadow: var(--ha95-sunken);
+      }
+      ha-card .card-header > a ha-icon-next {
+        display: none;
+      }
+      ha-card .card-header > a::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 10px;
+        height: 8px;
+        background: var(--ha95-text);
+        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h1v8H0zM0 7h10v1H0z'/%3E%3Cpath d='M2 5h1v1H2zM3 4h1v1H3zM4 3h1v1H4zM5 4h1v1H5zM6 3h1v1H6zM7 2h1v1H7zM8 1h1v1H8z'/%3E%3C/svg%3E") center / 10px 8px no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h1v8H0zM0 7h10v1H0z'/%3E%3Cpath d='M2 5h1v1H2zM3 4h1v1H3zM4 3h1v1H4zM5 4h1v1H5zM6 3h1v1H6zM7 2h1v1H7zM8 1h1v1H8z'/%3E%3C/svg%3E") center / 10px 8px no-repeat;
       }
       ha-card .card-header .name {
         flex: 1 1 auto;
@@ -541,7 +678,7 @@ HA 95: &ha95
         top: 50%;
         transform: translateY(-50%);
         width: var(--ha95-title-menu-width, 0px);
-        height: 14px;
+        height: 16px;
         background: var(--ha95-title-menu, none) no-repeat;
       }
       ha-card .card-header::after {
@@ -551,7 +688,7 @@ HA 95: &ha95
         top: 50%;
         transform: translateY(-50%);
         width: var(--ha95-title-buttons-width, 50px);
-        height: 14px;
+        height: 16px;
         background: var(--ha95-title-buttons) no-repeat;
       }
       /* Regler-Spur dunkler (wirkt auch ohne UIX) */
@@ -606,7 +743,7 @@ HA 95: &ha95
         top: 50%;
         transform: translateY(-50%);
         width: var(--ha95-title-menu-width, 0px);
-        height: 14px;
+        height: 16px;
         background: var(--ha95-title-menu, none) no-repeat;
       }
       ha-card #header__title::after {
@@ -616,7 +753,7 @@ HA 95: &ha95
         top: 50%;
         transform: translateY(-50%);
         width: var(--ha95-title-buttons-width, 50px);
-        height: 14px;
+        height: 16px;
         background: var(--ha95-title-buttons) no-repeat;
       }
       ha-card #header__states {
@@ -697,6 +834,55 @@ HA 95: &ha95
       ha-card .apexcharts-tooltip-marker[shape]::before {
         border-radius: 0 !important;
       }
+      /* Timeflow-Karte (custom:timeflow-card) im Kachel-Look */
+      :host(.type-custom-timeflow-card) {
+        font-family: var(--ha95-font) !important;
+        color: var(--ha95-text) !important;
+      }
+      :host(.type-custom-timeflow-card) ha-card,
+      :host(.type-custom-timeflow-card) ha-card[actionhandler]:hover,
+      :host(.type-custom-timeflow-card) ha-card[actionhandler]:active {
+        background: var(--ha95-face) !important;
+        box-shadow: var(--ha95-frame) !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      :host(.type-custom-timeflow-card) ha-card[actionhandler]:active {
+        box-shadow: var(--ha95-frame-pressed) !important;
+      }
+      :host(.type-custom-timeflow-card) .card-content,
+      :host(.type-custom-timeflow-card) .card-content-compact {
+        padding: 8px 10px !important;
+        background: none !important;
+      }
+      :host(.type-custom-timeflow-card) .compact-icon,
+      :host(.type-custom-timeflow-card) .header-icon {
+        background: var(--ha95-face) !important;
+        border-radius: 0 !important;
+      }
+      :host(.type-custom-timeflow-card) .compact-title,
+      :host(.type-custom-timeflow-card) .title {
+        font-family: var(--ha95-font) !important;
+        font-weight: normal !important;
+        font-size: inherit !important;
+        letter-spacing: 0 !important;
+        opacity: 1 !important;
+        color: var(--ha95-text) !important;
+      }
+      :host(.type-custom-timeflow-card) .compact-subtitle,
+      :host(.type-custom-timeflow-card) .subtitle {
+        font-family: var(--ha95-font) !important;
+        opacity: 0.7 !important;
+      }
+    "progress-circle $": |
+      /* Fortschrittsring der Timeflow-Karte in Markierungsfarbe, eckige Enden */
+      .progress-bg {
+        stroke: var(--ha95-window) !important;
+      }
+      .progress-bar {
+        stroke: var(--ha95-select) !important;
+        stroke-linecap: butt !important;
+      }
     "ha-card $": |
       /* Titel, die ha-card selbst zeichnet (z. B. Markdown-Karte) */
       .card-header {
@@ -719,7 +905,7 @@ HA 95: &ha95
         top: 50%;
         transform: translateY(-50%);
         width: var(--ha95-title-menu-width, 0px);
-        height: 14px;
+        height: 16px;
         background: var(--ha95-title-menu, none) no-repeat;
       }
       .card-header::after {
@@ -729,7 +915,7 @@ HA 95: &ha95
         top: 50%;
         transform: translateY(-50%);
         width: var(--ha95-title-buttons-width, 50px);
-        height: 14px;
+        height: 16px;
         background: var(--ha95-title-buttons) no-repeat;
       }
     "ha-state-control-climate-temperature $": |
@@ -1062,6 +1248,14 @@ HA 95: &ha95
       ha-date-input {
         flex: 1 1 auto !important;
       }
+      /* Markenbild von Home Assistant (z. B. Update-Zeile) als Pixel-Logo */
+      state-badge[style*="brands/integration/homeassistant"] {
+        background-image: var(--ha95-icon-ha) !important;
+        background-size: 32px 32px !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        image-rendering: pixelated;
+      }
     "ha-input $": |
       /* Eingabefeld: weiß und eingelassen */
       wa-input::part(base) {
@@ -1313,6 +1507,8 @@ HA 95: &ha95
     ha-menu-button {
       --ha-icon-button-size: 22px;
       --mdc-icon-size: 16px;
+      /* der Rahmen sitzt am Knopf selbst, nicht noch einmal am inneren ha-button */
+      --ha-button-box-shadow: none;
       color: var(--ha95-text) !important;
     }
     .action-items ha-icon-button {
@@ -1409,6 +1605,8 @@ HA 95: &ha95
       ha-menu-button {
         --ha-icon-button-size: 22px;
         --mdc-icon-size: 16px;
+        /* der Rahmen sitzt am Knopf selbst, nicht noch einmal am inneren ha-button */
+        --ha-button-box-shadow: none;
         color: var(--ha95-text) !important;
       }
       .action-items ha-icon-button {
@@ -1496,6 +1694,130 @@ HA 95: &ha95
         border-radius: 0 !important;
       }
 
+  # Schublade der Benachrichtigungen als Fenster mit erhabenem Rahmen (nur UIX).
+  # Die Titelleiste liegt dann wie bei den anderen Fenstern innerhalb des Rahmens.
+  uix-drawer-yaml: |
+    .: |
+      :host(.type-notification-drawer) wa-drawer::part(dialog) {
+        background: var(--ha95-face) !important;
+        border-radius: 0 !important;
+        box-shadow: var(--ha95-frame) !important;
+      }
+      :host(.type-notification-drawer) wa-drawer::part(body) {
+        box-sizing: border-box;
+        padding: var(--ha95-frame-width, 3px) calc(var(--ha95-frame-width, 3px) + 1px) var(--ha95-frame-width, 3px) var(--ha95-frame-width, 3px) !important;
+      }
+
+  # Knöpfe in Überschriften-Karten (Bereiche in der Beleuchtung) (nur UIX)
+  uix-heading-badge-yaml: |
+    .: |
+      /* Knopf in einer Überschriften-Karte (z. B. "Ein"/"Aus" je Bereich) als
+         Win95-Schaltfläche */
+      ha-control-button {
+        --control-button-background-color: var(--ha95-face);
+        --control-button-background-opacity: 1;
+        --control-button-icon-color: var(--ha95-text);
+        --control-button-border-radius: 0px;
+        box-shadow: var(--ha95-raised);
+        color: var(--ha95-text);
+      }
+      ha-control-button:active {
+        box-shadow: var(--ha95-sunken);
+      }
+
+  # Assist-Chips (Logbuch: Quellen, Zeitraum) als Schaltflächen (nur UIX)
+  uix-assist-chip-yaml: |
+    .: |
+      /* Assist-Chip (z. B. "Quellen", Zeitraum im Logbuch) als Win95-Schaltfläche,
+         das Zeitraumfeld als weißes, eingelassenes Feld */
+      .button {
+        height: 23px !important;
+        border: none !important;
+        border-radius: 0 !important;
+        background: var(--ha95-face) !important;
+        color: var(--ha95-text) !important;
+        box-shadow: var(--ha95-raised) !important;
+        transition: none !important;
+        transform: none !important;
+        font-family: var(--ha95-font);
+        font-size: 13px;
+        font-weight: normal;
+      }
+      .button:active {
+        box-shadow: inset 0 0 0 1px var(--ha95-dark), inset 0 0 0 2px var(--ha95-shadow) !important;
+      }
+      :host(.range) .button {
+        background: var(--ha95-window) !important;
+        color: var(--ha95-window-text) !important;
+        box-shadow: var(--ha95-sunken) !important;
+      }
+      /* die abgerundete Fläche unter dem Knopf (Container samt Überlagerungen) */
+      :host,
+      .container,
+      .container::before,
+      .container::after {
+        border-radius: 0 !important;
+      }
+
+  # Abschnitte der Abschnitts-Ansicht als Fenster (nur UIX)
+  uix-grid-section-yaml: |
+    .: |
+      /* Abschnitt einer Abschnitts-Ansicht als Win95-Fenster: die Überschrift
+         (Überschriften-Karte) wird zur Titelleiste mit Knöpfen. Nur Abschnitte
+         mit Überschrift: Karten mit eigenem Titel (Verläufe, Listen) sind schon
+         Fenster und bekommen keinen zweiten Rahmen. */
+      .container:has(> .card > hui-card > hui-heading-card) {
+        background: var(--ha95-face) !important;
+        box-shadow: var(--ha95-frame) !important;
+        padding: var(--ha95-frame-width, 3px) 8px 8px !important;
+        gap: 8px !important;
+        box-sizing: border-box;
+      }
+      .card:has(> hui-card > hui-heading-card) {
+        position: relative;
+        display: flex;
+        align-items: center;
+        min-height: 20px;
+        margin: 0 -5px;
+        padding: 1px 4px;
+        background: var(--ha95-title-bar);
+        --ha-heading-card-title-color: var(--ha95-title-text);
+        --ha-heading-card-subtitle-color: var(--ha95-title-text);
+        --mdc-icon-size: 16px;
+      }
+      .card:has(> hui-card > hui-heading-card)::after {
+        content: "";
+        position: absolute;
+        right: 2px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: var(--ha95-title-buttons-width, 50px);
+        height: 16px;
+        background: var(--ha95-title-buttons) no-repeat;
+      }
+      .card:has(> hui-card > hui-heading-card) hui-card {
+        flex: 1;
+        padding-right: calc(var(--ha95-title-buttons-width, 50px) + 6px);
+      }
+      /* Weitere Überschriften im selben Abschnitt (z. B. die Bereiche in der
+         Beleuchtungsübersicht): keine zweite Titelleiste, sondern eine
+         Gruppenbeschriftung mit Trennlinie, damit kein Fenster im Fenster entsteht */
+      .card:has(> hui-card > hui-heading-card) ~ .card:has(> hui-card > hui-heading-card) {
+        margin: 2px 0 0;
+        padding: 0 0 3px;
+        min-height: 0;
+        background: none;
+        box-shadow: 0 1px var(--ha95-shadow), 0 2px var(--ha95-highlight);
+        --ha-heading-card-title-color: var(--ha95-text);
+        --ha-heading-card-subtitle-color: var(--ha95-text);
+      }
+      .card:has(> hui-card > hui-heading-card) ~ .card:has(> hui-card > hui-heading-card)::after {
+        display: none;
+      }
+      .card:has(> hui-card > hui-heading-card) ~ .card:has(> hui-card > hui-heading-card) hui-card {
+        padding-right: 0;
+      }
+
   # Kopfleiste der Einstellungsseiten und eckige Einstellungs-Icons
   card-mod-top-app-bar-fixed: |
     /* Kopfleiste der Einstellungsseiten als Win95-Titelleiste */
@@ -1520,6 +1842,8 @@ HA 95: &ha95
     ::slotted(ha-dropdown) {
       --ha-icon-button-size: 22px;
       --mdc-icon-size: 16px;
+      /* der Rahmen sitzt am Knopf selbst, nicht noch einmal am inneren ha-button */
+      --ha-button-box-shadow: none;
       color: var(--ha95-text) !important;
     }
     ::slotted(ha-icon-button),
@@ -1536,6 +1860,72 @@ HA 95: &ha95
       background: var(--ha95-face);
       box-shadow: var(--ha95-raised);
       margin-inline-start: 2px;
+    }
+    /* Seiten mit Reiterzeile (z. B. Werkzeuge): Titelleiste oben, darunter eine
+       graue Zeile für die Reiter-Karten */
+    header.top-app-bar.has-sub-row {
+      background: var(--ha95-face) !important;
+      box-shadow: none !important;
+    }
+    header.top-app-bar.has-sub-row .row {
+      background: var(--ha95-title-bar);
+    }
+    .sub-row {
+      padding: 6px 4px 0;
+      box-shadow: inset 0 -1px var(--ha95-highlight);
+    }
+    /* Wie die Reiterseiten der Einstellungen: schmale Titelleiste mit Fensterknöpfen,
+       darunter die Zeile mit Zurück-Pfeil, Reitern und Menü */
+    header.top-app-bar.has-sub-row {
+      position: relative;
+    }
+    header.top-app-bar.has-sub-row .row {
+      box-sizing: border-box;
+      height: 24px !important;
+      padding: 3px 3px 0 !important;
+      background: none !important;
+    }
+    header.top-app-bar.has-sub-row .section#navigation {
+      box-sizing: border-box;
+      flex: 1;
+      height: 18px;
+      padding: 0 60px 0 4px;
+      background: var(--ha95-title-bar);
+    }
+    header.top-app-bar.has-sub-row .section#actions {
+      width: 0;
+      padding: 0 !important;
+      overflow: visible;
+    }
+    header.top-app-bar.has-sub-row .title {
+      padding-inline-start: 0 !important;
+      font-family: var(--ha95-font);
+      font-size: 13px !important;
+      line-height: 18px;
+    }
+    header.top-app-bar.has-sub-row .row::after {
+      content: "";
+      position: absolute;
+      top: 4px;
+      right: 5px;
+      width: var(--ha95-title-buttons-width, 50px);
+      height: 16px;
+      background: var(--ha95-title-buttons) no-repeat;
+    }
+    header.top-app-bar.has-sub-row .sub-row {
+      padding: 6px 40px 0 36px !important;
+    }
+    header.top-app-bar.has-sub-row ::slotted([slot="navigationIcon"]),
+    header.top-app-bar.has-sub-row ::slotted(ha-dropdown) {
+      position: absolute !important;
+      top: 31px;
+      margin: 0 !important;
+    }
+    header.top-app-bar.has-sub-row ::slotted([slot="navigationIcon"]) {
+      left: 6px;
+    }
+    header.top-app-bar.has-sub-row ::slotted(ha-dropdown) {
+      right: 6px;
     }
   uix-top-app-bar-fixed-yaml: |
     .: |
@@ -1561,6 +1951,8 @@ HA 95: &ha95
       ::slotted(ha-dropdown) {
         --ha-icon-button-size: 22px;
         --mdc-icon-size: 16px;
+        /* der Rahmen sitzt am Knopf selbst, nicht noch einmal am inneren ha-button */
+        --ha-button-box-shadow: none;
         color: var(--ha95-text) !important;
       }
       ::slotted(ha-icon-button),
@@ -1578,6 +1970,72 @@ HA 95: &ha95
         box-shadow: var(--ha95-raised);
         margin-inline-start: 2px;
       }
+      /* Seiten mit Reiterzeile (z. B. Werkzeuge): Titelleiste oben, darunter eine
+         graue Zeile für die Reiter-Karten */
+      header.top-app-bar.has-sub-row {
+        background: var(--ha95-face) !important;
+        box-shadow: none !important;
+      }
+      header.top-app-bar.has-sub-row .row {
+        background: var(--ha95-title-bar);
+      }
+      .sub-row {
+        padding: 6px 4px 0;
+        box-shadow: inset 0 -1px var(--ha95-highlight);
+      }
+      /* Wie die Reiterseiten der Einstellungen: schmale Titelleiste mit Fensterknöpfen,
+         darunter die Zeile mit Zurück-Pfeil, Reitern und Menü */
+      header.top-app-bar.has-sub-row {
+        position: relative;
+      }
+      header.top-app-bar.has-sub-row .row {
+        box-sizing: border-box;
+        height: 24px !important;
+        padding: 3px 3px 0 !important;
+        background: none !important;
+      }
+      header.top-app-bar.has-sub-row .section#navigation {
+        box-sizing: border-box;
+        flex: 1;
+        height: 18px;
+        padding: 0 60px 0 4px;
+        background: var(--ha95-title-bar);
+      }
+      header.top-app-bar.has-sub-row .section#actions {
+        width: 0;
+        padding: 0 !important;
+        overflow: visible;
+      }
+      header.top-app-bar.has-sub-row .title {
+        padding-inline-start: 0 !important;
+        font-family: var(--ha95-font);
+        font-size: 13px !important;
+        line-height: 18px;
+      }
+      header.top-app-bar.has-sub-row .row::after {
+        content: "";
+        position: absolute;
+        top: 4px;
+        right: 5px;
+        width: var(--ha95-title-buttons-width, 50px);
+        height: 16px;
+        background: var(--ha95-title-buttons) no-repeat;
+      }
+      header.top-app-bar.has-sub-row .sub-row {
+        padding: 6px 40px 0 36px !important;
+      }
+      header.top-app-bar.has-sub-row ::slotted([slot="navigationIcon"]),
+      header.top-app-bar.has-sub-row ::slotted(ha-dropdown) {
+        position: absolute !important;
+        top: 31px;
+        margin: 0 !important;
+      }
+      header.top-app-bar.has-sub-row ::slotted([slot="navigationIcon"]) {
+        left: 6px;
+      }
+      header.top-app-bar.has-sub-row ::slotted(ha-dropdown) {
+        right: 6px;
+      }
     "ha-menu-button $ ha-icon-button $": |
       /* kein runder Hover-Kreis, eckige Fläche */
       ha-button::after {
@@ -1591,6 +2049,12 @@ HA 95: &ha95
   # Knöpfe und Icon-Listen liegen außerhalb, darum hängen diese Regeln an
   # der ganzen Einstellungsseite (ha-panel-config).
   uix-config-yaml: |
+    .: |
+      /* Symbolknöpfe (Tabellenzeilen, Einklappen, ⋮-Menü) kleiner als die
+         48 px von Home Assistant */
+      :host {
+        --ha-icon-button-size: 28px;
+      }
     "ha-config-dashboard $$ ha-config-navigation-list $": |
       /* Einstellungs-Icons als eckige 3D-Kacheln (Systemsteuerung) */
       .icon-background {
@@ -1645,6 +2109,7 @@ HA 95: &ha95
     ha-dropdown[slot=headerActionItems] > ha-icon-button {
       --ha-icon-button-size: 22px;
       --mdc-icon-size: 16px;
+      --ha-button-box-shadow: none;
       display: inline-flex !important;
       align-items: center;
       justify-content: center;
@@ -1669,6 +2134,7 @@ HA 95: &ha95
       ha-dropdown[slot=headerActionItems] > ha-icon-button {
         --ha-icon-button-size: 22px;
         --mdc-icon-size: 16px;
+        --ha-button-box-shadow: none;
         display: inline-flex !important;
         align-items: center;
         justify-content: center;
@@ -1687,10 +2153,10 @@ HA 95: &ha95
       }
       /* ×-Knopf klein wie in der Win95-Titelleiste (16×14) */
       ha-icon-button[slot=headerNavigationIcon] {
-        --ha-icon-button-size: 14px;
-        --mdc-icon-size: 12px;
+        --ha-icon-button-size: 16px;
+        --mdc-icon-size: 10px;
         width: 16px !important;
-        height: 14px !important;
+        height: 16px !important;
       }
       /* Titel einzeilig: "Name - Bereich" */
       .title {
@@ -1832,6 +2298,215 @@ HA 95: &ha95
         -webkit-mask: repeating-conic-gradient(from 0deg at 50% 50%, #000 0 4deg, transparent 4deg 5deg);
         mask: repeating-conic-gradient(from 0deg at 50% 50%, #000 0 4deg, transparent 4deg 5deg);
       }
+    "ha-more-info-info $$ ha-more-info-state-header $": |
+      /* Zustand ("Aus", Timer-Zeit) und "Vor 1 Stunde" in der Pixel-Schrift */
+      .state {
+        font-family: var(--ha95-font) !important;
+        font-size: 32px !important;
+      }
+      .last-changed {
+        font-family: var(--ha95-font) !important;
+        font-size: 13px !important;
+        font-weight: normal !important;
+        letter-spacing: 0 !important;
+      }
+    "ha-more-info-info $$ ha-more-info-timer $": |
+      /* Timer-Dialog: Stellen/Pausieren/… als Win95-Schaltflächen */
+      /* Textknöpfe in Info-Dialogen (Timer, Zähler, …) als Win95-Schaltflächen */
+      ha-button::after {
+        display: none !important;
+      }
+      ha-button::part(base) {
+        min-width: 75px;
+        height: 23px;
+        min-height: 0;
+        padding: 0 12px;
+        border: none !important;
+        border-radius: 0 !important;
+        background: var(--ha95-face) !important;
+        color: var(--ha95-text) !important;
+        box-shadow: var(--ha95-raised) !important;
+        font-family: var(--ha95-font);
+        font-size: 13px;
+        font-weight: normal;
+        transition: none;
+      }
+      ha-button:active::part(base) {
+        box-shadow: inset 0 0 0 1px var(--ha95-dark), inset 0 0 0 2px var(--ha95-shadow) !important;
+        padding: 2px 11px 0 13px;
+      }
+      ha-button::part(base):focus-visible {
+        outline: 1px dotted var(--ha95-text) !important;
+        outline-offset: -5px !important;
+      }
+    "ha-more-info-info $$ more-info-counter $": |
+      /* Zähler-Dialog: Erhöhen/Verringern/Zurücksetzen */
+      /* Textknöpfe in Info-Dialogen (Timer, Zähler, …) als Win95-Schaltflächen */
+      ha-button::after {
+        display: none !important;
+      }
+      ha-button::part(base) {
+        min-width: 75px;
+        height: 23px;
+        min-height: 0;
+        padding: 0 12px;
+        border: none !important;
+        border-radius: 0 !important;
+        background: var(--ha95-face) !important;
+        color: var(--ha95-text) !important;
+        box-shadow: var(--ha95-raised) !important;
+        font-family: var(--ha95-font);
+        font-size: 13px;
+        font-weight: normal;
+        transition: none;
+      }
+      ha-button:active::part(base) {
+        box-shadow: inset 0 0 0 1px var(--ha95-dark), inset 0 0 0 2px var(--ha95-shadow) !important;
+        padding: 2px 11px 0 13px;
+      }
+      ha-button::part(base):focus-visible {
+        outline: 1px dotted var(--ha95-text) !important;
+        outline-offset: -5px !important;
+      }
+    "ha-more-info-info $$ ha-duration-input $ ha-base-time-input $": |
+      /* Dauer (hh:mm:ss): ein weißes eingelassenes Feld wie bei der Uhrzeit */
+      :host {
+        flex: none !important;
+      }
+      .time-input-wrap-wrap {
+        margin-inline-start: 0;
+      }
+      .time-input-wrap {
+        border-radius: 0 !important;
+        overflow: visible !important;
+        padding: 0 2px !important;
+        background: var(--ha95-window) !important;
+        box-shadow: var(--ha95-sunken) !important;
+        height: 25px;
+        align-items: center;
+      }
+      ha-input {
+        height: 25px !important;
+        width: auto !important;
+        flex-grow: 0 !important;
+      }
+      .time-separator {
+        background: transparent !important;
+        border-bottom: none !important;
+        height: 25px !important;
+        width: auto !important;
+        margin: 0 !important;
+        color: var(--ha95-window-text) !important;
+      }
+    "ha-more-info-info $$ ha-duration-input $ ha-base-time-input $$ ha-input $": |
+      wa-input::part(label) {
+        display: none !important;
+      }
+      wa-input::part(base) {
+        height: 25px !important;
+        margin-top: 0 !important;
+        padding: 0 !important;
+        width: auto !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+      }
+      wa-input::part(base)::after {
+        display: none !important;
+      }
+      wa-input::part(input) {
+        padding-top: 0 !important;
+        padding-inline: 0.33ch !important;
+        color: var(--ha95-window-text);
+        field-sizing: content;
+        min-width: 2ch;
+        text-align: center;
+      }
+    "ha-more-info-info $$ state-card-input_number $": |
+      /* Zahlen-Schieberegler (Helfer) im Dialog als Trackbar, sonst weiß auf grau */
+      /* Schieberegler als Win95-Trackbar */
+      ha-slider {
+        --thumb-width: 11px;
+        --thumb-height: 21px;
+      }
+      ha-slider::part(track) {
+        height: 4px;
+        border-radius: 0;
+        background: var(--ha95-window);
+        box-shadow: var(--ha95-sunken);
+      }
+      ha-slider::part(indicator) {
+        background: transparent;
+      }
+      ha-slider::part(thumb) {
+        border: none;
+        border-radius: 0;
+        background: var(--ha95-face);
+        box-shadow: var(--ha95-raised);
+      }
+    "ha-more-info-info $$ ha-control-switch $": |
+      /* Ein/Aus-Schalter (ha-control-switch) als Wippschalter: eingelassenes
+         weißes Feld, erhabener eckiger Knopf, an = Markierungsfarbe */
+      :host {
+        --control-switch-border-radius: 0px;
+        --control-switch-padding: 3px;
+        --control-switch-background-opacity: 1;
+        --control-switch-hover-background-opacity: 1;
+      }
+      /* waagerecht: aus = links, an = rechts (Größe setzt ha-state-control-toggle,
+         siehe uix-more-info-yaml) */
+      :host([vertical]) {
+        width: 100% !important;
+        height: 48px !important;
+      }
+      :host([vertical][reversed]) .switch {
+        flex-direction: row !important;
+      }
+      :host([vertical]) .switch .button {
+        width: 50% !important;
+        height: 100% !important;
+      }
+      :host([vertical]) .switch[checked] .button,
+      :host([vertical][reversed]) .switch[checked] .button {
+        transform: translateX(100%) !important;
+      }
+      .switch {
+        border-radius: 0 !important;
+        background: var(--ha95-window);
+        box-shadow: var(--ha95-sunken);
+      }
+      .switch .background {
+        background: transparent !important;
+        opacity: 1 !important;
+      }
+      .switch[checked] .background {
+        background: var(--ha95-select) !important;
+      }
+      .switch .button {
+        border-radius: 0 !important;
+        background: var(--ha95-face) !important;
+        box-shadow: var(--ha95-raised);
+        color: var(--ha95-text) !important;
+      }
+      .switch:focus-visible {
+        box-shadow: var(--ha95-sunken) !important;
+        outline: 1px dotted var(--ha95-text);
+        outline-offset: -5px;
+      }
+    "ha-more-info-info $$ ha-state-control-toggle $": |
+      /* Ein/Aus-Schalter waagerecht statt als hohe Säule */
+      :host {
+        display: block;
+        width: 260px;
+        max-width: 100%;
+      }
+      ha-control-switch {
+        width: 100% !important;
+        height: 48px !important;
+        min-height: 0 !important;
+        max-height: none !important;
+      }
     "ha-more-info-info $$ ha-outlined-icon-button $": |
       ha-button::part(base) {
         border: none !important;
@@ -1890,13 +2565,24 @@ HA 95: &ha95
         line-height: 18px !important;
         text-align: var(--ha95-title-align, left);
       }
-      .header-navigation-icon {
-        order: 2 !important;
+      /* Schließen-Knopf über die Titelleiste legen statt daneben: sonst beginnt
+         ein Verlauf in der Titelleiste dort noch einmal von vorn (sichtbare Naht) */
+      .header-bar {
+        position: relative !important;
+      }
+      .header-bar .header-content {
+        flex: 1 1 100% !important;
+        padding-right: 24px !important;
+      }
+      .header-bar .header-navigation-icon {
+        position: absolute !important;
+        top: 0 !important;
+        right: 2px !important;
         align-items: center !important;
         height: 22px !important;
         min-width: 0 !important;
-        padding-inline-end: 2px !important;
-        background: var(--ha95-title-bar) !important;
+        padding: 0 !important;
+        background: none !important;
       }
       /* Zeile 2: Symbolleiste mit Trennlinie. Den Abstand tragen die Knöpfe
          selbst, damit eine leere Leiste keinen Platz braucht. */
@@ -1943,13 +2629,24 @@ HA 95: &ha95
         line-height: 18px !important;
         text-align: var(--ha95-title-align, left);
       }
-      .header-navigation-icon {
-        order: 2 !important;
+      /* Schließen-Knopf über die Titelleiste legen statt daneben: sonst beginnt
+         ein Verlauf in der Titelleiste dort noch einmal von vorn (sichtbare Naht) */
+      .header-bar {
+        position: relative !important;
+      }
+      .header-bar .header-content {
+        flex: 1 1 100% !important;
+        padding-right: 24px !important;
+      }
+      .header-bar .header-navigation-icon {
+        position: absolute !important;
+        top: 0 !important;
+        right: 2px !important;
         align-items: center !important;
         height: 22px !important;
         min-width: 0 !important;
-        padding-inline-end: 2px !important;
-        background: var(--ha95-title-bar) !important;
+        padding: 0 !important;
+        background: none !important;
       }
       /* Zeile 2: Symbolleiste mit Trennlinie. Den Abstand tragen die Knöpfe
          selbst, damit eine leere Leiste keinen Platz braucht. */
@@ -1984,6 +2681,13 @@ HA 95: &ha95
         padding: 0 !important;
         border-radius: 0 !important;
       }
+      /* Block statt Inline-Flex, sonst sitzt das Symbol um die Zeilenhöhe zu tief */
+      ha-button::part(base) {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        vertical-align: top !important;
+      }
     "ha-dropdown ha-icon-button $": |
       /* kein runder Hover-Kreis, eckige Fläche in Knopfgröße */
       ha-button::after {
@@ -2003,6 +2707,49 @@ HA 95: &ha95
   # hängt an ha-dialog bzw. ha-adaptive-dialog jedes Dialogs).
   uix-dialog-yaml: |
     .: |
+      /* Symbole in Dialog-Listen (z. B. Neustart): eckige statt runde Scheiben,
+         Zeilentexte in Pixel-Schrift */
+      .icon-background {
+        border-radius: 0 !important;
+      }
+      ha-list-item-button {
+        --md-list-item-label-text-font: var(--ha95-font);
+        --md-list-item-label-text-size: 13px;
+        --md-list-item-supporting-text-font: var(--ha95-font);
+        --md-list-item-supporting-text-size: 11px;
+        --md-list-item-trailing-supporting-text-font: var(--ha95-font);
+      }
+      /* Schließen-Knopf der Rückfrage-Dialoge (waren 48 px): klein wie im
+         Info-Dialog */
+      ha-dialog-header ha-icon-button[data-dialog=close] {
+        --ha-icon-button-size: 16px;
+        --mdc-icon-size: 10px;
+        --ha-button-box-shadow: none;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 16px !important;
+        height: 16px !important;
+        color: var(--ha95-text) !important;
+        background: var(--ha95-face);
+        box-shadow: var(--ha95-raised);
+      }
+      /* Benachrichtigungen (Seitenschublade): Titelleiste wie bei den
+         Fenstern (Verlauf, Pixel-Schrift), der Zurück-Knopf wird zum X */
+      ha-drawer.type-notification-drawer ha-header-bar {
+        --ha-icon-button-size: 18px;
+      }
+      ha-drawer.type-notification-drawer ha-header-bar [slot=title] {
+        font-family: var(--ha95-font);
+        font-size: 13px;
+        font-weight: bold;
+        line-height: 18px;
+        color: var(--ha95-title-text);
+      }
+      ha-drawer.type-notification-drawer .notifications {
+        font-family: var(--ha95-font);
+        font-size: 13px;
+      }
       /* Titel, den der Dialog selbst in die Titelleiste legt */
       ha-dialog-header [slot=title] {
         margin: 0 !important;
@@ -2072,6 +2819,21 @@ HA 95: &ha95
       ha-adaptive-dialog.type-quick-bar ha-picker-combo-box:lang(de)::before {
         content: "Ausführen";
       }
+      /* Titelleiste ganz oben im Fenster (ohne den Innenabstand von 16 px)
+         und Schließen-Knopf rechts darin (nur das X aus dem Knopfbild) */
+      ha-adaptive-dialog.type-quick-bar ha-picker-combo-box {
+        position: relative;
+        padding-top: 0 !important;
+      }
+      ha-adaptive-dialog.type-quick-bar ha-picker-combo-box::after {
+        content: "";
+        position: absolute;
+        right: 5px;
+        top: 6px;
+        width: 16px;
+        height: 16px;
+        background: var(--ha95-title-buttons) no-repeat right center;
+      }
     "&.type-quick-bar ha-picker-combo-box $": |
       /* Erklärung mit Programm-Symbol wie im Win95-Dialog "Ausführen" */
       ha-input-search {
@@ -2087,6 +2849,7 @@ HA 95: &ha95
         left: 56px;
         right: 12px;
         top: 12px;
+        font-family: var(--ha95-font);
         font-size: 13px;
         line-height: 18px;
         color: var(--ha95-text);
@@ -2127,8 +2890,29 @@ HA 95: &ha95
         background: var(--ha95-window);
         box-shadow: var(--ha95-sunken);
       }
+      /* Gruppenüberschriften ("Navigation", …) in der Pixel-Schrift */
+      .title,
+      .section-title,
+      .section-title-wrapper {
+        font-family: var(--ha95-font) !important;
+        font-size: 13px !important;
+        font-weight: bold !important;
+        letter-spacing: 0 !important;
+        color: var(--ha95-text) !important;
+      }
       ha-combo-box-item {
         border-radius: 0 !important;
+        font-family: var(--ha95-font);
+      }
+      ha-combo-box-item [slot=headline],
+      ha-combo-box-item [slot=supporting-text] {
+        font-family: var(--ha95-font) !important;
+        font-size: 13px;
+      }
+      /* Symbole: eckige statt runde Scheiben (der Stil steht inline) */
+      ha-combo-box-item div[slot=start] {
+        border-radius: 0 !important;
+        padding: 3px !important;
       }
       ha-combo-box-item[selected],
       ha-combo-box-item:hover,
@@ -2150,6 +2934,117 @@ HA 95: &ha95
       }
       wa-input::part(base)::after {
         display: none !important;
+      }
+      wa-input,
+      wa-input::part(base),
+      wa-input::part(input) {
+        font-family: var(--ha95-font) !important;
+        font-size: 13px !important;
+      }
+    "$ ha-dialog ha-icon-button[data-dialog=close] $": |
+      /* Schließen-Knopf, den ha-adaptive-dialog selbst zeichnet (z. B. Neustart):
+         16 x 16 wie überall, :host stylt den Knopf von innen */
+      :host {
+        --ha-icon-button-size: 16px;
+        --mdc-icon-size: 10px;
+        --ha-button-box-shadow: none;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 16px !important;
+        height: 16px !important;
+        color: var(--ha95-text) !important;
+        background: var(--ha95-face);
+        box-shadow: var(--ha95-raised);
+      }
+      ha-button::after {
+        display: none !important;
+      }
+      ha-button,
+      ha-button::part(base) {
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+      }
+      ha-button::part(base) {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        vertical-align: top !important;
+      }
+    "ha-dialog-header ha-icon-button[data-dialog=close] $": |
+      /* kein runder Hover-Kreis, eckige Fläche in Knopfgröße */
+      ha-button::after {
+        display: none !important;
+      }
+      ha-button,
+      ha-button::part(base) {
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+      }
+      ha-button::part(base) {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        vertical-align: top !important;
+      }
+    "ha-header-bar $": |
+      /* Titelleiste der Benachrichtigungen mit dem Fenster-Verlauf */
+      .header-bar {
+        background: var(--ha95-title-bar) !important;
+        height: auto !important;
+        min-height: 0 !important;
+        padding: 0 2px 0 4px !important;
+      }
+      .row {
+        height: 24px !important;
+        min-height: 0 !important;
+      }
+    "ha-header-bar ha-icon-button-prev $ ha-icon-button $": |
+      /* Zurück-Pfeil als X-Knopf der Titelleiste (er schließt die Schublade) */
+      :host {
+        --ha-button-box-shadow: none;
+      }
+      ha-svg-icon {
+        display: none;
+      }
+      ha-button::part(base) {
+        position: relative;
+      }
+      /* quadratischer 3D-Knopf (16 x 16) ... ":host" macht die Regel spezifischer
+         als die allgemeine "kein Hover-Kreis"-Regel aus ha95-panels.js */
+      :host ha-button::after {
+        content: "";
+        display: block !important;
+        opacity: 1 !important;
+        z-index: 0;
+        inset: 0;
+        margin: auto;
+        width: 16px;
+        height: 16px;
+        border-radius: 0 !important;
+        background: var(--ha95-face) !important;
+        box-shadow: var(--ha95-raised);
+        pointer-events: none;
+      }
+      /* ... mit dem X darauf (Textfarbe, folgt allen Farbschemata) */
+      ha-button::part(base)::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 8px;
+        height: 8px;
+        z-index: 2;
+        background: var(--ha95-text);
+        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h2v1h1v1h1v1h1V2h1V1h1V0h2v1h-1v1h-1v1h-1v2h1v1h1v1h1v1H6V7H5V6H4V5H3v1H2v1H1v1H0V7h1V6h1V5h1V3H2V2H1V1H0z'/%3E%3C/svg%3E") center / 8px 8px no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h2v1h1v1h1v1h1V2h1V1h1V0h2v1h-1v1h-1v1h-1v2h1v1h1v1h1v1H6V7H5V6H4V5H3v1H2v1H1v1H0V7h1V6h1V5h1V3H2V2H1V1H0z'/%3E%3C/svg%3E") center / 8px 8px no-repeat;
+        pointer-events: none;
       }
     "ha-dialog-header $": |
       /* Win95-Fenster: Titelleiste oben, darunter die Symbolleiste */
@@ -2181,13 +3076,24 @@ HA 95: &ha95
         line-height: 18px !important;
         text-align: var(--ha95-title-align, left);
       }
-      .header-navigation-icon {
-        order: 2 !important;
+      /* Schließen-Knopf über die Titelleiste legen statt daneben: sonst beginnt
+         ein Verlauf in der Titelleiste dort noch einmal von vorn (sichtbare Naht) */
+      .header-bar {
+        position: relative !important;
+      }
+      .header-bar .header-content {
+        flex: 1 1 100% !important;
+        padding-right: 24px !important;
+      }
+      .header-bar .header-navigation-icon {
+        position: absolute !important;
+        top: 0 !important;
+        right: 2px !important;
         align-items: center !important;
         height: 22px !important;
         min-width: 0 !important;
-        padding-inline-end: 2px !important;
-        background: var(--ha95-title-bar) !important;
+        padding: 0 !important;
+        background: none !important;
       }
       /* Zeile 2: Symbolleiste mit Trennlinie. Den Abstand tragen die Knöpfe
          selbst, damit eine leere Leiste keinen Platz braucht. */
@@ -2233,13 +3139,24 @@ HA 95: &ha95
         line-height: 18px !important;
         text-align: var(--ha95-title-align, left);
       }
-      .header-navigation-icon {
-        order: 2 !important;
+      /* Schließen-Knopf über die Titelleiste legen statt daneben: sonst beginnt
+         ein Verlauf in der Titelleiste dort noch einmal von vorn (sichtbare Naht) */
+      .header-bar {
+        position: relative !important;
+      }
+      .header-bar .header-content {
+        flex: 1 1 100% !important;
+        padding-right: 24px !important;
+      }
+      .header-bar .header-navigation-icon {
+        position: absolute !important;
+        top: 0 !important;
+        right: 2px !important;
         align-items: center !important;
         height: 22px !important;
         min-width: 0 !important;
-        padding-inline-end: 2px !important;
-        background: var(--ha95-title-bar) !important;
+        padding: 0 !important;
+        background: none !important;
       }
       /* Zeile 2: Symbolleiste mit Trennlinie. Den Abstand tragen die Knöpfe
          selbst, damit eine leere Leiste keinen Platz braucht. */
@@ -2285,13 +3202,24 @@ HA 95: &ha95
         line-height: 18px !important;
         text-align: var(--ha95-title-align, left);
       }
-      .header-navigation-icon {
-        order: 2 !important;
+      /* Schließen-Knopf über die Titelleiste legen statt daneben: sonst beginnt
+         ein Verlauf in der Titelleiste dort noch einmal von vorn (sichtbare Naht) */
+      .header-bar {
+        position: relative !important;
+      }
+      .header-bar .header-content {
+        flex: 1 1 100% !important;
+        padding-right: 24px !important;
+      }
+      .header-bar .header-navigation-icon {
+        position: absolute !important;
+        top: 0 !important;
+        right: 2px !important;
         align-items: center !important;
         height: 22px !important;
         min-width: 0 !important;
-        padding-inline-end: 2px !important;
-        background: var(--ha95-title-bar) !important;
+        padding: 0 !important;
+        background: none !important;
       }
       /* Zeile 2: Symbolleiste mit Trennlinie. Den Abstand tragen die Knöpfe
          selbst, damit eine leere Leiste keinen Platz braucht. */
@@ -2394,6 +3322,25 @@ HA 95: &ha95
     }
     .title {
       font-weight: bold;
+    }
+    /* Pixel-Schrift auch in den Einträgen (HA setzt dort fest Roboto) */
+    .item-text,
+    .badge,
+    .initials,
+    .ha95-sb-arrow,
+    .title {
+      font-family: var(--ha95-font) !important;
+    }
+    .item-text {
+      font-size: 13px !important;
+      font-weight: normal !important;
+    }
+    /* ... und im Untertext der Einträge (z. B. Temperaturen bei Heizung) */
+    ha-list-item-button {
+      --md-list-item-supporting-text-font: var(--ha95-font);
+      --md-list-item-supporting-text-size: 11px;
+      --md-list-item-label-text-font: var(--ha95-font);
+      --md-list-item-trailing-supporting-text-font: var(--ha95-font);
     }
 
 
@@ -2499,8 +3446,8 @@ HA 3.11: &ha311
   ha95-frame: "inset 0 0 0 1px var(--ha95-dark), inset 0 0 0 3px var(--ha95-face), inset 0 0 0 4px var(--ha95-dark)"
   ha95-frame-pressed: var(--ha95-frame)
   ha95-frame-width: "4px"
-  ha95-title-buttons: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2732%27 height=%2714%27 shape-rendering=%27crispEdges%27%3E%3Crect x=%270%27 width=%2716%27 height=%2714%27/%3E%3Crect x=%270%27 width=%2715%27 height=%2713%27 fill=%27%23fff%27/%3E%3Crect x=%271%27 y=%271%27 width=%2714%27 height=%2712%27 fill=%27%23808080%27/%3E%3Crect x=%271%27 y=%271%27 width=%2713%27 height=%2711%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%274%27 y=%274%27 width=%277%27 height=%271%27/%3E%3Crect x=%275%27 y=%275%27 width=%275%27 height=%271%27/%3E%3Crect x=%276%27 y=%276%27 width=%273%27 height=%271%27/%3E%3Crect x=%277%27 y=%277%27 width=%271%27 height=%271%27/%3E%3Crect x=%2716%27 width=%2716%27 height=%2714%27/%3E%3Crect x=%2716%27 width=%2715%27 height=%2713%27 fill=%27%23fff%27/%3E%3Crect x=%2717%27 y=%271%27 width=%2714%27 height=%2712%27 fill=%27%23808080%27/%3E%3Crect x=%2717%27 y=%271%27 width=%2713%27 height=%2711%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%2720%27 y=%277%27 width=%277%27 height=%271%27/%3E%3Crect x=%2721%27 y=%276%27 width=%275%27 height=%271%27/%3E%3Crect x=%2722%27 y=%275%27 width=%273%27 height=%271%27/%3E%3Crect x=%2723%27 y=%274%27 width=%271%27 height=%271%27/%3E%3C/svg%3E")'
-  ha95-title-menu: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2716%27 height=%2714%27 shape-rendering=%27crispEdges%27%3E%3Crect width=%2716%27 height=%2714%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%2715%27 width=%271%27 height=%2714%27/%3E%3Crect x=%273%27 y=%275%27 width=%2710%27 height=%274%27/%3E%3Crect x=%273%27 y=%275%27 width=%279%27 height=%273%27 fill=%27%23fff%27/%3E%3C/svg%3E")'
+  ha95-title-buttons: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2732%27 height=%2716%27 shape-rendering=%27crispEdges%27%3E%3Crect x=%270%27 width=%2716%27 height=%2716%27/%3E%3Crect x=%270%27 width=%2715%27 height=%2715%27 fill=%27%23fff%27/%3E%3Crect x=%271%27 y=%271%27 width=%2714%27 height=%2714%27 fill=%27%23808080%27/%3E%3Crect x=%271%27 y=%271%27 width=%2713%27 height=%2713%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%274%27 y=%275%27 width=%277%27 height=%271%27/%3E%3Crect x=%275%27 y=%276%27 width=%275%27 height=%271%27/%3E%3Crect x=%276%27 y=%277%27 width=%273%27 height=%271%27/%3E%3Crect x=%277%27 y=%278%27 width=%271%27 height=%271%27/%3E%3Crect x=%2716%27 width=%2716%27 height=%2716%27/%3E%3Crect x=%2716%27 width=%2715%27 height=%2715%27 fill=%27%23fff%27/%3E%3Crect x=%2717%27 y=%271%27 width=%2714%27 height=%2714%27 fill=%27%23808080%27/%3E%3Crect x=%2717%27 y=%271%27 width=%2713%27 height=%2713%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%2720%27 y=%278%27 width=%277%27 height=%271%27/%3E%3Crect x=%2721%27 y=%277%27 width=%275%27 height=%271%27/%3E%3Crect x=%2722%27 y=%276%27 width=%273%27 height=%271%27/%3E%3Crect x=%2723%27 y=%275%27 width=%271%27 height=%271%27/%3E%3C/svg%3E")'
+  ha95-title-menu: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2716%27 height=%2716%27 shape-rendering=%27crispEdges%27%3E%3Crect width=%2716%27 height=%2716%27 fill=%27%23c0c0c0%27/%3E%3Crect x=%2715%27 width=%271%27 height=%2716%27/%3E%3Crect x=%273%27 y=%276%27 width=%2710%27 height=%274%27/%3E%3Crect x=%273%27 y=%276%27 width=%279%27 height=%273%27 fill=%27%23fff%27/%3E%3C/svg%3E")'
   ha95-title-buttons-width: "32px"
   ha95-title-menu-width: "16px"
   ha95-title-align: "center"

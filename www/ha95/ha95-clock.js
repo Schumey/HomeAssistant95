@@ -1,9 +1,9 @@
 /*
  * HA 95 – "Eigenschaften von Datum/Uhrzeit" für Home Assistant
- * Version: 3.13.0
+ * Version: 3.14.0
  * Ablage:  /config/www/ha95/ha95-clock.js
  *
- * Als Dashboard-Karte (Ressource /local/ha95/ha95-clock.js?v=3.13.0, Typ Modul):
+ * Als Dashboard-Karte (Ressource /local/ha95/ha95-clock.js?v=3.14.0, Typ Modul):
  *   type: custom:ha95-clock-card
  *   title: Datum/Uhrzeit            # optional, Titelleiste der Karte
  *   calendars:                      # optional, Tage mit Terminen fett
@@ -199,7 +199,10 @@ const CSS = `
   fieldset {
     margin: 0; padding: 8px 8px 10px; min-width: 0;
     border: 1px solid var(--ha95-shadow, #808080);
-    box-shadow: inset 1px 1px var(--ha95-highlight, #fff), 1px 1px var(--ha95-highlight, #fff);
+    /* die helle Kante nur links und außen unten/rechts: oben säße sie unter
+       der Überschrift (der Rahmen liegt auf deren Mitte) und liefe als weiße
+       Linie direkt unter dem Text entlang */
+    box-shadow: inset 1px 0 var(--ha95-highlight, #fff), 1px 1px var(--ha95-highlight, #fff);
   }
   legend { padding: 0 3px; }
 
@@ -232,7 +235,12 @@ const CSS = `
     pointer-events: auto; border: none; padding: 0; height: 9px; cursor: default;
     background-size: 5px 3px;
   }
-  .spin button.up { top: 2px; transform: rotate(180deg); }
+  /* nach oben zeigender Pfeil als eigenes Bild statt gedrehtem Knopf: Drehen
+     kehrt die 3D-Kanten um, der Knopf sähe dauerhaft gedrückt aus */
+  .spin button.up {
+    top: 2px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='4'%3E%3Cpath d='M0 4h7L3.5 0z'/%3E%3C/svg%3E");
+  }
   .spin button.down { top: 11px; }
   .spin button:active { box-shadow: var(--ha95-sunken, inset 1px 1px #000); }
   .spin button[disabled] { opacity: 0.6; }

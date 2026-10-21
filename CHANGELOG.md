@@ -4,6 +4,32 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [3.14.0] – 2026-10-21
+
+Settings pages, dialogs, scroll bars and a lot of fine-tuning.
+
+### Added
+- **Fine-tuning module** `www/ha95/ha95-panels.js` (optional, see [Fine-tuning](docs/panels.md)) for what the theme cannot reach on its own: Windows scroll bars everywhere (arrow buttons, dithered channel, raised thumb), and rules for single components (search field, check boxes, icon buttons, tab cards, pick lists, logbook).
+- **Sections as windows:** a section of a sections view with a heading is a Win95 window, the heading is its title bar with _ □ ×. Sections without a heading are not framed, cards that already have a title (history, lists) stay windows on their own. Further headings in the same section (areas on the lights page) become group labels with an etched line; the on/off button in a heading is a Win95 button.
+- **Settings pages:** a title bar above the tab row with the name of the page tile ("Devices & services", "Automations & scenes" …), tabs as real tab cards (the active one is taller), search field, check boxes instead of switches, small square icon buttons. Tools: title bar with the tabs underneath, back arrow and menu in the tab row, separators between the entities on the "States" page, the "Actions" pick list as a Win95 drop-down with a framed list.
+- **Dialogs:** dimmer slider as a horizontal bar, on/off switch as a horizontal rocker, number slider (helpers) as a trackbar, timer and counter buttons as Win95 buttons, pixel font for state and time, the duration field as a white sunken field, the restart dialog with square icons and pixel font, "Run" with a close button.
+- **Notifications:** the drawer is a window with a raised frame, a title bar with the gradient and a square × button.
+- **Logbook and History:** framed info box, check boxes, square icons in the timeline, square arrow buttons and a sunken field for the time range, "Sources" as a button.
+- **Buttons everywhere:** `ha-button` as a gray 3D button (new variables `ha-button-*`, `wa-color-brand-*`, `ha-assist-chip-container-shape`), the history link on chart cards as a small chart button.
+- **Timeflow card** (`custom:timeflow-card`) in the tile look.
+- Pixel logo of Home Assistant for the update row (`ha95-icon-ha`).
+- Start menu: pixel font in the entries and their sub texts.
+- Tiles: no tinted square behind the icon when the entity is off.
+
+### Changed
+- All × buttons are square (16 × 16 px) now: title bars of cards, dialogs, the "Run" window and the notifications. The title buttons image (`ha95-title-buttons`) is 16 px high.
+- Heading cards: content centered vertically in the title bar.
+
+### Fixed
+- Icon buttons sat too low in their frame (back arrow, help button, ⋮ menu): the line height made the button taller than the frame.
+- Chips (filter, sources, time range) had a rounded gray layer behind the square button.
+- Date/Time: the highlight edge ran as a white line right under the group headings, and the up button of the year and time fields looked pressed all the time (the rotated button turned its 3D edges around).
+
 ## [3.13.0] – 2026-10-20
 
 Charts and headings.
