@@ -4,6 +4,11 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.1.0] – 2026-10-21
+
+### Added
+- **Start menu:** if `/config/www/ha95-startmenu.json` does not exist, the integration now copies the example menu there. An existing file is never overwritten. If `/config/www/` was missing, restart Home Assistant once so `/local/` works.
+
 ## [4.0.1] – 2026-10-21
 
 ### Fixed

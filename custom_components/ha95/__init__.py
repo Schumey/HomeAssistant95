@@ -18,6 +18,7 @@ from homeassistant.loader import async_get_integration
 
 from .const import (
     CONF_ICONS,
+    CONF_STARTMENU,
     CONF_THEMES,
     DEFAULT_OPTIONS,
     DOMAIN,
@@ -32,6 +33,7 @@ _LOGGER = logging.getLogger(__name__)
 HERE = Path(__file__).parent
 THEMES_SRC = HERE / "themes"
 WWW = HERE / "www"
+STARTMENU_DEFAULT = HERE / "defaults" / "ha95-startmenu.json"
 THEME_NAME = re.compile(r'^# HA 95 – Theme "(.*)"$', re.M)
 
 
@@ -55,6 +57,19 @@ def _sync_themes(target: Path, selected: list[str]) -> None:
                 dst.write_bytes(data)
         elif dst.exists():
             dst.unlink()
+
+
+def _ensure_startmenu_config(target: Path) -> None:
+    """Beispielmenü nach /config/www/ legen, falls dort noch keins liegt (nie überschreiben)."""
+    if target.exists():
+        return
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_bytes(STARTMENU_DEFAULT.read_bytes())
+    _LOGGER.info(
+        "Beispielmenü nach %s kopiert. Erscheint /local/ha95-startmenu.json erst nach "
+        "einem Neustart von Home Assistant, war der Ordner www/ bisher nicht da.",
+        target,
+    )
 
 
 def _module_urls(options: dict, version: str) -> list[str]:
@@ -85,6 +100,10 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     await hass.async_add_executor_job(
         _sync_themes, Path(hass.config.path("themes", "ha95")), selected
     )
+    if options.get(CONF_STARTMENU, DEFAULT_OPTIONS[CONF_STARTMENU]):
+        await hass.async_add_executor_job(
+            _ensure_startmenu_config, Path(hass.config.path("www", "ha95-startmenu.json"))
+        )
     try:
         await hass.services.async_call("frontend", "reload_themes", blocking=True)
     except Exception:  # noqa: BLE001 - ohne themes: in der Konfiguration kein Drama

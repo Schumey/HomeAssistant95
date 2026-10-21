@@ -23,7 +23,7 @@ Alle Farben kommen aus den `ha95-*`-Variablen, die Seitenleiste wechselt also mi
 ## 2. Startmenü-Modul
 
 1. In der Integration **Startmenü** einschalten (**Einstellungen → Geräte & Dienste → HA 95 → Konfigurieren**, standardmäßig an).
-2. [`examples/startmenu/ha95-startmenu.json`](../examples/startmenu/ha95-startmenu.json) nach `/config/www/ha95-startmenu.json` kopieren.
+2. Die Integration kopiert das Beispielmenü nach `/config/www/ha95-startmenu.json`, falls es die Datei noch nicht gibt (eine vorhandene wird nie überschrieben). Gab es `/config/www/` vorher nicht, einmal Home Assistant neu starten, damit `/local/` geht. Das Beispiel liegt auch unter [`examples/startmenu/ha95-startmenu.json`](../examples/startmenu/ha95-startmenu.json).
 3. Die Seite neu laden (**Strg+F5**).
 
 Damit sind Streifen und bunte Icons da. Für die Ausklappmenüs fehlt noch ein Schritt, siehe [Eigenes Menü bauen](#eigenes-menü-bauen).
