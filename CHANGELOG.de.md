@@ -4,6 +4,11 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.1.2] – 2026-10-22
+
+### Behoben
+- **Schließen-Knöpfe von Dialogen:** Dialoge mit eigener Kopfzeile (z. B. „Zum Dashboard hinzufügen“) nutzen die Slots `navigationIcon` und `actionItems`. Die globalen Regeln kannten sie nicht, der Schließen-Knopf blieb 48 px groß und saß schief in der Titelleiste. Er ist jetzt wie überall 16 × 16, Symbolleisten-Knöpfe der Kopfzeile 24 × 22.
+
 ## [4.1.1] – 2026-10-21
 
 ### Hinzugefügt

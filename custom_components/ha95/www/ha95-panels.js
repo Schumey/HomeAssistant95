@@ -1,6 +1,6 @@
 /*
  * HA 95 – Feinschliff für Stellen, die das Theme nicht erreicht
- * Version: 4.1.1
+ * Version: 4.1.2
  * Wird von der Integration HA 95 geladen (Option "Feinschliff").
  * Optional: Ohne das Modul bleibt das Design an wenigen Stellen unfertig
  * (Logbuch: Hinweisfeld, Kontrollkästchen, runde Symbole, Pfeilknöpfe beim
@@ -603,7 +603,8 @@ const BAUTEIL_CSS = {
     /* Hilfe-Knopf rechts in der Reiterzeile der Einstellungsseiten und in
        der Symbolleiste von Dialogen (z. B. "Karte bearbeiten") */
     :host([slot="toolbar-icon"]),
-    :host([slot="headerActionItems"]) {
+    :host([slot="headerActionItems"]),
+    :host([slot="actionItems"]) {
       --ha-icon-button-size: 22px;
       --mdc-icon-size: 16px;
       --ha-button-box-shadow: none;
@@ -617,14 +618,16 @@ const BAUTEIL_CSS = {
       box-shadow: var(--ha95-raised);
     }
     :host([slot="toolbar-icon"]) ha-button,
-    :host([slot="headerActionItems"]) ha-button {
+    :host([slot="headerActionItems"]) ha-button,
+    :host([slot="actionItems"]) ha-button {
       display: block;
     }
     /* Schließen-Knopf jedes Dialogs (ha-dialog, ha-adaptive-dialog,
        ha-dialog-header): 16 x 16 wie überall, auch in Dialogen, für die es
        keine eigene Theme-Regel gibt */
     :host([data-dialog="close"]),
-    :host([slot="headerNavigationIcon"]) {
+    :host([slot="headerNavigationIcon"]),
+    :host([slot="navigationIcon"]) {
       --ha-icon-button-size: 16px;
       --mdc-icon-size: 10px;
       --ha-button-box-shadow: none;
@@ -639,8 +642,10 @@ const BAUTEIL_CSS = {
     }
     :host([data-dialog="close"]) ha-button,
     :host([slot="headerNavigationIcon"]) ha-button,
+    :host([slot="navigationIcon"]) ha-button,
     :host([data-dialog="close"]) ha-button::part(base),
-    :host([slot="headerNavigationIcon"]) ha-button::part(base) {
+    :host([slot="headerNavigationIcon"]) ha-button::part(base),
+    :host([slot="navigationIcon"]) ha-button::part(base) {
       width: 100% !important;
       height: 100% !important;
       min-height: 0 !important;

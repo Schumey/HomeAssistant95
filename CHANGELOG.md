@@ -4,6 +4,11 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.1.2] – 2026-10-22
+
+### Fixed
+- **Dialog close buttons:** dialogs that bring their own header (for example "Add to dashboard") use the slots `navigationIcon` and `actionItems`. The global rules did not know them, so the close button stayed 48 px and sat crooked in the title bar. It is now 16 × 16 like everywhere else, header toolbar buttons are 24 × 22.
+
 ## [4.1.1] – 2026-10-21
 
 ### Added
