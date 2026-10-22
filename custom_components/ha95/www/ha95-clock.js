@@ -1,6 +1,6 @@
 /*
  * HA 95 – "Eigenschaften von Datum/Uhrzeit" für Home Assistant
- * Version: 4.1.3
+ * Version: 4.2.0
  * Wird von der Integration HA 95 geladen (Option "Uhr-Karte").
  *
  * Als Dashboard-Karte:

@@ -74,7 +74,7 @@ Each extra works on its own. Pick what you like:
 | **Start menu** | Sidebar as a Start menu: "HomeAssistant95" banner, colorful icons, flyout menus with submenus, "Run …", the "It's now safe to turn off" screen after a restart, the hourglass pointer, and how to build your own menu. | [Start menu](docs/start-menu.md) |
 | **Date/Time** | The "Date/Time Properties" window with month calendar, analog clock and your calendar events: as a dashboard card and on double-click on the Start menu clock. | [Date/Time](docs/date-time.md) |
 | **Pixel icons** | 537 icons in Win95 pixel style (`ha95:`), optionally replacing all MDI icons automatically. | [Pixel icons](docs/pixel-icons.md) |
-| **Fine-tuning** | Windows scroll bars, tab cards and title bars on the settings pages and tools, logbook, history, dropdown lists, dimmer slider. A small optional module for what the theme cannot reach on its own. | [Fine-tuning](docs/panels.md) |
+| **Fine-tuning** | Windows scroll bars, tab cards and title bars on the settings pages and tools, logbook, history, system hardware as Task Manager, dropdown lists, dimmer slider. A small optional module for what the theme cannot reach on its own. | [Fine-tuning](docs/panels.md) |
 | **Pixel font & pointer** | The "Pixelated MS Sans Serif" font and the classic arrow pointer. | [below](#pixel-font--mouse-pointer) |
 
 ### Pixel font & mouse pointer

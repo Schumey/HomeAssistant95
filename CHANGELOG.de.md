@@ -4,6 +4,11 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.2.0] – 2026-10-22
+
+### Hinzugefügt
+- **Task-Manager-Optik für Einstellungen → System → Hardware:** Der Wert (Prozessor, Arbeitsspeicher) steht rechts in einem eingesenkten weißen Feld, der Verlauf auf schwarzem, eingesenktem Grund mit grünem Raster und grüner Linie, wie in der Leistungsanzeige des Windows-Task-Managers. Braucht [UIX](https://github.com/Lint-Free-Technology/uix).
+
 ## [4.1.3] – 2026-10-22
 
 ### Hinzugefügt

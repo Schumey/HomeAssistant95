@@ -4,6 +4,11 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.2.0] – 2026-10-22
+
+### Added
+- **Task Manager look for Settings → System → Hardware:** the value (CPU, memory) sits in a sunken white field on the right, the graph on a black sunken background with a green grid and green line, like the Windows Task Manager performance tab. Needs [UIX](https://github.com/Lint-Free-Technology/uix).
+
 ## [4.1.3] – 2026-10-22
 
 ### Added
