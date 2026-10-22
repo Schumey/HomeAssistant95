@@ -49,6 +49,8 @@ Alles ist standardmäßig an. Eingestellt wird es oben in `ha95-startmenu.json`:
 | `color_icons` | `false` lässt die normalen Icons stehen. |
 | `busy_cursor` | Sanduhr als Mauszeiger, solange Home Assistant arbeitet: wenn eine Anfrage (Speichern, eine Aktion) länger als 0,3 s dauert, solange die Verbindung weg ist (Neustart) und kurz nach einem Seitenwechsel. `false` schaltet sie ab. |
 | `clock` | Doppelklick auf den Titel mit der Uhr (Tippen auf Touch-Bildschirmen) öffnet „Eigenschaften von Datum/Uhrzeit“ mit Kalender und Analoguhr. Braucht `ha95-clock.js` neben dem Modul, siehe [Datum/Uhrzeit](date-time.de.md#uhr-im-startmenü). `false` schaltet es ab. |
+| `bsod` | `true` zeigt einen Bluescreen, wenn die Verbindung zu Home Assistant länger als 20 Sekunden weg ist (ein Neustart zeigt weiter den schwarzen Bildschirm „Es ist jetzt sicher …“). Er verschwindet von selbst; eine Taste oder ein Klick versucht die Verbindung sofort neu. Standardmäßig aus. |
+| `sounds` | `true` spielt kleine selbst erzeugte Klänge (Menü, Meldung, Neustart, Bluescreen, Minesweeper). Standardmäßig aus. |
 | `clock_calendars` | Kalender-Entitäten, deren Termine das Fenster zeigt, z. B. `["calendar.familie"]`. |
 
 Die Farbe des Streifens ist die Variable `ha95-banner` im Design: grau bei HA 95, ein blauer Verlauf bei HA 98 (wie im Startmenü von Windows 98).
@@ -100,6 +102,9 @@ Jede Zeile ist ein Eintrag. Was er tut, hängt vom Schlüssel ab:
 | `{ "name": "…", "action": "restart" }` | Startet Home Assistant nach einer Win95-Rückfrage neu. Danach erscheint der schwarze Bildschirm „Es ist jetzt sicher, Home Assistant auszuschalten.“, bis Home Assistant wieder da ist (Klick oder Escape schließt ihn früher). |
 | `{ "name": "…", "action": "run" }` | Öffnet die Suche von Home Assistant als Win95-Dialog „Ausführen“ (mit UIX, siehe [Fenster-Look](window-look.de.md)). Passt gut zu `"icon": "mdi:console"`. |
 | `{ "name": "…", "action": "clock" }` | Öffnet „Eigenschaften von Datum/Uhrzeit“ (siehe [Datum/Uhrzeit](date-time.de.md)). Passt gut zu `"icon": "mdi:clock"`. |
+| `{ "name": "…", "action": "minesweeper" }` | Öffnet [Minesweeper](minesweeper.de.md). Passt gut zu `"icon": "mdi:bomb"`. |
+| `{ "name": "…", "action": "screensaver" }` | Startet den [Bildschirmschoner](screensaver.de.md) sofort. |
+| `{ "name": "…", "action": "bsod" }` | Zeigt den Bluescreen (siehe `bsod` oben), ein Klick schließt ihn. |
 | `{ "name": "…", "url": "https://…" }` | Öffnet eine Adresse in einem neuen Tab. |
 | `{ "name": "…", "items": [ … ] }` | Öffnet ein weiteres Untermenü. Untermenüs lassen sich beliebig tief verschachteln. |
 | `{ "divider": true }` | Trennlinie. |

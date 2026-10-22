@@ -1,6 +1,6 @@
 /*
  * HA 95 – Startmenü mit Untermenüs für Home Assistant
- * Version: 4.2.0
+ * Version: 4.3.0
  * Laden:   Integration HA 95, Option "Startmenü"
  * Menüs:   /config/www/ha95-startmenu.json (Beispiel im Repo unter
  *          examples/startmenu/ha95-startmenu.json)
@@ -22,7 +22,10 @@
  *   { "name": "…", "action": "restart" }                    Home Assistant neu starten (mit Rückfrage),
  *                                                           danach "Es ist jetzt sicher, …" bis HA wieder da ist
  *   { "name": "…", "action": "run" }                        Schnellsuche als Dialog "Ausführen" öffnen
+ *   { "name": "…", "action": "bsod" }                       Bluescreen ansehen (Klick schließt)
  *   { "name": "…", "action": "clock" }                      "Eigenschaften von Datum/Uhrzeit" öffnen
+ *   { "name": "…", "action": "minesweeper" }                Minesweeper öffnen (ha95-minesweeper.js)
+ *   { "name": "…", "action": "screensaver" }                Bildschirmschoner sofort starten (ha95-screensaver.js)
  *   { "name": "…", "url": "https://…" }                     Adresse in neuem Tab öffnen
  *   { "name": "…", "items": [ … ] }                         weiteres Untermenü
  *   { "divider": true }                                     Trennlinie
@@ -34,6 +37,11 @@
  *                           (für Icons, die es bunt gibt, sonst das normale)
  *   "busy_cursor": true     Sanduhr als Mauszeiger, solange HA arbeitet
  *                           (Anfrage dauert länger, Seitenwechsel, Neustart)
+ *   "bsod": false           Bluescreen, wenn die Verbindung zu HA länger als
+ *                           20 Sekunden weg ist (ein Neustart zeigt weiter den
+ *                           schwarzen Bildschirm); verschwindet von selbst
+ *   "sounds": false         kleine selbst erzeugte Klänge (Menü, Meldung, Neustart,
+ *                           Bluescreen, Minesweeper); aus, solange nicht true
  *   "clock": true           Doppelklick (Touch: Tippen) auf den Titel mit der
  *                           Uhr öffnet "Eigenschaften von Datum/Uhrzeit"
  *                           (lädt ha95-clock.js aus demselben Ordner)
@@ -48,6 +56,8 @@ const DEFAULTS = {
   banner_text: "HomeAssistant95",
   color_icons: true,
   busy_cursor: true,
+  sounds: false,
+  bsod: false,
   clock: true,
   clock_calendars: [],
   menus: {},
@@ -2448,6 +2458,12 @@ const TEXT = {
     close: "Schließen",
     safe: "Es ist jetzt sicher, Home Assistant auszuschalten.",
     safe_note: "Home Assistant startet neu. Dieser Bildschirm verschwindet von selbst.",
+    bsod_title: "HomeAssistant95",
+    bsod_head: "Die Verbindung zu Home Assistant ist abgebrochen.",
+    bsod_1: "Das Netzwerk oder Home Assistant antwortet nicht mehr.",
+    bsod_2: "Dieser Bildschirm verschwindet von selbst, sobald die Verbindung wieder da ist.",
+    bsod_3: "Eine beliebige Taste oder ein Klick versucht es sofort noch einmal.",
+    bsod_key: "Beliebige Taste drücken, um fortzufahren",
   },
   en: {
     title: "Restart Home Assistant",
@@ -2458,6 +2474,12 @@ const TEXT = {
     close: "Close",
     safe: "It's now safe to turn off Home Assistant.",
     safe_note: "Home Assistant is restarting. This screen will close by itself.",
+    bsod_title: "HomeAssistant95",
+    bsod_head: "The connection to Home Assistant was lost.",
+    bsod_1: "The network or Home Assistant is no longer answering.",
+    bsod_2: "This screen goes away by itself as soon as the connection is back.",
+    bsod_3: "Press any key or click to try again right away.",
+    bsod_key: "Press any key to continue",
   },
 };
 const t = () => TEXT[(hass()?.language || "en").slice(0, 2)] || TEXT.en;
@@ -2529,6 +2551,62 @@ function showSafeScreen(conn) {
   screen.popover = "manual";
   layer().appendChild(screen);
   screen.showPopover?.();
+  playSound("shutdown");
+}
+
+// Bluescreen, wenn die Verbindung zu HA länger als BSOD_DELAY weg ist (Option
+// "bsod": true). Der Neustart-Bildschirm hat Vorrang. Verschwindet von selbst.
+const BSOD_DELAY = 20000;
+const bsodOpen = () => layer().querySelector(".ha95-bsod") || document.querySelector(".ha95-bsod");
+const safeOpen = () => layer().querySelector(".ha95-safe") || document.querySelector(".ha95-safe");
+
+function showBsod(conn) {
+  if (bsodOpen()) return;
+  const s = t();
+  const screen = document.createElement("div");
+  screen.className = "ha95-bsod";
+  screen.setAttribute("role", "alert");
+  screen.innerHTML = "<b></b><p></p><p></p><p></p><p></p><p class=key></p>";
+  const [title, head, one, two, three, key] = screen.children;
+  title.textContent = s.bsod_title;
+  head.textContent = s.bsod_head;
+  one.textContent = "*  " + s.bsod_1;
+  two.textContent = "*  " + s.bsod_2;
+  three.textContent = "*  " + s.bsod_3;
+  key.textContent = s.bsod_key + " _";
+  const close = () => {
+    document.removeEventListener("keydown", retry);
+    screen.remove();
+  };
+  const retry = () => {
+    try {
+      conn?.reconnect?.(true);
+    } catch {
+      // der nächste Versuch kommt von selbst
+    }
+    if (!conn) close();
+  };
+  document.addEventListener("keydown", retry);
+  screen.addEventListener("click", retry);
+  screen.close = close;
+  screen.popover = "manual";
+  layer().appendChild(screen);
+  screen.showPopover?.();
+  playSound("error");
+}
+
+function watchBsod(conn) {
+  if (!conn || conn.__ha95bsod || config?.bsod !== true) return;
+  conn.__ha95bsod = true;
+  let timer = null;
+  conn.addEventListener("disconnected", () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => !safeOpen() && showBsod(conn), BSOD_DELAY);
+  });
+  conn.addEventListener("ready", () => {
+    clearTimeout(timer);
+    bsodOpen()?.close?.();
+  });
 }
 
 // "Ausführen …": die Schnellsuche von HA mit allen Bereichen. Ist sie noch
@@ -2553,11 +2631,27 @@ async function openClock() {
   }
 }
 
+// Minesweeper und Bildschirmschoner: eigene Module im selben Ordner
+async function openModule(file, run) {
+  closeAll();
+  const url = new URL(file, import.meta.url);
+  url.search = new URL(import.meta.url).search;
+  try {
+    run(await import(url.href));
+  } catch (err) {
+    console.warn(`HA95 Startmenü: ${file} nicht ladbar`, url.href, err);
+  }
+}
+
 function runItem(item) {
   closeAll();
+  playSound("click");
   if (item.action === "restart") return confirmRestart();
   if (item.action === "run") return openRun();
+  if (item.action === "bsod") return showBsod(null);
   if (item.action === "clock") return openClock();
+  if (item.action === "minesweeper") return openModule("ha95-minesweeper.js", (m) => m.showMinesweeper());
+  if (item.action === "screensaver") return openModule("ha95-screensaver.js", (m) => m.start());
   if (item.file) return openFile(item.file);
   if (item.url) return window.open(item.url, "_blank", "noopener");
   if (item.path) return navigate(item.path);
@@ -2659,6 +2753,7 @@ function showMenu(items, anchorRect, level, anchorEl) {
 }
 
 async function openRootMenu(anchor) {
+  playSound("menu");
   const cfg = await loadConfig();
   const id = anchor.getAttribute("data-ha95-menu");
   const items = cfg.menus?.[id];
@@ -2977,10 +3072,58 @@ const MENU_CSS = `
   }
   .ha95-safe p { margin: 0; font-size: clamp(20px, 4vw, 36px); line-height: 1.3; }
   .ha95-safe small { font-size: 13px; color: #804600; }
+  .ha95-bsod {
+    position: fixed; inset: 0; z-index: 10003;
+    width: auto; height: auto; max-width: none; max-height: none;
+    margin: 0; padding: 8vh 8vw; border: none; box-sizing: border-box;
+    display: flex; flex-direction: column; gap: 14px; overflow: auto;
+    background: #0000aa; color: #fff; cursor: none;
+    font: 16px/1.5 "Lucida Console", "Courier New", monospace; -webkit-font-smoothing: none;
+  }
+  .ha95-bsod b {
+    align-self: center; padding: 0 10px; background: #aaa; color: #0000aa; font-weight: normal;
+  }
+  .ha95-bsod p { margin: 0; }
+  .ha95-bsod p.key { margin-top: 10px; text-align: center; }
 `;
 const css = document.createElement("style");
 css.textContent = MENU_CSS + `html.ha95-busy, html.ha95-busy body { cursor: ${BUSY_CURSOR} !important; }`;
 document.head.appendChild(css);
+
+// ---------- Klänge ----------
+// Selbst erzeugt mit WebAudio, keine Dateien. Nur mit "sounds": true.
+let audio = null;
+function playSound(kind) {
+  if (config?.sounds !== true) return;
+  try {
+    audio ??= new (window.AudioContext || window.webkitAudioContext)();
+    if (audio.state === "suspended") audio.resume();
+    const notes = {
+      click: [[880, 0, 0.03, "square", 0.04]],
+      menu: [[660, 0, 0.04, "square", 0.04]],
+      ding: [[1175, 0, 0.25, "sine", 0.18], [1568, 0.12, 0.4, "sine", 0.18]],
+      error: [[160, 0, 0.18, "sawtooth", 0.12], [110, 0.18, 0.3, "sawtooth", 0.12]],
+      shutdown: [[784, 0, 0.3, "triangle", 0.15], [659, 0.3, 0.3, "triangle", 0.15], [523, 0.6, 0.6, "triangle", 0.15]],
+      win: [[523, 0, 0.15, "triangle", 0.15], [659, 0.15, 0.15, "triangle", 0.15], [784, 0.3, 0.15, "triangle", 0.15], [1047, 0.45, 0.5, "triangle", 0.15]],
+    }[kind];
+    const now = audio.currentTime;
+    for (const [freq, at, len, type, vol] of notes || []) {
+      const osc = audio.createOscillator();
+      const gain = audio.createGain();
+      osc.type = type;
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(vol, now + at);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + at + len);
+      osc.connect(gain).connect(audio.destination);
+      osc.start(now + at);
+      osc.stop(now + at + len + 0.02);
+    }
+  } catch {
+    // ohne Audio bleibt es still
+  }
+}
+window.ha95Sound ??= playSound;
+document.addEventListener("hass-notification", () => playSound("ding"), true);
 
 // Schließen bei Klick daneben, Escape oder Seitenwechsel
 document.addEventListener("pointerdown", (ev) => {
@@ -2998,6 +3141,7 @@ window.addEventListener("location-changed", () => closeAll());
     const sb = sidebar();
     if (sb) attach(sb);
     watchBusy(hass()?.connection);
+    watchBsod(hass()?.connection);
     await sleep(1000);
   }
 })();

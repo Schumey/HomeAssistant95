@@ -20,7 +20,9 @@ from .const import (
     CONF_CLOCK,
     CONF_CSS,
     CONF_ICONS,
+    CONF_MINESWEEPER,
     CONF_PANELS,
+    CONF_SCREENSAVER,
     CONF_STARTMENU,
     CONF_THEMES,
     DEFAULT_OPTIONS,
@@ -56,6 +58,8 @@ async def _schema(hass, current: dict[str, Any]) -> vol.Schema:
             ),
             vol.Required(CONF_PANELS, default=values[CONF_PANELS]): BooleanSelector(),
             vol.Required(CONF_CLOCK, default=values[CONF_CLOCK]): BooleanSelector(),
+            vol.Required(CONF_SCREENSAVER, default=values[CONF_SCREENSAVER]): BooleanSelector(),
+            vol.Required(CONF_MINESWEEPER, default=values[CONF_MINESWEEPER]): BooleanSelector(),
         }
     )
 

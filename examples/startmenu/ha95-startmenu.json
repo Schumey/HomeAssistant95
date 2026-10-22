@@ -132,6 +132,22 @@
         "divider": true
       },
       {
+        "name": "Games",
+        "icon": "mdi:gamepad-variant-outline",
+        "items": [
+          {
+            "name": "Minesweeper",
+            "icon": "mdi:bomb",
+            "action": "minesweeper"
+          },
+          {
+            "name": "Screensaver",
+            "icon": "mdi:monitor",
+            "action": "screensaver"
+          }
+        ]
+      },
+      {
         "name": "Run …",
         "icon": "mdi:console",
         "action": "run"

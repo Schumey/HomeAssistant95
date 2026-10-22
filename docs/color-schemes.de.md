@@ -10,6 +10,8 @@ Für einen dunklen Look gibt es zwei Wege:
 |---|---|
 | **HA 95 Dark** | Immer dunkel: dunkelgraue Fenster, dunkler Teal-Desktop, Navy-Titelleisten. |
 | **HA 95 Auto** | Wechselt selbst: hell wie HA 95, dunkel wie HA 95 Dark. Es folgt **Profil → Design → Modus** (Automatisch, Hell, Dunkel), bei „Automatisch“ der Einstellung des Betriebssystems. |
+| **HA 95 Regenwald** | Moosgrüne Fenster auf tiefgrünem Desktop, grüne Titelleisten. |
+| **HA 95 Patriot** | Rot, Weiß und Blau: marineblaue Titelleisten, rote Markierung, weißgraue Fenster. |
 | **HA 95 Kontrast** | „Kontrast Schwarz“: Schwarz-Weiß mit kräftigen Farben, für maximalen Kontrast. |
 
 ## Windows-3.1-Look (HA 3.11)

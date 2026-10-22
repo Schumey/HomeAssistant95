@@ -4,6 +4,17 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.3.0] – 2026-10-22
+
+### Added
+- **Screensaver** (`ha95-screensaver.js`, new option in the integration, off by default): after some idle time a star field, flying pixel houses or growing 3D pipes, with an optional clock and entity states. Any input ends it. Settings under `screensaver` in the Start menu file, see [Screensaver](docs/screensaver.md).
+- **Minesweeper** (`ha95-minesweeper.js`, new option, on by default) in a Win95 window with three levels, flags (right click or press and hold), chording and best times. Open it with the Start menu action `minesweeper`, see [Minesweeper](docs/minesweeper.md).
+- **Two color schemes:** HA 95 Regenwald (moss green) and HA 95 Patriot (red, white and blue).
+- **Blue screen** when the connection to Home Assistant is gone for more than 20 seconds (`"bsod": true` in the Start menu file, off by default). Goes away by itself. The Start menu action `bsod` previews it.
+- **Sounds** (`"sounds": true`, off by default): small self-made tones for menus, notifications, restart, blue screen and Minesweeper.
+- The default Start menu has a "Games" entry with Minesweeper and the screensaver (only for newly created menu files).
+- Timeflow card: the ring counter is now a Win95 progress bar made of blue blocks (needs the fine-tuning module).
+
 ## [4.2.0] – 2026-10-22
 
 ### Added

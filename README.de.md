@@ -15,6 +15,8 @@ Ein Windows-95-Theme für [Home Assistant](https://www.home-assistant.io/): Teal
 | **HA 95 Rose** | Nachempfunden dem Farbschema „Rose“ |
 | **HA 95 Spruce** | Nachempfunden dem Farbschema „Fichte“ |
 | **HA 95 Desert** | Nachempfunden dem Farbschema „Wüste“ |
+| **HA 95 Regenwald** | Moosgrüne Fenster, tiefgrüner Desktop |
+| **HA 95 Patriot** | Rot, Weiß und Blau |
 | **HA 95 Kontrast** | „Kontrast Schwarz“ |
 | **HA 95 Dark** | Dunkelmodus: dunkelgraue Fenster, dunkler Teal-Desktop |
 | **HA 95 Auto** | Wechselt mit dem Hell-/Dunkelmodus zwischen HA 95 und HA 95 Dark |
@@ -73,6 +75,8 @@ Jedes Extra funktioniert für sich. Einfach aussuchen:
 | **Fenster-Look** | Karten und Dialoge als echte Win95-Fenster mit Titelleisten, OK/Abbrechen-Schaltflächen, Kontrollkästchen, Trackbars, Fortschrittsbalken, Registerkarten, Meldungsfenstern und ApexCharts-Diagrammen, dazu die Suche als Dialog „Ausführen“. Braucht [UIX](https://github.com/Lint-Free-Technology/uix). | [Fenster-Look](docs/window-look.de.md) |
 | **Startmenü** | Seitenleiste als Startmenü: Streifen „HomeAssistant95“, bunte Icons, Ausklappmenüs mit Untermenüs, „Ausführen …“, der Bildschirm „Es ist jetzt sicher …“ nach dem Neustart, die Sanduhr als Mauszeiger, und wie man ein eigenes Menü baut. | [Startmenü](docs/start-menu.de.md) |
 | **Datum/Uhrzeit** | Das Fenster „Eigenschaften von Datum/Uhrzeit“ mit Monatskalender, Analoguhr und deinen Kalenderterminen: als Dashboard-Karte und per Doppelklick auf die Uhr im Startmenü. | [Datum/Uhrzeit](docs/date-time.de.md) |
+| **Bildschirmschoner** | Sterne, fliegende Logos oder 3D-Röhren nach einiger Zeit ohne Eingabe, für Wandtablets. Standardmäßig aus. | [Bildschirmschoner](docs/screensaver.de.md) |
+| **Minesweeper** | Das Minenspiel im Win95-Fenster, aus dem Startmenü geöffnet. | [Minesweeper](docs/minesweeper.de.md) |
 | **Pixel-Icons** | 537 Icons in Win95-Pixeloptik (`ha95:`), auf Wunsch automatisch statt aller MDI-Icons. | [Pixel-Icons](docs/pixel-icons.de.md) |
 | **Feinschliff** | Windows-Scrollleisten, Registerkarten und Titelleisten auf Einstellungsseiten und Werkzeugen, Logbuch, Verlauf, Hardware-Seite als Task-Manager, Auswahllisten, Dimmer-Regler. Ein kleines optionales Modul für das, was das Design allein nicht erreicht. | [Feinschliff](docs/panels.de.md) |
 | **Pixel-Schrift & Mauszeiger** | Die Schrift „Pixelated MS Sans Serif“ und der klassische Pfeil. | [unten](#pixel-schrift--mauszeiger) |

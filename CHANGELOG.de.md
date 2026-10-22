@@ -4,6 +4,17 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.3.0] – 2026-10-22
+
+### Hinzugefügt
+- **Bildschirmschoner** (`ha95-screensaver.js`, neue Option in der Integration, standardmäßig aus): nach einiger Zeit ohne Eingabe ein Sternenfeld, fliegende Pixel-Häuser oder wachsende 3D-Röhren, auf Wunsch mit Uhr und Entitätszuständen. Jede Eingabe beendet ihn. Einstellungen unter `screensaver` in der Startmenü-Datei, siehe [Bildschirmschoner](docs/screensaver.de.md).
+- **Minesweeper** (`ha95-minesweeper.js`, neue Option, standardmäßig an) im Win95-Fenster mit drei Stufen, Fahnen (Rechtsklick oder lange drücken), Aufdecken der Nachbarn und Bestzeiten. Öffnen über die Startmenü-Aktion `minesweeper`, siehe [Minesweeper](docs/minesweeper.de.md).
+- **Zwei Farbschemata:** HA 95 Regenwald (Moosgrün) und HA 95 Patriot (Rot, Weiß und Blau).
+- **Bluescreen**, wenn die Verbindung zu Home Assistant länger als 20 Sekunden weg ist (`"bsod": true` in der Startmenü-Datei, standardmäßig aus). Verschwindet von selbst. Die Startmenü-Aktion `bsod` zeigt ihn zur Vorschau.
+- **Klänge** (`"sounds": true`, standardmäßig aus): kleine selbst erzeugte Töne für Menüs, Meldungen, Neustart, Bluescreen und Minesweeper.
+- Das Standard-Startmenü hat einen Eintrag „Games“ mit Minesweeper und Bildschirmschoner (nur für neu angelegte Menü-Dateien).
+- Timeflow-Karte: Der Kreis-Zähler ist jetzt ein Win95-Fortschrittsbalken aus blauen Blöcken (braucht das Feinschliff-Modul).
+
 ## [4.2.0] – 2026-10-22
 
 ### Hinzugefügt

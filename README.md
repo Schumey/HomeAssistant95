@@ -15,6 +15,8 @@ A Windows 95 theme for [Home Assistant](https://www.home-assistant.io/): teal de
 | **HA 95 Rose** | Based on the "Rose" color scheme |
 | **HA 95 Spruce** | Based on the "Spruce" color scheme |
 | **HA 95 Desert** | Based on the "Desert" color scheme |
+| **HA 95 Regenwald** | Moss green windows, deep green desktop |
+| **HA 95 Patriot** | Red, white and blue |
 | **HA 95 Kontrast** | "High Contrast Black" |
 | **HA 95 Dark** | Dark mode: dark gray windows, dark teal desktop |
 | **HA 95 Auto** | Switches between HA 95 and HA 95 Dark with the light/dark mode |
@@ -73,6 +75,8 @@ Each extra works on its own. Pick what you like:
 | **Window look** | Cards and dialogs as real Win95 windows with title bars, OK/Cancel buttons, checkboxes, trackbars, progress bars, tabs, message boxes and ApexCharts charts, and the search as the "Run" dialog. Needs [UIX](https://github.com/Lint-Free-Technology/uix). | [Window look](docs/window-look.md) |
 | **Start menu** | Sidebar as a Start menu: "HomeAssistant95" banner, colorful icons, flyout menus with submenus, "Run …", the "It's now safe to turn off" screen after a restart, the hourglass pointer, and how to build your own menu. | [Start menu](docs/start-menu.md) |
 | **Date/Time** | The "Date/Time Properties" window with month calendar, analog clock and your calendar events: as a dashboard card and on double-click on the Start menu clock. | [Date/Time](docs/date-time.md) |
+| **Screensaver** | Stars, flying logos or 3D pipes after some idle time, for wall tablets. Off by default. | [Screensaver](docs/screensaver.md) |
+| **Minesweeper** | The mine game in a Win95 window, opened from the Start menu. | [Minesweeper](docs/minesweeper.md) |
 | **Pixel icons** | 537 icons in Win95 pixel style (`ha95:`), optionally replacing all MDI icons automatically. | [Pixel icons](docs/pixel-icons.md) |
 | **Fine-tuning** | Windows scroll bars, tab cards and title bars on the settings pages and tools, logbook, history, system hardware as Task Manager, dropdown lists, dimmer slider. A small optional module for what the theme cannot reach on its own. | [Fine-tuning](docs/panels.md) |
 | **Pixel font & pointer** | The "Pixelated MS Sans Serif" font and the classic arrow pointer. | [below](#pixel-font--mouse-pointer) |

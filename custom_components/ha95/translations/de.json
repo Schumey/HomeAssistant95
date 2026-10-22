@@ -10,7 +10,9 @@
           "startmenu": "Startmenü (ha95-startmenu.js)",
           "icons": "Pixel-Icons (ha95-icons.js)",
           "panels": "Feinschliff für Einstellungsseiten und Dialoge (ha95-panels.js)",
-          "clock": "Uhr-Karte (ha95-clock.js)"
+          "clock": "Uhr-Karte (ha95-clock.js)",
+          "screensaver": "Bildschirmschoner (ha95-screensaver.js)",
+          "minesweeper": "Minesweeper (ha95-minesweeper.js)"
         }
       }
     },
@@ -29,7 +31,9 @@
           "startmenu": "Startmenü (ha95-startmenu.js)",
           "icons": "Pixel-Icons (ha95-icons.js)",
           "panels": "Feinschliff für Einstellungsseiten und Dialoge (ha95-panels.js)",
-          "clock": "Uhr-Karte (ha95-clock.js)"
+          "clock": "Uhr-Karte (ha95-clock.js)",
+          "screensaver": "Bildschirmschoner (ha95-screensaver.js)",
+          "minesweeper": "Minesweeper (ha95-minesweeper.js)"
         }
       }
     }

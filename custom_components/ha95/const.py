@@ -9,6 +9,8 @@ CONF_STARTMENU = "startmenu"
 CONF_ICONS = "icons"
 CONF_PANELS = "panels"
 CONF_CLOCK = "clock"
+CONF_SCREENSAVER = "screensaver"
+CONF_MINESWEEPER = "minesweeper"
 
 # Werte der Auswahl "Pixel-Icons" (siehe docs/pixel-icons.md)
 ICONS_OFF = "off"
@@ -29,6 +31,8 @@ MODULES = {
     CONF_STARTMENU: "ha95-startmenu.js",
     CONF_PANELS: "ha95-panels.js",
     CONF_CLOCK: "ha95-clock.js",
+    CONF_SCREENSAVER: "ha95-screensaver.js",
+    CONF_MINESWEEPER: "ha95-minesweeper.js",
 }
 
 DEFAULT_OPTIONS = {
@@ -37,4 +41,6 @@ DEFAULT_OPTIONS = {
     CONF_ICONS: ICONS_ADD,
     CONF_PANELS: True,
     CONF_CLOCK: True,
+    CONF_SCREENSAVER: False,
+    CONF_MINESWEEPER: True,
 }

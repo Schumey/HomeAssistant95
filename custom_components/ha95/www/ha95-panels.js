@@ -1,6 +1,6 @@
 /*
  * HA 95 – Feinschliff für Stellen, die das Theme nicht erreicht
- * Version: 4.2.0
+ * Version: 4.3.0
  * Wird von der Integration HA 95 geladen (Option "Feinschliff").
  * Optional: Ohne das Modul bleibt das Design an wenigen Stellen unfertig
  * (Logbuch: Hinweisfeld, Kontrollkästchen, runde Symbole, Pfeilknöpfe beim
@@ -403,6 +403,38 @@ const BAUTEIL_CSS = {
       box-shadow: var(--ha95-sunken) !important;
     }
   `,
+  // Timeflow-Karte (custom:timeflow-card): Kreis-Zähler als Win95-Fortschrittsbalken
+  "timeflow-card": `
+    .content:has(> .progress-section) {
+      display: block !important;
+      height: auto !important;
+    }
+    .progress-section {
+      width: 100% !important;
+    }
+  `,
+  "progress-circle": `
+    :host-context(.progress-section) {
+      display: block;
+      width: 100%;
+      height: 24px;
+      box-sizing: border-box;
+      padding: 2px;
+      background: var(--ha95-window);
+      box-shadow: var(--ha95-sunken);
+    }
+    :host-context(.progress-section) .progress-wrapper {
+      display: none !important;
+    }
+    /* ganze Blöcke, Anteil kommt aus --ha95-p (siehe fortschrittFuellen) */
+    :host-context(.progress-section)::before {
+      content: "";
+      display: block;
+      height: 100%;
+      width: round(down, var(--ha95-p, 0%), 10px);
+      background: repeating-linear-gradient(90deg, var(--ha95-select) 0 8px, transparent 8px 10px);
+    }
+  `,
   // Werkzeuge → Zustände: Trennlinien zwischen den Entitäten
   "tools-state-renderer": `
     lit-virtualizer .row .cell {
@@ -728,6 +760,18 @@ const schieberDrehen = (root, versuche = 120) => {
   if (versuche > 0) requestAnimationFrame(() => schieberDrehen(root, versuche - 1));
 };
 
+// Der Kreis-Zähler der Timeflow-Karte kennt seinen Anteil nur als Eigenschaft
+// "progress", nicht als CSS-Wert: einmal pro Sekunde nach --ha95-p übertragen,
+// solange das Bauteil auf der Seite ist
+const fortschrittFuellen = (host) => {
+  const setze = () => {
+    if (!host.isConnected) return clearInterval(id);
+    host.style.setProperty("--ha95-p", `${Math.max(0, Math.min(100, Number(host.progress) || 0))}%`);
+  };
+  const id = setInterval(setze, 1000);
+  setze();
+};
+
 const startScrollleisten = () => {
   if (window.__ha95Scroll) return;
   window.__ha95Scroll = true;
@@ -769,6 +813,7 @@ const startScrollleisten = () => {
     Element.prototype.attachShadow = function (...args) {
       const root = anlegen.apply(this, args);
       if (SCHIEBER_WAAGERECHT.has(this.localName)) schieberDrehen(root);
+      if (this.localName === "progress-circle") fortschrittFuellen(this);
       try {
         anhaengen(root);
       } catch (e) {
@@ -780,7 +825,10 @@ const startScrollleisten = () => {
   // Vorhandene Shadow-Roots einmal durchgehen
   const durchgehen = (root) => {
     anhaengen(root);
-    for (const el of root.querySelectorAll("*")) if (el.shadowRoot) durchgehen(el.shadowRoot);
+    for (const el of root.querySelectorAll("*")) {
+      if (el.localName === "progress-circle") fortschrittFuellen(el);
+      if (el.shadowRoot) durchgehen(el.shadowRoot);
+    }
   };
   try {
     durchgehen(document);

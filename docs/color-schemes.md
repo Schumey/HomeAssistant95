@@ -10,6 +10,8 @@ There are two ways to get a dark look:
 |---|---|
 | **HA 95 Dark** | Always dark: dark gray windows, dark teal desktop, navy title bars. |
 | **HA 95 Auto** | Switches by itself: light like HA 95, dark like HA 95 Dark. It follows **Profile → Theme → Mode** (Auto, Light, Dark), and with "Auto" the setting of your operating system. |
+| **HA 95 Regenwald** | Moss green windows on a deep green desktop, green title bars. |
+| **HA 95 Patriot** | Red, white and blue: navy title bars, red selection, white-gray windows. |
 | **HA 95 Kontrast** | "High Contrast Black": black and white with bright colors, for maximum contrast. |
 
 ## Windows 3.1 look (HA 3.11)
