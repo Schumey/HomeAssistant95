@@ -27,7 +27,9 @@ More about dark mode, the Windows 3.1 look and your own colors: [Color schemes](
 
 HA 95 is an integration: it installs the themes you pick and loads the extras for you. Nothing to copy by hand, nothing to add to `configuration.yaml` except the line for themes (if you don't have it yet).
 
-1. HACS → ⋮ → **Custom repositories** → URL of this repo, type **Integration**.
+[![Open your Home Assistant instance and open this repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Schumey&repository=HomeAssistant95&category=integration)
+
+1. HACS → ⋮ → **Custom repositories** → URL of this repo, type **Integration** (or click the button above).
 2. Install "HomeAssistant95" and restart Home Assistant.
 3. Add this to `configuration.yaml` if it isn't there yet, then restart once more:
    ```yaml

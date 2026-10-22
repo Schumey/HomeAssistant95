@@ -27,7 +27,9 @@ Mehr zu Dunkelmodus, Windows-3.1-Look und eigenen Farben: [Farbschemata](docs/co
 
 HA 95 ist eine Integration: Sie installiert die Designs, die du auswählst, und lädt die Extras selbst. Nichts von Hand kopieren, in der `configuration.yaml` nur die Zeile für Designs (falls noch nicht vorhanden).
 
-1. HACS → ⋮ → **Benutzerdefinierte Repositories** → URL dieses Repos, Typ **Integration**.
+[![Öffne deine Home-Assistant-Instanz und dieses Repository im Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Schumey&repository=HomeAssistant95&category=integration)
+
+1. HACS → ⋮ → **Benutzerdefinierte Repositories** → URL dieses Repos, Typ **Integration** (oder auf den Knopf oben klicken).
 2. „HomeAssistant95“ installieren und Home Assistant neu starten.
 3. In `configuration.yaml` eintragen (falls noch nicht vorhanden), danach noch einmal neu starten:
    ```yaml
