@@ -75,6 +75,11 @@
         "path": "/config/helpers"
       },
       {
+        "name": "Apps",
+        "icon": "mdi:view-grid-plus-outline",
+        "path": "/config/apps"
+      },
+      {
         "divider": true
       },
       {

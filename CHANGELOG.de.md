@@ -4,6 +4,11 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.1.3] – 2026-10-22
+
+### Hinzugefügt
+- **Apps im Werkzeug-Menü:** Das Beispiel-Startmenü (und das Standardmenü, das die Integration anlegt) hat jetzt einen Eintrag „Apps“ (`/config/apps`) unter „Helfer“.
+
 ## [4.1.2] – 2026-10-22
 
 ### Behoben
