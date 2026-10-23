@@ -22,6 +22,7 @@ Das Design allein setzt Farben, Schrift und eckige Kanten. Für echte Win95-Fens
 | Meldungen | Meldungen unten („Verbindung verloren“, „Gelöscht“) sind graue Win95-Fenster mit Info-Symbol. Hinweise in Karten und Dialogen (`ha-alert`) bekommen einen eingeritzten Rahmen und die Win95-Symbole für Info, Warnung, Fehler und Erfolg. |
 | Kopfleiste von Dashboards und Einstellungen | Win95-Titelleiste (36 px, fetter Titel), die Knöpfe als kleine, gleich große eckige 3D-Knöpfe (24×22). Die Ansichten-Tabs sind Registerkarten wie in einem Eigenschaften-Dialog: grau und erhaben, die aktive höher und mit der Kante darunter verschmolzen. |
 | Einstellungsseite | Icons als eckige 3D-Kacheln wie in der Systemsteuerung. |
+| Medienkarte | Look des Media Player Classic: schwarze, eingelassene Videofläche mit Titel und Cover, Win95-Suchleiste und graue Werkzeugleiste mit eckigen 3D-Knöpfen. |
 | Thermostat, Luftbefeuchter und Licht-Karte | Ring aus Blöcken wie ein Win95-Fortschrittsbalken, mit eckigen Enden, vollen Farben und eckigem Griff; + und − als eckige 3D-Knöpfe. |
 | Regler in Kacheln und Dialogen | Helligkeit, Position, Lautstärke und Zahlenregler (in Kachel-Features und im Detail-Dialog) sind Win95-Fortschrittsbalken: ein eingelassenes weißes Feld mit Blöcken in der Markierungsfarbe. Beim Ziehen steht der Wert in einer gelben QuickInfo. |
 | Schalter in Entitätskarten | Win95-Kontrollkästchen: ein eingelassenes weißes Kästchen mit Pixel-Häkchen. Der Sammelschalter steht in einer eigenen Zeile unter der Titelleiste. |

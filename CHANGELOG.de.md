@@ -4,6 +4,14 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.5.0] – 2026-10-24
+
+### Hinzugefügt
+- **Medienkarte im Look des Media Player Classic:** schwarze, eingelassene „Videofläche“ mit Gerät, Titel und Cover (mit etwas Abstand zum Rand), darunter eine Win95-Suchleiste und eine graue Werkzeugleiste mit eckigen 3D-Knöpfen für Zurück, Wiedergabe/Pause, Weiter, Mehr-Info und Medien durchsuchen. Funktioniert allein mit dem Theme (card-mod oder UIX).
+
+### Behoben
+- Dialoge mit eigenem Menü-Knopf (z. B. „Medienquellen“): der ⋮-Knopf hat jetzt Symbolleistengröße statt 48 px, der Schließen-Knopf sitzt in der Titelleiste. Braucht UIX.
+
 ## [4.4.0] – 2026-10-23
 
 ### Hinzugefügt

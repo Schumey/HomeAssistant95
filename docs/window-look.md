@@ -22,6 +22,7 @@ The theme alone sets colors, fonts and square corners. For real Win95 windows it
 | Messages | Messages at the bottom ("Connection lost", "Deleted") are gray Win95 windows with the info icon. Notes in cards and dialogs (`ha-alert`) get an etched frame and the Win95 icons for info, warning, error and success. |
 | Top bar of dashboards and settings | Win95 title bar (36 px, bold title), the buttons as small square 3D buttons of equal size (24×22). The view tabs are tabs like in a properties dialog: gray and raised, the active one taller and merging with the edge below. |
 | Settings page | Icons as square 3D tiles like in the Control Panel. |
+| Media control card | Media Player Classic look: black sunken video area with title and cover, Win95 seek bar and a gray toolbar with square 3D buttons. |
 | Thermostat, humidifier and light card | Ring made of blocks like a Win95 progress bar, with square ends, solid colors and a square handle; + and − as square 3D buttons. |
 | Sliders in tiles and dialogs | Brightness, position, volume and number sliders (in tile features and in the detail dialog) are Win95 progress bars: a sunken white field with blocks in the selection color. While dragging, the value shows in a yellow tooltip. |
 | Switches in entities cards | Win95 checkboxes: a sunken white box with a pixel check mark. The header toggle sits in its own row below the title bar. |

@@ -4,6 +4,14 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.5.0] – 2026-10-24
+
+### Added
+- **Media player card in Media Player Classic style:** black sunken "video area" with device, title and cover (with some margin), below it a Win95 seek bar and a gray toolbar with square 3D buttons for previous, play/pause, next, more info and browse media. Works with the theme alone (card-mod or UIX).
+
+### Fixed
+- Dialogs that bring their own menu button (e.g. "Media sources"): the ⋮ button is now toolbar size instead of 48 px, the close button sits in the title bar. Needs UIX.
+
 ## [4.4.0] – 2026-10-23
 
 ### Added
