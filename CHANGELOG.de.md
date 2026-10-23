@@ -4,6 +4,12 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.6.0] – 2026-10-24
+
+### Hinzugefügt
+- **Energie-Karten im Win95-Look:** Die Verteilungskarte zeigt PV, Gas, Home und Batterie als erhabene 3D-Kästchen mit dem Namen darin, auf einer versenkten weißen Fläche, mit rechtwinkligen, durchgezogenen Verbindungslinien. Die Datumsauswahl der Energie-Karten ist eine Symbolleiste mit versenktem Datumsfeld und gleich großen Knöpfen (braucht UIX).
+- Prüfseite: neue Ansicht „Energie“ mit allen Energie-Karten.
+
 ## [4.5.0] – 2026-10-24
 
 ### Hinzugefügt

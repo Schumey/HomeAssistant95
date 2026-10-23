@@ -306,7 +306,46 @@ views:
               type: markdown
               content: Bedingte Karte (nur tagsüber sichtbar)
 
-  # ── 4. Klassisch: alte Masonry-Ansicht ───────────────────────────────────
+  # ── 4. Energie: Karten des Energie-Dashboards ────────────────────────────
+  # Brauchen eine eingerichtete Energie-Konfiguration (Einstellungen → Dashboards →
+  # Energie). Ohne sie zeigen die Karten nur Hinweise, die auch geprüft werden wollen.
+  - title: Energie
+    path: energie
+    icon: mdi:lightning-bolt
+    type: sections
+    max_columns: 4
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: Zeitraum und Verteilung
+            icon: mdi:transmission-tower
+          - type: energy-date-selection
+          - type: energy-distribution
+            link_dashboard: true
+          - type: energy-sources-table
+      - type: grid
+        cards:
+          - type: heading
+            heading: Verbrauch und Erzeugung
+            icon: mdi:chart-bar
+          - type: energy-usage-graph
+          - type: energy-solar-graph
+          - type: energy-gas-graph
+          - type: energy-water-graph
+      - type: grid
+        cards:
+          - type: heading
+            heading: Anzeigen und Kennzahlen
+            icon: mdi:gauge
+          - type: energy-grid-neutrality-gauge
+          - type: energy-solar-consumed-gauge
+          - type: energy-self-sufficiency-gauge
+          - type: energy-carbon-consumed-gauge
+          - type: energy-devices-graph
+          - type: energy-devices-detail-graph
+
+  # ── 5. Klassisch: alte Masonry-Ansicht ───────────────────────────────────
   - title: Klassisch
     path: klassisch
     icon: mdi:view-dashboard-variant-outline

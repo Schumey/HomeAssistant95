@@ -90,7 +90,7 @@ Die Schrift „Pixelated MS Sans Serif“ stammt aus [98.css](https://github.com
 
 ## Prüfseite
 
-[examples/test-dashboard/ha95-test.yaml](examples/test-dashboard/ha95-test.yaml) ist ein Dashboard mit je einer Karte jeder Art (Entitäten, Kacheln mit Features, Thermostat, Gauge, Markdown mit Hinweisen, Verlauf, Kalender, Formulare, Stapel, Masonry-Ansicht …). Nach einem Home-Assistant-Update einmal alle Tabs im hellen und dunklen Modus durchklicken, dann sieht man auf einen Blick, ob noch alles passt.
+[examples/test-dashboard/ha95-test.yaml](examples/test-dashboard/ha95-test.yaml) ist ein Dashboard mit je einer Karte jeder Art (Entitäten, Kacheln mit Features, Thermostat, Gauge, Markdown mit Hinweisen, Verlauf, Kalender, Formulare, Stapel, Energie-Karten, Masonry-Ansicht …). Nach einem Home-Assistant-Update einmal alle Tabs im hellen und dunklen Modus durchklicken, dann sieht man auf einen Blick, ob noch alles passt.
 
 ## Deinstallieren
 

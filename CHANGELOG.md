@@ -4,6 +4,12 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.6.0] – 2026-10-24
+
+### Added
+- **Energy cards in Win95 look:** the distribution card shows PV, gas, home and battery as raised 3D boxes with the name inside, on a sunken white area, with right-angled solid connection lines. The date selection of the energy cards is a toolbar with a sunken date field and equally sized buttons (needs UIX).
+- Test dashboard: new "Energy" view with all energy cards.
+
 ## [4.5.0] – 2026-10-24
 
 ### Added

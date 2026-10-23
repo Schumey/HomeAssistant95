@@ -90,7 +90,7 @@ The "Pixelated MS Sans Serif" font comes from [98.css](https://github.com/jdan/9
 
 ## Test dashboard
 
-[examples/test-dashboard/ha95-test.yaml](examples/test-dashboard/ha95-test.yaml) is a dashboard with one card of every kind (entities, tiles with features, thermostat, gauge, markdown with notes, history, calendar, forms, stacks, masonry view …). After a Home Assistant update, click through its tabs once in light and dark mode to see at a glance whether everything still looks right.
+[examples/test-dashboard/ha95-test.yaml](examples/test-dashboard/ha95-test.yaml) is a dashboard with one card of every kind (entities, tiles with features, thermostat, gauge, markdown with notes, history, calendar, forms, stacks, energy cards, masonry view …). After a Home Assistant update, click through its tabs once in light and dark mode to see at a glance whether everything still looks right.
 
 ## Uninstall
 
