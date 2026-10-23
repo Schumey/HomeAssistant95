@@ -141,6 +141,11 @@
             "action": "minesweeper"
           },
           {
+            "name": "Solitaire",
+            "icon": "mdi:cards-playing-outline",
+            "action": "solitaire"
+          },
+          {
             "name": "Screensaver",
             "icon": "mdi:monitor",
             "action": "screensaver"

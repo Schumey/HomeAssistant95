@@ -1,6 +1,6 @@
 /*
  * HA 95 – Startmenü mit Untermenüs für Home Assistant
- * Version: 4.3.0
+ * Version: 4.4.0
  * Laden:   Integration HA 95, Option "Startmenü"
  * Menüs:   /config/www/ha95-startmenu.json (Beispiel im Repo unter
  *          examples/startmenu/ha95-startmenu.json)
@@ -25,6 +25,7 @@
  *   { "name": "…", "action": "bsod" }                       Bluescreen ansehen (Klick schließt)
  *   { "name": "…", "action": "clock" }                      "Eigenschaften von Datum/Uhrzeit" öffnen
  *   { "name": "…", "action": "minesweeper" }                Minesweeper öffnen (ha95-minesweeper.js)
+ *   { "name": "…", "action": "solitaire" }                  Solitaire öffnen (ha95-solitaire.js)
  *   { "name": "…", "action": "screensaver" }                Bildschirmschoner sofort starten (ha95-screensaver.js)
  *   { "name": "…", "url": "https://…" }                     Adresse in neuem Tab öffnen
  *   { "name": "…", "items": [ … ] }                         weiteres Untermenü
@@ -41,7 +42,7 @@
  *                           20 Sekunden weg ist (ein Neustart zeigt weiter den
  *                           schwarzen Bildschirm); verschwindet von selbst
  *   "sounds": false         kleine selbst erzeugte Klänge (Menü, Meldung, Neustart,
- *                           Bluescreen, Minesweeper); aus, solange nicht true
+ *                           Bluescreen, Minesweeper, Solitaire); aus, solange nicht true
  *   "clock": true           Doppelklick (Touch: Tippen) auf den Titel mit der
  *                           Uhr öffnet "Eigenschaften von Datum/Uhrzeit"
  *                           (lädt ha95-clock.js aus demselben Ordner)
@@ -2651,6 +2652,7 @@ function runItem(item) {
   if (item.action === "bsod") return showBsod(null);
   if (item.action === "clock") return openClock();
   if (item.action === "minesweeper") return openModule("ha95-minesweeper.js", (m) => m.showMinesweeper());
+  if (item.action === "solitaire") return openModule("ha95-solitaire.js", (m) => m.showSolitaire());
   if (item.action === "screensaver") return openModule("ha95-screensaver.js", (m) => m.start());
   if (item.file) return openFile(item.file);
   if (item.url) return window.open(item.url, "_blank", "noopener");

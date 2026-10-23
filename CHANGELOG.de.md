@@ -4,6 +4,11 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.4.0] – 2026-10-23
+
+### Hinzugefügt
+- **Solitaire** (`ha95-solitaire.js`, neue Option, standardmäßig an): Klondike im Win95-Fenster, eine oder drei Karten ziehen, Doppelklick auf die Ablage, Rückgängig, Siege und Bestzeit. Öffnen über die Startmenü-Aktion `solitaire`, siehe [Solitaire](docs/solitaire.de.md). Das Standard-Startmenü hat es unter „Games“ (nur für neu angelegte Menü-Dateien).
+
 ## [4.3.0] – 2026-10-22
 
 ### Hinzugefügt

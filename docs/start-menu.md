@@ -103,6 +103,7 @@ Each line is one entry. What it does depends on its key:
 | `{ "name": "…", "action": "run" }` | Opens the Home Assistant search as the Win95 "Run" dialog (with UIX, see [Window look](window-look.md)). Good with `"icon": "mdi:console"`. |
 | `{ "name": "…", "action": "clock" }` | Opens "Date/Time Properties" (see [Date/Time](date-time.md)). Good with `"icon": "mdi:clock"`. |
 | `{ "name": "…", "action": "minesweeper" }` | Opens [Minesweeper](minesweeper.md). Good with `"icon": "mdi:bomb"`. |
+| `{ "name": "…", "action": "solitaire" }` | Opens [Solitaire](solitaire.md). Good with `"icon": "mdi:cards-playing-outline"`. |
 | `{ "name": "…", "action": "screensaver" }` | Starts the [screensaver](screensaver.md) right away. |
 | `{ "name": "…", "action": "bsod" }` | Shows the blue screen (see `bsod` above), a click closes it. |
 | `{ "name": "…", "url": "https://…" }` | Opens an address in a new tab. |

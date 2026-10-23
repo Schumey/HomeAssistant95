@@ -12,7 +12,8 @@
           "panels": "Finishing touches for settings pages and dialogs (ha95-panels.js)",
           "clock": "Clock card (ha95-clock.js)",
           "screensaver": "Screensaver (ha95-screensaver.js)",
-          "minesweeper": "Minesweeper (ha95-minesweeper.js)"
+          "minesweeper": "Minesweeper (ha95-minesweeper.js)",
+          "solitaire": "Solitaire (ha95-solitaire.js)"
         }
       }
     },
@@ -33,7 +34,8 @@
           "panels": "Finishing touches for settings pages and dialogs (ha95-panels.js)",
           "clock": "Clock card (ha95-clock.js)",
           "screensaver": "Screensaver (ha95-screensaver.js)",
-          "minesweeper": "Minesweeper (ha95-minesweeper.js)"
+          "minesweeper": "Minesweeper (ha95-minesweeper.js)",
+          "solitaire": "Solitaire (ha95-solitaire.js)"
         }
       }
     }

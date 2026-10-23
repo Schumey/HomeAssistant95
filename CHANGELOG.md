@@ -4,6 +4,11 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.4.0] – 2026-10-23
+
+### Added
+- **Solitaire** (`ha95-solitaire.js`, new option, on by default): Klondike in a Win95 window, draw one or three cards, double-click to an ace pile, undo, wins and best time. Open it with the Start menu action `solitaire`, see [Solitaire](docs/solitaire.md). The default Start menu has it under "Games" (only for newly created menu files).
+
 ## [4.3.0] – 2026-10-22
 
 ### Added

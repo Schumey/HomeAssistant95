@@ -77,6 +77,7 @@ Jedes Extra funktioniert für sich. Einfach aussuchen:
 | **Datum/Uhrzeit** | Das Fenster „Eigenschaften von Datum/Uhrzeit“ mit Monatskalender, Analoguhr und deinen Kalenderterminen: als Dashboard-Karte und per Doppelklick auf die Uhr im Startmenü. | [Datum/Uhrzeit](docs/date-time.de.md) |
 | **Bildschirmschoner** | Sterne, fliegende Logos oder 3D-Röhren nach einiger Zeit ohne Eingabe, für Wandtablets. Standardmäßig aus. | [Bildschirmschoner](docs/screensaver.de.md) |
 | **Minesweeper** | Das Minenspiel im Win95-Fenster, aus dem Startmenü geöffnet. | [Minesweeper](docs/minesweeper.de.md) |
+| **Solitaire** | Klondike im Win95-Fenster, aus dem Startmenü geöffnet. | [Solitaire](docs/solitaire.de.md) |
 | **Pixel-Icons** | 537 Icons in Win95-Pixeloptik (`ha95:`), auf Wunsch automatisch statt aller MDI-Icons. | [Pixel-Icons](docs/pixel-icons.de.md) |
 | **Feinschliff** | Windows-Scrollleisten, Registerkarten und Titelleisten auf Einstellungsseiten und Werkzeugen, Logbuch, Verlauf, Hardware-Seite als Task-Manager, Auswahllisten, Dimmer-Regler. Ein kleines optionales Modul für das, was das Design allein nicht erreicht. | [Feinschliff](docs/panels.de.md) |
 | **Pixel-Schrift & Mauszeiger** | Die Schrift „Pixelated MS Sans Serif“ und der klassische Pfeil. | [unten](#pixel-schrift--mauszeiger) |

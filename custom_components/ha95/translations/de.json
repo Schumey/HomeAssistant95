@@ -12,7 +12,8 @@
           "panels": "Feinschliff für Einstellungsseiten und Dialoge (ha95-panels.js)",
           "clock": "Uhr-Karte (ha95-clock.js)",
           "screensaver": "Bildschirmschoner (ha95-screensaver.js)",
-          "minesweeper": "Minesweeper (ha95-minesweeper.js)"
+          "minesweeper": "Minesweeper (ha95-minesweeper.js)",
+          "solitaire": "Solitaire (ha95-solitaire.js)"
         }
       }
     },
@@ -33,7 +34,8 @@
           "panels": "Feinschliff für Einstellungsseiten und Dialoge (ha95-panels.js)",
           "clock": "Uhr-Karte (ha95-clock.js)",
           "screensaver": "Bildschirmschoner (ha95-screensaver.js)",
-          "minesweeper": "Minesweeper (ha95-minesweeper.js)"
+          "minesweeper": "Minesweeper (ha95-minesweeper.js)",
+          "solitaire": "Solitaire (ha95-solitaire.js)"
         }
       }
     }

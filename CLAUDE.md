@@ -11,6 +11,7 @@ Ein Windows-95-Design für Home Assistant, verteilt über HACS als Integration (
 | `custom_components/ha95/www/ha95.css` | Pixel-Schrift, Mauszeiger, Scrollbars; geladen über `ha95-css.js` (legt ein `<link>` an). |
 | `custom_components/ha95/www/ha95-screensaver.js` | Bildschirmschoner (Sterne, Logos, Röhren), Einstellungen unter `screensaver` in `/config/www/ha95-startmenu.json`; Startmenü-Aktion `screensaver`. |
 | `custom_components/ha95/www/ha95-minesweeper.js` | Minesweeper als Win95-Fenster; Startmenü-Aktion `minesweeper`. |
+| `custom_components/ha95/www/ha95-solitaire.js` | Solitaire (Klondike) als Win95-Fenster; Startmenü-Aktion `solitaire`. |
 | `custom_components/ha95/www/ha95-icons.js` | Pixel-Icon-Set (`ha95:`), Modus `?replace` / `?pixelate` (setzt die Integration je nach Auswahl). **Wird generiert**, siehe unten. |
 | `custom_components/ha95/www/ha95-startmenu.js` | Startmenü: senkrechter Streifen, bunte Icons in Seitenleiste und Menüs, Win95-Ausklappmenüs an Einträgen mit `data-ha95-menu`; Menüs und Optionen aus `/config/www/ha95-startmenu.json`. Der Block zwischen `// <color-icons>` und `// </color-icons>` **wird generiert**, siehe unten. |
 | `examples/custom-sidebar/` | Beispielkonfiguration für Custom Sidebar (Seitenleiste als Startmenü). |

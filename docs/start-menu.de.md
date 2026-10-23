@@ -103,6 +103,7 @@ Jede Zeile ist ein Eintrag. Was er tut, hängt vom Schlüssel ab:
 | `{ "name": "…", "action": "run" }` | Öffnet die Suche von Home Assistant als Win95-Dialog „Ausführen“ (mit UIX, siehe [Fenster-Look](window-look.de.md)). Passt gut zu `"icon": "mdi:console"`. |
 | `{ "name": "…", "action": "clock" }` | Öffnet „Eigenschaften von Datum/Uhrzeit“ (siehe [Datum/Uhrzeit](date-time.de.md)). Passt gut zu `"icon": "mdi:clock"`. |
 | `{ "name": "…", "action": "minesweeper" }` | Öffnet [Minesweeper](minesweeper.de.md). Passt gut zu `"icon": "mdi:bomb"`. |
+| `{ "name": "…", "action": "solitaire" }` | Öffnet [Solitaire](solitaire.de.md). Passt gut zu `"icon": "mdi:cards-playing-outline"`. |
 | `{ "name": "…", "action": "screensaver" }` | Startet den [Bildschirmschoner](screensaver.de.md) sofort. |
 | `{ "name": "…", "action": "bsod" }` | Zeigt den Bluescreen (siehe `bsod` oben), ein Klick schließt ihn. |
 | `{ "name": "…", "url": "https://…" }` | Öffnet eine Adresse in einem neuen Tab. |
