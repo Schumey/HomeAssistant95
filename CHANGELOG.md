@@ -4,6 +4,11 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.7.0] – 2026-10-24
+
+### Added
+- **New start menu icon `diet-assistant`** (red apple with leaf) as a logo for MyDietAssistant. Use it with `mdi:food-apple`, `mdi:nutrition` or `diet-assistant`.
+
 ## [4.6.2] – 2026-10-24
 
 ### Fixed
