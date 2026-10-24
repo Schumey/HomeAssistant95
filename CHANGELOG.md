@@ -4,6 +4,11 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.8.0] – 2026-10-24
+
+### Added
+- **Desktop card** (`ha95-desktop.js`, new option, on by default): `custom:ha95-desktop-card` shows big icons with labels like on the Windows 95 desktop, directly on the desktop background. Click selects, double-click (tap on touch screens) opens a dashboard, URL, entity or action. Colorful icons come from the Start menu module. See [Desktop card](docs/desktop.md).
+
 ## [4.7.0] – 2026-10-24
 
 ### Added

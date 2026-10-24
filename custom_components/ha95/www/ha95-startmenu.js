@@ -1,6 +1,6 @@
 /*
  * HA 95 – Startmenü mit Untermenüs für Home Assistant
- * Version: 4.7.0
+ * Version: 4.8.0
  * Laden:   Integration HA 95, Option "Startmenü"
  * Menüs:   /config/www/ha95-startmenu.json (Beispiel im Repo unter
  *          examples/startmenu/ha95-startmenu.json)
@@ -2402,6 +2402,9 @@ const colorSvg = (name) => {
   svgCache.set(name, svg);
   return svg;
 };
+
+// Für die Desktop-Karte (ha95-desktop.js): buntes SVG zu einem Icon-Namen, sonst leer
+window.ha95ColorIcon ??= (icon) => colorSvg(colorName(icon));
 
 // ---------- Hilfsfunktionen ----------
 

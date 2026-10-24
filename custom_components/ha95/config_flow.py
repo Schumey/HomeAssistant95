@@ -19,6 +19,7 @@ from . import theme_names
 from .const import (
     CONF_CLOCK,
     CONF_CSS,
+    CONF_DESKTOP,
     CONF_ICONS,
     CONF_MINESWEEPER,
     CONF_PANELS,
@@ -62,6 +63,7 @@ async def _schema(hass, current: dict[str, Any]) -> vol.Schema:
             vol.Required(CONF_SCREENSAVER, default=values[CONF_SCREENSAVER]): BooleanSelector(),
             vol.Required(CONF_MINESWEEPER, default=values[CONF_MINESWEEPER]): BooleanSelector(),
             vol.Required(CONF_SOLITAIRE, default=values[CONF_SOLITAIRE]): BooleanSelector(),
+            vol.Required(CONF_DESKTOP, default=values[CONF_DESKTOP]): BooleanSelector(),
         }
     )
 

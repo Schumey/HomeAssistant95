@@ -13,7 +13,8 @@
           "clock": "Clock card (ha95-clock.js)",
           "screensaver": "Screensaver (ha95-screensaver.js)",
           "minesweeper": "Minesweeper (ha95-minesweeper.js)",
-          "solitaire": "Solitaire (ha95-solitaire.js)"
+          "solitaire": "Solitaire (ha95-solitaire.js)",
+          "desktop": "Desktop card (ha95-desktop.js)"
         }
       }
     },
@@ -35,7 +36,8 @@
           "clock": "Clock card (ha95-clock.js)",
           "screensaver": "Screensaver (ha95-screensaver.js)",
           "minesweeper": "Minesweeper (ha95-minesweeper.js)",
-          "solitaire": "Solitaire (ha95-solitaire.js)"
+          "solitaire": "Solitaire (ha95-solitaire.js)",
+          "desktop": "Desktop card (ha95-desktop.js)"
         }
       }
     }

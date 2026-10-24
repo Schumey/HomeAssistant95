@@ -4,6 +4,11 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.8.0] – 2026-10-24
+
+### Hinzugefügt
+- **Desktop-Karte** (`ha95-desktop.js`, neue Option, standardmäßig an): `custom:ha95-desktop-card` zeigt große Symbole mit Beschriftung wie auf dem Windows-95-Desktop, direkt auf dem Desktop-Hintergrund. Klick markiert, Doppelklick (auf Touch-Bildschirmen Tippen) öffnet ein Dashboard, eine Adresse, eine Entität oder eine Aktion. Die bunten Symbole kommen aus dem Startmenü-Modul. Siehe [Desktop-Karte](docs/desktop.de.md).
+
 ## [4.7.0] – 2026-10-24
 
 ### Hinzugefügt

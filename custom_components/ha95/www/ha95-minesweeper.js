@@ -1,6 +1,6 @@
 /*
  * HA 95 – Minesweeper für Home Assistant
- * Version: 4.7.0
+ * Version: 4.8.0
  * Wird von der Integration HA 95 geladen (Option "Minesweeper").
  *
  * Öffnen:
