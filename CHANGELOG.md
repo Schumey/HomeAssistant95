@@ -4,6 +4,11 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.8.3] – 2026-10-24
+
+### Fixed
+- **Media card:** the seek bar is centered: it now spans the full width of the black video area instead of ending 12 px short on the right.
+
 ## [4.8.2] – 2026-10-24
 
 ### Fixed

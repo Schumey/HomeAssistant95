@@ -4,6 +4,11 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.8.3] – 2026-10-24
+
+### Behoben
+- **Medienkarte:** Die Suchleiste ist zentriert: Sie reicht jetzt über die ganze Breite der schwarzen Videofläche statt rechts 12 px früher zu enden.
+
 ## [4.8.2] – 2026-10-24
 
 ### Behoben

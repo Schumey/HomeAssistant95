@@ -1,5 +1,5 @@
 # HA 95 – Theme "HA 3.11"
-# Version: 4.8.2
+# Version: 4.8.3
 # Erzeugt von local/theme-generator/build.py, nicht von Hand ändern.
 
 HA 3.11:
@@ -633,6 +633,9 @@ HA 3.11:
       flex: none;
       margin: 6px -6px 0;
       padding: 0 6px;
+      /* HA setzt width: 100%; so reicht die Leiste mit den -6px bis unter die Videofläche */
+      width: auto !important;
+      align-self: stretch;
       height: 30px !important;
       --thumb-width: 11px;
       --thumb-height: 19px;
@@ -1105,6 +1108,9 @@ HA 3.11:
         flex: none;
         margin: 6px -6px 0;
         padding: 0 6px;
+        /* HA setzt width: 100%; so reicht die Leiste mit den -6px bis unter die Videofläche */
+        width: auto !important;
+        align-self: stretch;
         height: 30px !important;
         --thumb-width: 11px;
         --thumb-height: 19px;
