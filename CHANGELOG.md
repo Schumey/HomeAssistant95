@@ -4,6 +4,11 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.8.1] – 2026-10-24
+
+### Changed
+- **Desktop card:** bigger icons (64 px) and the desktop color as the card background, so the white labels stay readable inside the window. Selecting a white icon now tints only the icon instead of the whole square.
+
 ## [4.8.0] – 2026-10-24
 
 ### Added

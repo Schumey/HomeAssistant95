@@ -4,6 +4,11 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.8.1] – 2026-10-24
+
+### Geändert
+- **Desktop-Karte:** größere Symbole (64 px) und die Desktop-Farbe als Hintergrund der Karte, damit die weiße Beschriftung im Fenster lesbar bleibt. Beim Markieren eines weißen Symbols färbt sich nur noch das Symbol statt des ganzen Quadrats.
+
 ## [4.8.0] – 2026-10-24
 
 ### Hinzugefügt

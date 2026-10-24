@@ -1,6 +1,6 @@
 /*
  * HA 95 – Desktop-Karte für Home Assistant
- * Version: 4.8.0
+ * Version: 4.8.1
  * Wird von der Integration HA 95 geladen (Option "Desktop-Karte").
  *
  * Große Symbole mit Beschriftung wie auf dem Windows-95-Desktop, direkt auf
@@ -24,7 +24,7 @@
  */
 
 const CSS = `
-  :host { display: block; }
+  :host { display: block; background: var(--ha95-desktop, #008080); }
   .desktop {
     display: grid; justify-content: start; align-content: start;
     gap: 8px 4px; padding: 8px;
@@ -32,20 +32,21 @@ const CSS = `
   }
   .icon {
     display: flex; flex-direction: column; align-items: center; gap: 4px;
-    width: 84px; padding: 4px 2px; margin: 0; border: 0; background: none;
+    width: 104px; padding: 4px 2px; margin: 0; border: 0; background: none;
     font: inherit; color: var(--ha95-desktop-text, #fff); cursor: default;
     text-align: center; -webkit-tap-highlight-color: transparent; user-select: none;
   }
-  .glyph { position: relative; display: flex; width: 48px; height: 48px; align-items: center; justify-content: center; }
-  .glyph svg, .glyph ha-icon { width: 48px; height: 48px; --mdi-icon-size: 40px; }
+  .glyph { position: relative; display: flex; width: 64px; height: 64px; align-items: center; justify-content: center; }
+  .glyph svg, .glyph ha-icon { width: 64px; height: 64px; --mdi-icon-size: 56px; }
   .glyph svg { image-rendering: pixelated; }
   .glyph ha-icon { color: #fff; filter: drop-shadow(1px 1px 0 #000); }
   .label { max-width: 100%; padding: 1px 2px; line-height: 1.15; overflow-wrap: anywhere; }
   /* Markiert: Symbol bläulich überlagert, Beschriftung in der Auswahlfarbe */
-  .icon.selected .glyph::after {
+  .icon.selected .glyph.m::after {
     content: ""; position: absolute; inset: 0; background: var(--ha95-select, #000080); opacity: 0.5;
     -webkit-mask: var(--mask) center / 100% 100% no-repeat; mask: var(--mask) center / 100% 100% no-repeat;
   }
+  .icon.selected ha-icon { color: color-mix(in srgb, #fff 45%, var(--ha95-select, #000080)); }
   .icon.selected .label { background: var(--ha95-select, #000080); color: var(--ha95-select-text, #fff); }
   .icon:focus { outline: none; }
   .icon:focus-visible .label, .icon.selected:focus .label { outline: 1px dotted var(--ha95-select-text, #fff); outline-offset: -1px; }
@@ -111,7 +112,7 @@ class Ha95DesktopCard extends HTMLElement {
     const root = this.shadowRoot;
     if (!root || !this._config) return;
     const cfg = this._config;
-    const grid = cfg.columns ? `grid-template-columns: repeat(${+cfg.columns}, 84px);` : "grid-template-columns: repeat(auto-fill, 84px);";
+    const grid = cfg.columns ? `grid-template-columns: repeat(${+cfg.columns}, 104px);` : "grid-template-columns: repeat(auto-fill, 104px);";
     root.innerHTML = `<style>${CSS}</style><div class="desktop" style="${grid}"></div>`;
     const desk = root.querySelector(".desktop");
     if (!cfg.icons.length) desk.innerHTML = `<div class="empty">–</div>`;
@@ -122,7 +123,7 @@ class Ha95DesktopCard extends HTMLElement {
       btn.type = "button";
       if (e.title) btn.title = e.title;
       const color = colorSvg(e.icon);
-      btn.innerHTML = `<span class="glyph">${color || `<ha-icon icon="${e.icon.replace(/"/g, "")}"></ha-icon>`}</span><span class="label"></span>`;
+      btn.innerHTML = `<span class="glyph${color ? " m" : ""}">${color || `<ha-icon icon="${e.icon.replace(/"/g, "")}"></ha-icon>`}</span><span class="label"></span>`;
       btn.querySelector(".label").textContent = e.name;
       if (color) {
         // Die Markierung färbt nur die Pixel des Symbols, nicht das ganze Quadrat
