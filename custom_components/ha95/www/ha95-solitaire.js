@@ -1,6 +1,6 @@
 /*
  * HA 95 – Solitaire für Home Assistant
- * Version: 4.6.1
+ * Version: 4.6.2
  * Wird von der Integration HA 95 geladen (Option "Solitaire").
  *
  * Öffnen:
@@ -111,7 +111,7 @@ const CSS = `
   .bar button:disabled { color: var(--ha95-disabled, #808080); }
   .table {
     position: relative; margin: 3px; padding: 8px; background: #008000; user-select: none;
-    touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+    touch-action: none; -webkit-tap-highlight-color: transparent;
     box-shadow: var(--ha95-sunken, inset 1px 1px #808080, inset -1px -1px #fff);
   }
   .row { position: relative; height: calc(var(--h) + 4px); margin-bottom: 8px; }
@@ -192,7 +192,12 @@ class Ha95Solitaire extends HTMLElement {
       }
     };
     const table = this._root.querySelector(".table");
-    table.onclick = (e) => this._click(e);
+    // Klick und Ziehen laufen beide über Zeiger-Ereignisse: ein Klick, bei dem die
+    // Maus zwischen Drücken und Loslassen das Element wechselt, ginge sonst verloren
+    table.onpointerdown = (e) => this._pdown(e);
+    table.onpointermove = (e) => this._pmove(e);
+    table.onpointerup = (e) => this._pup(e);
+    table.onpointercancel = () => this._pend();
     table.oncontextmenu = (e) => e.preventDefault();
     this.popover = "manual";
     layer().appendChild(this);
@@ -266,6 +271,71 @@ class Ha95Solitaire extends HTMLElement {
   _canFound(card, pile) {
     const top = pile[pile.length - 1];
     return top ? top.s === card.s && top.r + 1 === card.r : card.r === 1;
+  }
+
+  _pdown(e) {
+    if (e.button > 0 || this._over) return;
+    this._pd = { x: e.clientX, y: e.clientY, target: e.target, ghosts: null };
+  }
+
+  _pmove(e) {
+    const pd = this._pd;
+    if (!pd) return;
+    if (!pd.ghosts) {
+      if (Math.hypot(e.clientX - pd.x, e.clientY - pd.y) < 6) return;
+      this._dragStart(pd, e);
+      if (!pd.ghosts) return;
+    }
+    const dx = e.clientX - pd.x;
+    const dy = e.clientY - pd.y;
+    pd.ghosts.forEach((g) => (g.style.transform = `translate(${dx}px, ${dy}px)`));
+  }
+
+  // Ziehen: Karten (mit allen darauf) als Kopie am Zeiger, Originale ausgeblendet
+  _dragStart(pd, e) {
+    const el = pd.target.closest?.("[data-zone]");
+    const zone = el?.dataset.zone;
+    if (!el || el.dataset.idx === undefined || !["waste", "t", "f"].includes(zone)) return;
+    const pile = Number(el.dataset.pile);
+    const idx = Number(el.dataset.idx);
+    if (!this._pile(zone, pile)[idx]?.up) return;
+    if (zone === "waste" && idx !== this._waste.length - 1) return;
+    pd.from = { zone, pile, idx };
+    const table = this._root.querySelector(".table");
+    const cards = [...table.querySelectorAll(`.card[data-zone="${zone}"][data-pile="${pile}"]`)].filter((c) => Number(c.dataset.idx) >= idx);
+    pd.ghosts = cards.map((c) => {
+      const r = c.getBoundingClientRect();
+      const g = c.cloneNode(true);
+      g.style.cssText = `position:fixed;left:${r.left}px;top:${r.top}px;width:${r.width}px;height:${r.height}px;z-index:50;pointer-events:none;`;
+      g.classList.remove("sel");
+      c.style.visibility = "hidden";
+      return g;
+    });
+    pd.ghosts.forEach((g) => table.appendChild(g));
+    try {
+      table.setPointerCapture(e.pointerId);
+    } catch {
+      // ohne Capture geht es auch, solange der Zeiger im Fenster bleibt
+    }
+  }
+
+  _pup(e) {
+    const pd = this._pd;
+    if (!pd) return;
+    if (!pd.ghosts) {
+      this._pend();
+      return this._click({ target: pd.target });
+    }
+    const hit = this._root.elementsFromPoint(e.clientX, e.clientY).find((n) => n.dataset?.zone === "t" || n.dataset?.zone === "f");
+    const from = pd.from;
+    this._pend();
+    this._sel = null;
+    if (!hit || !this._move(from, hit.dataset.zone, Number(hit.dataset.pile))) this._draw();
+  }
+
+  _pend() {
+    this._pd?.ghosts?.forEach((g) => g.remove());
+    this._pd = null;
   }
 
   _click(e) {

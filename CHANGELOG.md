@@ -4,6 +4,11 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.6.2] – 2026-10-24
+
+### Fixed
+- **Solitaire:** moves from the waste pile or between columns often did nothing, because a click whose mouse moved slightly between press and release was lost. Clicks now work reliably, and cards (with the cards on top of them) can also be dragged with the mouse or finger.
+
 ## [4.6.1] – 2026-10-24
 
 ### Fixed

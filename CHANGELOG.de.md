@@ -4,6 +4,11 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.6.2] – 2026-10-24
+
+### Behoben
+- **Solitaire:** Züge von der Ablage oder zwischen Spalten taten oft nichts, weil ein Klick verloren ging, wenn sich die Maus zwischen Drücken und Loslassen leicht bewegte. Klicks gelten jetzt zuverlässig, und Karten (samt den Karten darauf) lassen sich auch mit Maus oder Finger ziehen.
+
 ## [4.6.1] – 2026-10-24
 
 ### Behoben

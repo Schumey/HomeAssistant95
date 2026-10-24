@@ -11,6 +11,7 @@ Klondike im Win95-Fenster: grüner Tisch, sieben Spalten, vier Ablagen für die 
 | Karten ziehen / Stapel neu umdrehen | Stapel anklicken | Stapel antippen |
 | Karte aufnehmen (samt den Karten darauf) | Anklicken | Antippen |
 | Ablegen | Zielspalte oder Ablage anklicken | Ziel antippen |
+| Karten verschieben | Aufs Ziel ziehen | Mit dem Finger ziehen |
 | Karte auf die Ablage legen | Doppelklick | Doppeltippen |
 | Neues Spiel | „Neues Spiel“ oder `F2` | „Neues Spiel“ |
 | Zug zurücknehmen | „Rückgängig“ | „Rückgängig“ |

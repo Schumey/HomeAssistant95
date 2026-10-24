@@ -11,6 +11,7 @@ Switch on **Solitaire** in the integration (on by default), then open it from th
 | Draw cards / turn the stock over again | Click the stock | Tap the stock |
 | Pick up a card (with all cards on top of it) | Click it | Tap it |
 | Put it down | Click the target column or ace pile | Tap the target |
+| Move cards | Drag them onto the target | Drag with a finger |
 | Move a card to an ace pile | Double-click it | Double-tap it |
 | New game | "New game" or `F2` | "New game" |
 | Take back a move | "Undo" | "Undo" |
