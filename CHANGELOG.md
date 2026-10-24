@@ -4,6 +4,11 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.9.0] – 2026-10-24
+
+### Added
+- **Taskbar** (`ha95-taskbar.js`, new option, off by default): a Win95 taskbar at the bottom with the Start button (opens the sidebar), quick launch icons, buttons for the pages you visited and for the open detail dialog, and a tray with entity icons, the notification bell and the clock. Configured under `taskbar` in the Start menu file. See [Taskbar](docs/taskbar.md).
+
 ## [4.8.3] – 2026-10-24
 
 ### Fixed

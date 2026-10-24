@@ -13,6 +13,7 @@ CONF_SCREENSAVER = "screensaver"
 CONF_MINESWEEPER = "minesweeper"
 CONF_SOLITAIRE = "solitaire"
 CONF_DESKTOP = "desktop"
+CONF_TASKBAR = "taskbar"
 
 # Werte der Auswahl "Pixel-Icons" (siehe docs/pixel-icons.md)
 ICONS_OFF = "off"
@@ -37,6 +38,7 @@ MODULES = {
     CONF_MINESWEEPER: "ha95-minesweeper.js",
     CONF_SOLITAIRE: "ha95-solitaire.js",
     CONF_DESKTOP: "ha95-desktop.js",
+    CONF_TASKBAR: "ha95-taskbar.js",
 }
 
 DEFAULT_OPTIONS = {
@@ -49,4 +51,5 @@ DEFAULT_OPTIONS = {
     CONF_MINESWEEPER: True,
     CONF_SOLITAIRE: True,
     CONF_DESKTOP: True,
+    CONF_TASKBAR: False,
 }

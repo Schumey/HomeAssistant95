@@ -4,6 +4,11 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.9.0] – 2026-10-24
+
+### Hinzugefügt
+- **Taskleiste** (`ha95-taskbar.js`, neue Option, standardmäßig aus): eine Win95-Taskleiste am unteren Rand mit dem Start-Knopf (öffnet die Seitenleiste), Schnellstart-Symbolen, Knöpfen für die besuchten Seiten und den offenen Detail-Dialog und einem Infobereich mit Entitäts-Symbolen, der Benachrichtigungs-Glocke und der Uhr. Eingestellt unter `taskbar` in der Startmenü-Datei. Siehe [Taskleiste](docs/taskbar.de.md).
+
 ## [4.8.3] – 2026-10-24
 
 ### Behoben

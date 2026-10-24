@@ -26,6 +26,7 @@ from .const import (
     CONF_SCREENSAVER,
     CONF_SOLITAIRE,
     CONF_STARTMENU,
+    CONF_TASKBAR,
     CONF_THEMES,
     DEFAULT_OPTIONS,
     DOMAIN,
@@ -64,6 +65,7 @@ async def _schema(hass, current: dict[str, Any]) -> vol.Schema:
             vol.Required(CONF_MINESWEEPER, default=values[CONF_MINESWEEPER]): BooleanSelector(),
             vol.Required(CONF_SOLITAIRE, default=values[CONF_SOLITAIRE]): BooleanSelector(),
             vol.Required(CONF_DESKTOP, default=values[CONF_DESKTOP]): BooleanSelector(),
+            vol.Required(CONF_TASKBAR, default=values[CONF_TASKBAR]): BooleanSelector(),
         }
     )
 

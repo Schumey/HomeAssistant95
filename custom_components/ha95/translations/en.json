@@ -14,7 +14,8 @@
           "screensaver": "Screensaver (ha95-screensaver.js)",
           "minesweeper": "Minesweeper (ha95-minesweeper.js)",
           "solitaire": "Solitaire (ha95-solitaire.js)",
-          "desktop": "Desktop card (ha95-desktop.js)"
+          "desktop": "Desktop card (ha95-desktop.js)",
+          "taskbar": "Taskbar (ha95-taskbar.js)"
         }
       }
     },
@@ -37,7 +38,8 @@
           "screensaver": "Screensaver (ha95-screensaver.js)",
           "minesweeper": "Minesweeper (ha95-minesweeper.js)",
           "solitaire": "Solitaire (ha95-solitaire.js)",
-          "desktop": "Desktop card (ha95-desktop.js)"
+          "desktop": "Desktop card (ha95-desktop.js)",
+          "taskbar": "Taskbar (ha95-taskbar.js)"
         }
       }
     }

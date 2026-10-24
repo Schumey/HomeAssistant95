@@ -79,6 +79,7 @@ Jedes Extra funktioniert für sich. Einfach aussuchen:
 | **Minesweeper** | Das Minenspiel im Win95-Fenster, aus dem Startmenü geöffnet. | [Minesweeper](docs/minesweeper.de.md) |
 | **Solitaire** | Klondike im Win95-Fenster, aus dem Startmenü geöffnet. | [Solitaire](docs/solitaire.de.md) |
 | **Desktop-Karte** | Große Symbole mit Beschriftung auf dem Desktop-Hintergrund wie „Arbeitsplatz“: Doppelklick öffnet ein Dashboard, eine Entität oder eine Aktion. | [Desktop-Karte](docs/desktop.de.md) |
+| **Taskleiste** | Eine Win95-Taskleiste unten: Start-Knopf, Schnellstart, Knöpfe für besuchte Seiten und den offenen Dialog, Infobereich mit Entitäts-Symbolen, Benachrichtigungen und Uhr. Standardmäßig aus. | [Taskleiste](docs/taskbar.de.md) |
 | **Pixel-Icons** | 537 Icons in Win95-Pixeloptik (`ha95:`), auf Wunsch automatisch statt aller MDI-Icons. | [Pixel-Icons](docs/pixel-icons.de.md) |
 | **Feinschliff** | Windows-Scrollleisten, Registerkarten und Titelleisten auf Einstellungsseiten und Werkzeugen, Logbuch, Verlauf, Hardware-Seite als Task-Manager, Auswahllisten, Dimmer-Regler. Ein kleines optionales Modul für das, was das Design allein nicht erreicht. | [Feinschliff](docs/panels.de.md) |
 | **Pixel-Schrift & Mauszeiger** | Die Schrift „Pixelated MS Sans Serif“ und der klassische Pfeil. | [unten](#pixel-schrift--mauszeiger) |

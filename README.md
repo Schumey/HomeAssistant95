@@ -79,6 +79,7 @@ Each extra works on its own. Pick what you like:
 | **Minesweeper** | The mine game in a Win95 window, opened from the Start menu. | [Minesweeper](docs/minesweeper.md) |
 | **Solitaire** | Klondike in a Win95 window, opened from the Start menu. | [Solitaire](docs/solitaire.md) |
 | **Desktop card** | Big icons with labels on the desktop background, like "My Computer": double-click opens a dashboard, entity or action. | [Desktop card](docs/desktop.md) |
+| **Taskbar** | A Win95 taskbar at the bottom: Start button, quick launch, buttons for visited pages and the open dialog, tray with entity icons, notifications and clock. Off by default. | [Taskbar](docs/taskbar.md) |
 | **Pixel icons** | 537 icons in Win95 pixel style (`ha95:`), optionally replacing all MDI icons automatically. | [Pixel icons](docs/pixel-icons.md) |
 | **Fine-tuning** | Windows scroll bars, tab cards and title bars on the settings pages and tools, logbook, history, system hardware as Task Manager, dropdown lists, dimmer slider. A small optional module for what the theme cannot reach on its own. | [Fine-tuning](docs/panels.md) |
 | **Pixel font & pointer** | The "Pixelated MS Sans Serif" font and the classic arrow pointer. | [below](#pixel-font--mouse-pointer) |
