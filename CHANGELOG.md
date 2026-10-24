@@ -4,6 +4,12 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.8.2] – 2026-10-24
+
+### Fixed
+- **Desktop card:** icons are 48 px again, and the white icons fill their square (they were drawn at half size).
+- **Media card:** the black video area ran 6 px past the right edge of the card; it now has the same margin on the right as on the left.
+
 ## [4.8.1] – 2026-10-24
 
 ### Changed

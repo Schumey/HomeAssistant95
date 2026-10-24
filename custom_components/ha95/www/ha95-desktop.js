@@ -1,6 +1,6 @@
 /*
  * HA 95 – Desktop-Karte für Home Assistant
- * Version: 4.8.1
+ * Version: 4.8.2
  * Wird von der Integration HA 95 geladen (Option "Desktop-Karte").
  *
  * Große Symbole mit Beschriftung wie auf dem Windows-95-Desktop, direkt auf
@@ -32,12 +32,12 @@ const CSS = `
   }
   .icon {
     display: flex; flex-direction: column; align-items: center; gap: 4px;
-    width: 104px; padding: 4px 2px; margin: 0; border: 0; background: none;
+    width: 84px; padding: 4px 2px; margin: 0; border: 0; background: none;
     font: inherit; color: var(--ha95-desktop-text, #fff); cursor: default;
     text-align: center; -webkit-tap-highlight-color: transparent; user-select: none;
   }
-  .glyph { position: relative; display: flex; width: 64px; height: 64px; align-items: center; justify-content: center; }
-  .glyph svg, .glyph ha-icon { width: 64px; height: 64px; --mdi-icon-size: 56px; }
+  .glyph { position: relative; display: flex; width: 48px; height: 48px; align-items: center; justify-content: center; }
+  .glyph svg, .glyph ha-icon { width: 48px; height: 48px; --mdc-icon-size: 48px; }
   .glyph svg { image-rendering: pixelated; }
   .glyph ha-icon { color: #fff; filter: drop-shadow(1px 1px 0 #000); }
   .label { max-width: 100%; padding: 1px 2px; line-height: 1.15; overflow-wrap: anywhere; }
@@ -112,7 +112,7 @@ class Ha95DesktopCard extends HTMLElement {
     const root = this.shadowRoot;
     if (!root || !this._config) return;
     const cfg = this._config;
-    const grid = cfg.columns ? `grid-template-columns: repeat(${+cfg.columns}, 104px);` : "grid-template-columns: repeat(auto-fill, 104px);";
+    const grid = cfg.columns ? `grid-template-columns: repeat(${+cfg.columns}, 84px);` : "grid-template-columns: repeat(auto-fill, 84px);";
     root.innerHTML = `<style>${CSS}</style><div class="desktop" style="${grid}"></div>`;
     const desk = root.querySelector(".desktop");
     if (!cfg.icons.length) desk.innerHTML = `<div class="empty">–</div>`;

@@ -4,6 +4,12 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.8.2] – 2026-10-24
+
+### Behoben
+- **Desktop-Karte:** Symbole wieder 48 px groß, die weißen Symbole füllen ihr Feld (sie waren halb so groß gezeichnet).
+- **Medienkarte:** Die schwarze Videofläche ragte rechts 6 px über den Kartenrand hinaus; sie hat jetzt rechts denselben Rand wie links.
+
 ## [4.8.1] – 2026-10-24
 
 ### Geändert

@@ -1,5 +1,5 @@
 # HA 95 – Theme "HA 95 Kontrast"
-# Version: 4.8.1
+# Version: 4.8.2
 # Erzeugt von local/theme-generator/build.py, nicht von Hand ändern.
 
 HA 95 Kontrast:
@@ -575,6 +575,7 @@ HA 95 Kontrast:
     :host(.type-media-control) .background {
       inset: 6px 6px calc(var(--ha95-mpc-bar) + 6px) 6px !important;
       height: auto !important;
+      width: auto !important;
       box-shadow: var(--ha95-sunken);
       background: #000;
       overflow: hidden;
@@ -1046,6 +1047,7 @@ HA 95 Kontrast:
       :host(.type-media-control) .background {
         inset: 6px 6px calc(var(--ha95-mpc-bar) + 6px) 6px !important;
         height: auto !important;
+        width: auto !important;
         box-shadow: var(--ha95-sunken);
         background: #000;
         overflow: hidden;
