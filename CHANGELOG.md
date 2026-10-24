@@ -4,6 +4,11 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.6.1] – 2026-10-24
+
+### Fixed
+- Start menu: with a mouse, clicking an entry such as "Tools" closed the menu again that hovering had just opened, so the menu seemed not to work. A mouse click now only opens it; touch still toggles.
+
 ## [4.6.0] – 2026-10-24
 
 ### Added

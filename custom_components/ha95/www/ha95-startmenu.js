@@ -1,6 +1,6 @@
 /*
  * HA 95 – Startmenü mit Untermenüs für Home Assistant
- * Version: 4.6.0
+ * Version: 4.6.1
  * Laden:   Integration HA 95, Option "Startmenü"
  * Menüs:   /config/www/ha95-startmenu.json (Beispiel im Repo unter
  *          examples/startmenu/ha95-startmenu.json)
@@ -2930,7 +2930,9 @@ function attach(sb) {
   root.addEventListener("pointerup", (ev) => {
     if (ev.pointerType === "touch" && config?.clock && onTitle(ev)) openClock();
   });
-  // Klick/Tippen öffnet das Menü (für Touch), statt zu navigieren
+  // Klick/Tippen öffnet das Menü (für Touch), statt zu navigieren. Mit der
+  // Maus hat schon das Darüberfahren das Menü geöffnet, der Klick schließt
+  // es dann nicht wieder (nur Tippen schaltet um).
   root.addEventListener(
     "click",
     (ev) => {
@@ -2938,7 +2940,8 @@ function attach(sb) {
       if (!anchor) return;
       ev.preventDefault();
       ev.stopPropagation();
-      if (openMenus[0]?.anchor === anchor) closeAll();
+      if (ev.pointerType === "mouse") openRootMenu(anchor);
+      else if (openMenus[0]?.anchor === anchor) closeAll();
       else openRootMenu(anchor);
     },
     true

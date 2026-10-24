@@ -4,6 +4,11 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.6.1] – 2026-10-24
+
+### Behoben
+- Startmenü: Mit der Maus schloss der Klick auf einen Eintrag wie „Werkzeuge“ das Menü wieder, das das Darüberfahren gerade geöffnet hatte; das Menü wirkte dadurch kaputt. Ein Mausklick öffnet es jetzt nur noch, Tippen (Touch) schaltet weiter um.
+
 ## [4.6.0] – 2026-10-24
 
 ### Hinzugefügt
