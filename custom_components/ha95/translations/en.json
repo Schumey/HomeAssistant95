@@ -39,7 +39,8 @@
           "minesweeper": "Minesweeper (ha95-minesweeper.js)",
           "solitaire": "Solitaire (ha95-solitaire.js)",
           "desktop": "Desktop card (ha95-desktop.js)",
-          "taskbar": "Taskbar (ha95-taskbar.js)"
+          "taskbar": "Taskbar (ha95-taskbar.js)",
+          "update_startmenu": "Add new entries from the example menu to the Start menu file (once, with a backup)"
         }
       }
     }

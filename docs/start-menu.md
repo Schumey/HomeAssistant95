@@ -105,6 +105,7 @@ Each line is one entry. What it does depends on its key:
 | `{ "name": "…", "action": "minesweeper" }` | Opens [Minesweeper](minesweeper.md). Good with `"icon": "mdi:bomb"`. |
 | `{ "name": "…", "action": "solitaire" }` | Opens [Solitaire](solitaire.md). Good with `"icon": "mdi:cards-playing-outline"`. |
 | `{ "name": "…", "action": "screensaver" }` | Starts the [screensaver](screensaver.md) right away. |
+| `{ "name": "…", "action": "check-updates" }` | Checks for updates everywhere: every update entity (Core, apps, system, HACS, devices) asks again, and the Supervisor reloads its sources. A message at the bottom says how many updates are available. Handy in the Tools menu, with `"icon": "mdi:update"`. |
 | `{ "name": "…", "action": "bsod" }` | Shows the blue screen (see `bsod` above), a click closes it. |
 | `{ "name": "…", "url": "https://…" }` | Opens an address in a new tab. |
 | `{ "name": "…", "items": [ … ] }` | Opens another submenu. Submenus can be nested as deep as you like. |
@@ -151,6 +152,10 @@ Reload the page (Ctrl+F5). Hover over "Rooms" (or tap it on a phone) and the men
 | `file_editor_base` | `/homeassistant` | Folder that `file` entries are relative to. |
 
 Instead of the JSON file you can also set `window.ha95StartmenuConfig = { menus: { … } }` from another module that loads first.
+
+### Adding new entries after an update
+
+The integration never overwrites your `ha95-startmenu.json`. When a new version brings menu entries (for example "Check for updates"), switch on **Add new entries from the example menu to the Start menu file** under Settings → Devices & services → HA 95 → Configure and save. The integration then inserts every entry of the example menu that is missing in your file (matched by `path`, `file`, `url` or `action`, not by name) right after a neighbouring entry you already have. Everything else stays as it is, the old file is saved next to it as `ha95-startmenu.json.bak-…`, and a notification lists what was added. Entries you removed on purpose come back the next time, and the file is rewritten in plain JSON formatting.
 
 ### Troubleshooting
 

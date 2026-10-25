@@ -4,6 +4,16 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.10.0] – 2026-10-25
+
+### Hinzugefügt
+- **Startmenü: „Nach Updates suchen“** (`{ "action": "check-updates" }`): sucht überall gleichzeitig nach Updates. Jede Update-Entität (Core, Apps, System, HACS, Geräte) fragt neu nach, der Supervisor lädt seine Quellen neu, und eine Meldung sagt, wie viele Updates verfügbar sind. Das Beispielmenü hat den Eintrag unter Werkzeuge. Siehe [Startmenü](docs/start-menu.de.md).
+
+- **Startmenü aktualisieren:** Die Optionen der Integration (Einstellungen → Geräte & Dienste → HA 95 → Konfigurieren) haben einen neuen Schalter, der Einträge, die in deiner `ha95-startmenu.json` fehlen (aus dem Beispielmenü, etwa „Nach Updates suchen“), neben einem Nachbareintrag einfügt, den du schon hast. Sonst ändert sich nichts, vorher entsteht eine Sicherung. Siehe [Startmenü](docs/start-menu.de.md#neue-einträge-nach-einem-update).
+
+### Behoben
+- **Seitenleiste:** Der Menü-Knopf oben links war 48 px groß und ragte aus der 36 px hohen Kopfzeile; er ist jetzt 28 px groß.
+
 ## [4.9.1] – 2026-10-25
 
 ### Behoben

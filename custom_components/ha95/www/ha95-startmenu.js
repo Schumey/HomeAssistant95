@@ -1,6 +1,6 @@
 /*
  * HA 95 – Startmenü mit Untermenüs für Home Assistant
- * Version: 4.9.1
+ * Version: 4.10.0
  * Laden:   Integration HA 95, Option "Startmenü"
  * Menüs:   /config/www/ha95-startmenu.json (Beispiel im Repo unter
  *          examples/startmenu/ha95-startmenu.json)
@@ -22,6 +22,7 @@
  *   { "name": "…", "action": "restart" }                    Home Assistant neu starten (mit Rückfrage),
  *                                                           danach "Es ist jetzt sicher, …" bis HA wieder da ist
  *   { "name": "…", "action": "run" }                        Schnellsuche als Dialog "Ausführen" öffnen
+ *   { "name": "…", "action": "check-updates" }              Sucht überall nach Updates (Core, Apps, System, HACS …)
  *   { "name": "…", "action": "bsod" }                       Bluescreen ansehen (Klick schließt)
  *   { "name": "…", "action": "clock" }                      "Eigenschaften von Datum/Uhrzeit" öffnen
  *   { "name": "…", "action": "minesweeper" }                Minesweeper öffnen (ha95-minesweeper.js)
@@ -2678,12 +2679,52 @@ async function openModule(file, run) {
   }
 }
 
+// "Nach Updates suchen": jede Update-Entität (Core, Apps, System, HACS,
+// Geräte) fragt neu nach, dazu lädt der Supervisor seine Quellen neu.
+const UPDATE_TEXT = {
+  de: {
+    start: "Suche nach Updates …",
+    none: "Suche beendet: alles ist aktuell.",
+    some: (n, names) => `Suche beendet: ${n} ${n === 1 ? "Update" : "Updates"} verfügbar (${names}).`,
+  },
+  en: {
+    start: "Checking for updates …",
+    none: "Check finished: everything is up to date.",
+    some: (n, names) => `Check finished: ${n} ${n === 1 ? "update" : "updates"} available (${names}).`,
+  },
+};
+
+function notify(message, duration = 6000) {
+  haRoot()?.dispatchEvent(new CustomEvent("hass-notification", { bubbles: true, composed: true, detail: { message, duration } }));
+}
+
+async function checkUpdates() {
+  const h = hass();
+  if (!h) return;
+  const t = UPDATE_TEXT[(h.language || "en").slice(0, 2)] || UPDATE_TEXT.en;
+  const ids = Object.keys(h.states).filter((id) => id.startsWith("update."));
+  notify(t.start, 3000);
+  const jobs = [];
+  if (ids.length) jobs.push(h.callService("homeassistant", "update_entity", { entity_id: ids }));
+  // Nur mit Supervisor (HAOS, Supervised) vorhanden; ohne schlägt es leise fehl
+  for (const endpoint of ["/refresh_updates", "/store/reload"]) {
+    jobs.push(h.callWS({ type: "supervisor/api", endpoint, method: "post", timeout: null }).catch(() => {}));
+  }
+  await Promise.allSettled(jobs);
+  await new Promise((resolve) => setTimeout(resolve, 3000)); // die Entitäten brauchen einen Moment
+  const states = hass()?.states || {};
+  const open = ids.concat(Object.keys(states).filter((id) => id.startsWith("update.") && !ids.includes(id))).filter((id) => states[id]?.state === "on");
+  const name = (id) => (states[id].attributes.title || states[id].attributes.friendly_name || id).replace(/\s+update$/i, "");
+  notify(open.length ? t.some(open.length, open.slice(0, 4).map(name).join(", ") + (open.length > 4 ? " …" : "")) : t.none, 10000);
+}
+
 function runItem(item) {
   closeAll();
   playSound("click");
   if (item.action === "restart") return confirmRestart();
   if (item.action === "run") return openRun();
   if (item.action === "bsod") return showBsod(null);
+  if (item.action === "check-updates") return checkUpdates();
   if (item.action === "clock") return openClock();
   if (item.action === "minesweeper") return openModule("ha95-minesweeper.js", (m) => m.showMinesweeper());
   if (item.action === "solitaire") return openModule("ha95-solitaire.js", (m) => m.showSolitaire());

@@ -14,6 +14,7 @@ CONF_MINESWEEPER = "minesweeper"
 CONF_SOLITAIRE = "solitaire"
 CONF_DESKTOP = "desktop"
 CONF_TASKBAR = "taskbar"
+CONF_UPDATE_STARTMENU = "update_startmenu"  # nur im Optionen-Dialog, wird nicht gespeichert
 
 # Werte der Auswahl "Pixel-Icons" (siehe docs/pixel-icons.md)
 ICONS_OFF = "off"

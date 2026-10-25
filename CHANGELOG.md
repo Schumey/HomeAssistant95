@@ -4,6 +4,16 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.10.0] – 2026-10-25
+
+### Added
+- **Start menu: "Check for updates"** (`{ "action": "check-updates" }`): checks for updates everywhere at once. Every update entity (Core, apps, system, HACS, devices) asks again, the Supervisor reloads its sources, and a message tells how many updates are available. The example menu has it under Tools. See [Start menu](docs/start-menu.md).
+
+- **Start menu update:** the integration's options (Settings → Devices & services → HA 95 → Configure) have a new switch that adds entries missing from your `ha95-startmenu.json` (taken from the example menu, like "Check for updates") next to a neighbouring entry you already have. Nothing else changes, a backup is saved first. See [Start menu](docs/start-menu.md#adding-new-entries-after-an-update).
+
+### Fixed
+- **Sidebar:** the menu button at the top left was 48 px and stuck out of the 36 px header; it is now 28 px.
+
 ## [4.9.1] – 2026-10-25
 
 ### Fixed

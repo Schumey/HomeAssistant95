@@ -105,6 +105,7 @@ Jede Zeile ist ein Eintrag. Was er tut, hängt vom Schlüssel ab:
 | `{ "name": "…", "action": "minesweeper" }` | Öffnet [Minesweeper](minesweeper.de.md). Passt gut zu `"icon": "mdi:bomb"`. |
 | `{ "name": "…", "action": "solitaire" }` | Öffnet [Solitaire](solitaire.de.md). Passt gut zu `"icon": "mdi:cards-playing-outline"`. |
 | `{ "name": "…", "action": "screensaver" }` | Startet den [Bildschirmschoner](screensaver.de.md) sofort. |
+| `{ "name": "…", "action": "check-updates" }` | Sucht überall nach Updates: Jede Update-Entität (Core, Apps, System, HACS, Geräte) fragt neu nach, und der Supervisor lädt seine Quellen neu. Eine Meldung unten sagt, wie viele Updates verfügbar sind. Praktisch im Werkzeuge-Menü, mit `"icon": "mdi:update"`. |
 | `{ "name": "…", "action": "bsod" }` | Zeigt den Bluescreen (siehe `bsod` oben), ein Klick schließt ihn. |
 | `{ "name": "…", "url": "https://…" }` | Öffnet eine Adresse in einem neuen Tab. |
 | `{ "name": "…", "items": [ … ] }` | Öffnet ein weiteres Untermenü. Untermenüs lassen sich beliebig tief verschachteln. |
@@ -151,6 +152,10 @@ Seite neu laden (Strg+F5). Mit der Maus auf „Räume“ zeigen (oder auf dem Ha
 | `file_editor_base` | `/homeassistant` | Ordner, auf den sich `file`-Einträge beziehen. |
 
 Statt der JSON-Datei geht auch `window.ha95StartmenuConfig = { menus: { … } }` aus einem anderen Modul, das vorher lädt.
+
+### Neue Einträge nach einem Update
+
+Die Integration überschreibt deine `ha95-startmenu.json` nie. Bringt eine neue Version Menüeinträge mit (zum Beispiel „Nach Updates suchen“), schalte unter Einstellungen → Geräte & Dienste → HA 95 → Konfigurieren **Neue Einträge des Beispielmenüs in die Startmenü-Datei einfügen** ein und speichere. Die Integration fügt dann jeden Eintrag des Beispielmenüs ein, der in deiner Datei fehlt (erkannt an `path`, `file`, `url` oder `action`, nicht am Namen), direkt hinter einen Nachbareintrag, den du schon hast. Alles andere bleibt, wie es ist, die alte Datei liegt als `ha95-startmenu.json.bak-…` daneben, und eine Benachrichtigung listet, was dazukam. Einträge, die du absichtlich entfernt hast, kommen beim nächsten Mal wieder, und die Datei wird in schlichter JSON-Formatierung neu geschrieben.
 
 ### Wenn etwas nicht klappt
 

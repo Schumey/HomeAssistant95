@@ -1,5 +1,5 @@
 # HA 95 – Theme "HA 95 Dark"
-# Version: 4.9.1
+# Version: 4.10.0
 # Erzeugt von local/theme-generator/build.py, nicht von Hand ändern.
 
 HA 95 Dark:
@@ -3902,6 +3902,12 @@ HA 95 Dark:
     }
     .title {
       font-weight: bold;
+    }
+    /* Menü-Knopf oben links: 48 px ragten über die 36 px hohe Kopfzeile hinaus */
+    .menu ha-icon-button {
+      --ha-icon-button-size: 28px;
+      --mdc-icon-size: 18px;
+      margin-left: 4px;
     }
     /* Pixel-Schrift auch in den Einträgen (HA setzt dort fest Roboto) */
     .item-text,

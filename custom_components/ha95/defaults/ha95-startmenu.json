@@ -129,6 +129,11 @@
         "path": "/config/logs"
       },
       {
+        "name": "Check for updates",
+        "icon": "mdi:update",
+        "action": "check-updates"
+      },
+      {
         "divider": true
       },
       {
