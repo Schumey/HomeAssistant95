@@ -4,6 +4,11 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.10.1] – 2026-10-25
+
+### Fixed
+- **Taskbar:** panels shown in an iframe (e.g. add-on panels) were only about 150 px tall while the taskbar was on; the page now has a fixed height, so they fill the window again.
+
 ## [4.10.0] – 2026-10-25
 
 ### Added

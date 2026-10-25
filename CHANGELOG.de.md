@@ -4,6 +4,11 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.10.1] – 2026-10-25
+
+### Behoben
+- **Taskleiste:** Panels in einem iframe (z. B. Add-on-Panels) waren bei aktivierter Taskleiste nur etwa 150 px hoch; die Seite hat jetzt eine feste Höhe, sodass sie das Fenster wieder ausfüllen.
+
 ## [4.10.0] – 2026-10-25
 
 ### Hinzugefügt

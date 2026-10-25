@@ -1,6 +1,6 @@
 /*
  * HA 95 – Pixel-Icons für Home Assistant
- * Version: 4.10.0
+ * Version: 4.10.1
  * Laden:   Integration HA 95, Option "Pixel-Icons" (Einstellungen →
  *          Geräte & Dienste → HA 95 → Konfigurieren)
  * Nutzen:  icon: ha95:lightbulb-on

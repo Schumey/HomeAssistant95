@@ -1,6 +1,6 @@
 /*
  * HA 95 – Bildschirmschoner für Home Assistant
- * Version: 4.10.0
+ * Version: 4.10.1
  * Wird von der Integration HA 95 geladen (Option "Bildschirmschoner").
  *
  * Startet nach einer Zeit ohne Eingabe, jede Eingabe (Maus, Tippen, Taste)
