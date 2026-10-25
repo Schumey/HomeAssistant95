@@ -4,6 +4,11 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.9.1] – 2026-10-25
+
+### Behoben
+- **Taskleiste:** Die Untermenüs des Startmenüs (Werkzeuge, File Editor …) überdecken die Taskleiste nicht mehr, sie enden darüber.
+
 ## [4.9.0] – 2026-10-24
 
 ### Hinzugefügt

@@ -1,6 +1,6 @@
 /*
  * HA 95 – Startmenü mit Untermenüs für Home Assistant
- * Version: 4.9.0
+ * Version: 4.9.1
  * Laden:   Integration HA 95, Option "Startmenü"
  * Menüs:   /config/www/ha95-startmenu.json (Beispiel im Repo unter
  *          examples/startmenu/ha95-startmenu.json)
@@ -2782,7 +2782,9 @@ function showMenu(items, anchorRect, level, anchorEl) {
     }
   }
   left = Math.max(0, Math.min(left, innerWidth - w));
-  top = Math.max(0, Math.min(top, innerHeight - h));
+  // Über der Taskleiste (ha95-taskbar.js) enden, nicht darüber hinaus
+  const taskbar = document.querySelector("ha95-taskbar")?.offsetHeight || 0;
+  top = Math.max(0, Math.min(top, innerHeight - taskbar - h));
   menu.style.left = `${Math.round(left)}px`;
   menu.style.top = `${Math.round(top)}px`;
   openMenus.push({ el: menu, anchor: anchorEl });

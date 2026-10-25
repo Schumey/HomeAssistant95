@@ -4,6 +4,11 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.9.1] – 2026-10-25
+
+### Fixed
+- **Taskbar:** Start menu flyouts (Tools, File Editor …) no longer cover the taskbar; they end above it.
+
 ## [4.9.0] – 2026-10-24
 
 ### Added
