@@ -1,5 +1,5 @@
 # HA 95 – Theme "HA 3.11 Ozean"
-# Version: 4.10.1
+# Version: 4.10.2
 # Erzeugt von local/theme-generator/build.py, nicht von Hand ändern.
 
 HA 3.11 Ozean:
@@ -1650,7 +1650,7 @@ HA 3.11 Ozean:
         --md-list-item-top-space: 0px !important;
         --md-list-item-bottom-space: 0px !important;
         --md-list-item-leading-space: calc(50% + 4px) !important;
-        --md-list-item-trailing-space: 20px !important;
+        --md-list-item-trailing-space: 30px !important;
       }
       ha-combo-box-item::before {
         content: attr(data-aria-label);
@@ -2231,16 +2231,27 @@ HA 3.11 Ozean:
       --ha-button-box-shadow: none;
       color: var(--ha95-text) !important;
     }
+    ::slotted(ha-menu-button) {
+      --ha-icon-button-size: 22px;
+      --mdc-icon-size: 16px;
+      --ha-button-box-shadow: none;
+      color: var(--ha95-text) !important;
+    }
     ::slotted(ha-icon-button),
+    ::slotted(ha-menu-button),
     ::slotted(ha-dropdown) {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      box-sizing: border-box;
       width: 24px !important;
       height: 22px !important;
+      min-width: 0 !important;
+      padding: 0 !important;
     }
     ha-menu-button,
     ::slotted(ha-icon-button),
+    ::slotted(ha-menu-button),
     ::slotted(ha-dropdown) {
       background: var(--ha95-face);
       box-shadow: var(--ha95-raised);
@@ -2340,16 +2351,27 @@ HA 3.11 Ozean:
         --ha-button-box-shadow: none;
         color: var(--ha95-text) !important;
       }
+      ::slotted(ha-menu-button) {
+        --ha-icon-button-size: 22px;
+        --mdc-icon-size: 16px;
+        --ha-button-box-shadow: none;
+        color: var(--ha95-text) !important;
+      }
       ::slotted(ha-icon-button),
+      ::slotted(ha-menu-button),
       ::slotted(ha-dropdown) {
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        box-sizing: border-box;
         width: 24px !important;
         height: 22px !important;
+        min-width: 0 !important;
+        padding: 0 !important;
       }
       ha-menu-button,
       ::slotted(ha-icon-button),
+      ::slotted(ha-menu-button),
       ::slotted(ha-dropdown) {
         background: var(--ha95-face);
         box-shadow: var(--ha95-raised);

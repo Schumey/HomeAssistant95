@@ -4,6 +4,15 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.10.2] – 2026-10-25
+
+### Behoben
+- **Taskleiste:** Bei geöffneter schmaler Seitenleiste war die Taskleiste überdeckt und nicht klickbar (HACS und die anderen Einträge reagierten nicht). Die Seitenleiste endet jetzt über der Taskleiste, und Klicks auf die Leiste kommen trotzdem an.
+- **Taskleiste:** Der Start-Knopf tat in schmalen Fenstern nichts; er öffnet jetzt auch dort die Seitenleiste.
+- **Taskleiste:** Schaltflächen, die über der Seite schweben (z. B. „Automation erstellen“), liegen jetzt über der Taskleiste statt dahinter.
+- **Menü-Knopf:** Auf Seiten wie dem Profil war der Menü-Knopf größer als die Knöpfe der Titelleiste; er ist jetzt gleich groß (24×22).
+- **Auswahlfeld** (z. B. Profil → Design): Der Pfeil-Knopf überdeckt das „x“ zum Leeren nicht mehr.
+
 ## [4.10.1] – 2026-10-25
 
 ### Behoben

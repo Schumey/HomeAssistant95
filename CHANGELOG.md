@@ -4,6 +4,15 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.10.2] – 2026-10-25
+
+### Fixed
+- **Taskbar:** while the narrow sidebar was open, the taskbar was covered and could not be clicked (HACS and the other entries did nothing). The sidebar now ends above the taskbar, and clicks on the bar still reach it.
+- **Taskbar:** the Start button did nothing in narrow windows; it now opens the sidebar there too.
+- **Taskbar:** buttons that float over the page (e.g. "Create automation") sit above the taskbar instead of behind it.
+- **Menu button:** on pages such as Profile the menu button was larger than the title bar buttons; it is now the same size (24×22).
+- **Select field** (e.g. Profile → Theme): the arrow button no longer covers the clear "x".
+
 ## [4.10.1] – 2026-10-25
 
 ### Fixed

@@ -1,6 +1,6 @@
 /*
  * HA 95 – Taskleiste für Home Assistant
- * Version: 4.10.1
+ * Version: 4.10.2
  * Wird von der Integration HA 95 geladen (Option "Taskleiste", standardmäßig aus).
  *
  * Eine Win95-Taskleiste am unteren Rand: "Start" (klappt die Seitenleiste
@@ -191,7 +191,9 @@ class Ha95Taskbar extends HTMLElement {
   }
 
   toggleStart() {
-    haRoot()?.dispatchEvent(new CustomEvent("hass-toggle-menu", { bubbles: true, composed: true }));
+    // home-assistant-main lauscht auf das Ereignis; auf dem Wurzelelement käme es dort nicht an
+    const target = haRoot()?.shadowRoot?.querySelector("home-assistant-main") || haRoot();
+    target?.dispatchEvent(new CustomEvent("hass-toggle-menu", { bubbles: true, composed: true }));
   }
 
   openNotifications() {
@@ -355,8 +357,9 @@ function reserveSpace() {
   if (!document.getElementById("ha95-taskbar-space")) {
     const style = document.createElement("style");
     style.id = "ha95-taskbar-space";
-    // Feste Höhe nötig: bei auto-Höhe + Padding lösen sich height:100%-Ketten auf (iframe-Panels fielen auf 150 px)
-    style.textContent = `home-assistant { display: block; box-sizing: border-box; height: 100vh; height: 100dvh; padding-bottom: ${HEIGHT}px; }`;
+    // Feste Höhe nötig (height:100%-Ketten, iframe-Panels). contain: layout macht home-assistant zum
+    // Bezugsrahmen für position: fixed, damit auch Schaltflächen (z. B. "Automation erstellen") über der Leiste bleiben
+    style.textContent = `home-assistant { display: block; box-sizing: border-box; height: calc(100vh - ${HEIGHT}px); height: calc(100dvh - ${HEIGHT}px); contain: layout; }`;
     document.head.appendChild(style);
   }
   const main = haRoot()?.shadowRoot?.querySelector("home-assistant-main")?.shadowRoot;
@@ -365,9 +368,37 @@ function reserveSpace() {
     style.id = "ha95-taskbar-space";
     style.textContent = `ha-sidebar { height: calc(100vh - ${HEIGHT}px) !important; max-height: calc(100dvh - ${HEIGHT}px) !important; }`;
     main.appendChild(style);
+  }
+  // Schmale Seitenleiste (modaler Dialog über der ganzen Seite): über der Leiste enden
+  const wa = main?.querySelector("ha-drawer")?.shadowRoot?.querySelector("wa-drawer")?.shadowRoot;
+  if (wa && !wa.getElementById("ha95-taskbar-space")) {
+    const style = document.createElement("style");
+    style.id = "ha95-taskbar-space";
+    style.textContent = `dialog { bottom: ${HEIGHT}px !important; height: calc(100% - ${HEIGHT}px) !important; max-height: none !important; }
+      dialog::backdrop { clip-path: inset(0 0 ${HEIGHT}px 0); }`;
+    wa.appendChild(style);
     return true;
   }
-  return false;
+  return !!wa;
+}
+
+// Solange ein modaler Dialog (schmale Seitenleiste) offen ist, ist die Leiste "inert" und bekommt keine
+// Klicks. Klicks in ihrem Bereich werden darum hier abgefangen und an den Knopf darunter weitergegeben.
+function forwardClicks(bar) {
+  window.addEventListener(
+    "click",
+    (e) => {
+      if (e.clientY < innerHeight - HEIGHT || e.composedPath().includes(bar)) return;
+      const btn = [...bar.shadowRoot.querySelectorAll("button")].find((b) => {
+        const r = b.getBoundingClientRect();
+        return e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+      });
+      if (!btn) return;
+      e.stopPropagation();
+      btn.click();
+    },
+    true
+  );
 }
 
 async function loadConfig() {
@@ -389,6 +420,7 @@ async function start() {
   document.body.appendChild(bar);
   bar.render();
   bar.watch();
+  forwardClicks(bar);
   // Die Seitenleiste entsteht später als das Modul
   for (let i = 0; i < 40 && !reserveSpace(); i++) await new Promise((r) => setTimeout(r, 500));
 }
