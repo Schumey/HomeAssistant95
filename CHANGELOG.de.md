@@ -4,6 +4,11 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.10.4] – 2026-10-26
+
+### Behoben
+- **Dialoge:** Der untere Rand des Fensterrahmens wird nicht mehr von einer Fußzeile mit eigenem Hintergrund verdeckt (z. B. im Update-Dialog von Apps). Der Rahmen wird jetzt als Überlagerung gezeichnet.
+
 ## [4.10.3] – 2026-10-26
 
 ### Behoben

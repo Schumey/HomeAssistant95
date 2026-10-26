@@ -1,5 +1,5 @@
 # HA 95 – Theme "HA 95 Auto"
-# Version: 4.10.3
+# Version: 4.10.4
 # Erzeugt von local/theme-generator/build.py, nicht von Hand ändern.
 
 HA 95 Auto:
@@ -3323,6 +3323,21 @@ HA 95 Auto:
       }
   uix-dialog-yaml: |
     .: |
+      /* Rahmen als Überlagerung statt als inset-Schatten: eine Fußzeile mit
+         eigenem Hintergrund (z. B. Update-Dialog) überdeckte sonst den
+         unteren Rand */
+      wa-dialog::part(dialog) {
+        position: relative;
+        box-shadow: none !important;
+      }
+      wa-dialog::part(dialog)::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 10;
+        pointer-events: none;
+        box-shadow: var(--dialog-box-shadow, var(--ha95-frame));
+      }
       /* Symbole in Dialog-Listen (z. B. Neustart): eckige statt runde Scheiben,
          Zeilentexte in Pixel-Schrift */
       .icon-background {

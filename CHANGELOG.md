@@ -4,6 +4,11 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.10.4] – 2026-10-26
+
+### Fixed
+- **Dialogs:** the bottom edge of the window frame is no longer hidden by a footer with its own background (e.g. the add-on update dialog). The frame is now drawn as an overlay.
+
 ## [4.10.3] – 2026-10-26
 
 ### Fixed
