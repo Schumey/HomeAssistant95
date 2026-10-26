@@ -4,6 +4,14 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.10.3] – 2026-10-26
+
+### Behoben
+- **Taskleiste:** Am Handy (Companion-App) ließ sich die Seite bei eingeschalteter Taskleiste nicht mehr scrollen. Die feste Seitenhöhe gilt jetzt nur noch in breiten Fenstern und bei iframe-/Add-on-Panels; sonst bekommt die Seite nur Platz unten.
+- **Menü-Knopf:** In Dashboards ist er nicht mehr auf Titelleistenhöhe gestreckt, sondern so hoch wie die Knöpfe rechts (22 px).
+- **Add-on-Seiten** (z. B. MyDietAssistant): Die Kopfleiste hat jetzt den Titelleisten-Look und einen Menü-Knopf mit 24×22 statt des großen, ungestylten (UIX-Typ `app`).
+- **Auswahlfeld** (z. B. Profil → Design): Das Löschen-„×“ liegt nicht mehr unter dem Pfeil-Knopf.
+
 ## [4.10.2] – 2026-10-25
 
 ### Behoben

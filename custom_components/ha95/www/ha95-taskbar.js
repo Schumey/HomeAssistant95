@@ -1,6 +1,6 @@
 /*
  * HA 95 – Taskleiste für Home Assistant
- * Version: 4.10.2
+ * Version: 4.10.3
  * Wird von der Integration HA 95 geladen (Option "Taskleiste", standardmäßig aus).
  *
  * Eine Win95-Taskleiste am unteren Rand: "Start" (klappt die Seitenleiste
@@ -357,9 +357,12 @@ function reserveSpace() {
   if (!document.getElementById("ha95-taskbar-space")) {
     const style = document.createElement("style");
     style.id = "ha95-taskbar-space";
-    // Feste Höhe nötig (height:100%-Ketten, iframe-Panels). contain: layout macht home-assistant zum
-    // Bezugsrahmen für position: fixed, damit auch Schaltflächen (z. B. "Automation erstellen") über der Leiste bleiben
-    style.textContent = `home-assistant { display: block; box-sizing: border-box; height: calc(100vh - ${HEIGHT}px); height: calc(100dvh - ${HEIGHT}px); contain: layout; }`;
+    // Feste Höhe nötig bei breitem Fenster und bei iframe-Panels (height:100%-Ketten). contain: layout macht
+    // home-assistant zum Bezugsrahmen für position: fixed, damit auch Schaltflächen (z. B. "Automation erstellen")
+    // über der Leiste bleiben. Auf dem Handy scrollt sonst die Seite selbst: dort nur Luft unten, sonst
+    // endet das Dokument bei der festen Höhe und lässt sich nicht mehr scrollen.
+    style.textContent = `home-assistant { display: block; box-sizing: border-box; padding-bottom: ${HEIGHT}px; }
+      html.ha95-fixed-height home-assistant { padding-bottom: 0; height: calc(100vh - ${HEIGHT}px); height: calc(100dvh - ${HEIGHT}px); contain: layout; }`;
     document.head.appendChild(style);
   }
   const main = haRoot()?.shadowRoot?.querySelector("home-assistant-main")?.shadowRoot;
@@ -380,6 +383,13 @@ function reserveSpace() {
     return true;
   }
   return !!wa;
+}
+
+// Feste Höhe nur, wenn die Seite nicht selbst scrollt: breites Fenster (HA-Grenze 870 px) oder iframe-Panel
+function syncLayout() {
+  const panel = hass()?.panels?.[hass()?.panelUrl]?.component_name;
+  const fixed = innerWidth > 870 || ["iframe", "custom", "app"].includes(panel);
+  document.documentElement.classList.toggle("ha95-fixed-height", fixed);
 }
 
 // Solange ein modaler Dialog (schmale Seitenleiste) offen ist, ist die Leiste "inert" und bekommt keine
@@ -421,6 +431,8 @@ async function start() {
   bar.render();
   bar.watch();
   forwardClicks(bar);
+  syncLayout();
+  setInterval(syncLayout, 500);
   // Die Seitenleiste entsteht später als das Modul
   for (let i = 0; i < 40 && !reserveSpace(); i++) await new Promise((r) => setTimeout(r, 500));
 }

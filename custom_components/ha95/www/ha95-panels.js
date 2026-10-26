@@ -1,6 +1,6 @@
 /*
  * HA 95 – Feinschliff für Stellen, die das Theme nicht erreicht
- * Version: 4.10.2
+ * Version: 4.10.3
  * Wird von der Integration HA 95 geladen (Option "Feinschliff").
  * Optional: Ohne das Modul bleibt das Design an wenigen Stellen unfertig
  * (Logbuch: Hinweisfeld, Kontrollkästchen, runde Symbole, Pfeilknöpfe beim
@@ -494,6 +494,7 @@ const BAUTEIL_CSS = {
       display: block;
       width: 16px;
       height: 16px;
+      margin: 0 !important; /* HA setzt -8px, dadurch lag das × unter dem Pfeil */
       --ha-icon-button-size: 16px;
       --mdc-icon-size: 12px;
       --ha-button-box-shadow: none;

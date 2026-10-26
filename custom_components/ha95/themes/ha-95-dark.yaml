@@ -1,5 +1,5 @@
 # HA 95 – Theme "HA 95 Dark"
-# Version: 4.10.2
+# Version: 4.10.3
 # Erzeugt von local/theme-generator/build.py, nicht von Hand ändern.
 
 HA 95 Dark:
@@ -1908,6 +1908,12 @@ HA 95 Dark:
       background: var(--ha95-face);
       box-shadow: var(--ha95-raised);
     }
+    /* Menüknopf nicht auf Kopfleistenhöhe strecken, sondern gleich hoch wie die Knöpfe rechts */
+    ha-menu-button {
+      align-self: center;
+      height: 22px;
+      margin-inline-end: 2px;
+    }
     .action-items ha-icon-button:active,
     ha-menu-button:active {
       box-shadow: var(--ha95-sunken);
@@ -2019,6 +2025,12 @@ HA 95 Dark:
         background: var(--ha95-face);
         box-shadow: var(--ha95-raised);
       }
+      /* Menüknopf nicht auf Kopfleistenhöhe strecken, sondern gleich hoch wie die Knöpfe rechts */
+      ha-menu-button {
+        align-self: center;
+        height: 22px;
+        margin-inline-end: 2px;
+      }
       .action-items ha-icon-button:active,
       ha-menu-button:active {
         box-shadow: var(--ha95-sunken);
@@ -2088,6 +2100,50 @@ HA 95 Dark:
       }
       ha-button::part(base) {
         border-radius: 0 !important;
+      }
+  uix-app-yaml: |
+    .: |
+      .header {
+        align-items: center;
+        background: var(--ha95-title-bar) !important;
+        color: var(--ha95-title-text) !important;
+        box-shadow: inset 0 -2px var(--ha95-face), inset 0 -3px var(--ha95-shadow) !important;
+      }
+      .main-title {
+        font-weight: bold !important;
+        font-size: 15px !important;
+      }
+      ha-icon-button {
+        --ha-icon-button-size: 22px;
+        --mdc-icon-size: 16px;
+        --ha-button-box-shadow: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        width: 24px;
+        height: 22px;
+        margin-inline: 6px 2px;
+        background: var(--ha95-face);
+        box-shadow: var(--ha95-raised);
+        color: var(--ha95-text) !important;
+      }
+      ha-icon-button:active {
+        box-shadow: var(--ha95-sunken);
+      }
+    "ha-icon-button $": |
+      /* kein runder Hover-Kreis, eckige Fläche in Knopfgröße */
+      ha-button::after {
+        display: none !important;
+      }
+      ha-button,
+      ha-button::part(base) {
+        width: 24px !important;
+        height: 22px !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
       }
   uix-drawer-yaml: |
     .: |

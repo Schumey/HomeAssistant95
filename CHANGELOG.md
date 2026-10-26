@@ -4,6 +4,14 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.10.3] – 2026-10-26
+
+### Fixed
+- **Taskbar:** on the phone (Companion app) the page could no longer be scrolled while the taskbar was on. The fixed page height now only applies in wide windows and for iframe/add-on panels; elsewhere the page just gets room at the bottom.
+- **Menu button:** on dashboards it is no longer stretched to the height of the title bar but as tall as the buttons on the right (22 px).
+- **Add-on pages** (e.g. MyDietAssistant): the header bar now has the title bar look and a 24×22 menu button instead of the large unstyled one (UIX type `app`).
+- **Select field** (e.g. Profile → Theme): the clear "x" no longer sits under the arrow button.
+
 ## [4.10.2] – 2026-10-25
 
 ### Fixed
