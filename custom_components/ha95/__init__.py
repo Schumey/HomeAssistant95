@@ -1,8 +1,8 @@
-"""HA 95 – Windows-95-Design für Home Assistant.
+"""HomeAssistant95 – Windows-95-Design für Home Assistant.
 
 Kopiert die gewählten Themes nach /config/themes/ha95/, stellt die Module
 unter /ha95/ bereit und trägt sie als Frontend-Skripte ein. Ändern lässt sich
-das unter Geräte & Dienste → HA 95 → Konfigurieren.
+das unter Geräte & Dienste → HomeAssistant95 → Konfigurieren.
 """
 from __future__ import annotations
 
@@ -86,6 +86,10 @@ def _module_urls(options: dict, version: str) -> list[str]:
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     version = (await async_get_integration(hass, DOMAIN)).version
     store = hass.data.setdefault(DOMAIN, {})
+
+    # bis 4.10 hieß die Integration "HA 95"; den alten Eintragstitel nachziehen
+    if entry.title == "HA 95":
+        hass.config_entries.async_update_entry(entry, title="HomeAssistant95")
 
     if not store.get("static"):
         await hass.http.async_register_static_paths(

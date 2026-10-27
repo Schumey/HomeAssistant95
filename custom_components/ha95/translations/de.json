@@ -2,7 +2,7 @@
   "config": {
     "step": {
       "user": {
-        "title": "HA 95",
+        "title": "HomeAssistant95",
         "description": "Welche Designs installiert werden und welche Module laufen. Nach dem Speichern die Seite neu laden (Strg+F5).",
         "data": {
           "themes": "Designs",
@@ -26,7 +26,7 @@
   "options": {
     "step": {
       "init": {
-        "title": "HA 95",
+        "title": "HomeAssistant95",
         "description": "Welche Designs installiert werden und welche Module laufen. Nach dem Speichern die Seite neu laden (Strg+F5).",
         "data": {
           "themes": "Designs",

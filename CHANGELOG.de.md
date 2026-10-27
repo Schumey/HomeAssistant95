@@ -4,6 +4,15 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.11.0] – 2026-10-27
+
+### Geändert
+- **Name der Integration:** Die Integration heißt jetzt **HomeAssistant95** (wie das Repository und der HACS-Eintrag) statt „HA 95“: unter Einstellungen → Geräte & Dienste, im Einrichtungsdialog und in Benachrichtigungen. Ein vorhandener Eintrag wird beim nächsten Start automatisch umbenannt. Die Namen der Designs (`HA 95`, `HA 98`, …) bleiben gleich.
+
+### Behoben
+- **Menü-Knopf:** In schmalen Fenstern zeigte der Knopf oben links in Dashboards nur eine leere graue Fläche, das Icon darin war 12 px nach unten gerutscht. Jetzt sitzt es mittig im Knopf.
+- Startmenü-Modul: Das Beispiel im Dateikopf nutzt jetzt die Menü-ID `tools`, wie das Beispielmenü.
+
 ## [4.10.4] – 2026-10-26
 
 ### Behoben

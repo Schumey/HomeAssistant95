@@ -15,7 +15,7 @@ Es gibt zwei Wege, beide aus `ha95-clock.js`:
 
 ## Dashboard-Karte
 
-1. In der Integration **Uhr-Karte** einschalten (**Einstellungen → Geräte & Dienste → HA 95 → Konfigurieren**, standardmäßig an). Eine Dashboard-Ressource ist nicht nötig.
+1. In der Integration **Uhr-Karte** einschalten (**Einstellungen → Geräte & Dienste → HomeAssistant95 → Konfigurieren**, standardmäßig an). Eine Dashboard-Ressource ist nicht nötig.
 2. Karte anlegen:
    ```yaml
    type: custom:ha95-clock-card

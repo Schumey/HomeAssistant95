@@ -15,7 +15,7 @@ There are two ways to use it, both from `ha95-clock.js`:
 
 ## Dashboard card
 
-1. Switch on **Clock card** in the integration (**Settings → Devices & services → HA 95 → Configure**, on by default). No dashboard resource is needed.
+1. Switch on **Clock card** in the integration (**Settings → Devices & services → HomeAssistant95 → Configure**, on by default). No dashboard resource is needed.
 2. Add a card:
    ```yaml
    type: custom:ha95-clock-card

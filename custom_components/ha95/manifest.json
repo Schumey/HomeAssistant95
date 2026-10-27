@@ -1,6 +1,6 @@
 {
   "domain": "ha95",
-  "name": "HA 95",
+  "name": "HomeAssistant95",
   "codeowners": ["@Schumey"],
   "config_flow": true,
   "dependencies": ["frontend", "http"],
@@ -9,5 +9,5 @@
   "iot_class": "calculated",
   "issue_tracker": "https://github.com/Schumey/HomeAssistant95/issues",
   "requirements": [],
-  "version": "4.10.4"
+  "version": "4.11.0"
 }

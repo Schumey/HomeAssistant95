@@ -4,7 +4,7 @@
 
 A Windows 95 theme for [Home Assistant](https://www.home-assistant.io/): teal desktop, gray 3D windows, navy title bars, square corners and a pixel font.
 
-![HA 95 in six of its themes](https://raw.githubusercontent.com/Schumey/HomeAssistant95/main/docs/img/demo.gif)
+![HomeAssistant95 in six of its themes](https://raw.githubusercontent.com/Schumey/HomeAssistant95/main/docs/img/demo.gif)
 
 ## Included themes
 
@@ -27,7 +27,7 @@ More about dark mode, the Windows 3.1 look and your own colors: [Color schemes](
 
 ## Installation
 
-HA 95 is an integration: it installs the themes you pick and loads the extras for you. Nothing to copy by hand, nothing to add to `configuration.yaml` except the line for themes (if you don't have it yet).
+HomeAssistant95 is an integration: it installs the themes you pick and loads the extras for you. Nothing to copy by hand, nothing to add to `configuration.yaml` except the line for themes (if you don't have it yet).
 
 [![Open your Home Assistant instance and open this repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Schumey&repository=HomeAssistant95&category=integration)
 
@@ -38,12 +38,12 @@ HA 95 is an integration: it installs the themes you pick and loads the extras fo
    frontend:
      themes: !include_dir_merge_named themes
    ```
-4. **Settings → Devices & services → Add integration → HA 95**. Pick the themes you want and the extras to switch on.
+4. **Settings → Devices & services → Add integration → HomeAssistant95**. Pick the themes you want and the extras to switch on.
 5. Reload the browser with **Ctrl+F5**, then pick a variant under **Profile → Theme**.
 
 ### Change themes and extras later
 
-**Settings → Devices & services → HA 95 → Configure.** Themes you untick are removed from `/config/themes/ha95/`; the themes are reloaded right away. Reload the browser afterwards (**Ctrl+F5**).
+**Settings → Devices & services → HomeAssistant95 → Configure.** Themes you untick are removed from `/config/themes/ha95/`; the themes are reloaded right away. Reload the browser afterwards (**Ctrl+F5**).
 
 ### Updating
 

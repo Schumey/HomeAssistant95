@@ -4,7 +4,7 @@
 
 Ein Bildschirmschoner für Wandtablets: Nach einiger Zeit ohne Eingabe wird der Schirm schwarz und zeigt einen von drei Klassikern. Jede Berührung, jeder Klick und jede Taste beendet ihn. Er schützt auch vor dem Einbrennen.
 
-In der Integration **Bildschirmschoner** einschalten (**HA 95 → Konfigurieren**, standardmäßig aus).
+In der Integration **Bildschirmschoner** einschalten (**HomeAssistant95 → Konfigurieren**, standardmäßig aus).
 
 | Motiv | Sieht aus wie |
 |---|---|

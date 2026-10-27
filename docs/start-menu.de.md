@@ -22,7 +22,7 @@ Alle Farben kommen aus den `ha95-*`-Variablen, die Seitenleiste wechselt also mi
 
 ## 2. Startmenü-Modul
 
-1. In der Integration **Startmenü** einschalten (**Einstellungen → Geräte & Dienste → HA 95 → Konfigurieren**, standardmäßig an).
+1. In der Integration **Startmenü** einschalten (**Einstellungen → Geräte & Dienste → HomeAssistant95 → Konfigurieren**, standardmäßig an).
 2. Die Integration kopiert das Beispielmenü nach `/config/www/ha95-startmenu.json`, falls es die Datei noch nicht gibt (eine vorhandene wird nie überschrieben). Gab es `/config/www/` vorher nicht, einmal Home Assistant neu starten, damit `/local/` geht. Das Beispiel liegt auch unter [`examples/startmenu/ha95-startmenu.json`](../examples/startmenu/ha95-startmenu.json).
 3. Die Seite neu laden (**Strg+F5**).
 
@@ -155,7 +155,7 @@ Statt der JSON-Datei geht auch `window.ha95StartmenuConfig = { menus: { … } }`
 
 ### Neue Einträge nach einem Update
 
-Die Integration überschreibt deine `ha95-startmenu.json` nie. Bringt eine neue Version Menüeinträge mit (zum Beispiel „Nach Updates suchen“), schalte unter Einstellungen → Geräte & Dienste → HA 95 → Konfigurieren **Neue Einträge des Beispielmenüs in die Startmenü-Datei einfügen** ein und speichere. Die Integration fügt dann jeden Eintrag des Beispielmenüs ein, der in deiner Datei fehlt (erkannt an `path`, `file`, `url` oder `action`, nicht am Namen), direkt hinter einen Nachbareintrag, den du schon hast. Alles andere bleibt, wie es ist, die alte Datei liegt als `ha95-startmenu.json.bak-…` daneben, und eine Benachrichtigung listet, was dazukam. Einträge, die du absichtlich entfernt hast, kommen beim nächsten Mal wieder, und die Datei wird in schlichter JSON-Formatierung neu geschrieben.
+Die Integration überschreibt deine `ha95-startmenu.json` nie. Bringt eine neue Version Menüeinträge mit (zum Beispiel „Nach Updates suchen“), schalte unter Einstellungen → Geräte & Dienste → HomeAssistant95 → Konfigurieren **Neue Einträge des Beispielmenüs in die Startmenü-Datei einfügen** ein und speichere. Die Integration fügt dann jeden Eintrag des Beispielmenüs ein, der in deiner Datei fehlt (erkannt an `path`, `file`, `url` oder `action`, nicht am Namen), direkt hinter einen Nachbareintrag, den du schon hast. Alles andere bleibt, wie es ist, die alte Datei liegt als `ha95-startmenu.json.bak-…` daneben, und eine Benachrichtigung listet, was dazukam. Einträge, die du absichtlich entfernt hast, kommen beim nächsten Mal wieder, und die Datei wird in schlichter JSON-Formatierung neu geschrieben.
 
 ### Wenn etwas nicht klappt
 

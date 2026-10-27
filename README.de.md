@@ -4,7 +4,7 @@
 
 Ein Windows-95-Theme für [Home Assistant](https://www.home-assistant.io/): Teal-Desktop, graue 3D-Fenster, Navy-Titelleisten, eckige Kanten und Pixel-Schrift.
 
-![HA 95 in sechs seiner Designs](https://raw.githubusercontent.com/Schumey/HomeAssistant95/main/docs/img/demo.gif)
+![HomeAssistant95 in sechs seiner Designs](https://raw.githubusercontent.com/Schumey/HomeAssistant95/main/docs/img/demo.gif)
 
 ## Enthaltene Designs
 
@@ -27,7 +27,7 @@ Mehr zu Dunkelmodus, Windows-3.1-Look und eigenen Farben: [Farbschemata](docs/co
 
 ## Installation
 
-HA 95 ist eine Integration: Sie installiert die Designs, die du auswählst, und lädt die Extras selbst. Nichts von Hand kopieren, in der `configuration.yaml` nur die Zeile für Designs (falls noch nicht vorhanden).
+HomeAssistant95 ist eine Integration: Sie installiert die Designs, die du auswählst, und lädt die Extras selbst. Nichts von Hand kopieren, in der `configuration.yaml` nur die Zeile für Designs (falls noch nicht vorhanden).
 
 [![Öffne deine Home-Assistant-Instanz und dieses Repository im Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Schumey&repository=HomeAssistant95&category=integration)
 
@@ -38,12 +38,12 @@ HA 95 ist eine Integration: Sie installiert die Designs, die du auswählst, und 
    frontend:
      themes: !include_dir_merge_named themes
    ```
-4. **Einstellungen → Geräte & Dienste → Integration hinzufügen → HA 95**. Die gewünschten Designs und die Extras auswählen.
+4. **Einstellungen → Geräte & Dienste → Integration hinzufügen → HomeAssistant95**. Die gewünschten Designs und die Extras auswählen.
 5. Den Browser mit **Strg+F5** neu laden, dann unter **Profil → Design** eine Variante auswählen.
 
 ### Designs und Extras später ändern
 
-**Einstellungen → Geräte & Dienste → HA 95 → Konfigurieren.** Abgewählte Designs werden aus `/config/themes/ha95/` entfernt, die Designs werden sofort neu geladen. Danach den Browser neu laden (**Strg+F5**).
+**Einstellungen → Geräte & Dienste → HomeAssistant95 → Konfigurieren.** Abgewählte Designs werden aus `/config/themes/ha95/` entfernt, die Designs werden sofort neu geladen. Danach den Browser neu laden (**Strg+F5**).
 
 ### Aktualisieren
 

@@ -14,7 +14,7 @@ Optional. Without it the theme still works, but a few places stay unfinished. Th
 
 ## Installation
 
-On by default. Switch it under **Settings → Devices & services → HA 95 → Configure** (**Finishing touches**). Reload the page afterwards (**Ctrl+F5**).
+On by default. Switch it under **Settings → Devices & services → HomeAssistant95 → Configure** (**Finishing touches**). Reload the page afterwards (**Ctrl+F5**).
 
 ## How it works
 

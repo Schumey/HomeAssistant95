@@ -6,7 +6,7 @@
 
 ## Einrichtung
 
-Unter **Einstellungen → Geräte & Dienste → HA 95 → Konfigurieren** die Auswahl **Pixel-Icons** setzen. Die Integration lädt die Datei selbst, danach die Seite neu laden (**Strg+F5**).
+Unter **Einstellungen → Geräte & Dienste → HomeAssistant95 → Konfigurieren** die Auswahl **Pixel-Icons** setzen. Die Integration lädt die Datei selbst, danach die Seite neu laden (**Strg+F5**).
 
 Überall, wo man ein Icon wählen kann, z. B. `icon: ha95:thermostat` eintragen. Die Icon-Auswahl zeigt sie an, wenn man `ha95` tippt.
 

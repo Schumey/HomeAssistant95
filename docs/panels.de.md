@@ -14,7 +14,7 @@ Optional. Ohne das Modul funktioniert das Design weiter, an einigen Stellen blei
 
 ## Installation
 
-Ist standardmäßig an. Ein- und ausschalten unter **Einstellungen → Geräte & Dienste → HA 95 → Konfigurieren** (**Feinschliff**). Danach die Seite neu laden (**Strg+F5**).
+Ist standardmäßig an. Ein- und ausschalten unter **Einstellungen → Geräte & Dienste → HomeAssistant95 → Konfigurieren** (**Feinschliff**). Danach die Seite neu laden (**Strg+F5**).
 
 ## So funktioniert es
 

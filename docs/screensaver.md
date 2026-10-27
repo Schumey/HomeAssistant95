@@ -4,7 +4,7 @@
 
 A screensaver for wall tablets: after some time without input the screen turns black and shows one of three classics. Any touch, click or key press ends it. It also keeps the display from burning in.
 
-Switch on **Screensaver** in the integration (**HA 95 → Configure**, off by default).
+Switch on **Screensaver** in the integration (**HomeAssistant95 → Configure**, off by default).
 
 | Motif | Looks like |
 |---|---|

@@ -6,7 +6,7 @@
 
 ## Setup
 
-Set **Pixel icons** in the integration: **Settings → Devices & services → HA 95 → Configure**. The integration loads the file by itself; reload the page afterwards (**Ctrl+F5**).
+Set **Pixel icons** in the integration: **Settings → Devices & services → HomeAssistant95 → Configure**. The integration loads the file by itself; reload the page afterwards (**Ctrl+F5**).
 
 Use the icons anywhere you can pick an icon, for example `icon: ha95:thermostat`. The icon picker lists them when you type `ha95`.
 

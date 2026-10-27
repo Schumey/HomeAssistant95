@@ -1,5 +1,5 @@
 # HA 95 – Theme "HA 3.11 Hot Dog Stand"
-# Version: 4.10.4
+# Version: 4.11.0
 # Erzeugt von local/theme-generator/build.py, nicht von Hand ändern.
 
 HA 3.11 Hot Dog Stand:
@@ -1913,6 +1913,11 @@ HA 3.11 Hot Dog Stand:
       align-self: center;
       height: 22px;
       margin-inline-end: 2px;
+      /* als Block mit line-height 32px rutscht der innere Knopf auf die
+         Grundlinie, 12 px nach unten; sichtbar blieb nur die graue Fläche */
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
     }
     .action-items ha-icon-button:active,
     ha-menu-button:active {
@@ -2030,6 +2035,11 @@ HA 3.11 Hot Dog Stand:
         align-self: center;
         height: 22px;
         margin-inline-end: 2px;
+        /* als Block mit line-height 32px rutscht der innere Knopf auf die
+           Grundlinie, 12 px nach unten; sichtbar blieb nur die graue Fläche */
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
       }
       .action-items ha-icon-button:active,
       ha-menu-button:active {

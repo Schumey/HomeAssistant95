@@ -2,7 +2,7 @@
   "config": {
     "step": {
       "user": {
-        "title": "HA 95",
+        "title": "HomeAssistant95",
         "description": "Which themes get installed and which modules run. Reload the page (Ctrl+F5) after saving.",
         "data": {
           "themes": "Themes",
@@ -26,7 +26,7 @@
   "options": {
     "step": {
       "init": {
-        "title": "HA 95",
+        "title": "HomeAssistant95",
         "description": "Which themes get installed and which modules run. Reload the page (Ctrl+F5) after saving.",
         "data": {
           "themes": "Themes",

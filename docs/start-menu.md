@@ -22,7 +22,7 @@ All colors come from the `ha95-*` variables, so the sidebar follows the selected
 
 ## 2. Start menu module
 
-1. Switch on **Start menu** in the integration (**Settings → Devices & services → HA 95 → Configure**, on by default).
+1. Switch on **Start menu** in the integration (**Settings → Devices & services → HomeAssistant95 → Configure**, on by default).
 2. The integration copies the example menu to `/config/www/ha95-startmenu.json` if that file does not exist yet (it never overwrites yours). If `/config/www/` did not exist before, restart Home Assistant once so `/local/` works. The example is also in [`examples/startmenu/ha95-startmenu.json`](../examples/startmenu/ha95-startmenu.json).
 3. Reload the page (**Ctrl+F5**).
 
@@ -155,7 +155,7 @@ Instead of the JSON file you can also set `window.ha95StartmenuConfig = { menus:
 
 ### Adding new entries after an update
 
-The integration never overwrites your `ha95-startmenu.json`. When a new version brings menu entries (for example "Check for updates"), switch on **Add new entries from the example menu to the Start menu file** under Settings → Devices & services → HA 95 → Configure and save. The integration then inserts every entry of the example menu that is missing in your file (matched by `path`, `file`, `url` or `action`, not by name) right after a neighbouring entry you already have. Everything else stays as it is, the old file is saved next to it as `ha95-startmenu.json.bak-…`, and a notification lists what was added. Entries you removed on purpose come back the next time, and the file is rewritten in plain JSON formatting.
+The integration never overwrites your `ha95-startmenu.json`. When a new version brings menu entries (for example "Check for updates"), switch on **Add new entries from the example menu to the Start menu file** under Settings → Devices & services → HomeAssistant95 → Configure and save. The integration then inserts every entry of the example menu that is missing in your file (matched by `path`, `file`, `url` or `action`, not by name) right after a neighbouring entry you already have. Everything else stays as it is, the old file is saved next to it as `ha95-startmenu.json.bak-…`, and a notification lists what was added. Entries you removed on purpose come back the next time, and the file is rewritten in plain JSON formatting.
 
 ### Troubleshooting
 
