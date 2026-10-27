@@ -1,6 +1,6 @@
 /*
  * HA 95 – Taskleiste für Home Assistant
- * Version: 4.11.0
+ * Version: 4.11.1
  * Wird von der Integration HA 95 geladen (Option "Taskleiste", standardmäßig aus).
  *
  * Eine Win95-Taskleiste am unteren Rand: "Start" (klappt die Seitenleiste
@@ -361,7 +361,10 @@ function reserveSpace() {
     // home-assistant zum Bezugsrahmen für position: fixed, damit auch Schaltflächen (z. B. "Automation erstellen")
     // über der Leiste bleiben. Auf dem Handy scrollt sonst die Seite selbst: dort nur Luft unten, sonst
     // endet das Dokument bei der festen Höhe und lässt sich nicht mehr scrollen.
+    // --ha95-taskbar-height: für Seiten mit position: fixed über das ganze Fenster (schmale Einstellungsseiten
+    // mit Reitern, ha95-panels.js); bei fester Höhe endet home-assistant schon über der Leiste.
     style.textContent = `home-assistant { display: block; box-sizing: border-box; padding-bottom: ${HEIGHT}px; }
+      html:not(.ha95-fixed-height) { --ha95-taskbar-height: ${HEIGHT}px; }
       html.ha95-fixed-height home-assistant { padding-bottom: 0; height: calc(100vh - ${HEIGHT}px); height: calc(100dvh - ${HEIGHT}px); contain: layout; }`;
     document.head.appendChild(style);
   }

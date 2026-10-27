@@ -4,6 +4,14 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.11.1] – 2026-10-27
+
+### Fixed
+- **Settings pages with tabs in narrow windows** (Devices & services, Automations, Entities, …): the tab bar no longer covers the back arrow, search and menu, and it ends above the taskbar instead of behind it. The tabs at the bottom are now an even row of buttons like the taskbar, the active one pressed in.
+- **Search field** in settings lists: 28 px instead of 40 px tall; in the narrow title row it no longer sticks out at the bottom and keeps its sunken border.
+- **Devices & services:** the filter and ⋮ buttons next to the search are small raised buttons (24×22) like the other title bar buttons.
+- **Simple settings subpages** (System, Updates, Logs, …): blue title bar like the dashboards instead of a gray header; the icons on the System page are square 3D tiles like on the Settings page.
+
 ## [4.11.0] – 2026-10-27
 
 ### Changed

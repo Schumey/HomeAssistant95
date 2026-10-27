@@ -4,6 +4,14 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.11.1] – 2026-10-27
+
+### Behoben
+- **Einstellungsseiten mit Reitern in schmalen Fenstern** (Geräte & Dienste, Automationen, Entitäten, …): Die Reiterleiste verdeckt nicht mehr Zurück-Pfeil, Suche und Menü und endet über der Taskleiste statt dahinter. Die Reiter unten sind jetzt eine gleichmäßige Knopfleiste wie die Taskleiste, der aktive eingedrückt.
+- **Suchfeld** in Einstellungslisten: 28 statt 40 px hoch; in der schmalen Kopfzeile ragt es unten nicht mehr heraus und behält seinen eingelassenen Rand.
+- **Geräte & Dienste:** Filter- und ⋮-Knopf neben der Suche sind kleine erhabene Knöpfe (24×22) wie die anderen Kopfleistenknöpfe.
+- **Einfache Einstellungs-Unterseiten** (System, Updates, Protokolle, …): blaue Titelleiste wie in den Dashboards statt grauer Kopfzeile; die Icons der Seite System sind eckige 3D-Kacheln wie auf der Einstellungsseite.
+
 ## [4.11.0] – 2026-10-27
 
 ### Geändert

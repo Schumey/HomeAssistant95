@@ -1,6 +1,6 @@
 /*
  * HA 95 – Desktop-Karte für Home Assistant
- * Version: 4.11.0
+ * Version: 4.11.1
  * Wird von der Integration HA 95 geladen (Option "Desktop-Karte").
  *
  * Große Symbole mit Beschriftung wie auf dem Windows-95-Desktop, direkt auf

@@ -1,5 +1,5 @@
 # HA 95 – Theme "HA 3.11 Ozean"
-# Version: 4.11.0
+# Version: 4.11.1
 # Erzeugt von local/theme-generator/build.py, nicht von Hand ändern.
 
 HA 3.11 Ozean:
@@ -2603,6 +2603,23 @@ HA 3.11 Ozean:
         color: var(--ha95-text) !important;
       }
     "ha-config-dashboard $$ ha-config-navigation-list $": |
+      /* Einstellungs-Icons als eckige 3D-Kacheln (Systemsteuerung) */
+      .icon-background {
+        border-radius: 0 !important;
+        width: 32px !important;
+        height: 32px !important;
+        margin-inline: 4px;
+        box-shadow:
+          inset -1px -1px rgba(0, 0, 0, 0.6),
+          inset 1px 1px rgba(255, 255, 255, 0.6),
+          inset -2px -2px rgba(0, 0, 0, 0.25),
+          inset 2px 2px rgba(255, 255, 255, 0.25),
+          1px 1px 0 var(--ha95-dark);
+      }
+      .icon-background ha-svg-icon {
+        --mdc-icon-size: 20px;
+      }
+    "ha-config-system-navigation $$ ha-config-navigation-list $": |
       /* Einstellungs-Icons als eckige 3D-Kacheln (Systemsteuerung) */
       .icon-background {
         border-radius: 0 !important;

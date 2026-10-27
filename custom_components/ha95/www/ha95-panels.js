@@ -1,6 +1,6 @@
 /*
  * HA 95 – Feinschliff für Stellen, die das Theme nicht erreicht
- * Version: 4.11.0
+ * Version: 4.11.1
  * Wird von der Integration HA 95 geladen (Option "Feinschliff").
  * Optional: Ohne das Modul bleibt das Design an wenigen Stellen unfertig
  * (Logbuch: Hinweisfeld, Kontrollkästchen, runde Symbole, Pfeilknöpfe beim
@@ -212,6 +212,20 @@ const SCROLL_CSS = `
   }
 `;
 
+// Kleiner Kopfleistenknopf (24×22, erhaben) für ha-icon-button von außen
+const KOPFKNOPF = `
+      --ha-icon-button-size: 22px;
+      --mdc-icon-size: 16px;
+      --ha-button-box-shadow: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px !important;
+      height: 22px !important;
+      color: var(--ha95-text);
+      background: var(--ha95-face);
+      box-shadow: var(--ha95-raised);`;
+
 // Regeln für einzelne Bauteile, nach Tag des Bauteils (stehen in dessen eigenem
 // Shadow-Root, also auch dort, wo kein UIX-Pfad hinkommt, z. B. Fehlerseiten)
 const BAUTEIL_CSS = {
@@ -246,6 +260,47 @@ const BAUTEIL_CSS = {
   "ha-data-table": `
     .group-header ha-icon-button {
       margin-inline-end: 6px;
+    }
+  `,
+  // Einfache Unterseiten ohne Reiter (System, Updates, Protokolle, …): blaue
+  // Titelleiste wie die Kopfleiste der Dashboards (kopfleiste.css)
+  "hass-subpage": `
+    .toolbar {
+      background: var(--ha95-title-bar) !important;
+      box-shadow: inset 0 -2px var(--ha95-face), inset 0 -3px var(--ha95-shadow) !important;
+      padding-inline: 4px 6px !important;
+    }
+    .toolbar-content {
+      border-bottom: none !important;
+    }
+    .main-title {
+      color: var(--ha95-title-text) !important;
+      font-weight: bold !important;
+      font-size: 15px !important;
+      margin-inline-start: 6px !important;
+    }
+  `,
+  // Geräte & Dienste: Filter und ⋮ rechts neben der Suche wie die anderen
+  // Kopfleistenknöpfe (24×22, erhaben); sie liegen eine Ebene tiefer als
+  // ha-icon-button[slot=toolbar-icon] und bekamen dessen Regel nicht
+  "ha-config-integrations-dashboard": `
+    div[slot="toolbar-icon"],
+    .menu-badge-container {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+    .menu-badge-container ha-icon-button {
+      ${KOPFKNOPF}
+    }
+  `,
+  "ha-integration-overflow-menu": `
+    :host {
+      display: flex;
+      align-items: center;
+    }
+    ha-icon-button {
+      ${KOPFKNOPF}
     }
   `,
   // Reiterzeile der Einstellungsseiten (Automationen, Szenen, …): Register-
@@ -309,6 +364,35 @@ const BAUTEIL_CSS = {
       height: 16px;
       background: var(--ha95-title-buttons) no-repeat;
     }
+    /* Schmal: Die Reiter stehen unten (absolute, bottom: 0). Mit .toolbar als
+       Bezugsrahmen lagen sie über Zurück-Pfeil und Suche; die Titelleiste
+       richtet sich dann am Host aus (fixed, oben). Der Host endet über der
+       Taskleiste, ha95-taskbar.js setzt deren Höhe. */
+    :host([narrow]) .toolbar {
+      position: static;
+    }
+    /* Oben bleiben nur Zurück, Suche und Knöpfe: senkrecht mittig */
+    :host([narrow]) .toolbar-content {
+      align-items: center !important;
+    }
+    :host([narrow]) {
+      height: calc(100% - var(--ha95-taskbar-height, 0px)) !important;
+    }
+    /* Reiter unten als gleich breite Knopfleiste wie die Taskleiste */
+    #tabbar.bottom-bar {
+      height: 32px !important;
+      padding: 3px 4px !important;
+      gap: 4px;
+      align-items: stretch;
+      border-top: none !important;
+      background: var(--ha95-face) !important;
+      box-shadow: inset 0 1px var(--ha95-light), inset 0 2px var(--ha95-highlight);
+    }
+    #tabbar.bottom-bar > a {
+      flex: 1 1 0;
+      width: auto;
+      align-items: stretch;
+    }
   `,
   "ha-tab": `
     :host {
@@ -341,6 +425,29 @@ const BAUTEIL_CSS = {
     }
     div:focus-visible::before {
       display: none;
+    }
+    /* Schmal (Reiter unten, nur Icon): Knöpfe wie in der Taskleiste, der
+       aktive eingedrückt und gerastert */
+    :host([narrow]) {
+      width: 100%;
+      align-items: stretch;
+    }
+    :host([narrow][active]) {
+      margin-inline: 0;
+    }
+    :host([narrow]) div,
+    :host([narrow][active]) div {
+      width: 100%;
+      height: auto;
+      margin: 0;
+      padding: 0 !important;
+      justify-content: center;
+      clip-path: none;
+      box-shadow: var(--ha95-raised);
+    }
+    :host([narrow][active]) div {
+      box-shadow: var(--ha95-sunken);
+      background: conic-gradient(var(--ha95-window) 25%, var(--ha95-face) 0 50%, var(--ha95-window) 0 75%, var(--ha95-face) 0) 0 0 / 2px 2px;
     }
   `,
   // Reiterzeile unter der Titelleiste (Werkzeuge): nur für Gruppen im Unterzeilen-
@@ -703,6 +810,15 @@ const BAUTEIL_CSS = {
     }
     wa-input::part(base)::after {
       display: none !important;
+    }
+    /* 28 statt 40 px: In der schmalen Kopfzeile (35 px) ragte das Feld sonst
+       unten heraus und verlor seinen unteren Rand */
+    wa-input::part(base) {
+      height: 28px !important;
+      min-height: 0 !important;
+    }
+    wa-input::part(input) {
+      height: 100% !important;
     }
     wa-input,
     wa-input::part(base),
