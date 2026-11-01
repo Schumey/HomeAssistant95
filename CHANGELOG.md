@@ -4,6 +4,11 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.11.2] – 2026-11-01
+
+### Added
+- **Start menu icon for tHAsk:** the sidebar entry of tHAsk (icon `thask:logo`) gets a colorful Win95 pixel icon: three bars for day, week and month in yellow, white and light blue, with a green check mark. Start menu entries can use it as `thask`.
+
 ## [4.11.1] – 2026-10-27
 
 ### Fixed

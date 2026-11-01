@@ -4,6 +4,11 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.11.2] – 2026-11-01
+
+### Hinzugefügt
+- **Startmenü-Icon für tHAsk:** Der Seitenleisten-Eintrag von tHAsk (Icon `thask:logo`) bekommt ein buntes Win95-Pixel-Icon: drei Balken für Tag, Woche und Monat in Gelb, Weiß und Hellblau mit grünem Haken. Startmenü-Einträge können es als `thask` nutzen.
+
 ## [4.11.1] – 2026-10-27
 
 ### Behoben
