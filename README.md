@@ -29,9 +29,9 @@ More about dark mode, the Windows 3.1 look and your own colors: [Color schemes](
 
 HomeAssistant95 is an integration: it installs the themes you pick and loads the extras for you. Nothing to copy by hand, nothing to add to `configuration.yaml` except the line for themes (if you don't have it yet).
 
-[![Open your Home Assistant instance and open this repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Schumey&repository=HomeAssistant95&category=integration)
+[![Open your Home Assistant instance and open this repository in the Marketplace (or HACS).](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Schumey&repository=HomeAssistant95&category=integration)
 
-1. HACS → ⋮ → **Custom repositories** → URL of this repo, type **Integration** (or click the button above).
+1. **Settings → Marketplace → Add from link** → GitHub link `https://github.com/Schumey/HomeAssistant95`, type **Integration** (or click the button above). Before Home Assistant 2026.11, HACS does this: HACS → ⋮ → **Custom repositories**.
 2. Install "HomeAssistant95" and restart Home Assistant.
 3. Add this to `configuration.yaml` if it isn't there yet, then restart once more:
    ```yaml
@@ -47,13 +47,13 @@ HomeAssistant95 is an integration: it installs the themes you pick and loads the
 
 ### Updating
 
-HACS → **Update**, restart Home Assistant, reload the browser with **Ctrl+F5**. The integration copies the new theme files and gives its scripts a new version number, so browsers and the companion app load them fresh. If the companion app still looks old, reset its frontend cache (Android: **Settings → Companion app → Troubleshooting**, iOS: **App Configuration → Debugging**).
+**Settings → System → Updates** (before 2026.11: HACS → **Update**), restart Home Assistant, reload the browser with **Ctrl+F5**. The integration copies the new theme files and gives its scripts a new version number, so browsers and the companion app load them fresh. If the companion app still looks old, reset its frontend cache (Android: **Settings → Companion app → Troubleshooting**, iOS: **App Configuration → Debugging**).
 
 ### Upgrading from 3.x
 
 Version 4.0 replaces the theme with an integration. Do this once:
 
-1. HACS → HomeAssistant95 → ⋮ → **Remove**, then add the repo again as type **Integration** (see above).
+1. Remove HomeAssistant95 and add the repo again as type **Integration** (see above). In the Marketplace: open HomeAssistant95 → ⋮ → **Uninstall**, then remove it from the repositories added from a link. With HACS: HACS → HomeAssistant95 → ⋮ → **Remove**.
 2. Delete the files and entries you set up by hand, otherwise everything loads twice: the folder `/config/www/ha95/`, the dashboard resources `/local/ha95/…` and the `/local/ha95/…` lines under `frontend: extra_module_url:` in `configuration.yaml`. Keep `/config/www/ha95-startmenu.json` (your menu).
 3. Set up the integration as above and reload the browser with **Ctrl+F5**.
 

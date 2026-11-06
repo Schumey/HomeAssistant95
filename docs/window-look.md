@@ -2,11 +2,11 @@
 
 🇬🇧 **English** · 🇩🇪 [Deutsch](window-look.de.md) · [← back to the README](../README.md)
 
-The theme alone sets colors, fonts and square corners. For real Win95 windows it needs [UIX – UI eXtension](https://github.com/Lint-Free-Technology/uix) (HACS), which lets a theme style the inside of cards and dialogs. Without UIX this part is simply ignored.
+The theme alone sets colors, fonts and square corners. For real Win95 windows it needs [UIX – UI eXtension](https://github.com/Lint-Free-Technology/uix) (Marketplace), which lets a theme style the inside of cards and dialogs. Without UIX this part is simply ignored.
 
 ## Setup
 
-1. Install UIX from HACS.
+1. Install UIX from the Marketplace (**Settings → Marketplace**, before Home Assistant 2026.11 from HACS).
 2. Add it under **Settings → Devices & services** (it is an integration).
 3. If you still have card-mod installed, remove it first, including any `extra_module_url` entry for it.
 4. Reload the page.

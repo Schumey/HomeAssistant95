@@ -2,11 +2,11 @@
 
 🇬🇧 [English](window-look.md) · 🇩🇪 **Deutsch** · [← zurück zur README](../README.de.md)
 
-Das Design allein setzt Farben, Schrift und eckige Kanten. Für echte Win95-Fenster braucht es [UIX – UI eXtension](https://github.com/Lint-Free-Technology/uix) (HACS). Damit kann ein Design auch das Innere von Karten und Dialogen gestalten. Ohne UIX wird dieser Teil einfach ignoriert.
+Das Design allein setzt Farben, Schrift und eckige Kanten. Für echte Win95-Fenster braucht es [UIX – UI eXtension](https://github.com/Lint-Free-Technology/uix) (Marketplace). Damit kann ein Design auch das Innere von Karten und Dialogen gestalten. Ohne UIX wird dieser Teil einfach ignoriert.
 
 ## Einrichtung
 
-1. UIX über HACS installieren.
+1. UIX aus dem Marketplace installieren (**Einstellungen → Marketplace**, vor Home Assistant 2026.11 über HACS).
 2. Unter **Einstellungen → Geräte & Dienste** hinzufügen (es ist eine Integration).
 3. Ist noch card-mod installiert, vorher entfernen, auch einen `extra_module_url`-Eintrag dafür.
 4. Seite neu laden.

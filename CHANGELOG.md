@@ -4,6 +4,15 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.11.3] – 2026-11-06
+
+### Added
+- **Start menu icon for the Marketplace:** Home Assistant 2026.11 replaces HACS with the built-in Marketplace (**Settings → Marketplace**, icon `mdi:store`). It gets a colorful Win95 pixel icon: a shop with a red and white striped awning, a brown door and a light blue shop window. It also shows for `store-outline`, `storefront` and `storefront-outline`, and for a sidebar entry that links to `/marketplace`.
+- **Example Tools menu:** new entry "Marketplace" below "Apps".
+
+### Changed
+- **Docs for the Marketplace:** installing, updating, upgrading from 3.x and uninstalling now go through **Settings → Marketplace** (HACS still mentioned for Home Assistant before 2026.11). UIX and Custom Sidebar also come from the Marketplace now. The HACS button still works and opens the repository in the Marketplace.
+
 ## [4.11.2] – 2026-11-01
 
 ### Added

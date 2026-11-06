@@ -1,6 +1,6 @@
 /*
  * HA 95 – Solitaire für Home Assistant
- * Version: 4.11.2
+ * Version: 4.11.3
  * Wird von der Integration HA 95 geladen (Option "Solitaire").
  *
  * Öffnen:

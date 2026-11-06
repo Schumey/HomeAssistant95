@@ -80,6 +80,11 @@
         "path": "/config/apps"
       },
       {
+        "name": "Marketplace",
+        "icon": "mdi:store",
+        "path": "/marketplace"
+      },
+      {
         "divider": true
       },
       {

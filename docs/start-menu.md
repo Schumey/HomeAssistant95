@@ -6,14 +6,14 @@ The sidebar can look and work like the Windows 95 Start menu. There are two part
 
 | Part | What it does | Needs |
 |---|---|---|
-| [Sidebar look](#1-sidebar-look-custom-sidebar) | "Start" title with a clock, 3D frame, blue selection, extra info below items | [Custom Sidebar](https://github.com/elchininet/custom-sidebar) (HACS) |
+| [Sidebar look](#1-sidebar-look-custom-sidebar) | "Start" title with a clock, 3D frame, blue selection, extra info below items | [Custom Sidebar](https://github.com/elchininet/custom-sidebar) (Marketplace) |
 | [Start menu module](#2-start-menu-module) | Vertical "HomeAssistant**95**" banner, colorful Win95 icons, flyout menus with submenus | `ha95-startmenu.js` |
 
 Flyout menus hang off a sidebar entry, so for those you need both parts.
 
 ## 1. Sidebar look (Custom Sidebar)
 
-1. Install [Custom Sidebar](https://github.com/elchininet/custom-sidebar) from HACS.
+1. Install [Custom Sidebar](https://github.com/elchininet/custom-sidebar) from the Marketplace (**Settings → Marketplace**, before Home Assistant 2026.11 from HACS).
 2. Copy [`examples/custom-sidebar/custom-sidebar-config.yaml`](../examples/custom-sidebar/custom-sidebar-config.yaml) to `/config/www/custom-sidebar-config.yaml`.
 3. Adjust the names and entity IDs in the `order` section to your setup. `item` is the visible name of a sidebar entry (case-insensitive).
 4. Reload the page.
@@ -59,7 +59,7 @@ The module replaces an icon with a colorful one when it has a matching drawing. 
 
 Colorful icons (more MDI names point to these, e.g. `home-outline`, `cog-outline`, `hammer`, `thermometer-lines`, `lightning-bolt`):
 
-`account`, `account-group`, `battery` (all levels), `battery-arrow-down`, `battery-arrow-up`, `battery-clock`, `battery-sync`, `bed`, `bell`, `calendar`, `camera`, `car`, `ceiling-light`, `chart-box`, `chart-line`, `clipboard-list`, `code-braces`, `coffee-to-go`, `cog`, `desk-lamp`, `devices`, `door-closed`, `fan`, `file-document`, `fire`, `flash`, `flower`, `folder-open`, `format-list-bulleted`, `garage`, `help`, `history`, `home`, `information`, `lamps`, `lightbulb`, `lock`, `lock-open`, `map`, `music-note`, `palette`, `play-box`, `power`, `printer-3d-nozzle`, `radiator`, `restart`, `robot`, `robot-vacuum`, `script-text`, `shape-outline`, `shield`, `shield-home`, `snowflake`, `sofa`, `speaker`, `sprout`, `television`, `thermometer`, `thermostat`, `tools`, `view-dashboard`, `washing-machine`, `water`, `weather-partly-cloudy`, `weather-sunny`, `window-closed`, `wrench`, `console`, `dock-left`, `hacs`, `key`, `math-log`, `menu`, `view-grid`
+`account`, `account-group`, `battery` (all levels), `battery-arrow-down`, `battery-arrow-up`, `battery-clock`, `battery-sync`, `bed`, `bell`, `calendar`, `camera`, `car`, `ceiling-light`, `chart-box`, `chart-line`, `clipboard-list`, `code-braces`, `coffee-to-go`, `cog`, `desk-lamp`, `devices`, `door-closed`, `fan`, `file-document`, `fire`, `flash`, `flower`, `folder-open`, `format-list-bulleted`, `garage`, `help`, `history`, `home`, `information`, `lamps`, `lightbulb`, `lock`, `lock-open`, `map`, `music-note`, `palette`, `play-box`, `power`, `printer-3d-nozzle`, `radiator`, `restart`, `robot`, `robot-vacuum`, `script-text`, `shape-outline`, `shield`, `shield-home`, `snowflake`, `sofa`, `speaker`, `sprout`, `television`, `thermometer`, `thermostat`, `tools`, `view-dashboard`, `washing-machine`, `water`, `weather-partly-cloudy`, `weather-sunny`, `window-closed`, `wrench`, `console`, `dock-left`, `hacs`, `store` (Marketplace), `key`, `math-log`, `menu`, `view-grid`
 
 ## Build your own menu
 
@@ -105,7 +105,7 @@ Each line is one entry. What it does depends on its key:
 | `{ "name": "…", "action": "minesweeper" }` | Opens [Minesweeper](minesweeper.md). Good with `"icon": "mdi:bomb"`. |
 | `{ "name": "…", "action": "solitaire" }` | Opens [Solitaire](solitaire.md). Good with `"icon": "mdi:cards-playing-outline"`. |
 | `{ "name": "…", "action": "screensaver" }` | Starts the [screensaver](screensaver.md) right away. |
-| `{ "name": "…", "action": "check-updates" }` | Checks for updates everywhere: every update entity (Core, apps, system, HACS, devices) asks again, and the Supervisor reloads its sources. A message at the bottom says how many updates are available. Handy in the Tools menu, with `"icon": "mdi:update"`. |
+| `{ "name": "…", "action": "check-updates" }` | Checks for updates everywhere: every update entity (Core, apps, system, Marketplace, devices) asks again, and the Supervisor reloads its sources. A message at the bottom says how many updates are available. Handy in the Tools menu, with `"icon": "mdi:update"`. |
 | `{ "name": "…", "action": "bsod" }` | Shows the blue screen (see `bsod` above), a click closes it. |
 | `{ "name": "…", "url": "https://…" }` | Opens an address in a new tab. |
 | `{ "name": "…", "items": [ … ] }` | Opens another submenu. Submenus can be nested as deep as you like. |

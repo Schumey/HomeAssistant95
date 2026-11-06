@@ -29,9 +29,9 @@ Mehr zu Dunkelmodus, Windows-3.1-Look und eigenen Farben: [Farbschemata](docs/co
 
 HomeAssistant95 ist eine Integration: Sie installiert die Designs, die du auswählst, und lädt die Extras selbst. Nichts von Hand kopieren, in der `configuration.yaml` nur die Zeile für Designs (falls noch nicht vorhanden).
 
-[![Öffne deine Home-Assistant-Instanz und dieses Repository im Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Schumey&repository=HomeAssistant95&category=integration)
+[![Öffne deine Home-Assistant-Instanz und dieses Repository im Marketplace (oder in HACS).](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Schumey&repository=HomeAssistant95&category=integration)
 
-1. HACS → ⋮ → **Benutzerdefinierte Repositories** → URL dieses Repos, Typ **Integration** (oder auf den Knopf oben klicken).
+1. **Einstellungen → Marketplace → Hinzufügen per Link** → GitHub-Link `https://github.com/Schumey/HomeAssistant95`, Typ **Integration** (oder auf den Knopf oben klicken). Vor Home Assistant 2026.11 geht das über HACS: HACS → ⋮ → **Benutzerdefinierte Repositories**.
 2. „HomeAssistant95“ installieren und Home Assistant neu starten.
 3. In `configuration.yaml` eintragen (falls noch nicht vorhanden), danach noch einmal neu starten:
    ```yaml
@@ -47,13 +47,13 @@ HomeAssistant95 ist eine Integration: Sie installiert die Designs, die du auswä
 
 ### Aktualisieren
 
-HACS → **Aktualisieren**, Home Assistant neu starten, Browser mit **Strg+F5** neu laden. Die Integration kopiert die neuen Theme-Dateien und gibt ihren Skripten eine neue Versionsnummer, damit Browser und Companion-App sie frisch laden. Sieht die Companion-App noch alt aus, ihren Frontend-Cache zurücksetzen (Android: **Einstellungen → Companion-App → Fehlerbehebung**, iOS: **App-Konfiguration → Debugging**).
+**Einstellungen → System → Updates** (vor 2026.11: HACS → **Aktualisieren**), Home Assistant neu starten, Browser mit **Strg+F5** neu laden. Die Integration kopiert die neuen Theme-Dateien und gibt ihren Skripten eine neue Versionsnummer, damit Browser und Companion-App sie frisch laden. Sieht die Companion-App noch alt aus, ihren Frontend-Cache zurücksetzen (Android: **Einstellungen → Companion-App → Fehlerbehebung**, iOS: **App-Konfiguration → Debugging**).
 
 ### Umstieg von 3.x
 
 Version 4.0 ersetzt das Design durch eine Integration. Einmalig nötig:
 
-1. HACS → HomeAssistant95 → ⋮ → **Entfernen**, dann das Repo noch einmal als Typ **Integration** hinzufügen (siehe oben).
+1. HomeAssistant95 entfernen und das Repo noch einmal als Typ **Integration** hinzufügen (siehe oben). Im Marketplace: HomeAssistant95 öffnen → ⋮ → **Deinstallieren**, dann aus den per Link hinzugefügten Repositories entfernen. Mit HACS: HACS → HomeAssistant95 → ⋮ → **Entfernen**.
 2. Alles löschen, was du von Hand eingerichtet hattest, sonst lädt alles doppelt: den Ordner `/config/www/ha95/`, die Dashboard-Ressourcen `/local/ha95/…` und die Zeilen `/local/ha95/…` unter `frontend: extra_module_url:` in der `configuration.yaml`. `/config/www/ha95-startmenu.json` (dein Menü) behalten.
 3. Die Integration wie oben einrichten und den Browser mit **Strg+F5** neu laden.
 

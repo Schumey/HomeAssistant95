@@ -6,14 +6,14 @@ Die Seitenleiste kann aussehen und funktionieren wie das Startmenü von Windows 
 
 | Teil | Was er macht | Braucht |
 |---|---|---|
-| [Seitenleisten-Look](#1-seitenleisten-look-custom-sidebar) | „Start“-Titel mit Uhr, 3D-Rahmen, blaue Markierung, Zusatzinfos unter Einträgen | [Custom Sidebar](https://github.com/elchininet/custom-sidebar) (HACS) |
+| [Seitenleisten-Look](#1-seitenleisten-look-custom-sidebar) | „Start“-Titel mit Uhr, 3D-Rahmen, blaue Markierung, Zusatzinfos unter Einträgen | [Custom Sidebar](https://github.com/elchininet/custom-sidebar) (Marketplace) |
 | [Startmenü-Modul](#2-startmenü-modul) | Senkrechter Streifen „HomeAssistant**95**“, bunte Win95-Icons, Ausklappmenüs mit Untermenüs | `ha95-startmenu.js` |
 
 Ausklappmenüs hängen an einem Eintrag der Seitenleiste. Dafür braucht man also beide Teile.
 
 ## 1. Seitenleisten-Look (Custom Sidebar)
 
-1. [Custom Sidebar](https://github.com/elchininet/custom-sidebar) über HACS installieren.
+1. [Custom Sidebar](https://github.com/elchininet/custom-sidebar) aus dem Marketplace installieren (**Einstellungen → Marketplace**, vor Home Assistant 2026.11 über HACS).
 2. [`examples/custom-sidebar/custom-sidebar-config.yaml`](../examples/custom-sidebar/custom-sidebar-config.yaml) nach `/config/www/custom-sidebar-config.yaml` kopieren.
 3. Im Abschnitt `order` die Namen und Entitäts-IDs an dein System anpassen. `item` ist der sichtbare Name eines Eintrags (Groß-/Kleinschreibung egal).
 4. Seite neu laden.
@@ -59,7 +59,7 @@ Das Modul ersetzt ein Icon durch ein buntes, wenn es dafür eine Zeichnung gibt.
 
 Bunte Icons (weitere MDI-Namen zeigen darauf, z. B. `home-outline`, `cog-outline`, `hammer`, `thermometer-lines`, `lightning-bolt`):
 
-`account`, `account-group`, `battery` (alle Stufen), `battery-arrow-down`, `battery-arrow-up`, `battery-clock`, `battery-sync`, `bed`, `bell`, `calendar`, `camera`, `car`, `ceiling-light`, `chart-box`, `chart-line`, `clipboard-list`, `code-braces`, `coffee-to-go`, `cog`, `desk-lamp`, `devices`, `door-closed`, `fan`, `file-document`, `fire`, `flash`, `flower`, `folder-open`, `format-list-bulleted`, `garage`, `help`, `history`, `home`, `information`, `lamps`, `lightbulb`, `lock`, `lock-open`, `map`, `music-note`, `palette`, `play-box`, `power`, `printer-3d-nozzle`, `radiator`, `restart`, `robot`, `robot-vacuum`, `script-text`, `shape-outline`, `shield`, `shield-home`, `snowflake`, `sofa`, `speaker`, `sprout`, `television`, `thermometer`, `thermostat`, `tools`, `view-dashboard`, `washing-machine`, `water`, `weather-partly-cloudy`, `weather-sunny`, `window-closed`, `wrench`, `console`, `dock-left`, `hacs`, `key`, `math-log`, `menu`, `view-grid`
+`account`, `account-group`, `battery` (alle Stufen), `battery-arrow-down`, `battery-arrow-up`, `battery-clock`, `battery-sync`, `bed`, `bell`, `calendar`, `camera`, `car`, `ceiling-light`, `chart-box`, `chart-line`, `clipboard-list`, `code-braces`, `coffee-to-go`, `cog`, `desk-lamp`, `devices`, `door-closed`, `fan`, `file-document`, `fire`, `flash`, `flower`, `folder-open`, `format-list-bulleted`, `garage`, `help`, `history`, `home`, `information`, `lamps`, `lightbulb`, `lock`, `lock-open`, `map`, `music-note`, `palette`, `play-box`, `power`, `printer-3d-nozzle`, `radiator`, `restart`, `robot`, `robot-vacuum`, `script-text`, `shape-outline`, `shield`, `shield-home`, `snowflake`, `sofa`, `speaker`, `sprout`, `television`, `thermometer`, `thermostat`, `tools`, `view-dashboard`, `washing-machine`, `water`, `weather-partly-cloudy`, `weather-sunny`, `window-closed`, `wrench`, `console`, `dock-left`, `hacs`, `store` (Marketplace), `key`, `math-log`, `menu`, `view-grid`
 
 ## Eigenes Menü bauen
 
@@ -105,7 +105,7 @@ Jede Zeile ist ein Eintrag. Was er tut, hängt vom Schlüssel ab:
 | `{ "name": "…", "action": "minesweeper" }` | Öffnet [Minesweeper](minesweeper.de.md). Passt gut zu `"icon": "mdi:bomb"`. |
 | `{ "name": "…", "action": "solitaire" }` | Öffnet [Solitaire](solitaire.de.md). Passt gut zu `"icon": "mdi:cards-playing-outline"`. |
 | `{ "name": "…", "action": "screensaver" }` | Startet den [Bildschirmschoner](screensaver.de.md) sofort. |
-| `{ "name": "…", "action": "check-updates" }` | Sucht überall nach Updates: Jede Update-Entität (Core, Apps, System, HACS, Geräte) fragt neu nach, und der Supervisor lädt seine Quellen neu. Eine Meldung unten sagt, wie viele Updates verfügbar sind. Praktisch im Werkzeuge-Menü, mit `"icon": "mdi:update"`. |
+| `{ "name": "…", "action": "check-updates" }` | Sucht überall nach Updates: Jede Update-Entität (Core, Apps, System, Marketplace, Geräte) fragt neu nach, und der Supervisor lädt seine Quellen neu. Eine Meldung unten sagt, wie viele Updates verfügbar sind. Praktisch im Werkzeuge-Menü, mit `"icon": "mdi:update"`. |
 | `{ "name": "…", "action": "bsod" }` | Zeigt den Bluescreen (siehe `bsod` oben), ein Klick schließt ihn. |
 | `{ "name": "…", "url": "https://…" }` | Öffnet eine Adresse in einem neuen Tab. |
 | `{ "name": "…", "items": [ … ] }` | Öffnet ein weiteres Untermenü. Untermenüs lassen sich beliebig tief verschachteln. |

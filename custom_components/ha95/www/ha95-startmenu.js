@@ -1,6 +1,6 @@
 /*
  * HA 95 – Startmenü mit Untermenüs für Home Assistant
- * Version: 4.11.2
+ * Version: 4.11.3
  * Laden:   Integration HA 95, Option "Startmenü"
  * Menüs:   /config/www/ha95-startmenu.json (Beispiel im Repo unter
  *          examples/startmenu/ha95-startmenu.json)
@@ -22,7 +22,7 @@
  *   { "name": "…", "action": "restart" }                    Home Assistant neu starten (mit Rückfrage),
  *                                                           danach "Es ist jetzt sicher, …" bis HA wieder da ist
  *   { "name": "…", "action": "run" }                        Schnellsuche als Dialog "Ausführen" öffnen
- *   { "name": "…", "action": "check-updates" }              Sucht überall nach Updates (Core, Apps, System, HACS …)
+ *   { "name": "…", "action": "check-updates" }              Sucht überall nach Updates (Core, Apps, System, Marketplace …)
  *   { "name": "…", "action": "bsod" }                       Bluescreen ansehen (Klick schließt)
  *   { "name": "…", "action": "clock" }                      "Eigenschaften von Datum/Uhrzeit" öffnen
  *   { "name": "…", "action": "minesweeper" }                Minesweeper öffnen (ha95-minesweeper.js)
@@ -1967,6 +1967,32 @@ ddkwsk.kwsk.kwsk.kwsk...
 ........................
 ........................
 `,
+  "store": `
+........................
+........................
+........................
+..kkkkkkkkkkkkkkkkkkkk..
+..krrwwrrwwrrwwrrwwrrk..
+..krrwwrrwwrrwwrrwwrrk..
+..krrwwrrwwrrwwrrwwrrk..
+..kRRssRRssRRssRRssRRk..
+..kkkkkkkkkkkkkkkkkkkk..
+....knnnnnnnnnnnnnnk....
+....kwttttttttttttnk....
+....kwttttttttttttnk....
+....kwttttttkkkkkknk....
+....kwkkkkktkwccCknk....
+....kwkonnktkcccCknk....
+....kwkonnktkcccCknk....
+....kwkonnktkCCCCknk....
+....kwkonyktkkkkkknk....
+....kwkonnktttttttnk....
+....kwkonnktttttttnk....
+....kwkonnktttttttnk....
+....kkkkkkkkkkkkkkkk....
+........................
+........................
+`,
   "television": `
 ........................
 ........k......k........
@@ -2353,6 +2379,7 @@ const COLOR_ALIASES = {
   "lock-open-variant-outline": "lock-open",
   "lock-outline": "lock",
   "map-outline": "map",
+  "marketplace": "store",
   "mydietassistant": "diet-assistant",
   "nutrition": "diet-assistant",
   "package-variant": "hacs",
@@ -2365,6 +2392,9 @@ const COLOR_ALIASES = {
   "security": "shield",
   "shield-outline": "shield",
   "sprout-outline": "sprout",
+  "store-outline": "store",
+  "storefront": "store",
+  "storefront-outline": "store",
   "television-classic": "television",
   "text-box-outline": "math-log",
   "text-long": "math-log",
@@ -2397,6 +2427,7 @@ const BUILTIN_ICONS = {
   "/calendar": "calendar",
   "/developer-tools": "tools",
   "/lovelace": "view-dashboard",
+  "/marketplace": "store",
 };
 
 const colorName = (icon) => {
@@ -2709,7 +2740,7 @@ async function openModule(file, run) {
   }
 }
 
-// "Nach Updates suchen": jede Update-Entität (Core, Apps, System, HACS,
+// "Nach Updates suchen": jede Update-Entität (Core, Apps, System, Marketplace,
 // Geräte) fragt neu nach, dazu lädt der Supervisor seine Quellen neu.
 const UPDATE_TEXT = {
   de: {
