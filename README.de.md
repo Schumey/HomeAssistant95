@@ -31,7 +31,7 @@ HomeAssistant95 ist eine Integration: Sie installiert die Designs, die du auswä
 
 [![Öffne deine Home-Assistant-Instanz und dieses Repository im Marketplace (oder in HACS).](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Schumey&repository=HomeAssistant95&category=integration)
 
-1. **Einstellungen → Marketplace → Hinzufügen per Link** → GitHub-Link `https://github.com/Schumey/HomeAssistant95`, Typ **Integration** (oder auf den Knopf oben klicken). Vor Home Assistant 2026.11 geht das über HACS: HACS → ⋮ → **Benutzerdefinierte Repositories**.
+1. **Einstellungen → Marketplace → Über Link hinzufügen** → GitHub-Link `https://github.com/Schumey/HomeAssistant95`, Typ **Integration** (oder auf den Knopf oben klicken). Vor Home Assistant 2026.11 geht das über HACS: HACS → ⋮ → **Benutzerdefinierte Repositories**.
 2. „HomeAssistant95“ installieren und Home Assistant neu starten.
 3. In `configuration.yaml` eintragen (falls noch nicht vorhanden), danach noch einmal neu starten:
    ```yaml
@@ -53,7 +53,7 @@ HomeAssistant95 ist eine Integration: Sie installiert die Designs, die du auswä
 
 Version 4.0 ersetzt das Design durch eine Integration. Einmalig nötig:
 
-1. HomeAssistant95 entfernen und das Repo noch einmal als Typ **Integration** hinzufügen (siehe oben). Im Marketplace: HomeAssistant95 öffnen → ⋮ → **Deinstallieren**, dann aus den per Link hinzugefügten Repositories entfernen. Mit HACS: HACS → HomeAssistant95 → ⋮ → **Entfernen**.
+1. HomeAssistant95 entfernen und das Repo noch einmal als Typ **Integration** hinzufügen (siehe oben). Im Marketplace: HomeAssistant95 öffnen → ⋮ → **Deinstallieren**, dann aus den über Link hinzugefügten Repositories entfernen. Mit HACS: HACS → HomeAssistant95 → ⋮ → **Entfernen**.
 2. Alles löschen, was du von Hand eingerichtet hattest, sonst lädt alles doppelt: den Ordner `/config/www/ha95/`, die Dashboard-Ressourcen `/local/ha95/…` und die Zeilen `/local/ha95/…` unter `frontend: extra_module_url:` in der `configuration.yaml`. `/config/www/ha95-startmenu.json` (dein Menü) behalten.
 3. Die Integration wie oben einrichten und den Browser mit **Strg+F5** neu laden.
 
