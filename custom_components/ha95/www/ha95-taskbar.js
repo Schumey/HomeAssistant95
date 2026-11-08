@@ -1,6 +1,6 @@
 /*
  * HA 95 – Taskleiste für Home Assistant
- * Version: 4.11.3
+ * Version: 4.12.0
  * Wird von der Integration HA 95 geladen (Option "Taskleiste", standardmäßig aus).
  *
  * Eine Win95-Taskleiste am unteren Rand: "Start" (klappt die Seitenleiste

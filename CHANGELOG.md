@@ -4,6 +4,12 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.12.0] – 2026-11-08
+
+### Added
+- **Shared Start menu file:** HA 95 and [HomeAssistantXP](https://github.com/Schumey/HomeAssistantXP) can now share one menu file, `/config/www/ha-startmenu.json`. Both modules read it first, then their own file (`ha95-startmenu.json`), which wins for menus with the same ID. Existing files keep working unchanged.
+- A new install copies the example menu as `ha-startmenu.json` (only if neither it nor `ha95-startmenu.json` exists). "Add new entries from the example menu" updates the shared file if there is one, otherwise your own.
+
 ## [4.11.3] – 2026-11-06
 
 ### Added

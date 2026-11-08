@@ -59,14 +59,14 @@ def _sync_themes(target: Path, selected: list[str]) -> None:
             dst.unlink()
 
 
-def _ensure_startmenu_config(target: Path) -> None:
-    """Beispielmenü nach /config/www/ legen, falls dort noch keins liegt (nie überschreiben)."""
-    if target.exists():
+def _ensure_startmenu_config(target: Path, own: Path) -> None:
+    """Beispielmenü als gemeinsame Datei nach /config/www/ legen, falls weder sie noch die eigene da ist (nie überschreiben)."""
+    if target.exists() or own.exists():
         return
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_bytes(STARTMENU_DEFAULT.read_bytes())
     _LOGGER.info(
-        "Beispielmenü nach %s kopiert. Erscheint /local/ha95-startmenu.json erst nach "
+        "Beispielmenü nach %s kopiert. Erscheint /local/ha-startmenu.json erst nach "
         "einem Neustart von Home Assistant, war der Ordner www/ bisher nicht da.",
         target,
     )
@@ -106,7 +106,9 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     )
     if options.get(CONF_STARTMENU, DEFAULT_OPTIONS[CONF_STARTMENU]):
         await hass.async_add_executor_job(
-            _ensure_startmenu_config, Path(hass.config.path("www", "ha95-startmenu.json"))
+            _ensure_startmenu_config,
+            Path(hass.config.path("www", "ha-startmenu.json")),
+            Path(hass.config.path("www", "ha95-startmenu.json")),
         )
     try:
         await hass.services.async_call("frontend", "reload_themes", blocking=True)

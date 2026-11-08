@@ -23,7 +23,7 @@ All colors come from the `ha95-*` variables, so the sidebar follows the selected
 ## 2. Start menu module
 
 1. Switch on **Start menu** in the integration (**Settings → Devices & services → HomeAssistant95 → Configure**, on by default).
-2. The integration copies the example menu to `/config/www/ha95-startmenu.json` if that file does not exist yet (it never overwrites yours). If `/config/www/` did not exist before, restart Home Assistant once so `/local/` works. The example is also in [`examples/startmenu/ha95-startmenu.json`](../examples/startmenu/ha95-startmenu.json).
+2. The integration copies the example menu to `/config/www/ha-startmenu.json` if neither that file nor `ha95-startmenu.json` exists yet (it never overwrites yours). `ha-startmenu.json` is shared with HomeAssistantXP; your own `ha95-startmenu.json` is read after it and wins for menus with the same ID. If `/config/www/` did not exist before, restart Home Assistant once so `/local/` works. The example is also in [`examples/startmenu/ha95-startmenu.json`](../examples/startmenu/ha95-startmenu.json).
 3. Reload the page (**Ctrl+F5**).
 
 You now have the banner and the colorful icons. The flyout menus need one more step, see [Build your own menu](#build-your-own-menu).

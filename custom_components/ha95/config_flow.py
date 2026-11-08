@@ -79,7 +79,10 @@ async def _schema(hass, current: dict[str, Any], with_update: bool = False) -> v
 async def _update_startmenu(hass) -> None:
     """Fehlende Einträge des Beispielmenüs in die Startmenü-Datei einfügen und melden."""
     de = (hass.config.language or "en").startswith("de")
-    target = Path(hass.config.path("www", "ha95-startmenu.json"))
+    # Gemeinsame Datei (HA 95 und HA XP), sonst die eigene
+    target = Path(hass.config.path("www", "ha-startmenu.json"))
+    if not target.exists():
+        target = Path(hass.config.path("www", "ha95-startmenu.json"))
     try:
         added, skipped = await hass.async_add_executor_job(
             update_file, target, STARTMENU_DEFAULT, "de" if de else "en"

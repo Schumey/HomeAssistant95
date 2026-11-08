@@ -1,6 +1,6 @@
 /*
  * HA 95 – Startmenü mit Untermenüs für Home Assistant
- * Version: 4.11.3
+ * Version: 4.12.0
  * Laden:   Integration HA 95, Option "Startmenü"
  * Menüs:   /config/www/ha95-startmenu.json (Beispiel im Repo unter
  *          examples/startmenu/ha95-startmenu.json)
@@ -50,6 +50,8 @@
  *   "clock_calendars": []   Kalender-Entitäten, deren Termine der Dialog zeigt
  */
 
+// Gemeinsame Menüdatei für HA 95 und HA XP; die eigene Datei (ha95-startmenu.json) ergänzt sie und hat Vorrang
+const SHARED_CONFIG_URL = "/local/ha-startmenu.json";
 const CONFIG_URL = "/local/ha95-startmenu.json";
 const DEFAULTS = {
   file_editor_panel: "core_configurator",
@@ -2513,9 +2515,17 @@ async function loadConfig() {
   // Alternativ ohne Datei: window.ha95StartmenuConfig = { menus: { … } }
   if (window.ha95StartmenuConfig) return (config = { ...DEFAULTS, ...window.ha95StartmenuConfig });
   try {
-    const res = await fetch(CONFIG_URL, { cache: "no-store" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    config = { ...DEFAULTS, ...(await res.json()) };
+    const read = async (url) => {
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    };
+    const [shared, own] = await Promise.allSettled([read(SHARED_CONFIG_URL), read(CONFIG_URL)]);
+    if (own.status === "rejected" && shared.status === "rejected") throw own.reason;
+    const a = shared.value || {};
+    const b = own.value || {};
+    // Menüs beider Dateien, die eigene Datei hat bei gleicher Kennung Vorrang
+    config = { ...DEFAULTS, ...a, ...b, menus: { ...a.menus, ...b.menus } };
   } catch (err) {
     // Nicht merken: Ein Fehlschlag (404 beim Neustart, kurze Netzstörung)
     // soll beim nächsten Öffnen erneut versucht werden, nicht bis zum Neuladen bleiben.
