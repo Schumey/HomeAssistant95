@@ -1,6 +1,6 @@
 /*
  * HA 95 – Feinschliff für Stellen, die das Theme nicht erreicht
- * Version: 4.12.1
+ * Version: 4.12.2
  * Wird von der Integration HA 95 geladen (Option "Feinschliff").
  * Optional: Ohne das Modul bleibt das Design an wenigen Stellen unfertig
  * (Logbuch: Hinweisfeld, Kontrollkästchen, runde Symbole, Pfeilknöpfe beim
@@ -278,6 +278,11 @@ const BAUTEIL_CSS = {
       font-weight: bold !important;
       font-size: 15px !important;
       margin-inline-start: 6px !important;
+    }
+    /* Menüknopf (schmales Fenster) wie die anderen Kopfleistenknöpfe */
+    ha-menu-button {
+      ${KOPFKNOPF}
+      margin-inline-start: 2px;
     }
   `,
   // Geräte & Dienste: Filter und ⋮ rechts neben der Suche wie die anderen

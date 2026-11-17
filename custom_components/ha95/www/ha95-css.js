@@ -1,6 +1,6 @@
 /*
  * HA 95 – lädt ha95.css (Pixel-Schrift, Mauszeiger, Scrollleisten)
- * Version: 4.12.1
+ * Version: 4.12.2
  *
  * Wird von der Integration HA 95 als Frontend-Skript eingetragen; die
  * Stylesheet-Datei liegt daneben.

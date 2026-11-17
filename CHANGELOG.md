@@ -4,6 +4,11 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.12.2] – 2026-11-17
+
+### Fixed
+- **Profile page and other simple subpages:** the menu button (☰) in the title bar was a 48 px icon again; it is now a small 24 × 22 raised button like the others.
+
 ## [4.12.1] – 2026-11-17
 
 ### Fixed

@@ -4,6 +4,11 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.12.2] – 2026-11-17
+
+### Behoben
+- **Profilseite und andere einfache Unterseiten:** Der Menüknopf (☰) in der Titelleiste war wieder ein 48-px-Symbol; er ist jetzt ein kleiner erhabener Knopf (24 × 22) wie die anderen.
+
 ## [4.12.1] – 2026-11-17
 
 ### Behoben
