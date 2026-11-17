@@ -1,6 +1,6 @@
 /*
  * HA 95 – Feinschliff für Stellen, die das Theme nicht erreicht
- * Version: 4.12.0
+ * Version: 4.12.1
  * Wird von der Integration HA 95 geladen (Option "Feinschliff").
  * Optional: Ohne das Modul bleibt das Design an wenigen Stellen unfertig
  * (Logbuch: Hinweisfeld, Kontrollkästchen, runde Symbole, Pfeilknöpfe beim
@@ -550,6 +550,25 @@ const BAUTEIL_CSS = {
   `,
   // Auswahlfelder (Aktion, Entität, Gerät, …): weißes, eingelassenes Feld mit 3D-Pfeil
   "ha-picker-field": `
+    /* Rahmen kommt vom Eintrag; HA-Feld ohne eigenen Hintergrund,
+       Innenabstand rechts und Unterstrich */
+    :host-context(ha-generic-picker) .field {
+      padding: 0 !important;
+      background: transparent !important;
+      border-radius: 0 !important;
+    }
+    :host-context(ha-generic-picker) .field::after {
+      display: none !important;
+    }
+    /* ha-combo-box-item ohne md-list-item (ab HA 2026.11): eigene Variablen */
+    :host-context(ha-generic-picker) ha-combo-box-item {
+      --ha-combo-box-item-min-height: 26px;
+      --ha-combo-box-item-two-line-min-height: 40px;
+      --ha-combo-box-item-padding-block: 0px;
+      --ha-combo-box-item-padding-inline-start: 6px;
+      --ha-combo-box-item-padding-inline-end: 22px;
+      --ha-combo-box-item-gap: 6px;
+    }
     :host-context(ha-generic-picker) ha-combo-box-item {
       --md-list-item-one-line-container-height: 26px;
       --md-list-item-top-space: 0px;
@@ -606,6 +625,70 @@ const BAUTEIL_CSS = {
       --mdc-icon-size: 12px;
       --ha-button-box-shadow: none;
       color: var(--ha95-window-text);
+    }
+    :host-context(ha-generic-picker) ha-combo-box-item {
+      --ha-combo-box-item-padding-inline-end: 40px;
+    }
+    /* In Einstellungszeilen (Profil: Design, Sprache, Zeitzone, Formate …)
+       steht die Beschriftung schon links: einzeilige Combobox fester Breite,
+       ohne ×. Gilt für ha-generic-picker und ha-select. */
+    :host-context(ha-list-item-base),
+    :host-context(ha-settings-row) {
+      display: block;
+      width: 230px;
+      max-width: 100%;
+      margin-inline-start: auto;
+    }
+    :host-context(ha-list-item-base) .field,
+    :host-context(ha-settings-row) .field {
+      padding: 0 !important;
+      background: transparent !important;
+      border-radius: 0 !important;
+    }
+    :host-context(ha-list-item-base) .field::after,
+    :host-context(ha-settings-row) .field::after {
+      display: none !important;
+    }
+    :host-context(ha-list-item-base) ha-combo-box-item,
+    :host-context(ha-settings-row) ha-combo-box-item {
+      --ha-combo-box-item-min-height: 23px;
+      --ha-combo-box-item-two-line-min-height: 23px;
+      --ha-combo-box-item-padding-block: 0px;
+      --ha-combo-box-item-padding-inline-start: 4px;
+      --ha-combo-box-item-padding-inline-end: 22px;
+      flex: 1 1 auto;
+      min-width: 0;
+      border-radius: 0 !important;
+      background: var(--ha95-window) !important;
+      box-shadow: var(--ha95-sunken);
+    }
+    :host-context(ha-list-item-base) span[slot="overline"],
+    :host-context(ha-settings-row) span[slot="overline"],
+    :host-context(ha-list-item-base) ha-icon-button.clear,
+    :host-context(ha-settings-row) ha-icon-button.clear {
+      display: none !important;
+    }
+    :host-context(ha-list-item-base) span[slot="headline"],
+    :host-context(ha-settings-row) span[slot="headline"] {
+      color: var(--ha95-window-text);
+      font-family: var(--ha95-font);
+      font-size: 13px;
+      line-height: 23px;
+    }
+    :host-context(ha-list-item-base) .arrow,
+    :host-context(ha-settings-row) .arrow {
+      position: absolute;
+      top: 2px !important;
+      right: 2px;
+      bottom: auto !important;
+      transform: none !important;
+      width: 16px !important;
+      height: 19px !important;
+      margin: 0 !important;
+      --mdc-icon-size: 16px;
+      background: var(--ha95-face);
+      box-shadow: var(--ha95-raised);
+      color: var(--ha95-text) !important;
     }
   `,
   // Auswahlfenster der Felder: Rahmen wie ein Win95-Menü
@@ -666,6 +749,12 @@ const BAUTEIL_CSS = {
     ha-combo-box-item {
       border-radius: 0 !important;
       font-family: var(--ha95-font);
+      /* ab HA 2026.11 ohne md-list-item: eigene Variablen, sonst 60 px hohe Zeilen */
+      --ha-combo-box-item-min-height: 24px;
+      --ha-combo-box-item-two-line-min-height: 38px;
+      --ha-combo-box-item-padding-block: 0px;
+      --ha-combo-box-item-padding-inline-start: 6px;
+      --ha-combo-box-item-padding-inline-end: 6px;
     }
     ha-combo-box-item [slot="headline"],
     ha-combo-box-item [slot="supporting-text"] {

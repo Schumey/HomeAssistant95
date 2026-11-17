@@ -1,6 +1,6 @@
 /*
  * HA 95 – Startmenü mit Untermenüs für Home Assistant
- * Version: 4.12.0
+ * Version: 4.12.1
  * Laden:   Integration HA 95, Option "Startmenü"
  * Menüs:   /config/www/ha95-startmenu.json (Beispiel im Repo unter
  *          examples/startmenu/ha95-startmenu.json)
@@ -1293,6 +1293,32 @@ const COLOR_ICONS = {
 ........................
 ........................
 `,
+  "home-heart": `
+........................
+..kkkkkkkkkkkkkkkkkkkk..
+.kggggggggggssssssssssk.
+.kgGGGGGGGGwwdddddddddk.
+.kgGGGGGGGwGdwddddddddk.
+.kgGGGGGGwGGddwdddddddk.
+.kgGGGGGwGGGdddwddddddk.
+.kgGGGGwGGGGddddwdddddk.
+.kgGGGwGGGGGdddddwddddk.
+.kgGGwGGGGGGddddddwdddk.
+.kgGwGGGGGGGdddddddwddk.
+.kgGwGGGGGGGdddddddwddk.
+.kgGwGGGGGGGdddddddwddk.
+.kgGwGGGGGGGdddddddwddk.
+.kgGwGGGnggGdddddddwddk.
+.kgGwGrrRrrGddwdwddwddk.
+.kgGwGrwrrrGdswdwsdwddk.
+.kgGwGrrrrRGdswwwsdwddk.
+.kgGwGrrrrRGdswdwsdwddk.
+.kgGwGGrRRGGddwdwddwddk.
+.kgGwwwwwwwwwwwwwwwwddk.
+.kgGGGGGGGGGddddddddddk.
+..kkkkkkkkkkkkkkkkkkkk..
+........................
+`,
   "information": `
 ........................
 ........................
@@ -2352,6 +2378,7 @@ const COLOR_ALIASES = {
   "console-line": "console",
   "diet": "diet-assistant",
   "door": "door-closed",
+  "dumbbell-hafs": "home-heart",
   "file-cog": "file-document",
   "file-cog-outline": "file-document",
   "file-document-edit": "file-document",
@@ -2364,6 +2391,7 @@ const COLOR_ALIASES = {
   "food-apple": "diet-assistant",
   "food-apple-outline": "diet-assistant",
   "format-list-bulleted-type": "format-list-bulleted",
+  "hafs": "home-heart",
   "hammer": "tools",
   "help-circle": "help",
   "help-circle-outline": "help",

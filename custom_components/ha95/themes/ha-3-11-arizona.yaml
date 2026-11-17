@@ -1,5 +1,5 @@
 # HA 95 – Theme "HA 3.11 Arizona"
-# Version: 4.12.0
+# Version: 4.12.1
 # Erzeugt von local/theme-generator/build.py, nicht von Hand ändern.
 
 HA 3.11 Arizona:
@@ -1651,6 +1651,12 @@ HA 3.11 Arizona:
         --md-list-item-bottom-space: 0px !important;
         --md-list-item-leading-space: calc(50% + 4px) !important;
         --md-list-item-trailing-space: 30px !important;
+        /* ab HA 2026.11 ohne md-list-item */
+        --ha-combo-box-item-min-height: 25px !important;
+        --ha-combo-box-item-two-line-min-height: 25px !important;
+        --ha-combo-box-item-padding-block: 0px !important;
+        --ha-combo-box-item-padding-inline-start: calc(50% + 4px) !important;
+        --ha-combo-box-item-padding-inline-end: 30px !important;
       }
       ha-combo-box-item::before {
         content: attr(data-aria-label);
@@ -1913,6 +1919,11 @@ HA 3.11 Arizona:
       align-self: center;
       height: 22px;
       margin-inline-end: 2px;
+      /* als Block mit line-height 32px rutscht der innere Knopf auf die
+         Grundlinie, 12 px nach unten; sichtbar blieb nur die graue Fläche */
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
     }
     .action-items ha-icon-button:active,
     ha-menu-button:active {
@@ -2030,6 +2041,11 @@ HA 3.11 Arizona:
         align-self: center;
         height: 22px;
         margin-inline-end: 2px;
+        /* als Block mit line-height 32px rutscht der innere Knopf auf die
+           Grundlinie, 12 px nach unten; sichtbar blieb nur die graue Fläche */
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
       }
       .action-items ha-icon-button:active,
       ha-menu-button:active {
@@ -2593,6 +2609,23 @@ HA 3.11 Arizona:
         color: var(--ha95-text) !important;
       }
     "ha-config-dashboard $$ ha-config-navigation-list $": |
+      /* Einstellungs-Icons als eckige 3D-Kacheln (Systemsteuerung) */
+      .icon-background {
+        border-radius: 0 !important;
+        width: 32px !important;
+        height: 32px !important;
+        margin-inline: 4px;
+        box-shadow:
+          inset -1px -1px rgba(0, 0, 0, 0.6),
+          inset 1px 1px rgba(255, 255, 255, 0.6),
+          inset -2px -2px rgba(0, 0, 0, 0.25),
+          inset 2px 2px rgba(255, 255, 255, 0.25),
+          1px 1px 0 var(--ha95-dark);
+      }
+      .icon-background ha-svg-icon {
+        --mdc-icon-size: 20px;
+      }
+    "ha-config-system-navigation $$ ha-config-navigation-list $": |
       /* Einstellungs-Icons als eckige 3D-Kacheln (Systemsteuerung) */
       .icon-background {
         border-radius: 0 !important;

@@ -4,6 +4,15 @@
 
 Alle nennenswerten Änderungen an diesem Projekt. Format nach [Keep a Changelog](https://keepachangelog.com/de/1.1.0/), Versionierung nach [SemVer](https://semver.org/lang/de/).
 
+## [4.12.1] – 2026-11-17
+
+### Behoben
+- **Auswahlfelder (Home Assistant 2026.11):** `ha-combo-box-item` wurde ohne `md-list-item` neu gebaut, die alten Höhen- und Abstandsvariablen wirkten nicht mehr (sehr hohe Listenzeilen, × über dem Pfeil). Auswahlfelder und ihre Listen nutzen jetzt die neuen `--ha-combo-box-item-*`-Variablen.
+- **Einstellungszeilen im Profil** (Design, Sprache, Zeitzone, Formate): einzeilige Combobox, 230 px breit und rechtsbündig, mit dem ▼-Knopf im eingelassenen Feld und ohne ×.
+
+### Hinzugefügt
+- Buntes Startmenü-Icon für die HAFS-App (`mdi:home-heart`, Alias `hafs`): Kachel halb grün, halb grau mit weißem Haus, Apfel und Hantel.
+
 ## [4.12.0] – 2026-11-08
 
 ### Hinzugefügt

@@ -4,6 +4,15 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versioning follows [SemVer](https://semver.org/).
 
+## [4.12.1] – 2026-11-17
+
+### Fixed
+- **Pickers (Home Assistant 2026.11):** `ha-combo-box-item` was rebuilt without `md-list-item`, so the old height and padding variables no longer applied (very tall list rows, × on top of the arrow). Pickers and their lists now use the new `--ha-combo-box-item-*` variables.
+- **Profile settings rows** (Theme, Language, Time zone, formats): a single-line combo box, 230 px wide and right-aligned, with the ▼ button inside the sunken field and no ×.
+
+### Added
+- Colour Start menu icon for the HAFS app (`mdi:home-heart`, alias `hafs`): tile half green, half gray with a white house, an apple and a dumbbell.
+
 ## [4.12.0] – 2026-11-08
 
 ### Added
